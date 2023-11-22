@@ -4,12 +4,31 @@ body, h1, h2, ul, li, p {
     padding: 0;
 }
 
-body {
+/* body {
     font-family: Arial, sans-serif;
     color: #313;
     background-color: #f8f8f8;
     line-height: 1.6;
+} */
+
+body {
+    background-image: url('Duddinston.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
 }
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: -1;
+}
+
 
 /* Header Styles */
 header {
