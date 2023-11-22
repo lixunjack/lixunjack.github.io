@@ -26,18 +26,21 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    background: rgba(0, 0, 0, 0.2); /* Black overlay with 50% opacity */
     z-index: -1;
 }
 
 
 /* Header Styles */
 header {
-    background-color: #4C7293; /* Change this color to suit your style */
-    color: white;
+    background-image: url('Edinburghcity.jpg');
+    background-size: cover;
+    background-position: center;
     text-align: center;
-    padding: 25px 0;
+    color: white; /* Adjust the text color for visibility */
+    padding: 50px 0; /* Add padding for visual spacing */
 }
+
 
 
 /* Navigation Menu Styles */
