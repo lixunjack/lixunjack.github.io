@@ -16,6 +16,7 @@ body {
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
+    color: red;
 }
 
 body::before {
@@ -80,6 +81,7 @@ footer {
 
     header, section, footer {
         padding: 20px;
+        color: red;
     }
 }
 
