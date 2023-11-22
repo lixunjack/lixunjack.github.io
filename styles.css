@@ -54,6 +54,8 @@ header::before {
 }
 
 
+
+
 /* Navigation Menu Styles */
 nav ul {
     list-style-type: none;
@@ -105,6 +107,14 @@ a:hover {
 /* Selected link */
 a:active {
     color: blue; /* Change to your desired color */
+}
+
+#about {
+    background-image: url('ScotParli.png');
+    background-size: cover;
+    background-position: center;
+    color: white; /* Adjust text color for readability */
+    padding: 20px; /* Adjust padding as needed */
 }
 
 
