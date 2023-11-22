@@ -101,10 +101,19 @@ footer {
     h1 {
         font-size: 24px; /* Smaller size for mobile devices */
     }
-
+    
+    h1 {
+        font-size: 20px; /* Smaller size for mobile devices */
+    }
+    
     p {
         font-size: 16px; /* Smaller size for paragraph text on mobile devices */
     }
-    
+    ul {
+        font-size: 14px; /* Smaller size for paragraph text on mobile devices */
+    }    
+    li {
+        font-size: 14px; /* Smaller size for paragraph text on mobile devices */
+    }      
 }
 
