@@ -87,6 +87,29 @@ footer {
     color: white;
 }
 
+/* Unvisited link */
+a {
+    color: red; /* Change to your desired color */
+}
+
+/* Visited link */
+a:visited {
+    color: yellow; /* Change to your desired color */
+}
+
+/* Hover over link */
+a:hover {
+    color: green; /* Change to your desired color */
+}
+
+/* Selected link */
+a:active {
+    color: blue; /* Change to your desired color */
+}
+
+
+
+
 /* Responsive Design */
 @media (max-width: 600px) {
     nav ul li {
