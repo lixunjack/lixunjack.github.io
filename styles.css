@@ -1,0 +1,65 @@
+/* Basic Reset */
+body, h1, h2, ul, li, p {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f8f8f8;
+    line-height: 1.6;
+}
+
+/* Header Styles */
+header {
+    background-color: #4C7293; /* Change this color to suit your style */
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+/* Navigation Menu Styles */
+nav ul {
+    list-style-type: none;
+    background-color: #333;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav ul li {
+    display: inline;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: white;
+    padding: 15px 20px;
+    display: inline-block;
+}
+
+/* Section Styles */
+section {
+    padding: 20px 5%;
+    margin: 20px 0;
+}
+
+/* Footer Styles */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #333;
+    color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    nav ul li {
+        display: block;
+    }
+
+    header, section, footer {
+        padding: 20px;
+    }
+}
+
