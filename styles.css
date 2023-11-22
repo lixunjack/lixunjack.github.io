@@ -42,11 +42,22 @@ header {
 }
 
 
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9); /* Black overlay with 50% opacity */
+    z-index: -1;
+}
+
 
 /* Navigation Menu Styles */
 nav ul {
     list-style-type: none;
-    background-color: #333;
+    background-color: #363;
     text-align: center;
     padding: 10px 0;
 }
@@ -72,7 +83,7 @@ section {
 footer {
     text-align: center;
     padding: 20px 0;
-    background-color: #333;
+    background-color: #313;
     color: white;
 }
 
@@ -86,5 +97,14 @@ footer {
         padding: 20px;
         color: white;
     }
+    
+    h1 {
+        font-size: 24px; /* Smaller size for mobile devices */
+    }
+
+    p {
+        font-size: 16px; /* Smaller size for paragraph text on mobile devices */
+    }
+    
 }
 
