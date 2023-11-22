@@ -6,7 +6,7 @@ body, h1, h2, ul, li, p {
 
 body {
     font-family: Arial, sans-serif;
-    color: #333;
+    color: #313;
     background-color: #f8f8f8;
     line-height: 1.6;
 }
@@ -16,7 +16,7 @@ header {
     background-color: #4C7293; /* Change this color to suit your style */
     color: white;
     text-align: center;
-    padding: 20px 0;
+    padding: 25px 0;
 }
 
 /* Navigation Menu Styles */
