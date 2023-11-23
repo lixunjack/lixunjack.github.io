@@ -13,8 +13,16 @@ body {
     padding: 20px;
 }
 
-header {
+/* header {
     background: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+} */
+
+header {
+    background: url('asset/Edinburghcity.png') no-repeat center center;
+    background-size: cover;
     color: #fff;
     padding: 20px 0;
     text-align: center;
