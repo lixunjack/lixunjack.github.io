@@ -17,6 +17,14 @@ header {
     padding: 20px 0; /* Adding more space */
 }
 
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px 0; /* Adjust padding as needed */
+}
+
 header img {
     border-radius: 50%;
 }
