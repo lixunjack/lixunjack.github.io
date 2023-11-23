@@ -12,7 +12,7 @@ body, h1, h2, ul, li, p {
 } */
 
 body {
-    background-image: url('Duddinston.png');
+    background-image: url('asset/Duddinston.png');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -33,7 +33,7 @@ body::before {
 
 /* Header Styles */
 header {
-    background-image: url('Edinburghcity.png');
+    background-image: url('asset/Edinburghcity.png');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -110,7 +110,7 @@ a:active {
 }
 
 #about {
-    background-image: url('ScotParli.png');
+    background-image: url('asset/ScotParli.png');
     background-size: cover;
     background-position: center;
     color: white; /* Adjust text color for readability */
