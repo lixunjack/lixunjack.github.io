@@ -3,13 +3,13 @@ body, h1, h2, ul, li, p {
     margin: 0;
     padding: 0;
 }
-
-/* body {
+/*
+body {
     font-family: Arial, sans-serif;
-    color: #313;
-    background-color: #f8f8f8;
+    color: #333;
+    background-color: #333;
     line-height: 1.6;
-} */
+}*/ 
 
 body {
     background-image: url('asset/Duddinston.png');
@@ -26,8 +26,8 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.9); /* Black overlay with 50% opacity */
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.99); /* Black overlay with 50% opacity */
+    z-index: -1;
 }
 
 
@@ -37,8 +37,8 @@ header {
     background-size: cover;
     background-position: center;
     text-align: center;
-    color: black; /* Adjust the text color for visibility */
-    padding: 50px 0; /* Add padding for visual spacing */
+    color: white; /* Adjust the text color for visibility */
+    padding: 80px 0; /* Add padding for visual spacing */
 }
 
 
@@ -49,8 +49,8 @@ header::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.9); /* Black overlay with 50% opacity */
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.99); /* Black overlay with 50% opacity */
+    z-index: -1;
 }
 
 
@@ -61,7 +61,7 @@ nav ul {
     list-style-type: none;
     background-color: #333;
     text-align: center;
-    padding: 10px 0;
+    padding: 20px;
 }
 
 nav ul li {
@@ -70,21 +70,21 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: white;
-    padding: 15px 20px;
+    color: red;
+    padding: 20px 20px;
     display: inline-block;
 }
 
 /* Section Styles */
 section {
-    padding: 20px 5%;
+    padding: 10px 10%;
     margin: 20px 0;
 }
 
 /* Footer Styles */
 footer {
     text-align: center;
-    padding: 10px 0;
+    padding: 20px 0;
     background-color: #333;
     color: white;
 }
@@ -109,7 +109,26 @@ a:active {
     color: blue; /* Change to your desired color */
 }
 
+#about{
+    background-image: url('asset/ScotParli.png');
+    background-size: cover;
+    background-position: center;
+    color: white; /* Adjust text color for readability */
+    padding:-30px; /* Adjust padding as needed */
+}
 
+.highlighted-email {
+    background-color: yellow; /* Adds a yellow background */
+    color: black; /* Sets text color to black */
+    padding: 5px; /* Adds some padding around the text */
+    border-radius: 5px; /* Rounds the corners of the background */
+    text-decoration: none; /* Removes the underline from the link */
+}
+
+
+.highlighted-email:hover {
+    background-color: orange; /* Changes background color when hovered */
+}
 
 /* Responsive Design */
 @media (max-width: 600px) {
@@ -118,7 +137,7 @@ a:active {
     }
 
     header, section, footer {
-        padding: 20px;
+        padding: 25px;
         color: white;
     }
     
@@ -132,7 +151,8 @@ a:active {
     
     p {
         font-size: 16px; /* Smaller size for paragraph text on mobile devices */
-    }
+	padding: 3px;    
+}
     ul {
         font-size: 14px; /* Smaller size for paragraph text on mobile devices */
     }    
