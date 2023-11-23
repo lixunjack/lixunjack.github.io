@@ -72,10 +72,12 @@ ul {
 
 a {
     color: #06c;
+    transition: color 0.3s; /* Smooth transition for hover states */
 }
 
 a:hover {
     text-decoration: underline;
+    color: #0056b3; /* Darker shade on hover */
 }
 
 .highlighted-email {
@@ -84,9 +86,14 @@ a:hover {
     border-radius: 4px;
 }
 
-@media only screen and (max-width: 600px) {
-    nav ul li {
-        display: block;
-        text-align: left;
+@media only screen and (max-width: 768px) {
+    /* Adjustments for smaller screens */
+    body {
+        padding: 15px;
+    }
+
+    header, nav, main {
+        padding-left: 15px;
+        padding-right: 15px;
     }
 }
