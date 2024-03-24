@@ -1,7 +1,6 @@
-# JackLi.github.io
-The Personal website of Jack (Xun) Li, a geophysicist who grew up in Chengdu and studied in Nanjing, Edinburgh, Golden, and Zurich.
+## Welcome to Jack Li's Personal Website! 
 
-## Welcome to Jack Li's Personal Website
+Jack (Xun) Li, a geophysicist who grew up in Chengdu and studied in Nanjing, Edinburgh, Golden, and Zurich.
 
 ### About Me
 
