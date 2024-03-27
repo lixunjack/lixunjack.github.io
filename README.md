@@ -23,7 +23,7 @@ Hello! I am Jack, a passionate geophysicist with expertise in physical laborator
 
 ### Stay Connected
 
-I am always open to discussing new ideas, research opportunities, and collaborations. Feel free to reach out!
+I am always open to discussing new ideas, research opportunities, and collaborations. Feel free to reach out: lixunjack@gmail.com
 
 ---
 
