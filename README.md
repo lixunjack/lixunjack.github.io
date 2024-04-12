@@ -1,6 +1,6 @@
 ## Welcome to Jack Li's Personal Website! 
 
-Jack (Xun) Li, a geophysicist who grew up in Chengdu and studied in Nanjing, Edinburgh, Golden, and Zurich.
+Jack (Xun) Li, a geophysicist who grew up in Chengdu (China) and studied in Nanjing (China), Edinburgh (UK), Golden (US), and Zurich (Switzerland), currently living at Edinburgh.
 
 ### About Me
 
