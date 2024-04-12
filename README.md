@@ -9,9 +9,9 @@ Hello! I am Jack, a passionate geophysicist with expertise in physical laborator
 ### My Career
 
 - **Current Position**: Postdoctoral Research Associate at the School of GeoSciences, The University of Edinburgh (2023-Now)
-- **Education**: 
-  - PhD in Geophysics from ETH Zurich, Switzerland (2018-2022)
-  - MSc in Geophysics from Colorado School of Mines, United States (2016-2018)
+### Education
+  - PhD in Geophysics, awarded from ETH Zurich, Switzerland (2018-2022)
+  - MSc in Geophysics, awarded from Colorado School of Mines, United States (2016-2018)
   - BSc (Hons) in Geophysics from the University of Edinburgh, United Kingdom (2014-2016)
   - BSc in Geology from Nanjing University, China (2012-2014)
 
