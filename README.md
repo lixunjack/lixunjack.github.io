@@ -1,5 +1,8 @@
 ## Welcome to Jack Li's Personal Website! 
 
+Access at: lixunjack.github.io/JackLi.github.io/
+
+
 Jack (Xun) Li, a geophysicist who grew up in Chengdu (China) and studied in Nanjing (China), Edinburgh (UK), Golden (US), and Zurich (Switzerland), currently living at Edinburgh.
 
 ### About Me
