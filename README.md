@@ -19,7 +19,7 @@ Hello! I am Jack, a passionate geophysicist with expertise in physical laborator
 
 - **CV**: An in-depth look at my academic and professional accomplishments. [Download my CV](asset/Xun_Li_CV_2023.pdf)
 - **Publications**: Explore my contributions to geophysical research through my [Google Scholar profile](https://scholar.google.com/citations?user=562xGRQAAAAJ&hl=en)
-- **Contact**: Connect with me for collaborations, academic inquiries, or just to say hello at lixunjack@gmail.com.
+- **Contact**: Connect with me for collaborations, academic inquiries, or just to say hello at lixunjack@gmail.com or through my [LinkedIn](https://www.linkedin.com/in/xun-jack-li-b6144813b/)
 
 ### Stay Connected
 
