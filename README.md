@@ -6,7 +6,7 @@ Jack (Xun) Li, a geophysicist who grew up in Chengdu (China) and studied in Nanj
 
 Hello! I am Jack, a passionate geophysicist with expertise in physical laboratory modeling, aiming to push forward the frontier of current geophysical technology for energy transition. This website is a platform where I share my professional journey, key projects, and insights to the world.
 
-### My Career
+### Career
 
 - **Current Position**: Postdoctoral Research Associate at the School of GeoSciences, The University of Edinburgh (2023-Now)
 ### Education
