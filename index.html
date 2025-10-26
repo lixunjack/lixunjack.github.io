@@ -134,11 +134,25 @@
     </section> 
     
     <footer class="site-footer">
-        <div class="container">
-            <small>© <span id="year"></span> Xun (Jack) Li • Last updated Oct 2025 • Edinburgh, UK</small>
-        </div>
+    <div class="container">
+        <small>
+        © <span id="year"></span> Xun (Jack) Li • Last updated <span id="last-updated"></span> • Edinburgh, UK
+        </small>
+    </div>
     </footer>
 
     <script>
-      document.getElementById('year').textContent = new Date().getFullYear();
+    (function () {
+        // Current year
+        const yearEl = document.getElementById('year');
+        if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+        // Last updated: Month YYYY (e.g., "Oct 2025")
+        const updatedEl = document.getElementById('last-updated');
+        if (updatedEl) {
+        const mod = new Date(document.lastModified);
+        const fmt = new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' });
+        updatedEl.textContent = isNaN(mod.getTime()) ? fmt.format(new Date()) : fmt.format(mod);
+        }
+    })();
     </script>
