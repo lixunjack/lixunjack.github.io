@@ -114,13 +114,13 @@ a:hover {
   width: 70vw;           /* half the screen width */
   margin: 0.5rem auto;   /* center the gallery */
   grid-template-columns: 1fr; /* change to repeat(2, 1fr) if you want two items per row within the half-width container */
-  gap: 14px;
+  gap: 45px;
 }
 
 .figure-grid figure { /* same as before */
   margin: 0;
-  border: 1px solid #eee;
-  border-radius: 8px;
+  border: 2px solid #eee;
+  border-radius: 12px;
   overflow: hidden;
   background: #fff;
 }
@@ -141,15 +141,15 @@ a:hover {
 }
 
 .figure-grid figcaption {
-  font-size: 0.9rem;
-  line-height: 1.35;
-  padding: 8px 10px;
+  font-size: 1.2rem;
+  line-height: 1.85;
+  padding: 10px 14px;
   color: #333;
 }
 
 .figure-grid .credit {
   display: block;
-  font-size: 0.75rem;
+  font-size: 0.95rem;
   color: #666;
-  margin-top: 4px;
+  margin-top: 6px;
 }
