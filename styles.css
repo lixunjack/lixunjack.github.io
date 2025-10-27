@@ -111,18 +111,20 @@ a:hover {
 /* Responsive figure grid */
 .figure-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 220px));
+  width: 50vw;           /* half the screen width */
+  margin: 0.5rem auto;   /* center the gallery */
+  grid-template-columns: 1fr; /* change to repeat(2, 1fr) if you want two items per row within the half-width container */
   gap: 14px;
-  margin-top: 0.5rem;
 }
 
-.figure-grid figure {
+.figure-grid figure { /* same as before */
   margin: 0;
   border: 1px solid #eee;
   border-radius: 8px;
   overflow: hidden;
   background: #fff;
 }
+
 
 .figure-grid a {
   text-decoration: none;
@@ -132,7 +134,7 @@ a:hover {
 
 .figure-grid img {
   display: block;
-  width: 50%;
+  width: 100%;
   height: auto;
   aspect-ratio: 4 / 3;     /* Uniform thumbnail height; remove if you prefer no cropping */
   object-fit: cover;
