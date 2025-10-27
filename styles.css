@@ -134,7 +134,7 @@ a:hover {
 
 .figure-grid img {
   display: block;
-  width: 100%;
+  width: 50%;
   height: auto;
   aspect-ratio: 8 / 3;     /* Uniform thumbnail height; remove if you prefer no cropping */
   object-fit: cover;
