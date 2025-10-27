@@ -153,3 +153,73 @@ a:hover {
   color: #666;
   margin-top: 6px;
 }
+
+
+
+/* Smooth anchor scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Card grid for Research hub */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  width: min(1100px, 92vw);
+  margin: 10px auto 0;
+}
+
+@media (max-width: 980px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .card-grid { grid-template-columns: 1fr; }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 14px 16px 16px;
+}
+
+.card h3 {
+  margin: 6px 0 8px;
+  font-size: 1.15rem;
+  color: #333;
+}
+
+.card p {
+  color: #444;
+  margin-bottom: 10px;
+}
+
+.card .button {
+  display: inline-block;
+  background: #06c;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background .2s ease-in-out;
+}
+.card .button:hover { background: #0056b3; }
+
+nav ul {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
