@@ -111,7 +111,7 @@ a:hover {
 /* Responsive figure grid */
 .figure-grid {
   display: grid;
-  width: 90vw;           /* half the screen width */
+  width: 60vw;           /* half the screen width */
   margin: 0.5rem auto;   /* center the gallery */
   grid-template-columns: 1fr; /* change to repeat(2, 1fr) if you want two items per row within the half-width container */
   gap: 45px;
