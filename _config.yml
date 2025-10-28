@@ -1,0 +1,7 @@
+# _config.yml
+url: "https://lixunjack.github.io"
+baseurl: ""   # user/organization site must be empty
+
+
+theme: jekyll-theme-minimal
+title: Jack Li's homepage
