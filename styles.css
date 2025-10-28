@@ -28,7 +28,7 @@ header {
 
   /* Optional overlay for contrast */
   position: relative;
-  color: #202222f6;                /* so text is visible on photos */
+  color: #0a0a0af6;                /* so text is visible on photos */
   padding: 40px 0;
   min-height: 320px;
 }
@@ -78,7 +78,7 @@ nav ul li a {
     padding: 24px 22px;
     text-decoration: none;
     /* Increase font size for a larger appearance */
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 nav ul li a:hover {
