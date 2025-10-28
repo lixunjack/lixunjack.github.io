@@ -3,77 +3,283 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Elastic Immersive Wave Experimentation — Jack Li</title>
-  <meta name="description" content="Details on elastic immersive wave experimentation by Jack (Xun) Li.">
+  <title>Immersive Boundary Conditions, Cloaking, Holography, and Cloning — Jack Li</title>
+  <meta name="description" content="Elastic immersive wave experimentation, internal absorbing boundaries, broadband cloaking, holography, and acoustic cloning.">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
 
-
   <main>
     <section>
-      <p><a href="../index.html#research">← Back to Main Page</a></p>
-      <h2>Elastic Immersive Wave Experimentation</h2>
-      <p>Short overview of the problem and your contribution (3–5 lines).</p>
-
-
-      <div class="figure-grid" style="width: min(900px, 92vw);">
-        <figure>
-          <a href="../asset/wavelab.png" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/wavelab.png" alt="ETH Wave Lab setup">
-          </a>
-          <figcaption>Wave Lab at ETH Zurich with scanning laser vibrometry.</figcaption>
-        </figure>
-      </div>
-
-
-
-      <div class="figure-grid" style="width: min(950px, 92vw);">
-        <figure>
-          <a href="../asset/research/elastic-immersive_fig1.jpg" target="_blank" rel="noopener">
-            <img src="../asset/research/elastic-immersive_fig1.jpg" alt="Key figure for elastic immersive experiment">
-          </a>
-          <figcaption>
-            Placeholder figure caption. Cite paper if using a figure from it.
-            <span class="credit"><a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener">GJI (2023)</a></span>
-          </figcaption>
-        </figure>
-      </div>
-
-      <h3>At a glance</h3>
-      <ul>
-        <li>What is the core idea?</li>
-        <li>Why does it matter?</li>
-        <li>What did you build or prove?</li>
-      </ul>
-
-      <h3>Key results</h3>
-      <ul>
-        <li>Result 1 with 1–2 lines detail.</li>
-        <li>Result 2 with 1–2 lines detail.</li>
-      </ul>
-
-      <h3>Publications</h3>
+      <p><a href="../index.html#activeresearch">← Back to Main Page</a></p>
+      <h2>Immersive Boundary Conditions, Cloaking, Holography, and Cloning</h2>
       <p>
-        Li, X., et al., <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener">Elastic immersive wave experimentation</a>, GJI, 2023.
+        This page summarises a series of laboratory and numerical advances that make it possible to
+        (i) immerse a physical wave experiment into a virtual numerical world (Immersive Boundary Conditions),
+        (ii) remove boundary artefacts in elastic/ acoustic experiments (Internal Absorbing Boundaries; MDD),
+        (iii) realise broadband cloaking and holography with real-time control, and
+        (iv) clone arbitrary scatterers so their full scattering response can be recreated on demand.
       </p>
 
-      <h3>Related code/data</h3>
+      <!-- Lab photo -->
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <a href="../asset/wavelab.png" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/wavelab.png" alt="ETH Wave Lab with scanning laser vibrometry and robotic arm">
+          </a>
+          <figcaption>ETH Wave Lab. Dense wavefield measurements with 3D scanning laser Doppler vibrometry.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Project 1: Elastic Immersive Wave Experimentation -->
+    <section id="ibc">
+      <h3>Elastic Immersive Wave Experimentation (Immersive Boundary Conditions)</h3>
+      <p>
+        Immersive boundary conditions (IBCs) let waves travel seamlessly between a physical laboratory and a virtual numerical domain.
+        We derived and validated an iterative scheme for elastic media using only free-surface recordings, enabling cancellation of primary
+        outgoing waves and synthesis of physical–virtual interactions without interior access.
+      </p>
       <ul>
-        <li><a href="https://github.com/lixunjack/CodaWaveSolver" target="_blank" rel="noopener">CodaWaveSolver</a> (if relevant)</li>
+        <li>Contribution: Iterative IBC for 3D elastic problems using only surface data; validated with 2D synthetic experiments.</li>
+        <li>Why it matters: Enables “infinite” lab experiments at seismic-band frequencies by removing reflection bottlenecks.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Replace with your figure -->
+          <!-- Insert image: ../asset/research/elastic-immersive_fig1.jpg -->
+          <a href="../asset/research/elastic-immersive_fig1.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/elastic-immersive_fig1.jpg" alt="Schematic of immersive elastic experiment and iterative workflow">
+          </a>
+          <figcaption>Elastic immersive experimentation: physical–virtual coupling and iterative workflow.</figcaption>
+        </figure>
+        <figure>
+          <!-- Insert image if available: ../asset/research/elastic-immersive_snapshots.jpg -->
+          <a href="../asset/research/elastic-immersive_snapshots.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/elastic-immersive_snapshots.jpg" alt="Snapshots showing cancellation of outgoing waves and virtual interactions">
+          </a>
+          <figcaption>Cancellation of outgoing waves and synthesis of virtual interactions (synthetics).</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Li, X., Robertsson, J., and van Manen, D.-J., <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener noreferrer">Elastic immersive wave experimentation</a>, Geophys. J. Int., 2023.</p>
+    </section>
+
+    <!-- Project 2: Internal Absorbing Boundaries & Wavefield Separation -->
+    <section id="iabc">
+      <h3>Internal Absorbing Boundaries for Closed-Aperture Wavefield Separation</h3>
+      <p>
+        We introduced an internal absorbing boundary condition (IABC) that allows full separation of outgoing elastic wavefield constituents
+        from data recorded on a closed free surface, even when the solid’s interior is unknown. The method injects surface data into an FD model
+        and annihilates ingoing energy internally, preventing destructive interference that otherwise blocks separation of higher-order components.
+      </p>
+      <ul>
+        <li>Contribution: First closed-aperture elastic wavefield separation retrieving all outgoing orders with unknown interiors.</li>
+        <li>Why it matters: Supplies the incident/outgoing building blocks required by elastic IBCs and lab data processing.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Insert image: ../asset/research/jasa_iabc_geometry.jpg -->
+          <a href="../asset/research/jasa_iabc_geometry.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/jasa_iabc_geometry.jpg" alt="Geometry for internal absorbing boundary in FD separation">
+          </a>
+          <figcaption>Internal absorbing boundary (IABC) geometry for closed-aperture separation.</figcaption>
+        </figure>
+        <figure>
+          <!-- Insert image: ../asset/research/jasa_iabc_results.jpg -->
+          <a href="../asset/research/jasa_iabc_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/jasa_iabc_results.jpg" alt="Separated outgoing elastic wavefields on closed aperture">
+          </a>
+          <figcaption>Separated outgoing wavefields: all orders recovered from closed-aperture data.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Li, X., Robertsson, J., Curtis, A., and van Manen, D.-J., <a href="https://doi.org/10.1121/10.0012578" target="_blank" rel="noopener noreferrer">Internal absorbing boundary conditions for closed-aperture wavefield decomposition in solid media with unknown interiors</a>, JASA, 2022.</p>
+    </section>
+
+    <!-- Project 3: Elastic Immersive Wavefield Modelling -->
+    <section id="modelling">
+      <h3>Elastic Immersive Wavefield Modelling</h3>
+      <p>
+        We extended immersive boundary conditions to elastic numerical modelling so local changes can be studied without re-simulating the entire domain.
+        This reduces computational cost and integrates naturally with IBC experiments and exact extrapolation-by-injection.
+      </p>
+      <ul>
+        <li>Contribution: IBCs for elastic wavefield modelling; practical, repeatable subdomain simulations.</li>
+      </ul>
+
+      <p><strong>Key paper:</strong> Li, X., Koene, E., van Manen, D.-J., Robertsson, J., and Curtis, A., <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">Elastic immersive wavefield modelling</a>, J. Comput. Phys., 2022.</p>
+    </section>
+
+    <!-- Project 4: Remove Boundary Artefacts with MDD -->
+    <section id="mdd">
+      <h3>Removing Boundary Artefacts with Multidimensional Deconvolution (MDD)</h3>
+      <p>
+        In reduced-size acoustic labs, rigid boundaries cause heavy reverberation. We used MDD to post-process recordings on a closed surface and
+        retrieve the scattering Green’s functions of interior scatterers as if the boundary were transparent. This delivers the radiation-condition
+        datasets needed for broadband cloning and lab holography.
+      </p>
+      <ul>
+        <li>Contribution: Closed-aperture unbounded acoustics via MDD; exact interior scattering free of boundary imprint.</li>
+        <li>Why it matters: Supplies the “free-space” scattering response for holography and for lab–numerical hybrid experiments.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Insert image: ../asset/research/jasa_mdd_setup.jpg -->
+          <a href="../asset/research/jasa_mdd_setup.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/jasa_mdd_setup.jpg" alt="2D waveguide with closed recording surface for MDD">
+          </a>
+          <figcaption>2D acoustic waveguide and closed-aperture recording for MDD.</figcaption>
+        </figure>
+        <figure>
+          <!-- Insert image: ../asset/research/jasa_mdd_results.jpg -->
+          <a href="../asset/research/jasa_mdd_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/jasa_mdd_results.jpg" alt="Scattering Green’s functions retrieved by MDD without boundary artefacts">
+          </a>
+          <figcaption>Scattering Green’s functions from MDD: boundary imprint removed.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Li, X., Becker, T., Ravasi, M., Robertsson, J., and van Manen, D.-J., <a href="https://doi.org/10.1121/10.0003706" target="_blank" rel="noopener noreferrer">Closed-aperture unbounded acoustics experimentation using multidimensional deconvolution</a>, JASA, 2021.</p>
+    </section>
+
+    <!-- Project 5: Broadband Cloaking and Holography -->
+    <section id="cloaking">
+      <h3>Broadband Acoustic Cloaking and Holography (Real-time Lab Implementation)</h3>
+      <p>
+        Using IBCs and MDD-derived datasets, we realised real-time cloaking and holography in a 2D acoustic waveguide. The active boundary
+        cancels scattering from real objects (cloak) and recreates the scattering of virtual objects (hologram) across broad frequency bands without a priori
+        knowledge of the source signature.
+      </p>
+      <ul>
+        <li>Contribution: First real-time, broadband active cloaking and holography in an acoustic lab.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Insert image: ../asset/research/sciadv_cloaking_lab.jpg -->
+          <a href="../asset/research/sciadv_cloaking_lab.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/sciadv_cloaking_lab.jpg" alt="Lab setup with recording and emitting surfaces for cloaking">
+          </a>
+          <figcaption>Active lab setup for cloaking/holography (2D waveguide, dense arrays).</figcaption>
+        </figure>
+        <figure>
+          <!-- Insert image: ../asset/research/sciadv_cloaking_results.jpg -->
+          <a href="../asset/research/sciadv_cloaking_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/sciadv_cloaking_results.jpg" alt="Measured wavefields showing cloaking (scatterer invisible)">
+          </a>
+          <figcaption>Measured wavefields: object invisible (cloak on), broadband.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Becker, T. S., <em>et al.</em>, <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Broadband acoustic invisibility and illusions</a>, Science Advances, 2021.</p>
+    </section>
+
+    <!-- Project 6: Acoustic Cloning -->
+    <section id="cloning">
+      <h3>Acoustic Cloning (Digital Twin to “Live” Scatterer)</h3>
+      <p>
+        We introduced a two-step procedure to clone acoustic scattering objects. First, use MDD to retrieve scattering Green’s functions under radiation conditions
+        from reverberant data. Second, use IBC-based broadband holography to replay that scattering in real time—optionally modifying the clone (e.g., gain,
+        rotations) beyond physical constraints.
+      </p>
+      <ul>
+        <li>Contribution: First experimental acoustic cloning of arbitrary scatterers.</li>
+        <li>Why it matters: Enables rapid “digital twin” acquisition and on-demand metamaterial experimentation.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Insert image: ../asset/research/pra_cloning_2step.jpg -->
+          <a href="../asset/research/pra_cloning_2step.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/pra_cloning_2step.jpg" alt="Two-step cloning: MDD for Green’s functions, then holography for real-time replay">
+          </a>
+          <figcaption>Cloning workflow: (1) retrieve scattering Green’s functions; (2) real-time holography.</figcaption>
+        </figure>
+        <figure>
+          <!-- Insert image: ../asset/research/pra_cloning_results.jpg -->
+          <a href="../asset/research/pra_cloning_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/pra_cloning_results.jpg" alt="Angular intensities: real scatterer vs. cloned response (excellent agreement)">
+          </a>
+          <figcaption>Real vs cloned scattering: broadband agreement across angles.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Müller, J., <em>et al.</em>, <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Acoustic cloning</a>, Phys. Rev. Applied, 2023.</p>
+    </section>
+
+    <!-- Project 7: Compensating for Source Directivity -->
+    <section id="directivity">
+      <h3>Compensating for Source Directivity in Immersive Experiments</h3>
+      <p>
+        Real sources in labs are not ideal monopoles. We developed an f–k domain compensation scheme that embeds directive matched filters into the
+        precomputed Green’s functions so active boundaries still behave as ideal Huygens surfaces in practice.
+      </p>
+      <ul>
+        <li>Contribution: Practical source-directivity compensation integrated with real-time IBC control.</li>
+      </ul>
+
+      <p><strong>Key paper:</strong> Li, X., <em>et al.</em>, <a href="https://doi.org/10.1121/1.5131029" target="_blank" rel="noopener noreferrer">Compensating for source directivity in immersive wave experimentation</a>, JASA, 2019.</p>
+    </section>
+
+    <!-- Related theory -->
+    <section id="extrapolation">
+      <h3>Related Theory: Exact Extrapolation and FD Injection</h3>
+      <p>
+        We contributed to exact wavefield extrapolation and finite-difference injection with machine-precision accuracy—core tools underpinning immersive
+        modelling and lab–numerical hybridisation.
+      </p>
+      <p><strong>Key paper:</strong> van Manen, D.-J., <em>et al.</em>, <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">Exact extrapolation and immersive modelling with finite-difference injection</a>, GJI, 2020.</p>
+    </section>
+
+    <!-- Suggested image insertion reminders -->
+    <section id="image-notes">
+      <h3>Image insertion notes</h3>
+      <p>Place your figures at the following suggested paths (or update the links above):</p>
+      <ul>
+        <li>../asset/research/elastic-immersive_fig1.jpg (schematic/workflow)</li>
+        <li>../asset/research/elastic-immersive_snapshots.jpg (synthetic snapshots)</li>
+        <li>../asset/research/jasa_iabc_geometry.jpg (IABC geometry)</li>
+        <li>../asset/research/jasa_iabc_results.jpg (separation results)</li>
+        <li>../asset/research/jasa_mdd_setup.jpg (MDD setup)</li>
+        <li>../asset/research/jasa_mdd_results.jpg (MDD Green’s functions)</li>
+        <li>../asset/research/sciadv_cloaking_lab.jpg (lab photo or schematic)</li>
+        <li>../asset/research/sciadv_cloaking_results.jpg (cloak/hologram fields)</li>
+        <li>../asset/research/pra_cloning_2step.jpg (cloning workflow)</li>
+        <li>../asset/research/pra_cloning_results.jpg (angular intensity comparison)</li>
+      </ul>
+      <p>Tip: use 800–1200 px width thumbnails, link to a 1600–2000 px full-size image.</p>
+    </section>
+
+    <section>
+      <h3>Selected references</h3>
+      <ul>
+        <li><a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener noreferrer">Elastic immersive wave experimentation (GJI, 2023)</a></li>
+        <li><a href="https://doi.org/10.1121/10.0012578" target="_blank" rel="noopener noreferrer">IABC for closed-aperture separation (JASA, 2022)</a></li>
+        <li><a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">Elastic immersive wavefield modelling (JCP, 2022)</a></li>
+        <li><a href="https://doi.org/10.1121/10.0003706" target="_blank" rel="noopener noreferrer">Closed-aperture unbounded acoustics via MDD (JASA, 2021)</a></li>
+        <li><a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Broadband invisibility and illusions (Sci. Adv., 2021)</a></li>
+        <li><a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Acoustic cloning (PRApplied, 2023)</a></li>
+        <li><a href="https://doi.org/10.1121/1.5131029" target="_blank" rel="noopener noreferrer">Source directivity compensation (JASA, 2019)</a></li>
+        <li><a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">Exact extrapolation & FD injection (GJI, 2020)</a></li>
       </ul>
     </section>
   </main>
 
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> Xun Li • Edinburgh, UK</small>
+      <small>© <span id="year"></span> Xun (Jack) Li • Edinburgh, UK</small>
     </div>
   </footer>
 
   <script>
-  (function () { const y = document.getElementById('year'); if (y) y.textContent = new Date().getFullYear(); })();
+    (function () {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
   </script>
 </body>
 </html>
-
