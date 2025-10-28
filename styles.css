@@ -10,41 +10,48 @@ body {
     color: #333333; /* Dark grey color for text */
     background-color: #f4f4f4; /* Light background color */
     line-height: 1.6; /* Improving readability */
+    font-size: 22px; /* size of all text */
 }
 
 
 header {
-  display: flex;              /* enable centering */
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 
-  /* Background image behind the header */
-  background-image: url('main_gv/Auther_Seat.jpg'); /* change path */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Gradient overlay + background image in one property */
+  background: url('main_gv/Auther_Seat.jpg') center/cover no-repeat; /* Background image */
 
-  /* Optional overlay for contrast */
-  position: relative;
-  color: #fffffff6;                /* so text is visible on photos */
-  padding: 40px 0;
+  color: #fff;
+  padding: 12px 0 40px;       /* less top padding so content sits higher */
   min-height: 320px;
+  position: relative;
+
 }
 
-header::before {
+
+/* header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgb(254, 254, 254); /* adjust darkness */
+  background: rgba(0, 0, 0, 0.45);
   z-index: 0;
-}
+} */
+
+
+header > * { position: relative; z-index: 1; }
+
+header h1 { color: #000000; } /* solid white text */
 
 header > * {
   position: relative; /* ensure content sits above overlay */
   z-index: 1;
 }
+
+
+
 
 header img {
   width: 300px;
@@ -61,8 +68,6 @@ nav ul {
       padding: 20px;
       margin: 0;
     }
-
-
 
 
 nav ul li {
@@ -103,6 +108,8 @@ section {
 section h2 {
     color: #333;
     margin-bottom: 12px;
+    /* font-size: 1.5rem;  */
+
 }
 
 ul {
@@ -202,8 +209,8 @@ html {
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  width: min(1100px, 92vw);
+  gap: 22px;
+  width: min(1450px, 128vw);
   margin: 10px auto 0;
 }
 
@@ -225,13 +232,18 @@ html {
 
 .card img {
   width: 100%;
-  height: 160px;
+  height: 300px;
   object-fit: cover;
 }
 
 .card-body {
-  padding: 14px 16px 16px;
+  padding: 18px 20px 22px;
 }
+
+.card-body p {
+  font-size: 18px;
+}
+
 
 .card h3 {
   margin: 6px 0 8px;
