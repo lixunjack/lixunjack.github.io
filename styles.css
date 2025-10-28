@@ -13,21 +13,11 @@ body {
 }
 
 header {
-  /* Replace with your image path */
-  background-image: url('main_gv/Auther_Seat.PNG');
-
-    /* Make it cover and stay centered */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
     justify-content: center;
     align-items: center;
     text-align: center;
     background: #e9ecef; 
     padding: 20px 0;
-
-
 }
 
 
@@ -36,28 +26,24 @@ header img {
 }
 
 
-
-
     nav ul {
       list-style: none;
       background-color: #444;
       text-align: center;
       padding: 20px;
-      /* Increase font size for a larger appearance */
-      /* font-size: 2rem; */
       margin: 0;
     }
 
 nav ul li {
     display: inline;
-
 }
 
 nav ul li a {
     color: white;
     padding: 24px 22px;
     text-decoration: none;
-    font-size: 2rem;
+    /* Increase font size for a larger appearance */
+    font-size: 1.5rem;
 }
 
 nav ul li a:hover {
