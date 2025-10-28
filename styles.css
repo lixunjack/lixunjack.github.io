@@ -27,39 +27,27 @@ header {
 header img {
     border-radius: 50%;
 } */
-
+ 
 header {
-  display: flex;              /* enable centering */
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 
-  /* Background image behind the header */
-  background-image: url('main_gv/Auther_Seat.PNG'); /* change path */
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
+  /* Use the shorthand so nothing overrides it */
+  background: url('main_gv/Auther_Seat.png') center/cover no-repeat;
 
-  /* Optional overlay for contrast */
-  position: relative;
-  color: #fff;                /* so text is visible on photos */
+  /* Remove the solid background, this would override background-image if placed after it */
+  /* background: #e9ecef; */
+
   padding: 40px 0;
-  min-height: 320px;
+  min-height: 320px; /* ensures you can see the background even with little content */
+  color: #fff;       /* readable text on a photo */
 }
 
-header::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0,0,0,0.3); /* adjust darkness */
-  z-index: 0;
-}
 
-header > * {
-  position: relative; /* ensure content sits above overlay */
-  z-index: 1;
-}
+
 
 header img {
   width: 300px;
@@ -71,14 +59,20 @@ header img {
 
 
 
-
-    nav ul {
+nav ul {
       list-style: none;
       background-color: #444;
       text-align: center;
       padding: 20px;
       margin: 0;
     }
+
+nav ul {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 
 nav ul li {
     display: inline;
@@ -89,7 +83,7 @@ nav ul li a {
     padding: 24px 22px;
     text-decoration: none;
     /* Increase font size for a larger appearance */
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 nav ul li a:hover {
@@ -266,8 +260,3 @@ html {
 }
 .card .button:hover { background: #0056b3; }
 
-nav ul {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
