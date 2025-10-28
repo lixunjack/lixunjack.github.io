@@ -44,18 +44,20 @@ header img {
       text-align: center;
       padding: 20px;
       /* Increase font size for a larger appearance */
-      font-size: 2rem;
+      /* font-size: 2rem; */
       margin: 0;
     }
 
 nav ul li {
     display: inline;
+
 }
 
 nav ul li a {
     color: white;
     padding: 24px 22px;
     text-decoration: none;
+    font-size: 2rem;
 }
 
 nav ul li a:hover {
