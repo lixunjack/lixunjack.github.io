@@ -13,6 +13,13 @@ body {
 }
 
 header {
+  /* Replace with your image path */
+  background-image: url('main_gv/Auther_Seat.PNG');
+
+    /* Make it cover and stay centered */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 
     justify-content: center;
     align-items: center;
@@ -20,13 +27,12 @@ header {
     background: #e9ecef; 
     padding: 20px 0;
 
-  /* Replace with your image path */
-  background-image: url('main_gv/Auther_Seat.PNG');
+
 }
 
 
 header img {
-    border-radius: 75%;
+    border-radius: 50%;
 }
 
 
@@ -38,7 +44,7 @@ header img {
       text-align: center;
       padding: 20px;
       /* Increase font size for a larger appearance */
-      font-size: 3rem;
+      font-size: 2rem;
       margin: 0;
     }
 
