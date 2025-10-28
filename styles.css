@@ -12,6 +12,9 @@ body {
     line-height: 1.6; /* Improving readability */
 }
 
+
+
+/* 
 header {
     justify-content: center;
     align-items: center;
@@ -23,7 +26,50 @@ header {
 
 header img {
     border-radius: 50%;
+} */
+
+header {
+  display: flex;              /* enable centering */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  /* Background image behind the header */
+  background-image: url('main_gv/Auther_Seat.PNG'); /* change path */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Optional overlay for contrast */
+  position: relative;
+  color: #fff;                /* so text is visible on photos */
+  padding: 40px 0;
+  min-height: 320px;
 }
+
+header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.3); /* adjust darkness */
+  z-index: 0;
+}
+
+header > * {
+  position: relative; /* ensure content sits above overlay */
+  z-index: 1;
+}
+
+header img {
+  width: 300px;
+  height: auto;
+  border-radius: 50%;
+  display: block;
+}
+
+
+
 
 
     nav ul {
