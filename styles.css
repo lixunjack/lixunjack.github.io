@@ -21,14 +21,14 @@ header {
   text-align: center;
 
   /* Background image behind the header */
-  background-image: url('main_gv/Auther_Seat.PNG'); /* change path */
+  background-image: url('main_gv/Auther_Seat.jpg'); /* change path */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
 
   /* Optional overlay for contrast */
   position: relative;
-  color: #09eac0f6;                /* so text is visible on photos */
+  color: #202222f6;                /* so text is visible on photos */
   padding: 40px 0;
   min-height: 320px;
 }
@@ -37,7 +37,7 @@ header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(47, 64, 58, 0.559); /* adjust darkness */
+  background: rgb(254, 254, 254); /* adjust darkness */
   z-index: 0;
 }
 
