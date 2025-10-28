@@ -28,7 +28,7 @@ header {
 
   /* Optional overlay for contrast */
   position: relative;
-  color: #0a0a0af6;                /* so text is visible on photos */
+  color: #fffffff6;                /* so text is visible on photos */
   padding: 40px 0;
   min-height: 320px;
 }
