@@ -62,11 +62,7 @@ nav ul {
       margin: 0;
     }
 
-nav ul {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+
 
 
 nav ul li {
@@ -130,7 +126,11 @@ a:hover {
 }
 
 
-
+nav ul {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
 @media only screen and (max-width: 768px) {
     /* Adjustments for smaller screens */
