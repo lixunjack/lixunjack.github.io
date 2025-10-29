@@ -8,10 +8,12 @@ What’s in this repo
 - GitHub Actions workflows for continuous integration and deployment
 - Documentation for local development and deployment
 
-Key files at a glance in .github/workflows
-- jekyll-docker.yml — CI workflow that builds the site using Docker for a reproducible environment
-- jekyll-gh-pages.yml — CI/CD workflow that builds and deploys to GitHub Pages
-
+### Key files at a glance
+- `_config.yml` — Site configuration (root of the repo). Uses `url` with an empty `baseurl` for a user site.
+- `.github/workflows/jekyll-gh-pages.yml` — CI/CD workflow that builds and deploys to GitHub Pages
+- `.github/workflows/jekyll-docker.yml` — CI workflow that builds the site using Docker for a reproducible environment
+- `index.html` — Homepage
+- `styles.css` — Site styles
 #### Credits 
 
 This website is built using Jekyll and hosted on GitHub Pages. Special thanks to the GitHub community for the support and resources!
