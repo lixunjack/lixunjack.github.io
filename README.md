@@ -28,7 +28,7 @@ _Inspired from [GitHub Housekeeping: Remove Unwanted Deployments in Minutes](htt
 
 ---
 
-## Prerequisites
+####  Prerequisites
 
 1. **Install GitHub CLI:**
    - Follow the instructions on the [GitHub CLI official website](https://cli.github.com/) to install the CLI.
@@ -45,7 +45,7 @@ _Inspired from [GitHub Housekeeping: Remove Unwanted Deployments in Minutes](htt
 
 ---
 
-## Windows Command Prompt (cmd.exe) Examples Using `gh`
+#### Windows Command Prompt (cmd.exe) Examples Using `gh`
 
 > **Note:** Run these commands directly in a cmd window.  
 > If you paste these into a `.bat` file, **double the `%` signs** inside the `for` loop.
@@ -158,4 +158,6 @@ for /f "delims=" %i in ('gh api --paginate "/repos/lixunjack/lixunjack.github.io
 
 #### Credits 
 
-This site is built with Jekyll and hosted on GitHub Pages. CLI commands and cleanup snippets authored with assistance from ELM (Edinburgh access to Language Models)@https://elm.edina.ac.uk/.
+This website is built using Jekyll and hosted on GitHub Pages. Special thanks to the GitHub community for the support and resources!
+
+The above command lines are coded by GPT 5 provided by Edinburgh Large-language Model (ELM) at https://elm.edina.ac.uk/
