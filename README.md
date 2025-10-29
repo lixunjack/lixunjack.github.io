@@ -58,12 +58,12 @@ gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-1
   /repos/%REPO%/deployments --paginate --jq ".[].id"
 
 
-To restrict the list to only GitHub Pages deployments:
+:: To restrict the list to only GitHub Pages deployments:
 
 
 gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" ^
   /repos/%REPO%/deployments --paginate --jq "map(select(.environment==\"github-pages\"))[].id"
-
+---
 
 ### 2. Delete All Deployments (Interactive)
 
@@ -79,7 +79,7 @@ for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-
   echo Deleting %i...
   gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i
 )
-
+---
 ### 3. Delete Only GitHub Pages Deployments
 
 Limit the actions to deployments where the environment is github-pages:
@@ -91,7 +91,7 @@ for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-
   echo Deleting %i...
   gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i
 )
-
+---
 ### 4. Delete a Specific Deployment by ID
 
 If you know the deployment ID to delete, inactivate then delete it with these commands:
@@ -107,7 +107,7 @@ gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-V
 :: Delete the specified deployment
 gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%ID%
 
-
+---
 ### Additional Tips
 
 - Make sure you’re authenticated: gh auth status (use gh auth login if needed). gh auth status or gh auth login
@@ -115,7 +115,7 @@ gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api
 - The list endpoint returns an array, so the jq ".[].id" expression is appropriate. If you ever fetch a single deployment (endpoint /deployments/), manage it with the “single ID” commands above.
 
 
-
+---
 
 #### Credits 
 
