@@ -1,0 +1,34 @@
+# _config.yml
+title: Jack (Xun) Li
+description: Personal website of Jack Li
+
+# Root URL for your site (no trailing slash)
+url: "https://lixunjack.github.io"
+
+# User/organization site: leave baseurl empty
+baseurl: ""
+
+# Nice clean URLs
+permalink: pretty
+
+# Markdown settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Exclude non-site files from the build
+exclude:
+  - README.md
+  - .github/
+  - node_modules/
+  - vendor/
+  - Gemfile
+  - Gemfile.lock
+
+# Optional theme (uncomment if you use one and include it in your Gemfile)
+# theme: minima
+
+# Optional plugins (only if you've added them to your Gemfile)
+# plugins:
+#   - jekyll-feed
+#   - jekyll-seo-tag
