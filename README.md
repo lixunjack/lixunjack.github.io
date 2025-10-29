@@ -28,7 +28,7 @@ _Inspired from [GitHub Housekeeping: Remove Unwanted Deployments in Minutes](htt
 
 ---
 
-## Prerequisites
+####  Prerequisites
 
 1. **Install GitHub CLI:**
    - Follow the instructions on the [GitHub CLI official website](https://cli.github.com/) to install the CLI.
@@ -45,7 +45,7 @@ _Inspired from [GitHub Housekeeping: Remove Unwanted Deployments in Minutes](htt
 
 ---
 
-## Windows Command Prompt (cmd.exe) Examples Using `gh`
+#### Windows Command Prompt (cmd.exe) Examples Using `gh`
 
 > **Note:** Run these commands directly in a cmd window.  
 > If you paste these into a `.bat` file, **double the `%` signs** inside the `for` loop.
