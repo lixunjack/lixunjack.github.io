@@ -22,7 +22,7 @@ header {
   text-align: center;
 
   /* Gradient overlay + background image in one property */
-  background: url('main_gv/Auther_Seat.jpg') center/cover no-repeat; /* Background image */
+  background: url('main_gv/Auther_Seat.png') center/cover no-repeat; /* Background image */
 
   color: #fff;
   padding: 12px 0 40px;       /* less top padding so content sits higher */
