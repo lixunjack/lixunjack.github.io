@@ -2,10 +2,17 @@
 
 This repository contains the source code for a static website powered by Jekyll and deployed via GitHub Pages. It focuses on the site’s build, configuration, and deployment pipelines—no personal information is duplicated here.
 
-What’s in this repo
+What’s in this repo:
 - Jekyll configuration and content (pages, layouts, includes, assets)
 - GitHub Actions workflows for continuous integration and deployment
-- Documentation for local development and deployment
+- Documentation for local development, deployment and clean-up
+
+Guides included:
+ - Clean up old Deployments via GitHub API
+ - Delete GitHub Actions workflow runs
+ - Windows cmd examples using GitHub CLI (gh)
+
+
 
 ### Key files at a glance
 - `_config.yml` — Site configuration (root of the repo). Uses `url` with an empty `baseurl` for a user site.
@@ -92,8 +99,7 @@ for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-
   echo Inactivating %i...
   gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i/statuses -f state=inactive >NUL 2>&1
   echo Deleting %i...
-  gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i
-)
+  gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i)
 ```
 
 ---
@@ -116,6 +122,30 @@ gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api
 
 ---
 
+### 5. Clean up GitHub Actions workflow runs
+
+
+```batch
+
+:: Preview run IDs for a specific workflow file:
+
+gh api --paginate "/repos/lixunjack/lixunjack.github.io/actions/workflows/jekyll-gh-pages.yml/runs?per_page=100" -q ".workflow_runs[].id"
+
+:: Delete all runs for that workflow (e.g., jekyll-gh-pages.yml):
+
+
+for /f "delims=" %i in ('gh api --paginate "/repos/lixunjack/lixunjack.github.io/actions/workflows/jekyll-gh-pages.yml/runs?per_page=100" -q ".workflow_runs[].id"') do gh api --method DELETE /repos/lixunjack/lixunjack.github.io/actions/runs/%i
+
+:: Repeat for the Docker workflow (jekyll-docker.yml):
+
+for /f "delims=" %i in ('gh api --paginate "/repos/lixunjack/lixunjack.github.io/actions/workflows/jekyll-docker.yml/runs?per_page=100" -q ".workflow_runs[].id"') do gh api --method DELETE /repos/lixunjack/lixunjack.github.io/actions/runs/%i
+
+```
+
+---
+
+
+
 ### Additional Tips
 
 - Make sure you’re authenticated: gh auth status (use gh auth login if needed). gh auth status or gh auth login
@@ -129,4 +159,4 @@ gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api
 
 This website is built using Jekyll and hosted on GitHub Pages. Special thanks to the GitHub community for the support and resources!
 
-
+The above command lines are coded by GPT 5 provided by Edinburgh Large-language Model (ELM) at https://elm.edina.ac.uk/
