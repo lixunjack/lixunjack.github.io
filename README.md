@@ -48,7 +48,7 @@ _Inspired from [GitHub Housekeeping: Remove Unwanted Deployments in Minutes](htt
 ### 1. Set the Repository and List Deployment IDs
 
 Set your repository (update the value accordingly) and list all deployment IDs:
-
+ ```batch
 :: Set your repository
 set REPO=lixunjack/lixunjack.github.io
 
@@ -60,13 +60,15 @@ gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-1
 
 gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" ^
   /repos/%REPO%/deployments --paginate --jq "map(select(.environment==\"github-pages\"))[].id"
+ ```
 
 ---
 
 ### 2. Delete All Deployments (Interactive)
 
 This loop will inactivate each deployment first, then delete it:
-
+ 
+ ```batch
 :: Set your repository
 set REPO=lixunjack/lixunjack.github.io
 
@@ -77,6 +79,7 @@ for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-
   echo Deleting %i...
   gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i
 )
+ ```
 
 ---
 
@@ -84,13 +87,14 @@ for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-
 
 Limit the actions to deployments where the environment is github-pages:
 
-
+```batch
 for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments --paginate --jq "map(select(.environment==\"github-pages\"))[].id"') do (
   echo Inactivating %i...
   gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i/statuses -f state=inactive >NUL 2>&1
   echo Deleting %i...
   gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i
 )
+```
 
 ---
 
@@ -98,6 +102,7 @@ for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-
 
 If you know the deployment ID to delete, inactivate then delete it with these commands:
 
+```batch
 :: Set your repository and deployment ID
 set REPO=lixunjack/lixunjack.github.io
 set ID=3217088726
@@ -107,6 +112,7 @@ gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-V
 
 :: Delete the specified deployment
 gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%ID%
+```
 
 ---
 
