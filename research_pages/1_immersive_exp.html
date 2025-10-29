@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Immersive Wave Experimentation (IWE): Cloaking, Holography, and Cloning — Jack Li</title>
+  <meta name="description" content="Story and key results behind immersive wave experimentation: mixing physical and virtual domains, removing boundary artefacts (MDD), broadband cloaking and holography, and acoustic cloning.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main>
+    <section>
+      <p><a href="../index.html#research">← Back to Main Page</a></p>
+      <h2>Immersive Wave Experimentation (IWE): Cloaking, Holography, and Cloning</h2>
+      <p>
+        If you have ever clapped in a small room or dropped a pebble in a bucket, you know the problem: waves bounce off the boundaries. In a real ocean, a quiet field, or outer space, waves can radiate away seemingly “to infinity.” In a lab, they hit walls and come right back. Those echoes contaminate measurements, shrink the space where we can trust the results, and make it hard to study how waves actually behave in the wild.
+      </p>
+
+      <p>
+        We decided not to fight that limitation with bigger rooms or thicker foam. Instead, we taught the walls to help. Our approach blends a physical experiment with a virtual world in real time. We call this Immersive Boundary Conditions (IBCs). Think of it as a portal: the lab stays small, but the waves inside it “believe” they are in an unbounded environment because the boundaries actively behave as if the outside extends forever. On top of that, we use a technique called Multi-Dimensional Deconvolution (MDD) to transform messy, echo-laden measurements into the clean, physically correct responses you would get in open space. Together, IBCs and MDD let us switch off a lab’s walls, make objects acoustically invisible, project virtual objects into reality, and even clone the scattering fingerprint of anything we like—on demand and across a broad range of frequencies.
+      </p>
+
+      
+      
+<!-- wednesday cutline!!!!!!!!!! -->
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Figure suggestion: “WaveLab” or similar lab photo -->
+          <a href="../asset/wavelab.png" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/wavelab.png" alt="Acoustic wave lab with arrays, scanning LDV, and waveguide rig">
+          </a>
+          <figcaption>Figure suggestion: Lab overview (ETH WaveLab). Sets the scene that we work at kHz in reduced-size, reflective spaces.</figcaption>
+        </figure>
+
+
+
+    </section>
+
+
+
+
+
+    <!-- Section 1: The challenge and the promise -->
+    <section id="challenge">
+      <h3>1) The challenge: small labs, big waves — the promise of immersion</h3>
+
+      <p>
+       In the wild—open water, the sky, or space—waves radiate away and their energy leaves the scene, but in tanks, rooms, and waveguides they ricochet off walls, polluting measurements and burying subtle effects like weak scattering or fine phase shifts. Anechoic chambers try to tame those echoes with foam wedges, yet their effectiveness collapses at low frequency because the wedge depth must scale with wavelength, making low‑kHz setups impractically large; in solid 3D volumes for full elastic P–S studies, operating around 1–20 kHz means wavelengths approach the sample size, so boundary energy can dominate the interior wavefield. Reduced‑size labs (kHz acoustics, plates, rooms, waveguides) thus suffer reflections that mask the very scattering we want to observe; passive absorbers are bulky and narrowband, while classic active cancellation degrades off‑axis and at higher frequencies. This is compounded by a scale gap: seismology and many field scenarios live below ~100 Hz, whereas conventional lab acoustics often push to hundreds of kHz or MHz to keep echoes at bay, making it hard to transfer insights—especially for frequency‑dependent phenomena like attenuation, dispersion, anisotropy, and nonlinearity that do not upscale reliably. We therefore seek a different route: immersive experimentation that mixes real and virtual scattering, allowing waves to leave the physical domain, propagate in a numerical exterior, and return as if the walls did not exist—so small labs can behave like the outside world.
+      </p>
+
+
+
+
+
+
+
+
+
+        <figure>
+          <!-- Figure suggestion: “the problem” schematic -->
+          <a href="../asset/research/placeholder_problem_schematic.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/placeholder_problem_schematic.jpg" alt="Schematic: small lab, strong boundary reverberation masking interior scattering">
+          </a>
+          <figcaption>Figure suggestion: Schematic of the dilemma — small domain + rigid walls → reverberation that overwhelms interior scattering.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Section 2: Immersive Boundary Conditions (acoustic, real-time) -->
+    <section id="ibc-acoustic">
+      <h3>2) Immersive Boundary Conditions (IBCs): real-time, broadband coupling</h3>
+      <p>
+        IBCs let us virtually replace what lies beyond a control surface. Measured pressure/velocity on an outer recording ring are
+        extrapolated in real time to an inner emitting ring; sources on that inner ring then inject the numerically predicted field
+        back into the lab. With low-latency FPGAs (~200 μs compute in air; ~870 μs total budget for a ~30 cm ring spacing),
+        waves pass seamlessly between physical and virtual worlds, enabling absorbing, cloaking, and holography behaviors without
+        knowing the incident field a priori.
+      </p>
+      <ul>
+        <li>Key idea: use representation theorems + precomputed Green’s functions as “wave kernels” for the extrapolation.</li>
+        <li>Why it matters: deterministic, broadband, and global control — no tuning to a single frequency or angle.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Figure suggestion: Control geometry -->
+          <a href="../asset/research/placeholder_ibc_geometry.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/placeholder_ibc_geometry.jpg" alt="Two-ring setup for immersive boundary conditions with recording and emitting arrays">
+          </a>
+          <figcaption>Figure suggestion: Two-ring IBC schematic (outer recording, inner emitting) and the real-time extrapolation loop.</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Hardware latency diagram -->
+          <a href="../asset/research/placeholder_latency.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/placeholder_latency.jpg" alt="Latency budget and FPGA control schematic for real-time IBC">
+          </a>
+          <figcaption>Figure suggestion: Latency budget for FPGA-based extrapolation and actuation; shows feasibility and bandwidth.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Related:</strong> Becker et al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Science Advances, 2021</a>;
+        Becker et al., <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">PRX, 2018</a>.
+      </p>
+    </section>
+
+    <!-- Section 3: Elastic immersive experiments (iterative) -->
+    <section id="ibc-elastic">
+      <h3>3) Going elastic: an iterative IBC with only surface data</h3>
+      <p>
+        For elastic media, we cannot rely on ultra-low-latency direct control at scale. Instead, we devised an iterative method that:
+        (1) records on a closed free surface, (2) separates ingoing/outgoing constituents, (3) computes physical-to-virtual interactions,
+        and (4) applies them via boundary sources with windowing to converge to an immersed state. No interior access, no need
+        to know the solid’s interior — yet we synthesize physical–virtual interactions and cancel primaries.
+      </p>
+      <ul>
+        <li>Contribution: 3D-capable elastic IBC workflow using only surface arrays (validated in 2D synthetics and lab prototypes).</li>
+        <li>Why it matters: “infinite” elastic experiments at seismic-band frequencies in compact labs.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Figure suggestion: Iterative workflow -->
+          <a href="../asset/research/elastic-immersive_fig1.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/elastic-immersive_fig1.jpg" alt="Elastic immersive experimentation workflow with wavefield separation and iteration">
+          </a>
+          <figcaption>Figure suggestion: Elastic IBC workflow (Step 1–6 as in slides; separation, windowing, higher-order interactions).</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Synthetic snapshots -->
+          <a href="../asset/research/elastic-immersive_snapshots.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/elastic-immersive_snapshots.jpg" alt="Snapshots showing cancellation of outgoing waves and virtual interactions">
+          </a>
+          <figcaption>Figure suggestion: Synthetic demonstrations of primary cancellation and iterative build-up of interactions.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Li, X., Robertsson, J., and van Manen, D.-J., <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener noreferrer">Elastic immersive wave experimentation</a>, GJI, 2023.</p>
+    </section>
+
+
+    <!-- Section 4: Removing boundary artefacts with MDD -->
+    <section id="mdd">
+      <h3>4) Removing boundary artefacts: Multidimensional Deconvolution (MDD)</h3>
+      <p>
+        Rigid lab walls inject endless reverberation. With MDD we post-process recordings on a closed surface to retrieve the
+        free-space scattering Green’s functions of interior objects — exactly as if the boundary were transparent. The method is
+        purely data-driven: no source wavelet, no boundary characterization, no interior model needed. We separate the wavefield
+        on arbitrary curved, closed arrays using a local wavenumber method, then invert the convolutional system across many
+        illuminations.
+      </p>
+      <ul>
+        <li>Contribution: Closed-aperture unbounded acoustics via MDD; “radiation-condition” data for any interior scatterer.</li>
+        <li>Why it matters: supplies the correct kernels for holography and for cloning.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Figure suggestion: Geometry SI / SO and MDC -->
+          <a href="../asset/research/jasa_mdd_setup.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/jasa_mdd_setup.jpg" alt="Two concentric surfaces, wavefield separation, and MDC inversion geometry">
+          </a>
+          <figcaption>Figure suggestion: MDD geometry (inner/outer surfaces; wavefield separation; MDC system) — cf. JASA 2021 Fig. 1/5.</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Before/after MDD -->
+          <a href="../asset/research/jasa_mdd_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/jasa_mdd_results.jpg" alt="Green’s functions retrieved after MDD with boundary imprint removed">
+          </a>
+          <figcaption>Figure suggestion: Scattering Green’s functions with boundary imprint removed — cf. JASA 2021 Figs. 7–10.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Li, X., Becker, T., Ravasi, M., Robertsson, J., and van Manen, D.-J.,
+        <a href="https://doi.org/10.1121/10.0003706" target="_blank" rel="noopener noreferrer">Closed-aperture unbounded acoustics experimentation using multidimensional deconvolution</a>, JASA, 2021.
+      </p>
+    </section>
+
+    <!-- Section 5: Broadband cloaking (real-time, unknown sources) -->
+    <section id="cloaking">
+      <h3>5) Cloaking in the lab: broadband, real-time, no prior source knowledge</h3>
+      <p>
+        With IBCs we rendered a rigid scatterer invisible inside a 2D waveguide. The control loop extrapolates from a recording ring
+        to a sound-hard emitting ring and cancels all scattering, including multiples from the lab boundary. No a priori knowledge of
+        the incident field is needed — even moving or unknown sources are cloaked. The scattered intensity dropped by ~8 dB over
+        3.5 octaves.
+      </p>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Figure suggestion: Cloak lab setup -->
+          <a href="../asset/research/sciadv_cloaking_lab.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/sciadv_cloaking_lab.jpg" alt="2D waveguide with outer microphones and inner loudspeakers for cloaking">
+          </a>
+          <figcaption>Figure suggestion: Cloaking setup — outer dual-ring microphones, inner ring of loudspeakers — cf. Science Advances 2021 Fig. 2.</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Scattered intensity reduction -->
+          <a href="../asset/research/sciadv_cloaking_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/sciadv_cloaking_results.jpg" alt="Angular scattered intensity with and without cloak; broadband reduction">
+          </a>
+          <figcaption>Figure suggestion: Cloaking results — angular/frequency-domain intensity reductions — cf. Science Advances 2021 Fig. 3.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Becker, T. S., et al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Broadband acoustic invisibility and illusions</a>, Science Advances, 2021.</p>
+    </section>
+
+    <!-- Section 6: Holography (virtual imprints) -->
+    <section id="holography">
+      <h3>6) Holography: virtual imprints you can measure physically</h3>
+      <p>
+        Using dual inner rings (effective monopole + dipole emission), we replay the scattered field of arbitrary virtual objects in real time.
+        The lab sees exactly what would have been scattered by the virtual object. Think perfect on-demand illusions — switch
+        scatterers without rebuilding hardware.
+      </p>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Figure suggestion: Holography geometry -->
+          <a href="../asset/research/sciadv_holography_setup.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/sciadv_holography_setup.jpg" alt="Holography with sound-transparent inner surface using two close loudspeaker rings">
+          </a>
+          <figcaption>Figure suggestion: Holography configuration — sound-transparent inner surface with monopole/dipole emission — cf. Science Advances 2021 Fig. 4A.</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Holographic scattering -->
+          <a href="../asset/research/sciadv_holography_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/sciadv_holography_results.jpg" alt="Agreement between physical scatterer and its hologram in angular scattered intensity">
+          </a>
+          <figcaption>Figure suggestion: Physical vs holographic scattering comparison — cf. Science Advances 2021 Fig. 4D–F.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Related:</strong> van Manen et al., <a href="https://doi.org/10.1121/1.4919366" target="_blank" rel="noopener noreferrer">JASA, 2015</a> (theory);
+        Börsing et al., <a href="https://doi.org/10.1103/PhysRevApplied.12.024011" target="_blank" rel="noopener noreferrer">Phys. Rev. Applied, 2019</a> (early experiments).
+      </p>
+    </section>
+
+    <!-- Section 7: Acoustic cloning (two-step: MDD + holography) -->
+    <section id="cloning">
+      <h3>7) Cloning: acquire a digital twin, then bring it back to life</h3>
+      <p>
+        Cloning is a simple two-step process:
+      </p>
+      <ol>
+        <li>
+          Acquire: illuminate a real scatterer placed inside a closed receiver aperture and use MDD to retrieve its scattering Green’s
+          functions under radiation conditions (free of boundary imprint).
+        </li>
+        <li>
+          Replay: remove the object; use immersive holography to extrapolate from the outer ring to the inner ring and drive the sources
+          so that the lab field scatters exactly as if the object were present — for any incident broadband wavefield, all orders included.
+        </li>
+      </ol>
+      <p>
+        Because the twin is digital, we can augment it: translate/rotate it, scale its response, or even add non-physical gain/transparency.
+      </p>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Figure suggestion: Two-step cloning flow -->
+          <a href="../asset/research/pra_cloning_flow.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/pra_cloning_flow.jpg" alt="Two-step cloning: MDD retrieval then holographic reconstruction">
+          </a>
+          <figcaption>Figure suggestion: Two-step cloning flowchart — cf. Phys. Rev. Applied 2023 Fig. 4 and Appendix B.</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Green’s functions subset -->
+          <a href="../asset/research/pra_cloning_gfuncs.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/pra_cloning_gfuncs.jpg" alt="Retrieved scattering Green’s functions subsets used for extrapolation">
+          </a>
+          <figcaption>Figure suggestion: MDD-retrieved scattering Green’s functions — cf. PRA 2023 Fig. 7.</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Clone vs real scatterers -->
+          <a href="../asset/research/pra_cloning_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/pra_cloning_results.jpg" alt="Comparisons of angular scattered intensities: real vs cloned (circle, square, cross)">
+          </a>
+          <figcaption>Figure suggestion: Real vs cloned scatterers (circle, square, cross) — cf. PRA 2023 Figs. 8–9.</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Augmented clones -->
+          <a href="../asset/research/pra_cloning_augmentation.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/pra_cloning_augmentation.jpg" alt="Augmented cloning results: directional gain and virtual rotations">
+          </a>
+          <figcaption>Figure suggestion: “Acoustic cyborgs”: add gain or rotate numerically — cf. PRA 2023 Fig. 10.</figcaption>
+        </figure>
+      </div>
+
+      <p><strong>Key paper:</strong> Müller, J., Becker, T. S., Li, X., et al., <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Acoustic cloning</a>, Phys. Rev. Applied, 2023.</p>
+    </section>
+
+    <!-- Section 8: Applications and prospects -->
+    <section id="prospects">
+      <h3>8) Where this goes next</h3>
+      <ul>
+        <li>Mix real and virtual scattering to prototype metamaterials and digital twins rapidly.</li>
+        <li>Car audio: local immersive zones per passenger, dynamically “reshaping” cabin acoustics.</li>
+        <li>Education and entertainment: VR room acoustics you can <em>measure</em> and feel in real time.</li>
+        <li>Bigger rooms, deeper frequencies: modular 3D prototypes (e.g., 2.7 m × 3.1 m × 4.5 m) and scalable arrays.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(960px, 92vw);">
+        <figure>
+          <!-- Figure suggestion: 3D prototype rendering -->
+          <a href="../asset/research/placeholder_3d_prototype.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/placeholder_3d_prototype.jpg" alt="3D immersive room prototype with modular arrays">
+          </a>
+          <figcaption>Figure suggestion: 3D prototype (ETH concepts, 2022) with indicative dimensions (2.7 m × 3.1 m × 4.5 m).</figcaption>
+        </figure>
+        <figure>
+          <!-- Figure suggestion: Applications collage -->
+          <a href="../asset/research/placeholder_applications.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/research/placeholder_applications.jpg" alt="Collage: car audio zones, VR room, metamaterial unit cell cloning">
+          </a>
+          <figcaption>Figure suggestion: Applications collage — car audio, VR rooms, metamaterial unit cell cloning/tiling.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Section 9: Key references -->
+    <section id="references">
+      <h3>Key papers</h3>
+      <ul>
+        <li>Müller, J., Becker, T. S., Li, X., et al. Acoustic cloning. Phys. Rev. Applied 20, 064014 (2023). <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">DOI</a></li>
+        <li>Li, X., Becker, T., Ravasi, M., Robertsson, J., and van Manen, D.-J. Closed-aperture unbounded acoustics experimentation using multidimensional deconvolution. JASA 149, 1813–1828 (2021). <a href="https://doi.org/10.1121/10.0003706" target="_blank" rel="noopener noreferrer">DOI</a></li>
+        <li>Becker, T. S., van Manen, D.-J., et al. Broadband acoustic invisibility and illusions. Science Advances 7, eabi9627 (2021). <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">DOI</a></li>
+        <li>Li, X., Robertsson, J., and van Manen, D.-J. Elastic immersive wave experimentation. GJI (2023). <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener noreferrer">DOI</a></li>
+        <li>Becker, T. S., et al. Immersive wave propagation experimentation. Phys. Rev. X 8, 031011 (2018). <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">DOI</a></li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Xun (Jack) Li • Edinburgh, UK</small>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+</body>
+</html>
