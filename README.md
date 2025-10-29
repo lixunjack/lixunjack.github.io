@@ -160,4 +160,4 @@ for /f "delims=" %i in ('gh api --paginate "/repos/lixunjack/lixunjack.github.io
 
 This website is built using Jekyll and hosted on GitHub Pages. Special thanks to the GitHub community for the support and resources!
 
-The above command lines are coded by GPT 5 provided by Edinburgh Large-language Model (ELM) at https://elm.edina.ac.uk/
+The above methods are complied with the help by GPT 5 provided by Edinburgh Large-language Model (ELM) at https://elm.edina.ac.uk/
