@@ -15,40 +15,64 @@ What’s in this repo
 - `styles.css` — Site styles
 
 
-### Method to clean the culprit workflows:
-#### inspired from GitHub Housekeeping: Remove Unwanted Deployments in Minutes (https://dhanushkac.medium.com/github-housekeeping-remove-unwanted-deployments-in-minutes-a57a52969eb2):
+### Method to Clean the Culprit Workflows
 
-- FIRST INSTALL First you need to install GitHub CLI. Go to the official website of GH CLI and download instructions will be there., IN THIS PROCESS ON A WINDOW COMMAND LINE, ONE SHOULD INSTALL GIT BY THE COMMAND: 
+_Inspired from [GitHub Housekeeping: Remove Unwanted Deployments in Minutes](https://dhanushkac.medium.com/github-housekeeping-remove-unwanted-deployments-in-minutes-a57a52969eb2)_
 
-- open your cmd prompt and run this:
+---
 
-winget install -e --id Git.Git
+## Prerequisites
 
-- then run:
+1. **Install GitHub CLI:**
+   - Follow the instructions on the [GitHub CLI official website](https://cli.github.com/) to install the CLI.
 
-exit
+2. **Install Git (Windows Command Line):**
+   - Open your Command Prompt and run:
+     ```batch
+     winget install -e --id Git.Git
+     ```
+   - After installing Git, exit the terminal by running:
+     ```batch
+     exit
+     ```
 
+---
 
-- Here are Windows Command Prompt (cmd.exe) versions using gh. They list all deployment IDs and delete them by first marking each inactive.
+## Windows Command Prompt (cmd.exe) Examples Using `gh`
 
-- Note: Run these directly in a cmd window. If you put them in a .bat file, double the % signs inside the FOR loop (examples provided).
+> **Note:** Run these commands directly in a cmd window.  
+> If you paste these into a `.bat` file, **double the `%` signs** inside the `for` loop.
 
-- Set the repo and preview IDs In cmd:
+---
 
+### 1. Set the Repository and List Deployment IDs
+
+Set your repository (update the value accordingly) and list all deployment IDs:
+
+```batch
+:: Set your repository
 set REPO=lixunjack/lixunjack.github.io
 
+:: List all deployment IDs for the specified repository
 gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" ^
   /repos/%REPO%/deployments --paginate --jq ".[].id"
 
-    To restrict to GitHub Pages deployments only:
+
+To restrict the list to only GitHub Pages deployments:
+
 
 gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" ^
   /repos/%REPO%/deployments --paginate --jq "map(select(.environment==\"github-pages\"))[].id"
 
-    Delete all deployments (cmd, interactive) This loop inactivates first, then deletes.
 
+### 2. Delete All Deployments (Interactive)
+
+This loop will inactivate each deployment first, then delete it:
+
+:: Set your repository
 set REPO=lixunjack/lixunjack.github.io
 
+:: Loop through each deployment ID, inactivate it, then delete it
 for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments --paginate --jq ".[].id"') do (
   echo Inactivating %i...
   gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i/statuses -f state=inactive >NUL 2>&1
@@ -56,7 +80,10 @@ for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-
   gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i
 )
 
-- Same, but only for environment=github-pages:
+### 3. Delete Only GitHub Pages Deployments
+
+Limit the actions to deployments where the environment is github-pages:
+
 
 for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments --paginate --jq "map(select(.environment==\"github-pages\"))[].id"') do (
   echo Inactivating %i...
@@ -65,20 +92,27 @@ for /f %i in ('gh api -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-
   gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%i
 )
 
-- Delete a single known deployment ID (cmd)
+### 4. Delete a Specific Deployment by ID
 
+If you know the deployment ID to delete, inactivate then delete it with these commands:
+
+
+:: Set your repository and deployment ID
 set REPO=lixunjack/lixunjack.github.io
 set ID=3217088726
 
+:: Inactivate the specified deployment
 gh api --method POST -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%ID%/statuses -f state=inactive
+
+:: Delete the specified deployment
 gh api --method DELETE -H "Accept: application/vnd.github+json" -H "X-GitHub-Api-Version: 2022-11-28" /repos/%REPO%/deployments/%ID%
 
 
-- Tips
+### Additional Tips
 
-    - Make sure you’re authenticated: gh auth status (use gh auth login if needed).
-    - You need repo admin or write permissions to manage deployments.
-    - The list endpoint returns an array, so the jq ".[].id" expression is appropriate. If you ever fetch a single deployment (endpoint /deployments/), manage it with the “single ID” commands above.
+- Make sure you’re authenticated: gh auth status (use gh auth login if needed). gh auth status or gh auth login
+- You need repo admin or write permissions to manage deployments.
+- The list endpoint returns an array, so the jq ".[].id" expression is appropriate. If you ever fetch a single deployment (endpoint /deployments/), manage it with the “single ID” commands above.
 
 
 
