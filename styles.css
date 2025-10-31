@@ -247,7 +247,7 @@ html {
 
 .card h3 {
   margin: 6px 0 8px;
-  font-size: 1.15rem;
+  font-size: 1.35rem;
   color: #333;
 }
 
@@ -267,3 +267,9 @@ html {
 }
 .card .button:hover { background: #0056b3; }
 
+
+    /* Container style for smooth zoom transition and proper transform origin */
+    #wrapper {
+      transition: transform 0.2s ease;
+      transform-origin: top left;
+    }
