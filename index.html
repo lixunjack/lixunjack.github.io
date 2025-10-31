@@ -7,7 +7,7 @@
     <title>Jack Li - Geophysicist</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="wrapper">
     <header>
         <h1>Xun (Jack) Li</h1>
         <img src="main_gv/photo_with_panda.png" alt="Jack Li" style="width:300px; height:auto;">   
@@ -247,6 +247,46 @@
   }
 })();
 </script>
+
+ <!-- FOR SCROLL ZOOMING WITH CTRL + MOUSE WHEEL -->
+  <script>
+    const wrapper = document.getElementById('wrapper');
+    let scale = 1; // initial scale factor
+
+    // Listen for the wheel event on the document
+    window.addEventListener('wheel', function(event) {
+      // Only apply zoom when CTRL is pressed
+      if (!event.ctrlKey) return;
+
+      // Prevent default behavior (so the page doesn't scroll/zoom by the browser)
+      event.preventDefault();
+
+      // Get the wrapper's bounding rectangle
+      const rect = wrapper.getBoundingClientRect();
+
+      // Calculate the mouse position relative to the wrapper
+      const offsetX = event.clientX - rect.left;
+      const offsetY = event.clientY - rect.top;
+
+      // Update the transform-origin so that zooming is centered at the mouse pointer
+      wrapper.style.transformOrigin = `${offsetX}px ${offsetY}px`;
+
+      // Update the scale factor based on the scroll direction
+      if (event.deltaY < 0) {
+        // Zoom in
+        scale *= 1.05;
+      } else {
+        // Zoom out
+        scale /= 1.05;
+      }
+
+      // Clamp the scale between a minimum and maximum value
+      scale = Math.max(0.5, Math.min(scale, 3));
+
+      // Apply the updated scale to the wrapper element
+      wrapper.style.transform = `scale(${scale})`;
+    }, { passive: false });
+  </script>
 
 
 </body>

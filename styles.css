@@ -268,8 +268,10 @@ html {
 .card .button:hover { background: #0056b3; }
 
 
-    /* Container style for smooth zoom transition and proper transform origin */
+
+    /* The container holds all page content */
     #wrapper {
       transition: transform 0.2s ease;
-      transform-origin: top left;
+      /* initial transform-origin will be updated dynamically */
+      transform-origin: 0 0;
     }
