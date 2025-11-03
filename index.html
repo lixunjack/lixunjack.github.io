@@ -232,61 +232,82 @@
   </div>
 </footer>
 
+
 <script>
-(function () {
-  // Current year
-  const yearEl = document.getElementById('year');
-  if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-  // Last updated: Month YYYY (e.g., "Oct 2025")
-  const updatedEl = document.getElementById('last-updated');
-  if (updatedEl) {
-    const mod = new Date(document.lastModified);
-    const fmt = new Intl.DateTimeFormat('en-GB', { month: 'short', year: 'numeric' });
-    updatedEl.textContent = isNaN(mod.getTime()) ? fmt.format(new Date()) : fmt.format(mod);
-  }
-})();
-</script>
-
- <!-- FOR SCROLL ZOOMING WITH CTRL + MOUSE WHEEL -->
-  <script>
+  document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('wrapper');
+    if (!wrapper) return;
+
     let scale = 1; // initial scale factor
+    const ZOOM_STEP = 1.05;
+    const MIN_SCALE = 0.5;
+    const MAX_SCALE = 3;
 
-    // Listen for the wheel event on the document
+    const clamp = v => Math.max(MIN_SCALE, Math.min(v, MAX_SCALE));
+    const applyScale = () => {
+      wrapper.style.transform = `scale(${scale})`;
+    };
+
+    // Ctrl/Cmd + mouse wheel zoom (zooms toward the mouse pointer)
     window.addEventListener('wheel', function(event) {
-      // Only apply zoom when CTRL is pressed
-      if (!event.ctrlKey) return;
+      // Only apply zoom when CTRL (or Cmd on macOS) is pressed
+      if (!event.ctrlKey && !event.metaKey) return;
 
-      // Prevent default behavior (so the page doesn't scroll/zoom by the browser)
+      // Prevent browser zoom
       event.preventDefault();
 
-      // Get the wrapper's bounding rectangle
+      // Zoom around the mouse pointer
       const rect = wrapper.getBoundingClientRect();
-
-      // Calculate the mouse position relative to the wrapper
       const offsetX = event.clientX - rect.left;
       const offsetY = event.clientY - rect.top;
-
-      // Update the transform-origin so that zooming is centered at the mouse pointer
       wrapper.style.transformOrigin = `${offsetX}px ${offsetY}px`;
 
-      // Update the scale factor based on the scroll direction
-      if (event.deltaY < 0) {
-        // Zoom in
-        scale *= 1.05;
-      } else {
-        // Zoom out
-        scale /= 1.05;
+      // Update scale
+      scale = clamp(event.deltaY < 0 ? scale * ZOOM_STEP : scale / ZOOM_STEP);
+
+      applyScale();
+    }, { passive: false });
+
+    // Ctrl/Cmd + '+' or '-' (and numpad) for keyboard zoom
+    window.addEventListener('keydown', (event) => {
+      // Don't hijack typing in form fields/contenteditable
+      const el = event.target;
+      const isEditable = el && (el.isContentEditable ||
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
+      if (isEditable) return;
+
+      const hasModifier = event.ctrlKey || event.metaKey;
+      if (!hasModifier) return;
+
+      let handled = false;
+
+      // Plus: Shift+'=' on many keyboards, or NumpadAdd, or direct '+'
+      if (event.code === 'Equal' || event.code === 'NumpadAdd' || event.key === '+') {
+        scale = clamp(scale * ZOOM_STEP);
+        handled = true;
+      }
+      // Minus: '-' key, NumpadSubtract
+      else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
+        scale = clamp(scale / ZOOM_STEP);
+        handled = true;
+      }
+      // Optional: Ctrl/Cmd + 0 to reset
+      else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
+        scale = 1;
+        handled = true;
       }
 
-      // Clamp the scale between a minimum and maximum value
-      scale = Math.max(0.5, Math.min(scale, 3));
+      if (handled) {
+        // For keyboard zoom, center the zoom (you can remember the last pointer if preferred)
+        wrapper.style.transformOrigin = 'center center';
+        event.preventDefault(); // prevent the browser’s own page zoom
+        applyScale();
+      }
+    });
+  });
+</script>
 
-      // Apply the updated scale to the wrapper element
-      wrapper.style.transform = `scale(${scale})`;
-    }, { passive: false });
-  </script>
+
 
 
 </body>

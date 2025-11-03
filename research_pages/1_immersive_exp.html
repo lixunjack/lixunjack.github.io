@@ -26,7 +26,7 @@
       </p>
       
 
-             <!-- <figure class="zoomable">  zoomable figure here " id="wrapper" -->
+    <!-- <figure class="zoomable">  zoomable figure here " id="wrapper" -->
       <div class="figure-grid" style="width: min(1260px, 92vw);">
         <figure>
           <!-- Figure suggestion: “WaveLab” or similar lab photo -->
@@ -47,7 +47,7 @@
       </div>
 
       <p>
-        For more details, see the 
+        For more details, see 
         <a href="https://mge.ethz.ch/research/centre-immersive.html" target="_blank" rel="noopener noreferrer">
           Centre for Immersive Wave Experimentation
         </a>
@@ -56,7 +56,6 @@
     </section>
 
   
-<!-- Thursday cutline!!!!!!!!!! -->
 
     <!-- Section 1: The challenge and the promise -->
     <section id="challenge">
@@ -66,21 +65,40 @@
        In the wild—open water, the sky, or space—waves radiate away and their energy leaves the scene, but in tanks, rooms, and waveguides they ricochet off walls, polluting measurements and burying subtle effects like weak scattering or fine phase shifts. Anechoic chambers try to tame those echoes with foam wedges, yet their effectiveness collapses at low frequency because the wedge depth must scale with wavelength, making low‑kHz setups impractically large; in solid 3D volumes for full elastic P–S studies, operating around 1–20 kHz means wavelengths approach the sample size, so boundary energy can dominate the interior wavefield. Reduced‑size labs (kHz acoustics, plates, rooms, waveguides) thus suffer reflections that mask the very scattering we want to observe; passive absorbers are bulky and narrowband, while classic active cancellation degrades off‑axis and at higher frequencies. This is compounded by a scale gap: seismology and many field scenarios live below ~100 Hz, whereas conventional lab acoustics often push to hundreds of kHz or MHz to keep echoes at bay, making it hard to transfer insights—especially for frequency‑dependent phenomena like attenuation, dispersion, anisotropy, and nonlinearity that do not upscale reliably. We therefore seek a different route: immersive experimentation that mixes real and virtual scattering, allowing waves to leave the physical domain, propagate in a numerical exterior, and return as if the walls did not exist—so small labs can behave like the outside world.
       </p>
 
-      <div class="figure-grid" style="width: min(960px, 92vw);">
-        <figure>
-          <!-- Figure suggestion: “the problem” schematic -->
-          <a href="1_immersive_exp/placeholder_problem_schematic.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="1_immersive_exp/placeholder_problem_schematic.jpg" alt="Schematic: small lab, strong boundary reverberation masking interior scattering">
+      <!-- Flex container for side-by-side media -->
+      <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
+        <!-- Left figure: PNG image -->
+        <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 105px;">
+          <a href="1_immersive_exp/schematic_rigid_wall.png" target="_blank" rel="noopener noreferrer">
+            <img src="1_immersive_exp/schematic_rigid_wall.png" alt="Schematic: Small lab boundaries affecting wave propagation" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
-          <figcaption>Figure suggestion: Schematic of the dilemma — small domain + rigid walls → reverberation that overwhelms interior scattering.</figcaption>
+          <figcaption>
+            <strong>Wave-physics laboratories: Low-frequency experiments with a size limitation</strong><br>
+          </figcaption>
         </figure>
+
+    <!-- Right figure: MOV movie with Button to Play <button onclick="document.getElementById('myVideo').play()" style="margin-top: 10px; padding: 8px 16px; font-size: 16px;">Play Video</button> -->
+    
+    <!-- Right figure: MOV movie (Autoplay version) -->
+    <figure style="flex: 1; min-width: 530px; max-width: 680px;">
+      <video autoplay muted loop playsinline style="width: 100%; height: auto; object-fit: cover;">
+        <source src="1_immersive_exp/schematic_rigid_wall_reflection_movie.mov" type="video/quicktime">
+        Your browser does not support the video tag.
+      </video>
+      <figcaption>
+        <strong>Boundary reflections in low-frequency experiments</strong><br>
+        Laboratories often suffer because their size is too small to simulate natural, non-boundary wave propagation. As shown, these boundary reflections interfere with the interior experimental domain where scattering is being studied.
+      </figcaption>
+    </figure>
+
       </div>
 
-
-      </div>
     </section>
 
 
+
+    
+<!-- Monday cutline!!!!!!!!!! -->
 
     <!-- Section 2: Immersive Boundary Conditions (acoustic, real-time) -->
     <section id="ibc-acoustic">
@@ -362,46 +380,80 @@ On top of that, we use a technique called Multi-Dimensional Deconvolution (MDD) 
       if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
-
-  <!-- FOR SCROLL ZOOMING WITH CTRL + MOUSE WHEEL -->
-  <script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('wrapper');
+    if (!wrapper) return;
+
     let scale = 1; // initial scale factor
+    const ZOOM_STEP = 1.05;
+    const MIN_SCALE = 0.5;
+    const MAX_SCALE = 3;
 
-    // Listen for the wheel event on the document
+    const clamp = v => Math.max(MIN_SCALE, Math.min(v, MAX_SCALE));
+    const applyScale = () => {
+      wrapper.style.transform = `scale(${scale})`;
+    };
+
+    // Ctrl/Cmd + mouse wheel zoom (zooms toward the mouse pointer)
     window.addEventListener('wheel', function(event) {
-      // Only apply zoom when CTRL is pressed
-      if (!event.ctrlKey) return;
+      // Only apply zoom when CTRL (or Cmd on macOS) is pressed
+      if (!event.ctrlKey && !event.metaKey) return;
 
-      // Prevent default behavior (so the page doesn't scroll/zoom by the browser)
+      // Prevent browser zoom
       event.preventDefault();
 
-      // Get the wrapper's bounding rectangle
+      // Zoom around the mouse pointer
       const rect = wrapper.getBoundingClientRect();
-
-      // Calculate the mouse position relative to the wrapper
       const offsetX = event.clientX - rect.left;
       const offsetY = event.clientY - rect.top;
-
-      // Update the transform-origin so that zooming is centered at the mouse pointer
       wrapper.style.transformOrigin = `${offsetX}px ${offsetY}px`;
 
-      // Update the scale factor based on the scroll direction
-      if (event.deltaY < 0) {
-        // Zoom in
-        scale *= 1.05;
-      } else {
-        // Zoom out
-        scale /= 1.05;
+      // Update scale
+      scale = clamp(event.deltaY < 0 ? scale * ZOOM_STEP : scale / ZOOM_STEP);
+
+      applyScale();
+    }, { passive: false });
+
+    // Ctrl/Cmd + '+' or '-' (and numpad) for keyboard zoom
+    window.addEventListener('keydown', (event) => {
+      // Don't hijack typing in form fields/contenteditable
+      const el = event.target;
+      const isEditable = el && (el.isContentEditable ||
+        ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
+      if (isEditable) return;
+
+      const hasModifier = event.ctrlKey || event.metaKey;
+      if (!hasModifier) return;
+
+      let handled = false;
+
+      // Plus: Shift+'=' on many keyboards, or NumpadAdd, or direct '+'
+      if (event.code === 'Equal' || event.code === 'NumpadAdd' || event.key === '+') {
+        scale = clamp(scale * ZOOM_STEP);
+        handled = true;
+      }
+      // Minus: '-' key, NumpadSubtract
+      else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
+        scale = clamp(scale / ZOOM_STEP);
+        handled = true;
+      }
+      // Optional: Ctrl/Cmd + 0 to reset
+      else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
+        scale = 1;
+        handled = true;
       }
 
-      // Clamp the scale between a minimum and maximum value
-      scale = Math.max(0.5, Math.min(scale, 3));
+      if (handled) {
+        // For keyboard zoom, center the zoom (you can remember the last pointer if preferred)
+        wrapper.style.transformOrigin = 'center center';
+        event.preventDefault(); // prevent the browser’s own page zoom
+        applyScale();
+      }
+    });
+  });
+</script>
 
-      // Apply the updated scale to the wrapper element
-      wrapper.style.transform = `scale(${scale})`;
-    }, { passive: false });
-  </script>
 
 </body>
 </html>
