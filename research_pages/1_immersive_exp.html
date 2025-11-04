@@ -68,37 +68,47 @@
       <!-- Flex container for side-by-side media -->
       <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
         <!-- Left figure: PNG image -->
-        <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 105px;">
+        <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 25px;">
           <a href="1_immersive_exp/schematic_rigid_wall.png" target="_blank" rel="noopener noreferrer">
             <img src="1_immersive_exp/schematic_rigid_wall.png" alt="Schematic: Small lab boundaries affecting wave propagation" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
-            <strong>Wave-physics laboratories: Low-frequency experiments with a size limitation</strong><br>
+            <strong>Wave-physics laboratories</strong><br>
+                     Size limitation causes wall-boundary reflections and restricts the natural propagation of waves.<br>
+      </figcaption>
+        </figure>
+
+ 
+        <!-- Right figure: MOV movie (Autoplay version) -->
+        <figure style="flex: 1; min-width: 530px; max-width: 680px; ">
+          <video autoplay muted loop playsinline style="width: 101%; height: auto; object-fit: cover; 
+          margin-top: -86px; 
+          margin-right: -80px; 
+          margin-bottom: -145px; 
+          margin-left: -70px;">
+            <source src="1_immersive_exp/schematic_rigid_wall_reflection_movie.mov" type="video/quicktime">
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>
+            <strong>Boundary reflections in low-frequency experiments</strong><br>
+            Laboratories often suffer because their size is too small to simulate natural, non-boundary wave propagation. As shown, these boundary reflections strongly interfere with the interior experimental domain where scattering is being studied.
           </figcaption>
         </figure>
 
-    <!-- Right figure: MOV movie with Button to Play <button onclick="document.getElementById('myVideo').play()" style="margin-top: 10px; padding: 8px 16px; font-size: 16px;">Play Video</button> -->
-    
-    <!-- Right figure: MOV movie (Autoplay version) -->
-    <figure style="flex: 1; min-width: 530px; max-width: 680px;">
-      <video autoplay muted loop playsinline style="width: 100%; height: auto; object-fit: cover;">
-        <source src="1_immersive_exp/schematic_rigid_wall_reflection_movie.mov" type="video/quicktime">
-        Your browser does not support the video tag.
-      </video>
-      <figcaption>
-        <strong>Boundary reflections in low-frequency experiments</strong><br>
-        Laboratories often suffer because their size is too small to simulate natural, non-boundary wave propagation. As shown, these boundary reflections interfere with the interior experimental domain where scattering is being studied.
-      </figcaption>
-    </figure>
-
       </div>
 
+      <p>
+        <strong>Related:</strong> <a href="https://doi.org/10.3929/ethz-b-000573091" target="_blank" rel="noopener noreferrer"><em>Elastic immersive wave experimentation</em></a> – Doctoral Thesis, ETH Zurich, 2022.
+      </p>
+
+
+
     </section>
-
-
-
+  
+   <!-- Right figure: MOV movie with Button to Play <button onclick="document.getElementById('myVideo').play()" style="margin-top: 10px; padding: 8px 16px; font-size: 16px;">Play Video</button> -->
     
-<!-- Monday cutline!!!!!!!!!! -->
+
+<!-- Monday cutline, to be followed-->
 
     <!-- Section 2: Immersive Boundary Conditions (acoustic, real-time) -->
     <section id="ibc-acoustic">
