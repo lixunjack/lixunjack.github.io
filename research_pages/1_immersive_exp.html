@@ -23,6 +23,11 @@
       <p>
         We decided not to fight that limitation with bigger rooms or thicker foam. Instead, we taught the walls to help. Our approach blends a physical experiment with a virtual world in real time. We call this Immersive Boundary Conditions (IBCs). Think of it as a portal: the lab stays small, but the waves inside it “believe” they are in an unbounded environment because the boundaries actively behave as if the outside extends forever. 
         IBC let us switch off a lab’s walls, make objects acoustically invisible, project virtual objects into reality, and even clone the scattering fingerprint of anything we like—on demand and across a broad range of frequencies.
+        For more details, see 
+        <a href="https://mge.ethz.ch/research/centre-immersive.html" target="_blank" rel="noopener noreferrer">
+          Centre for Immersive Wave Experimentation
+        </a>
+      
       </p>
       
 
@@ -47,22 +52,27 @@
       </div>
 
       <p>
-        For more details, see 
-        <a href="https://mge.ethz.ch/research/centre-immersive.html" target="_blank" rel="noopener noreferrer">
-          Centre for Immersive Wave Experimentation
-        </a>
+
       </p>
 
     </section>
 
   
-
     <!-- Section 1: The challenge and the promise -->
     <section id="challenge">
-      <h3>1) The challenge: small labs, big waves — the promise of immersion</h3>
+      <h3>1) The challenge: small labs, bouncing waves</h3>
 
       <p>
-       In the wild—open water, the sky, or space—waves radiate away and their energy leaves the scene, but in tanks, rooms, and waveguides they ricochet off walls, polluting measurements and burying subtle effects like weak scattering or fine phase shifts. Anechoic chambers try to tame those echoes with foam wedges, yet their effectiveness collapses at low frequency because the wedge depth must scale with wavelength, making low‑kHz setups impractically large; in solid 3D volumes for full elastic P–S studies, operating around 1–20 kHz means wavelengths approach the sample size, so boundary energy can dominate the interior wavefield. Reduced‑size labs (kHz acoustics, plates, rooms, waveguides) thus suffer reflections that mask the very scattering we want to observe; passive absorbers are bulky and narrowband, while classic active cancellation degrades off‑axis and at higher frequencies. This is compounded by a scale gap: seismology and many field scenarios live below ~100 Hz, whereas conventional lab acoustics often push to hundreds of kHz or MHz to keep echoes at bay, making it hard to transfer insights—especially for frequency‑dependent phenomena like attenuation, dispersion, anisotropy, and nonlinearity that do not upscale reliably. We therefore seek a different route: immersive experimentation that mixes real and virtual scattering, allowing waves to leave the physical domain, propagate in a numerical exterior, and return as if the walls did not exist—so small labs can behave like the outside world.
+       In the wild—open water, the sky, or space—waves radiate away and their energy leaves the scene, but in tanks, rooms, and waveguides they ricochet off walls,
+        polluting measurements and burying subtle effects like weak scattering or fine phase shifts. Anechoic chambers try to tame those echoes with foam wedges, 
+        yet their effectiveness collapses at low frequency because the wedge depth must scale with wavelength, 
+        making low‑kHz setups impractically large; in solid 3D volumes for full elastic P–S studies, operating around 1–20 kHz means wavelengths approach
+         the sample size, so boundary energy can dominate the interior wavefield. Reduced‑size labs (kHz acoustics, plates, rooms, waveguides)
+          thus suffer reflections that mask the very scattering we want to observe; passive absorbers are bulky and narrowband, 
+          while classic active cancellation degrades off‑axis and at higher frequencies. This is compounded by a scale gap: seismology and many field scenarios live
+           below ~100 Hz, whereas conventional lab acoustics often push to hundreds of kHz or MHz to keep echoes at bay, making it hard to transfer 
+           insights—especially for frequency‑dependent phenomena like attenuation, dispersion, anisotropy, and nonlinearity that do not upscale reliably. 
+
       </p>
 
       <!-- Flex container for side-by-side media -->
@@ -81,12 +91,12 @@
  
         <!-- Right figure: MOV movie (Autoplay version) -->
         <figure style="flex: 1; min-width: 530px; max-width: 680px; ">
-          <video autoplay muted loop playsinline style="width: 101%; height: auto; object-fit: cover; 
-          margin-top: -86px; 
+          <video autoplay muted loop playsinline style="width: 220.5%; height: auto; object-fit: cover; 
+          margin-top: -233px; 
           margin-right: -80px; 
-          margin-bottom: -145px; 
-          margin-left: -70px;">
-            <source src="1_immersive_exp/schematic_rigid_wall_reflection_movie.mov" type="video/quicktime">
+          margin-bottom: -10px; 
+          margin-left: -780px;">
+            <source src="1_immersive_exp/schematic_rigid_wall_reflection_movie_2.mp4" type="video/quicktime">
             Your browser does not support the video tag.
           </video>
           <figcaption>
@@ -101,14 +111,78 @@
         <strong>Related:</strong> <a href="https://doi.org/10.3929/ethz-b-000573091" target="_blank" rel="noopener noreferrer"><em>Elastic immersive wave experimentation</em></a> – Doctoral Thesis, ETH Zurich, 2022.
       </p>
 
-
-
-    </section>
-  
    <!-- Right figure: MOV movie with Button to Play <button onclick="document.getElementById('myVideo').play()" style="margin-top: 10px; padding: 8px 16px; font-size: 16px;">Play Video</button> -->
     
 
-<!-- Monday cutline, to be followed-->
+    </section>
+  
+
+  <!-- Section: Immersive Boundary Conditions (IBCs) Concept -->
+  <section id="ibc-concept">
+    <h3>2) Immersive Boundary Conditions: Active Wave Energy Cancellation</h3>
+    <p>
+      In size-limited laboratories, reflections from rigid boundaries often obscure the waves scattered by interior objects.
+      One elegant solution is the deployment of active sources around the physical experimental domain. These active sources
+      are designed not only to generate waves but also to cancel the naturally outgoing waves via carefully controlled emissions.
+    </p>
+
+
+     <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1260px, 92vw);">
+        <!-- single line figure: MOV movie (Autoplay version) -->
+        <figure style="flex: 1;">
+          <video autoplay muted loop playsinline style="width: 120%; height: auto; object-fit: cover; 
+          margin-top: -220px; 
+          margin-right: -80px; 
+          margin-bottom: -10px; 
+          margin-left: -260px;">
+            <source src="1_immersive_exp/boundary_cancel_waves.mp4" type="video/quicktime">
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>
+            <strong>Active wave cancellation</strong><br>
+            This video illustrates the concept of using active sources to cancel outgoing waves in a wave experiment.
+          </figcaption>
+        </figure>
+
+      </div>
+
+
+
+<!-- Tuesday cutline, to be followed-->
+
+
+    <p>
+      In an ideal implementation, the active boundary sources generate counter-waves that completely cancel the outgoing wavefield.
+      As a result, the only waves visible in the experiment are those related to the interior scatterers, free from unwanted
+      boundary effects. This clear separation is crucial for accurate measurement and analysis.
+    </p>
+
+
+    <p>
+      Moreover, by emitting waves that embody the desired properties of an extended or virtual environment, the active sources
+      seamlessly connect the physical experiment to an artificial domain. In this way, the experiment is virtually "immersed" 
+      into a much larger space where the propagation characteristics are as if no rigid boundaries were present. In effect, the 
+      physical wave propagation mirrors the behavior of waves in an idealized, boundary-free environment.
+    </p>
+
+
+    <p>
+      Simulation movies of this approach vividly demonstrate that when active cancellation is implemented, the laboratory’s 
+      limited physical dimensions give way to an immersive experimental domain — one that accurately represents the real-world 
+      scattering phenomena and enables broadband measurements free from reflection-induced artefacts.
+    </p>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Section 2: Immersive Boundary Conditions (acoustic, real-time) -->
     <section id="ibc-acoustic">
