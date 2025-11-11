@@ -51,9 +51,7 @@
         </figure>
       </div>
 
-      <p>
-
-      </p>
+<strong>Related:</strong> Landrø &amp; Favretto‐Cristini, <a href="https://physics.aps.org/articles/v11/71" target="_blank" rel="noopener noreferrer">Acoustic Experiments without Borders, Physics 11, 71 (2018)</a>.
 
     </section>
 
@@ -120,6 +118,7 @@
   <!-- Section: Immersive Boundary Conditions (IBCs) Concept -->
   <section id="ibc-concept">
     <h3>2) Immersive Boundary Conditions: Active Wave Energy Cancellation</h3>
+
     <p>
       In size-limited laboratories, reflections from rigid boundaries often obscure the waves scattered by interior objects.
       One elegant solution is the deployment of active sources around the physical experimental domain.
@@ -194,64 +193,46 @@
     </figcaption>
   </figure>
 </div>
-
-
   </section>
 
 
 
+<section id="ibc-acoustic">
+  <h3>3) Immersive Boundary Conditions (IBCs): real-time, broadband acoustic implementation</h3>
+  <p>
+    IBCs let us virtually replace what lies beyond a control surface by extrapolating measurements from an outer recording ring to an inner emitting ring in real time. 
+    In our implementation, pressure and particle velocity measured on a closed outer surface are used to predict the incident wave field on the inner boundary using
+     representation theorems together with precomputed Green’s functions as “wave kernels” to extrapolate the field. This approach provides deterministic,
+      broadband, and global control at low latency, independent of frequency or incident angle. With low-latency FPGAs (≈200 μs compute time in air; ≈870 μs 
+      overall for a ~30 cm ring spacing), the extrapolated wave field is immediately re-injected into the lab so that waves cross seamlessly between the physical 
+      and virtual domains. This real-time prediction method cancels unwanted boundary reflections, enabling complex effects such as cloaking and holography without
+       any prior knowledge of the incident wave.
+  </p>
+
+  <div class="figure-grid" style="width: min(1260px, 92vw);">
+    <figure>
+      <a href="1_immersive_exp/ibc_acoustic.png" target="_blank" rel="noopener noreferrer">
+        <img src="1_immersive_exp/ibc_acoustic.png" alt="Two-ring IBC schematic: outer recording and inner emitting arrays" style="aspect-ratio: auto; object-fit: contain;">
+      </a>
+      <figcaption>Two-ring IBC schematic showing the outer recording and inner emitting arrays and the real-time extrapolation loop.</figcaption>
+    </figure>
+  </div>
+
+  <p>
+    <strong>Related:</strong> Becker et al., <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">PRX, 2018</a>.
+  </p>
+</section>
 
 
 
-<!-- Thursday cutline, to be followed-->
+
+<!-- Monday cutline, to be followed-->
 
 
-
-
-
-
-
-
-    <!-- Section 2: Immersive Boundary Conditions (acoustic, real-time) -->
-    <section id="ibc-acoustic">
-      <h3>2) Immersive Boundary Conditions (IBCs): real-time, broadband coupling</h3>
-      <p>
-        IBCs let us virtually replace what lies beyond a control surface. Measured pressure/velocity on an outer recording ring are
-        extrapolated in real time to an inner emitting ring; sources on that inner ring then inject the numerically predicted field
-        back into the lab. With low-latency FPGAs (~200 μs compute in air; ~870 μs total budget for a ~30 cm ring spacing),
-        waves pass seamlessly between physical and virtual worlds, enabling absorbing, cloaking, and holography behaviors without
-        knowing the incident field a priori.
-      </p>
-      <ul>
-        <li>Key idea: use representation theorems + precomputed Green’s functions as “wave kernels” for the extrapolation.</li>
-        <li>Why it matters: deterministic, broadband, and global control — no tuning to a single frequency or angle.</li>
-      </ul>
-
-      <div class="figure-grid" style="width: min(960px, 92vw);">
-        <figure>
-          <!-- Figure suggestion: Control geometry -->
-          <a href="../asset/research/placeholder_ibc_geometry.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/placeholder_ibc_geometry.jpg" alt="Two-ring setup for immersive boundary conditions with recording and emitting arrays">
-          </a>
-          <figcaption>Figure suggestion: Two-ring IBC schematic (outer recording, inner emitting) and the real-time extrapolation loop.</figcaption>
-        </figure>
-        <figure>
-          <!-- Figure suggestion: Hardware latency diagram -->
-          <a href="../asset/research/placeholder_latency.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/placeholder_latency.jpg" alt="Latency budget and FPGA control schematic for real-time IBC">
-          </a>
-          <figcaption>Figure suggestion: Latency budget for FPGA-based extrapolation and actuation; shows feasibility and bandwidth.</figcaption>
-        </figure>
-      </div>
-
-      <p><strong>Related:</strong> Becker et al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Science Advances, 2021</a>;
-        Becker et al., <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">PRX, 2018</a>.
-      </p>
-    </section>
 
     <!-- Section 3: Elastic immersive experiments (iterative) -->
     <section id="ibc-elastic">
-      <h3>3) Going elastic: an iterative IBC with only surface data</h3>
+      <h3>4) Going elastic: an iterative IBC with only surface data</h3>
       <p>
         For elastic media, we cannot rely on ultra-low-latency direct control at scale. Instead, we devised an iterative method that:
         (1) records on a closed free surface, (2) separates ingoing/outgoing constituents, (3) computes physical-to-virtual interactions,
