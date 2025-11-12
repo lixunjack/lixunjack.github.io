@@ -39,7 +39,8 @@
             <img src="1_immersive_exp/ETH_WaveLab.png" alt="Acoustic wave lab with arrays, scanning LDV, and waveguide rig" style="aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
-            ETH WaveLab: A versatile acoustic research facility where experiments at kHz frequencies are performed in compact, 
+            <strong>ETH WaveLab</strong><br>
+            This is a versatile acoustic research facility where experiments at kHz frequencies are performed in compact, 
             reflective spaces. For example, a 2D “sandwich” waveguide is used to simulate layered media and study broadband acoustic propagation, 
             while a large water tank (measuring 3.1 × 4.5 × 2.7 m) serves as a quasi–3D environment 
             for immersive experiments that bridge the frequency gap between laboratory and field scales. 
@@ -51,7 +52,7 @@
         </figure>
       </div>
 
-<strong>Related:</strong> Landrø &amp; Favretto‐Cristini, <a href="https://physics.aps.org/articles/v11/71" target="_blank" rel="noopener noreferrer">Acoustic Experiments without Borders, Physics 11, 71 (2018)</a>.
+<strong>Related:</strong>  Landrø &amp; Favretto‐Cristini, <a href="https://physics.aps.org/articles/v11/71" target="_blank" rel="noopener noreferrer">Acoustic Physics</a> 11, 71 (2018).
 
     </section>
 
@@ -106,7 +107,7 @@
       </div>
 
       <p>
-        <strong>Related:</strong> <a href="https://doi.org/10.3929/ethz-b-000573091" target="_blank" rel="noopener noreferrer"><em>Elastic immersive wave experimentation</em></a> – Doctoral Thesis, ETH Zurich, 2022.
+        <strong>Related:</strong> Xun Li, <a href="https://doi.org/10.3929/ethz-b-000573091" target="_blank" rel="noopener noreferrer"><em>Elastic immersive wave experimentation</em></a> – Doctoral Thesis, ETH Zurich, 2022.
       </p>
 
    <!-- Right figure: MOV movie with Button to Play <button onclick="document.getElementById('myVideo').play()" style="margin-top: 10px; padding: 8px 16px; font-size: 16px;">Play Video</button> -->
@@ -117,7 +118,7 @@
 
   <!-- Section: Immersive Boundary Conditions (IBCs) Concept -->
   <section id="ibc-concept">
-    <h3>2) Immersive Boundary Conditions: Active Wave Energy Cancellation</h3>
+    <h3>2) Immersive Boundary Conditions: Active wave energy cancellation</h3>
 
     <p>
       In size-limited laboratories, reflections from rigid boundaries often obscure the waves scattered by interior objects.
@@ -148,7 +149,6 @@
         </figure>
 
       </div>
-
 
       <p>
         The active sources can create a virtual environment by emitting waves designed not only to cancel naturally outgoing waves through carefully controlled emissions,
@@ -198,13 +198,12 @@
 
 
 <section id="ibc-acoustic">
-  <h3>3) Immersive Boundary Conditions (IBCs): real-time, broadband acoustic implementation</h3>
+  <h3>3) Immersive Boundary Conditions (IBCs): Real-time, broadband acoustic implementation</h3>
   <p>
     IBCs let us virtually replace what lies beyond a control surface by extrapolating measurements from an outer recording ring to an inner emitting ring in real time. 
     In our implementation, pressure and particle velocity measured on a closed outer surface are used to predict the incident wave field on the inner boundary using
      representation theorems together with precomputed Green’s functions as “wave kernels” to extrapolate the field. This approach provides deterministic,
-      broadband, and global control at low latency, independent of frequency or incident angle. With low-latency FPGAs (≈200 μs compute time in air; ≈870 μs 
-      overall for a ~30 cm ring spacing), the extrapolated wave field is immediately re-injected into the lab so that waves cross seamlessly between the physical 
+      broadband, and global control at low latency, independent of frequency or incident angle. With low-latency FPGAs (no more than 200 μs compute time), the extrapolated wave field is immediately re-injected into the lab so that waves cross seamlessly between the physical 
       and virtual domains. This real-time prediction method cancels unwanted boundary reflections, enabling complex effects such as cloaking and holography without
        any prior knowledge of the incident wave.
   </p>
@@ -214,13 +213,99 @@
       <a href="1_immersive_exp/ibc_acoustic.png" target="_blank" rel="noopener noreferrer">
         <img src="1_immersive_exp/ibc_acoustic.png" alt="Two-ring IBC schematic: outer recording and inner emitting arrays" style="aspect-ratio: auto; object-fit: contain;">
       </a>
-      <figcaption>Two-ring IBC schematic showing the outer recording and inner emitting arrays and the real-time extrapolation loop.</figcaption>
+      
+      <figcaption>
+        <strong>Acoustic Immersive Wave Experimentation</strong><br>
+        Schematic showing the outer recording and inner emitting arrays and the real-time extrapolation loop.
+      </figcaption>
     </figure>
   </div>
 
   <p>
-    <strong>Related:</strong> Becker et al., <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">PRX, 2018</a>.
+    <strong>Related:</strong> Becker et al., <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">PRX</a>, 8, 031011 2018.
   </p>
+</section>
+
+
+<!-- Section 4: Broadband cloaking (real-time, unknown sources) -->
+<section id="cloaking">
+  <h3>4) Cloaking: Perfect invisibility at all angles without prior source knowledge</h3>
+
+<p>
+  Think Harry Potter’s invisibility cloak: light bends around him and no one sees a thing. Doing that for light in open space is
+  famously hard—an optical cloak would need to steer every color and every angle around an object and still deliver the wavefront to
+  the observer “on time.” Passive materials run into causality and dispersion limits, so practical optical cloaks tend to be
+  narrowband, angle/polarization‑limited, or confined to special geometries.
+</p>
+
+<p>
+  For sound, we take a different route: instead of hiding the object, we hide its acoustic signature. Using interior boundary control
+  (IBC), an outer ring of microphones listens and a real‑time extrapolation predicts the wavefield at an inner ring of loudspeakers.
+  Those speakers emit a secondary field that cancels the object’s scattering—including multipath from the lab boundaries—without any
+  prior model of the incident sound. Even moving or unknown sources can be cloaked. 
+</p>
+
+
+  <!-- Flex container for side-by-side media -->
+  <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
+    <!-- Left figure: Conceptual/simulation schematic (cloaking only) -->
+    <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 25px;">
+      <a href="1_immersive_exp/Cloaking_Schematic.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="1_immersive_exp/Cloaking_Schematic.PNG"
+             alt="Active acoustic cloaking concept: microphones predict and speakers cancel the object’s scattering"
+             style="aspect-ratio: auto; object-fit: contain;">
+      </a>
+      <figcaption>
+        <strong>Active cloaking concept</strong><br>
+        A primary source generates the incident field; control
+        loudspeakers add a secondary field that suppresses the object’s scattering. Control inputs are computed in
+        real time by forward wavefield extrapolation from microphone measurements.
+      </figcaption>
+    </figure>
+
+    <!-- Right figure: Experimental setup -->
+    <figure style="flex: 1; min-width: 630px; max-width: 680px;">
+      <a href="1_immersive_exp/Cloaking_Exp_setup.png" target="_blank" rel="noopener noreferrer">
+        <img src="1_immersive_exp/Cloaking_Exp_setup.png"
+             alt="Experimental setup: dual microphone rings feed a low-latency FPGA controller driving an inner loudspeaker ring"
+             style="aspect-ratio: auto; object-fit: contain;">
+      </a>
+      <figcaption>
+        <strong>2D Experimental platform for active acoustic cloaking</strong><br>
+        (A) schematic and (B) photograph. Two circular arrays of
+        114 microphones each record the pressure field (C). An FPGA-based low-latency computational and control unit. (D) performs real-time
+        extrapolation to drive the control loudspeakers (E, F). Photo credit: Theodor S. Becker, ETH Zürich.
+        Adapted from Becker et&nbsp;al., Science Advances (2021).
+      </figcaption>
+    </figure>
+  </div>
+
+
+
+<p>
+  What does “invisible” look like in practice? We cloaked a quasi‑rigid circular scatterer (diameter 12.6 cm) inside a 2D waveguide by surrounding it with 20 control 
+  loudspeakers. A moving broadband primary field was synthesized by eight sources along a 96° arc. With the cloak off, both back‑ and forward‑scattering are visible;
+   with the cloak on, the measured total field matches the “no‑object” reference—even at later times when wall echoes dominate. Finite‑element simulations closely 
+   reproduce the measurements. Across ~3.5 octaves (up to ~8.7 kHz), the mean scattered intensity at the outer array is reduced by about −8.4 dB and the angular 
+   scattering pattern is uniformly suppressed, demonstrating all‑angle, source‑agnostic cloaking.
+</p>
+
+<div class="figure-grid" style="width: min(880px, 92vw);">
+  <figure>
+    <a href="1_immersive_exp/cloaking_result.jpg" target="_blank" rel="noopener noreferrer">
+      <img src="1_immersive_exp/cloaking_result.jpg"
+           alt="Cloaking results: cloak off/on/reference snapshots, measured and simulated fields, and frequency and angle-dependent scattered intensity reductions"
+           style="aspect-ratio: auto; object-fit: contain;">
+    </a>
+    <figcaption>
+      <strong>2D Cloaking of a Rigid Object in a Waveguide</strong><br>
+      (A–C) Experimental setup and snapshots; (D–F) measured fields at the outer microphone ring; (G–I) simulations of the same;
+      (J–K) scattered fields without/with cloak; (L) reduction in scattered acoustic intensity versus frequency; (M) angular distribution of scattered intensity.
+    </figcaption>
+  </figure>
+</div>
+
+  <p><strong>Key paper:</strong> Becker et&nbsp;al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Science Advances</a>, 7(37), 2021.</p>
 </section>
 
 
@@ -230,114 +315,9 @@
 
 
 
-    <!-- Section 3: Elastic immersive experiments (iterative) -->
-    <section id="ibc-elastic">
-      <h3>4) Going elastic: an iterative IBC with only surface data</h3>
-      <p>
-        For elastic media, we cannot rely on ultra-low-latency direct control at scale. Instead, we devised an iterative method that:
-        (1) records on a closed free surface, (2) separates ingoing/outgoing constituents, (3) computes physical-to-virtual interactions,
-        and (4) applies them via boundary sources with windowing to converge to an immersed state. No interior access, no need
-        to know the solid’s interior — yet we synthesize physical–virtual interactions and cancel primaries.
-      </p>
-      <ul>
-        <li>Contribution: 3D-capable elastic IBC workflow using only surface arrays (validated in 2D synthetics and lab prototypes).</li>
-        <li>Why it matters: “infinite” elastic experiments at seismic-band frequencies in compact labs.</li>
-      </ul>
-
-      <div class="figure-grid" style="width: min(960px, 92vw);">
-        <figure>
-          <!-- Figure suggestion: Iterative workflow -->
-          <a href="../asset/research/elastic-immersive_fig1.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/elastic-immersive_fig1.jpg" alt="Elastic immersive experimentation workflow with wavefield separation and iteration">
-          </a>
-          <figcaption>Figure suggestion: Elastic IBC workflow (Step 1–6 as in slides; separation, windowing, higher-order interactions).</figcaption>
-        </figure>
-        <figure>
-          <!-- Figure suggestion: Synthetic snapshots -->
-          <a href="../asset/research/elastic-immersive_snapshots.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/elastic-immersive_snapshots.jpg" alt="Snapshots showing cancellation of outgoing waves and virtual interactions">
-          </a>
-          <figcaption>Figure suggestion: Synthetic demonstrations of primary cancellation and iterative build-up of interactions.</figcaption>
-        </figure>
-      </div>
-
-      <p><strong>Key paper:</strong> Li, X., Robertsson, J., and van Manen, D.-J., <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener noreferrer">Elastic immersive wave experimentation</a>, GJI, 2023.</p>
-    </section>
-
-
-    <!-- Section 4: Removing boundary artefacts with MDD -->
-    <section id="mdd">
-      <h3>4) Removing boundary artefacts: Multidimensional Deconvolution (MDD)</h3>
-      <p>
-        citate MDD from other research story
-On top of that, we use a technique called Multi-Dimensional Deconvolution (MDD) to transform messy, echo-laden measurements into the clean, physically correct responses you would get in open space. Together, 
-
-        Rigid lab walls inject endless reverberation. With MDD we post-process recordings on a closed surface to retrieve the
-        free-space scattering Green’s functions of interior objects — exactly as if the boundary were transparent. The method is
-        purely data-driven: no source wavelet, no boundary characterization, no interior model needed. We separate the wavefield
-        on arbitrary curved, closed arrays using a local wavenumber method, then invert the convolutional system across many
-        illuminations.
-      </p>
-      <ul>
-        <li>Contribution: Closed-aperture unbounded acoustics via MDD; “radiation-condition” data for any interior scatterer.</li>
-        <li>Why it matters: supplies the correct kernels for holography and for cloning.</li>
-      </ul>
-
-      <div class="figure-grid" style="width: min(960px, 92vw);">
-        <figure>
-          <!-- Figure suggestion: Geometry SI / SO and MDC -->
-          <a href="../asset/research/jasa_mdd_setup.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/jasa_mdd_setup.jpg" alt="Two concentric surfaces, wavefield separation, and MDC inversion geometry">
-          </a>
-          <figcaption>Figure suggestion: MDD geometry (inner/outer surfaces; wavefield separation; MDC system) — cf. JASA 2021 Fig. 1/5.</figcaption>
-        </figure>
-        <figure>
-          <!-- Figure suggestion: Before/after MDD -->
-          <a href="../asset/research/jasa_mdd_results.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/jasa_mdd_results.jpg" alt="Green’s functions retrieved after MDD with boundary imprint removed">
-          </a>
-          <figcaption>Figure suggestion: Scattering Green’s functions with boundary imprint removed — cf. JASA 2021 Figs. 7–10.</figcaption>
-        </figure>
-      </div>
-
-      <p><strong>Key paper:</strong> Li, X., Becker, T., Ravasi, M., Robertsson, J., and van Manen, D.-J.,
-        <a href="https://doi.org/10.1121/10.0003706" target="_blank" rel="noopener noreferrer">Closed-aperture unbounded acoustics experimentation using multidimensional deconvolution</a>, JASA, 2021.
-      </p>
-    </section>
-
-    <!-- Section 5: Broadband cloaking (real-time, unknown sources) -->
-    <section id="cloaking">
-      <h3>5) Cloaking in the lab: broadband, real-time, no prior source knowledge</h3>
-      <p>
-        With IBCs we rendered a rigid scatterer invisible inside a 2D waveguide. The control loop extrapolates from a recording ring
-        to a sound-hard emitting ring and cancels all scattering, including multiples from the lab boundary. No a priori knowledge of
-        the incident field is needed — even moving or unknown sources are cloaked. The scattered intensity dropped by ~8 dB over
-        3.5 octaves.
-      </p>
-
-      <div class="figure-grid" style="width: min(960px, 92vw);">
-        <figure>
-          <!-- Figure suggestion: Cloak lab setup -->
-          <a href="../asset/research/sciadv_cloaking_lab.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/sciadv_cloaking_lab.jpg" alt="2D waveguide with outer microphones and inner loudspeakers for cloaking">
-          </a>
-          <figcaption>Figure suggestion: Cloaking setup — outer dual-ring microphones, inner ring of loudspeakers — cf. Science Advances 2021 Fig. 2.</figcaption>
-        </figure>
-        <figure>
-          <!-- Figure suggestion: Scattered intensity reduction -->
-          <a href="../asset/research/sciadv_cloaking_results.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/sciadv_cloaking_results.jpg" alt="Angular scattered intensity with and without cloak; broadband reduction">
-          </a>
-          <figcaption>Figure suggestion: Cloaking results — angular/frequency-domain intensity reductions — cf. Science Advances 2021 Fig. 3.</figcaption>
-        </figure>
-      </div>
-
-      <p><strong>Key paper:</strong> Becker, T. S., et al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Broadband acoustic invisibility and illusions</a>, Science Advances, 2021.</p>
-    </section>
-
     <!-- Section 6: Holography (virtual imprints) -->
     <section id="holography">
-      <h3>6) Holography: virtual imprints you can measure physically</h3>
+      <h3>5) Holography: virtual imprints you can measure physically</h3>
       <p>
         Using dual inner rings (effective monopole + dipole emission), we replay the scattered field of arbitrary virtual objects in real time.
         The lab sees exactly what would have been scattered by the virtual object. Think perfect on-demand illusions — switch
@@ -366,7 +346,12 @@ On top of that, we use a technique called Multi-Dimensional Deconvolution (MDD) 
       </p>
     </section>
 
+
+
+
+
     <!-- Section 7: Acoustic cloning (two-step: MDD + holography) -->
+     <!-- MDD will be cited from another section of introducing my research -->
     <section id="cloning">
       <h3>7) Cloning: acquire a digital twin, then bring it back to life</h3>
       <p>
@@ -448,6 +433,8 @@ On top of that, we use a technique called Multi-Dimensional Deconvolution (MDD) 
       </div>
     </section>
 
+
+  <!-- UPDATE REFERENCE! -->
     <!-- Section 9: Key references -->
     <section id="references">
       <h3>Key papers</h3>
@@ -463,7 +450,7 @@ On top of that, we use a technique called Multi-Dimensional Deconvolution (MDD) 
 
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> Xun (Jack) Li • Edinburgh, UK</small>
+      <small>© <span id="year"></span> Jack Li • Edinburgh, UK</small>
     </div>
   </footer>
 
@@ -473,39 +460,55 @@ On top of that, we use a technique called Multi-Dimensional Deconvolution (MDD) 
       if (y) y.textContent = new Date().getFullYear();
     })();
   </script>
+
+
+  <!-- Zoom and pan script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('wrapper');
     if (!wrapper) return;
 
-    let scale = 1; // initial scale factor
+    // Create an inner zoom target so we can translate + scale cleanly
+    let zoomInner = document.getElementById('zoom-inner');
+    if (!zoomInner) {
+      zoomInner = document.createElement('div');
+      zoomInner.id = 'zoom-inner';
+      // Move all children into zoomInner
+      while (wrapper.firstChild) zoomInner.appendChild(wrapper.firstChild);
+      wrapper.appendChild(zoomInner);
+    }
+
+    // Base state
+    let scale = 1;
+    let tx = 0; // translation x (px)
+    let ty = 0; // translation y (px)
     const ZOOM_STEP = 1.05;
     const MIN_SCALE = 0.5;
     const MAX_SCALE = 3;
 
-    const clamp = v => Math.max(MIN_SCALE, Math.min(v, MAX_SCALE));
-    const applyScale = () => {
-      wrapper.style.transform = `scale(${scale})`;
+    // Always use a fixed origin so every section scales the same
+    zoomInner.style.transformOrigin = 'center center';
+    zoomInner.style.willChange = 'transform';
+
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
+    const applyTransform = () => {
+      zoomInner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
     };
 
-    // Ctrl/Cmd + mouse wheel zoom (zooms toward the mouse pointer)
-    window.addEventListener('wheel', function(event) {
-      // Only apply zoom when CTRL (or Cmd on macOS) is pressed
+    // Zoom helpers
+    const zoomBy = (factor) => {
+      const newScale = clamp(scale * factor, MIN_SCALE, MAX_SCALE);
+      if (newScale === scale) return;
+      scale = newScale;
+      applyTransform();
+    };
+
+    // Ctrl/Cmd + mouse wheel zoom (uniform origin)
+    window.addEventListener('wheel', (event) => {
       if (!event.ctrlKey && !event.metaKey) return;
-
-      // Prevent browser zoom
-      event.preventDefault();
-
-      // Zoom around the mouse pointer
-      const rect = wrapper.getBoundingClientRect();
-      const offsetX = event.clientX - rect.left;
-      const offsetY = event.clientY - rect.top;
-      wrapper.style.transformOrigin = `${offsetX}px ${offsetY}px`;
-
-      // Update scale
-      scale = clamp(event.deltaY < 0 ? scale * ZOOM_STEP : scale / ZOOM_STEP);
-
-      applyScale();
+      event.preventDefault(); // prevent browser zoom
+      const factor = event.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP;
+      zoomBy(factor);
     }, { passive: false });
 
     // Ctrl/Cmd + '+' or '-' (and numpad) for keyboard zoom
@@ -521,31 +524,80 @@ On top of that, we use a technique called Multi-Dimensional Deconvolution (MDD) 
 
       let handled = false;
 
-      // Plus: Shift+'=' on many keyboards, or NumpadAdd, or direct '+'
       if (event.code === 'Equal' || event.code === 'NumpadAdd' || event.key === '+') {
-        scale = clamp(scale * ZOOM_STEP);
+        zoomBy(ZOOM_STEP);
         handled = true;
-      }
-      // Minus: '-' key, NumpadSubtract
-      else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
-        scale = clamp(scale / ZOOM_STEP);
+      } else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
+        zoomBy(1 / ZOOM_STEP);
         handled = true;
-      }
-      // Optional: Ctrl/Cmd + 0 to reset
-      else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
+      } else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
         scale = 1;
+        tx = 0;
+        ty = 0;
         handled = true;
       }
 
       if (handled) {
-        // For keyboard zoom, center the zoom (you can remember the last pointer if preferred)
-        wrapper.style.transformOrigin = 'center center';
-        event.preventDefault(); // prevent the browser’s own page zoom
-        applyScale();
+        event.preventDefault(); // prevent browser’s own page zoom
+        applyTransform();
       }
     });
+
+    // Optional: Space + drag to pan when zoomed
+    let isPanning = false;
+    let startX = 0, startY = 0, startTx = 0, startTy = 0;
+
+    const startPan = (clientX, clientY) => {
+      isPanning = true;
+      startX = clientX;
+      startY = clientY;
+      startTx = tx;
+      startTy = ty;
+      document.body.style.cursor = 'grabbing';
+    };
+
+    const movePan = (clientX, clientY) => {
+      if (!isPanning) return;
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+      tx = startTx + dx;
+      ty = startTy + dy;
+      applyTransform();
+    };
+
+    const endPan = () => {
+      isPanning = false;
+      document.body.style.cursor = '';
+    };
+
+    window.addEventListener('mousedown', (e) => {
+      // Only pan when Space is held
+      if (!e.target || !e.isTrusted) return;
+      if (e.button === 0 && (e.getModifierState && e.getModifierState(' '))) {
+        e.preventDefault();
+        startPan(e.clientX, e.clientY);
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => movePan(e.clientX, e.clientY));
+    window.addEventListener('mouseup', endPan);
+    window.addEventListener('mouseleave', endPan);
+
+    // For touchpads that send 'gesturestart/gesturechange' (Safari), keep uniform scaling
+    window.addEventListener('gesturestart', (e) => e.preventDefault());
+    window.addEventListener('gesturechange', (e) => {
+      e.preventDefault();
+      // e.scale is relative to the start of the gesture; convert to incremental factor
+      // Keep it gentle to avoid jumps
+      const factor = clamp(e.scale, 0.95, 1.05);
+      zoomBy(factor);
+    }, { passive: false });
+
+    // Initial apply
+    applyTransform();
   });
 </script>
+
 
 
 </body>

@@ -227,45 +227,62 @@
 <footer class="site-footer">
   <div class="container">
     <small>
-      © <span id="year"></span> Xun Li • Last updated <span id="last-updated"></span> • Edinburgh, UK
+      © <span id="year"></span> Jack Li • Last updated <span id="last-updated"></span> • Edinburgh, UK
     </small>
   </div>
 </footer>
 
 
+
+
+
+  <!-- Zoom and pan script -->
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const wrapper = document.getElementById('wrapper');
     if (!wrapper) return;
 
-    let scale = 1; // initial scale factor
+    // Create an inner zoom target so we can translate + scale cleanly
+    let zoomInner = document.getElementById('zoom-inner');
+    if (!zoomInner) {
+      zoomInner = document.createElement('div');
+      zoomInner.id = 'zoom-inner';
+      // Move all children into zoomInner
+      while (wrapper.firstChild) zoomInner.appendChild(wrapper.firstChild);
+      wrapper.appendChild(zoomInner);
+    }
+
+    // Base state
+    let scale = 1;
+    let tx = 0; // translation x (px)
+    let ty = 0; // translation y (px)
     const ZOOM_STEP = 1.05;
     const MIN_SCALE = 0.5;
     const MAX_SCALE = 3;
 
-    const clamp = v => Math.max(MIN_SCALE, Math.min(v, MAX_SCALE));
-    const applyScale = () => {
-      wrapper.style.transform = `scale(${scale})`;
+    // Always use a fixed origin so every section scales the same
+    zoomInner.style.transformOrigin = 'center center';
+    zoomInner.style.willChange = 'transform';
+
+    const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
+    const applyTransform = () => {
+      zoomInner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
     };
 
-    // Ctrl/Cmd + mouse wheel zoom (zooms toward the mouse pointer)
-    window.addEventListener('wheel', function(event) {
-      // Only apply zoom when CTRL (or Cmd on macOS) is pressed
+    // Zoom helpers
+    const zoomBy = (factor) => {
+      const newScale = clamp(scale * factor, MIN_SCALE, MAX_SCALE);
+      if (newScale === scale) return;
+      scale = newScale;
+      applyTransform();
+    };
+
+    // Ctrl/Cmd + mouse wheel zoom (uniform origin)
+    window.addEventListener('wheel', (event) => {
       if (!event.ctrlKey && !event.metaKey) return;
-
-      // Prevent browser zoom
-      event.preventDefault();
-
-      // Zoom around the mouse pointer
-      const rect = wrapper.getBoundingClientRect();
-      const offsetX = event.clientX - rect.left;
-      const offsetY = event.clientY - rect.top;
-      wrapper.style.transformOrigin = `${offsetX}px ${offsetY}px`;
-
-      // Update scale
-      scale = clamp(event.deltaY < 0 ? scale * ZOOM_STEP : scale / ZOOM_STEP);
-
-      applyScale();
+      event.preventDefault(); // prevent browser zoom
+      const factor = event.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP;
+      zoomBy(factor);
     }, { passive: false });
 
     // Ctrl/Cmd + '+' or '-' (and numpad) for keyboard zoom
@@ -281,33 +298,79 @@
 
       let handled = false;
 
-      // Plus: Shift+'=' on many keyboards, or NumpadAdd, or direct '+'
       if (event.code === 'Equal' || event.code === 'NumpadAdd' || event.key === '+') {
-        scale = clamp(scale * ZOOM_STEP);
+        zoomBy(ZOOM_STEP);
         handled = true;
-      }
-      // Minus: '-' key, NumpadSubtract
-      else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
-        scale = clamp(scale / ZOOM_STEP);
+      } else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
+        zoomBy(1 / ZOOM_STEP);
         handled = true;
-      }
-      // Optional: Ctrl/Cmd + 0 to reset
-      else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
+      } else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
         scale = 1;
+        tx = 0;
+        ty = 0;
         handled = true;
       }
 
       if (handled) {
-        // For keyboard zoom, center the zoom (you can remember the last pointer if preferred)
-        wrapper.style.transformOrigin = 'center center';
-        event.preventDefault(); // prevent the browser’s own page zoom
-        applyScale();
+        event.preventDefault(); // prevent browser’s own page zoom
+        applyTransform();
       }
     });
+
+    // Optional: Space + drag to pan when zoomed
+    let isPanning = false;
+    let startX = 0, startY = 0, startTx = 0, startTy = 0;
+
+    const startPan = (clientX, clientY) => {
+      isPanning = true;
+      startX = clientX;
+      startY = clientY;
+      startTx = tx;
+      startTy = ty;
+      document.body.style.cursor = 'grabbing';
+    };
+
+    const movePan = (clientX, clientY) => {
+      if (!isPanning) return;
+      const dx = clientX - startX;
+      const dy = clientY - startY;
+      tx = startTx + dx;
+      ty = startTy + dy;
+      applyTransform();
+    };
+
+    const endPan = () => {
+      isPanning = false;
+      document.body.style.cursor = '';
+    };
+
+    window.addEventListener('mousedown', (e) => {
+      // Only pan when Space is held
+      if (!e.target || !e.isTrusted) return;
+      if (e.button === 0 && (e.getModifierState && e.getModifierState(' '))) {
+        e.preventDefault();
+        startPan(e.clientX, e.clientY);
+      }
+    });
+
+    window.addEventListener('mousemove', (e) => movePan(e.clientX, e.clientY));
+    window.addEventListener('mouseup', endPan);
+    window.addEventListener('mouseleave', endPan);
+
+    // For touchpads that send 'gesturestart/gesturechange' (Safari), keep uniform scaling
+    window.addEventListener('gesturestart', (e) => e.preventDefault());
+    window.addEventListener('gesturechange', (e) => {
+      e.preventDefault();
+      // e.scale is relative to the start of the gesture; convert to incremental factor
+      // Keep it gentle to avoid jumps
+      const factor = clamp(e.scale, 0.95, 1.05);
+      zoomBy(factor);
+    }, { passive: false });
+
+    // Initial apply
+    applyTransform();
   });
 </script>
-
-
 
 
 </body>
