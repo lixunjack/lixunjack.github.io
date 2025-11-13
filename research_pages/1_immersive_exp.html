@@ -52,7 +52,7 @@
         </figure>
       </div>
 
-<strong>Related:</strong>  Landrø &amp; Favretto‐Cristini, <a href="https://physics.aps.org/articles/v11/71" target="_blank" rel="noopener noreferrer">Acoustic Physics</a> 11, 71 (2018).
+<strong>Related:</strong>  Landrø &amp; Favretto‐Cristini, <a href="https://physics.aps.org/articles/v11/71" target="_blank" rel="noopener noreferrer">Acoustic Physics</a> (2018).
 
     </section>
 
@@ -165,7 +165,9 @@
           </a>
           <figcaption>
             <strong>Immersive Wave Experimentation Concept</strong><br>
-            By employing active sources to both cancel outgoing waves and emit tailored waves, we simulate an unbounded or extended experimental domain. This setup enables the representation of interactions between the physical and virtual environments, allowing for an accurate study of wave propagation and scattering phenomena as if the laboratory boundaries were non-existent.
+            By employing active sources to both cancel outgoing waves and emit tailored waves, we simulate an unbounded or extended experimental domain.
+            This setup enables the representation of interactions between the physical and virtual environments, allowing for an accurate study of wave propagation 
+            and scattering phenomena as if the laboratory boundaries were non-existent.
           </figcaption>
         </figure>
       </div>
@@ -196,7 +198,6 @@
   </section>
 
 
-
 <section id="ibc-acoustic">
   <h3>3) Immersive Boundary Conditions (IBCs): Real-time, broadband acoustic implementation</h3>
   <p>
@@ -213,7 +214,7 @@
       <a href="1_immersive_exp/ibc_acoustic.png" target="_blank" rel="noopener noreferrer">
         <img src="1_immersive_exp/ibc_acoustic.png" alt="Two-ring IBC schematic: outer recording and inner emitting arrays" style="aspect-ratio: auto; object-fit: contain;">
       </a>
-      
+
       <figcaption>
         <strong>Acoustic Immersive Wave Experimentation</strong><br>
         Schematic showing the outer recording and inner emitting arrays and the real-time extrapolation loop.
@@ -222,7 +223,7 @@
   </div>
 
   <p>
-    <strong>Related:</strong> Becker et al., <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">PRX</a>, 8, 031011 2018.
+    <strong>Related:</strong> Becker et al., <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">PRX</a>, 2018.
   </p>
 </section>
 
@@ -249,7 +250,7 @@
   <!-- Flex container for side-by-side media -->
   <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
     <!-- Left figure: Conceptual/simulation schematic (cloaking only) -->
-    <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 25px;">
+    <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 0px;">
       <a href="1_immersive_exp/Cloaking_Schematic.PNG" target="_blank" rel="noopener noreferrer">
         <img src="1_immersive_exp/Cloaking_Schematic.PNG"
              alt="Active acoustic cloaking concept: microphones predict and speakers cancel the object’s scattering"
@@ -264,7 +265,7 @@
     </figure>
 
     <!-- Right figure: Experimental setup -->
-    <figure style="flex: 1; min-width: 630px; max-width: 680px;">
+    <figure style="flex: 1; min-width: 615px; max-width: 680px;">
       <a href="1_immersive_exp/Cloaking_Exp_setup.png" target="_blank" rel="noopener noreferrer">
         <img src="1_immersive_exp/Cloaking_Exp_setup.png"
              alt="Experimental setup: dual microphone rings feed a low-latency FPGA controller driving an inner loudspeaker ring"
@@ -274,13 +275,10 @@
         <strong>2D Experimental platform for active acoustic cloaking</strong><br>
         (A) schematic and (B) photograph. Two circular arrays of
         114 microphones each record the pressure field (C). An FPGA-based low-latency computational and control unit. (D) performs real-time
-        extrapolation to drive the control loudspeakers (E, F). Photo credit: Theodor S. Becker, ETH Zürich.
-        Adapted from Becker et&nbsp;al., Science Advances (2021).
+        extrapolation to drive the control loudspeakers (E, F). 
       </figcaption>
     </figure>
   </div>
-
-
 
 <p>
   What does “invisible” look like in practice? We cloaked a quasi‑rigid circular scatterer (diameter 12.6 cm) inside a 2D waveguide by surrounding it with 20 control 
@@ -305,8 +303,65 @@
   </figure>
 </div>
 
-  <p><strong>Key paper:</strong> Becker et&nbsp;al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Science Advances</a>, 7(37), 2021.</p>
+  <p><strong>Examples adapted from </strong> Becker et&nbsp;al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Science Advances</a>, 2021.</p>
 </section>
+
+
+
+<!-- Section 5: Holography (virtual imprints) -->
+<section id="holography">
+  <h3>5) Holography: Cheat an observer with virtual imprints</h3>
+
+  <p>
+    Picture the classic sci‑fi hologram: a lifelike person appears in front of you to talk, even though they’re far away. 
+    The trick is that your eyes receive the exact wavefronts they would have seen if that person were really there. 
+    Acoustic holography does the same for sound. We make microphones and loudspeakers conspire so an observer hears precisely the scattered field a 
+    chosen object would produce—even when that object isn’t present. By predicting, in real time, the wavefield on a sound‑transparent inner surface and driving 
+    collocated monopole+dipole emission (two close loudspeaker rings), we “imprint” a virtual object into the lab. To microphones (and your ears),
+     the illusion is indistinguishable from the real scatterer. Note that we use the same real-time extrapolation as for cloaking, but now to 
+     recreate the object’s scattered field rather than cancel it.
+  </p>
+
+  <!-- Flex container for side-by-side media -->
+  <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
+    <!-- Left figure: Conceptual/simulation schematic (holography only) -->
+    <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 0px;">
+      <a href="1_immersive_exp/holography_Schematic.PNG" target="_blank" rel="noopener noreferrer">
+        <img
+          src="1_immersive_exp/holography_Schematic.PNG"
+          alt="Simulation concept: active acoustic holography creates the scattered field of an object that is not physically present using real-time extrapolation"
+          style="aspect-ratio: auto; object-fit: contain;"
+        >
+      </a>
+      <figcaption>
+      <strong>Simulations demonstrating active holography</strong><br>
+       A primary source emits an initial wavefield (C), and active control sources create a hologram of an object that 
+       is not physically present (D). Control inputs are obtained by real‑time forward extrapolation from control sensor 
+       measurements.
+      </figcaption>
+    </figure>
+    <!-- Right figure: Experimental holography results -->
+    <figure style="flex: 1; min-width: 710px; max-width: 680px;">
+      <a href="1_immersive_exp/holography_Results.PNG" target="_blank" rel="noopener noreferrer">
+        <img
+          src="1_immersive_exp/holography_Results.PNG"
+          alt="Experimental creation of an acoustic hologram: setup, snapshots, and comparison of angular scattering for physical versus virtual scatterers"
+          style="aspect-ratio: auto; object-fit: contain;"
+        >
+      </a>
+      <figcaption>
+      <strong>Creation of acoustic holograms at a sound‑transparent surface</strong><br>
+       (A) Experimental setup and snapshots at 2.5&nbsp;ms and corresponding simulations.
+       (B) Reference with a physical object inside the waveguide. (C) Active hologram: control loudspeakers enabled, no physical object. 
+       (D) Angular distribution of scattered intensity for a physical (E) and virtual (F) scatterer. 
+      </figcaption>
+    </figure>
+  </div>
+
+  <p><strong>Examples adapted from </strong> Becker et&nbsp;al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Science Advances</a>, 2021.</p>
+  <p><strong>See also:</strong> van Manen et&nbsp;al., <a href="https://doi.org/10.1121/1.4919366" target="_blank" rel="noopener noreferrer">JASA</a>, 2015 (original theory); Börsing et&nbsp;al., <a href="https://doi.org/10.1103/PhysRevApplied.12.024011" target="_blank" rel="noopener noreferrer">Phys. Rev. Applied</a>, 2019 (1D demonstration).</p>
+</section>
+
 
 
 
@@ -314,46 +369,10 @@
 <!-- Monday cutline, to be followed-->
 
 
-
-    <!-- Section 6: Holography (virtual imprints) -->
-    <section id="holography">
-      <h3>5) Holography: virtual imprints you can measure physically</h3>
-      <p>
-        Using dual inner rings (effective monopole + dipole emission), we replay the scattered field of arbitrary virtual objects in real time.
-        The lab sees exactly what would have been scattered by the virtual object. Think perfect on-demand illusions — switch
-        scatterers without rebuilding hardware.
-      </p>
-
-      <div class="figure-grid" style="width: min(960px, 92vw);">
-        <figure>
-          <!-- Figure suggestion: Holography geometry -->
-          <a href="../asset/research/sciadv_holography_setup.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/sciadv_holography_setup.jpg" alt="Holography with sound-transparent inner surface using two close loudspeaker rings">
-          </a>
-          <figcaption>Figure suggestion: Holography configuration — sound-transparent inner surface with monopole/dipole emission — cf. Science Advances 2021 Fig. 4A.</figcaption>
-        </figure>
-        <figure>
-          <!-- Figure suggestion: Holographic scattering -->
-          <a href="../asset/research/sciadv_holography_results.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/sciadv_holography_results.jpg" alt="Agreement between physical scatterer and its hologram in angular scattered intensity">
-          </a>
-          <figcaption>Figure suggestion: Physical vs holographic scattering comparison — cf. Science Advances 2021 Fig. 4D–F.</figcaption>
-        </figure>
-      </div>
-
-      <p><strong>Related:</strong> van Manen et al., <a href="https://doi.org/10.1121/1.4919366" target="_blank" rel="noopener noreferrer">JASA, 2015</a> (theory);
-        Börsing et al., <a href="https://doi.org/10.1103/PhysRevApplied.12.024011" target="_blank" rel="noopener noreferrer">Phys. Rev. Applied, 2019</a> (early experiments).
-      </p>
-    </section>
-
-
-
-
-
     <!-- Section 7: Acoustic cloning (two-step: MDD + holography) -->
      <!-- MDD will be cited from another section of introducing my research -->
     <section id="cloning">
-      <h3>7) Cloning: acquire a digital twin, then bring it back to life</h3>
+      <h3>6) Cloning: True digital twin copying physical imprints and paste back to life</h3>
       <p>
         Cloning is a simple two-step process:
       </p>
@@ -371,39 +390,58 @@
         Because the twin is digital, we can augment it: translate/rotate it, scale its response, or even add non-physical gain/transparency.
       </p>
 
+
+For MDD details, please refer to another link with html link. here directly show MDD results, which is enough!   <a href="../mdd_work.html">← MDD work</a>
+
+
       <div class="figure-grid" style="width: min(960px, 92vw);">
         <figure>
           <!-- Figure suggestion: Two-step cloning flow -->
-          <a href="../asset/research/pra_cloning_flow.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/pra_cloning_flow.jpg" alt="Two-step cloning: MDD retrieval then holographic reconstruction">
+          <a href="1_immersive_exp/pra_cloning_flow.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="1_immersive_exp/pra_cloning_flow.jpg" alt="Two-step cloning: MDD retrieval then holographic reconstruction">
           </a>
-          <figcaption>Figure suggestion: Two-step cloning flowchart — cf. Phys. Rev. Applied 2023 Fig. 4 and Appendix B.</figcaption>
+          <figcaption>XXXX</figcaption>
         </figure>
+
+
+
+
+
         <figure>
           <!-- Figure suggestion: Green’s functions subset -->
-          <a href="../asset/research/pra_cloning_gfuncs.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/pra_cloning_gfuncs.jpg" alt="Retrieved scattering Green’s functions subsets used for extrapolation">
+          <a href="1_immersive_exp/pra_cloning_gfuncs.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="1_immersive_exp/pra_cloning_gfuncs.jpg" alt="Retrieved scattering Green’s functions subsets used for extrapolation">
           </a>
-          <figcaption>Figure suggestion: MDD-retrieved scattering Green’s functions — cf. PRA 2023 Fig. 7.</figcaption>
+          <figcaption>xxxx</figcaption>
         </figure>
         <figure>
+
+
           <!-- Figure suggestion: Clone vs real scatterers -->
-          <a href="../asset/research/pra_cloning_results.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/pra_cloning_results.jpg" alt="Comparisons of angular scattered intensities: real vs cloned (circle, square, cross)">
+          <a href="1_immersive_exp//pra_cloning_results.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="1_immersive_exp/pra_cloning_results.jpg" alt="Comparisons of angular scattered intensities: real vs cloned (circle, square, cross)">
           </a>
-          <figcaption>Figure suggestion: Real vs cloned scatterers (circle, square, cross) — cf. PRA 2023 Figs. 8–9.</figcaption>
+          <figcaption>xxxx</figcaption>
         </figure>
+
+
         <figure>
           <!-- Figure suggestion: Augmented clones -->
-          <a href="../asset/research/pra_cloning_augmentation.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/research/pra_cloning_augmentation.jpg" alt="Augmented cloning results: directional gain and virtual rotations">
+          <a href="1_immersive_exp//pra_cloning_augmentation.jpg" target="_blank" rel="noopener noreferrer">
+            <img src="1_immersive_exp//pra_cloning_augmentation.jpg" alt="Augmented cloning results: directional gain and virtual rotations">
           </a>
-          <figcaption>Figure suggestion: “Acoustic cyborgs”: add gain or rotate numerically — cf. PRA 2023 Fig. 10.</figcaption>
+          <figcaption>xxxx</figcaption>
         </figure>
       </div>
 
-      <p><strong>Key paper:</strong> Müller, J., Becker, T. S., Li, X., et al., <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Acoustic cloning</a>, Phys. Rev. Applied, 2023.</p>
+      <p><strong>Related paper:</strong> Müller, J., Becker, T. S., Li, X., et al., <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Phys. Rev. Applied</a>, 2023.</p>
     </section>
+
+
+
+
+
+
 
     <!-- Section 8: Applications and prospects -->
     <section id="prospects">
@@ -448,6 +486,9 @@
     </section>
   </main>
 
+
+<!-- foot notes -->
+
   <footer class="site-footer">
     <div class="container">
       <small>© <span id="year"></span> Jack Li • Edinburgh, UK</small>
@@ -461,6 +502,9 @@
     })();
   </script>
 
+
+
+<!-- Control the basic of zoom and pan -->
 
   <!-- Zoom and pan script -->
 <script>
