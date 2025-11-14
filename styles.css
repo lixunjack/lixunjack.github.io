@@ -139,6 +139,16 @@ nav ul {
   z-index: 1000;
 }
 
+#cloning li {
+  text-align: left;      /* Ensures the text within each list item is left-aligned */
+  /* padding-left: 0em;     Adds an indent equivalent to 2 times the current font size */
+  /* Alternatively, you can use margin-left instead of padding-left */
+  margin-left: 4em; 
+}
+
+
+
+
 @media only screen and (max-width: 768px) {
     /* Adjustments for smaller screens */
     body {

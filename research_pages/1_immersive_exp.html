@@ -265,7 +265,7 @@
     </figure>
 
     <!-- Right figure: Experimental setup -->
-    <figure style="flex: 1; min-width: 615px; max-width: 680px;">
+    <figure style="flex: 1; min-width: 515px; max-width: 680px;">
       <a href="1_immersive_exp/Cloaking_Exp_setup.png" target="_blank" rel="noopener noreferrer">
         <img src="1_immersive_exp/Cloaking_Exp_setup.png"
              alt="Experimental setup: dual microphone rings feed a low-latency FPGA controller driving an inner loudspeaker ring"
@@ -364,88 +364,202 @@
 
 
 
+<section id="cloning">
+  <h3>6) Acoustic Cloning: A Digital Twin Enabling Scatters Like the Real Object</h3>
+
+  <p>
+    Acoustic cloning is a powerful, two‑step strategy that ultimately creates a “digital twin” of a real scatterer—that is, a non‑physical replica that 
+    reproduces the same acoustic scattering characteristics as the original object. In our system,
+     the fundamental idea is to record the true scattering response of an object embedded in a well‑defined experimental environment and 
+     then use that retrieved information to “play back” the object’s influence on any arbitrary incident wavefield. 
+     This entire process unfolds in two primary steps:
+  </p>
+  
+    <!-- PAD THE BELOW WITH INCIDENT -->
+    <li>
+      <strong>Retrieval of the real scatterer’s properties through Multidimensional Deconvolution (MDD).</strong>
+    </li>
+    <li>
+      <strong>Holographic reconstruction of the scatterer’s imprint via immersive holographic techniques.</strong>
+    </li>
+  <!-- <hr> -->
+
+  <h4>Step 1: Acquiring the Scatterer’s Green’s Functions Using MDD</h3>
+
+  <p>
+    The first stage of acoustic cloning involves illuminating the real scatterer with controlled broadband signals. 
+    During this illumination, wavefields are recorded on a closed, sound‑transparent receiver aperture surrounding the scatterer.
+     By applying the method of <a href="../mdd_work.html">multidimensional deconvolution (MDD)</a>, the experimental data are post‑processed
+      to extract the scatterer’s full set of Green’s functions. These functions characterize how the acoustic wavefield propagates from the 
+      sources through the medium and scatters off the object. Crucially, the MDD approach removes any extraneous contributions—such as multiple
+       reflections and boundary effects—that would otherwise “pollute” the clean scattering signature of the object.
+  </p>
+
+  <p>
+    By eliminating the boundary‑induced reverberations, the resulting Green’s functions represent the object’s response under ideal radiation conditions. In other words, we retrieve the “pure” scattering characteristics as if the object were in an unbounded space.
+  </p>
+
+  <figure style="width:min(960px,92vw);margin:1rem auto;">
+    <a href="1_immersive_exp/Experiment_Geometry.PNG" target="_blank" rel="noopener noreferrer">
+      <img src="1_immersive_exp/Experiment_Geometry.PNG" alt="2D waveguide with outer recording ring SO and inner ring SI; microphones and sources for MDD and holography" style="width:100%;height:auto;">
+    </a>
+    <figcaption>
+      Setup: A two‐dimensional acoustic waveguide with two sound‑transparent rings. The outer ring (SO) records the wavefield, while the inner ring (SI) is used both for capturing data in the MDD step and for emitting signals in the holography step. A rigid boundary encloses the domain, but its imprint is carefully removed by MDD.
+    </figcaption>
+  </figure>
+
+  <p>
+    Once the raw data have been decomposed into their incident and outgoing components (a key process in MDD), a set of coupled Fredholm integral equations is formulated. Solving these equations in a least‑squares sense enables us to reconstruct the Green’s functions that reveal the object’s scattering behavior.
+  </p>
+
+  <p>
+    <strong>What Does This Mean Practically?</strong><br>
+    No prior knowledge of the object’s material properties, geometry, or source signature is required. Every detail is captured from the measurement data, making the approach remarkably general and robust even in reverberant laboratory environments.
+  </p>
+
+  <figure style="width:min(720px,92vw);margin:1rem auto;">
+    <a href="1_immersive_exp/motivate_Cloning_GFs.PNG" target="_blank" rel="noopener noreferrer">
+      <img src="1_immersive_exp/motivate_Cloning_GFs.PNG" alt="Motivation: why we modify Green’s functions to achieve cloning under radiation conditions" style="width:100%;height:auto;">
+    </a>
+    <figcaption>
+      Why change the Green’s functions? By removing unwanted boundary effects, the true scattering contribution of the object can be isolated and later digitally “pasted” back into the experimental domain with perfect fidelity.
+    </figcaption>
+  </figure>
+
+  <p>
+    In summary, after illuminating the scatterer and applying MDD, we obtain a set of Green’s functions that isolate and capture the object’s scattering response. For example, by subtracting the homogeneous (direct wave) component, only the contributions from the scatterer remain.
+  </p>
+
+  <figure style="width:min(960px,92vw);margin:1rem auto;">
+    <a href="1_immersive_exp/obtained_Green_function.PNG" target="_blank" rel="noopener noreferrer">
+      <img src="1_immersive_exp/obtained_Green_function.PNG" alt="Subset of scattering Green’s functions retrieved by MDD with boundary multiples removed" style="width:100%;height:auto;">
+    </a>
+    <figcaption>
+      Scattering Green’s functions retrieved by MDD (subset: G(φO, t | φI = 0°)). Boundary‑related multiples are removed to leave only the pure scattering contribution from the object—ready for holographic replay.
+    </figcaption>
+  </figure>
+
+  <!-- <hr> -->
+
+  <h4>Step 2: Reconstructing the Scatterer with Real‑Time Holography</h4>
+  <p>
+    With the scatterer’s Green’s functions in hand, the next step is to recreate the object’s acoustic imprint within the lab—even after the physical object has been removed. This is achieved using a holographic reconstruction process:
+  </p>
+
+  <ol>
+    <li>
+      <strong>Deactivate the Object:</strong> The physical scatterer is removed from the experimental domain.
+    </li>
+    <li>
+      <strong>Replay Green’s Functions:</strong> The previously retrieved Green’s functions are used as signal templates to drive an array of transducers on the inner ring (SI). These transducers emit time‑varying monopole and dipole signals derived from the Green’s functions.
+    </li>
+  </ol>
+
+  <p>
+    The resulting wavefield, excited by these precisely calibrated signals, reproduces all scattering phenomena—including multiple interactions between the incident wave and the scatterer’s numerical imprint—exactly as if the original object were still in place.
+  </p>
+
+  <p>
+    <strong>A Few Notable Features of the Holographic Clone:</strong><br>
+    • <em>Broadband Robustness:</em> The hologram responds correctly for any incident broadband wavefield.<br>
+    • <em>Versatility:</em> Whether the original scatterer is circular, square, or a complex cross, the holographic reconstruction faithfully reproduces its scattering features.<br>
+    • <em>Real‑Time Reproduction:</em> The reconstruction occurs with low latency; the echo and interference patterns build up in real time.
+  </p>
+
+  <figure style="width:min(960px,92vw);margin:1rem auto;">
+    <a href="1_immersive_exp/cloning_results_one.PNG" target="_blank" rel="noopener noreferrer">
+      <img src="1_immersive_exp/cloning_results_one.PNG" alt="Real vs cloned scattering: hologram off/on and comparison for circle, square, cross" style="width:100%;height:auto;">
+    </a>
+    <figcaption>
+      Validation: Comparison of the wavefield with holography off (empty waveguide) and with it on (holographic reconstruction active). Subtracting the homogeneous field shows that the scattered field matches the responses of the original scatterer across various shapes.
+    </figcaption>
+  </figure>
+
+  <!-- <hr> -->
+
+  <h4>Augmenting the Digital Twin: Beyond Mere Cloning</h4>
+
+  <p>
+    An especially exciting aspect of this approach is that the twin is defined digitally. Once the scatterer’s Green’s functions have been retrieved, they can be manipulated arbitrarily. For instance, you can:
+  </p>
+
+  <ul>
+    <li><strong>Rotate or Translate the Clone:</strong> Configure different spatial arrangements without physically modifying the original object.</li>
+    <li><strong>Scale Amplitudes:</strong> Introduce directional gain to alter the amplitude of scattering in specific directions.</li>
+    <li><strong>Modify Impedance or Transparency:</strong> Create “acoustic cyborgs” that interact with real wavefields while exhibiting non‑physical (or enhanced) behaviors.</li>
+  </ul>
+
+  <p>
+    These digital modifications can be made prior to playback through the holographic emitter. This opens up applications in:
+  </p>
+
+  <ul>
+    <li>
+      Enhanced metamaterial designs, where unit cells can be cloned and arranged without the challenges of physical manufacturing.
+    </li>
+    <li>
+      Virtual acoustic models, allowing simulation of an object’s response in various environments or configurations—thereby enabling rapid prototyping and testing.
+    </li>
+  </ul>
+
+  <figure style="width:min(960px,92vw);margin:1rem auto;">
+    <a href="1_immersive_exp/cloning_results_two.PNG" target="_blank" rel="noopener noreferrer">
+      <img src="1_immersive_exp/cloning_results_two.PNG" alt="Augmented clones: directional gain for a circle and numerical rotation for a square" style="width:100%;height:auto;">
+    </a>
+    <figcaption>
+      Augmented cloning: The left image shows a circular clone programmed to exhibit directional gain—amplifying reflections and yielding more transparent transmissions. The right image shows a square clone digitally rotated to replicate a physically rotated object. These examples highlight the potential to recreate and enhance scattering behavior beyond what is physically possible.
+    </figcaption>
+  </figure>
+
+  <!-- <hr> -->
+
+<h3>Wandering Thoughts</h3>
+
+<p>
+  Acoustic cloning feels a bit like moving from making models of the world to making models that <em>act back</em> on the world. We’re not copying atoms or materials; we’re copying how an object <em>behaves</em> when sound meets it—its scattering fingerprint—and then letting that behavior live on without the object. In that sense, the “clone” is less a replica and more a portable skill: a learned interaction you can carry to new places, switch on and off, or even bend to your will.
+</p>
+
+<p>
+  Why does this matter? Because interaction is often what we care about most. Acoustic cloning captures the full give-and-take between a wavefield and an object, across angles, frequencies, and multiple reflections. That changes how we prototype and experiment. Instead of machining many variants of a metamaterial, you clone the unit cell once and iterate digitally. Instead of hunting for anechoic spaces, you bring your own “infinite” lab with you. Instead of waiting for large simulations, you measure, learn, and replay—on demand.
+</p>
+
+<p>
+  The ripple effects extend beyond research. Imagine:
+</p>
+
+<ul>
+  <li><strong>Design at the speed of thought:</strong> Try, measure, clone, tweak—repeat. Turn days of fabrication into minutes of iteration.</li>
+  <li><strong>Acoustic heritage and education:</strong> Preserve the “sound” of instruments, halls, or artifacts and let students interact with them anywhere.</li>
+  <li><strong>Personalized spaces:</strong> Car cabins, classrooms, and headsets that remix their acoustic behavior in real time for comfort, clarity, or immersion.</li>
+  <li><strong>Metamaterials, demystified:</strong> Clone a unit cell, tile it virtually, and explore nonphysical variants (gain, custom directivity) before ever building.</li>
+</ul>
+
+<p>
+  Of course, power invites responsibility. If we can project acoustic “truths” into a room, we should mark what’s real and what’s rendered. Standards for safe output levels, disclosure in public spaces, and reproducible reporting will help keep the tech trustworthy. And we should keep sight of the limits: a clone is only as good as the bandwidth and geometry it learned from.
+</p>
+
+<p>
+  Personally, what excites me most is how <em>tangible</em> this feels. It’s not just a simulation on a screen; it’s physics you can stand inside. The jump from measuring a thing to <em>becoming</em> it—acoustically—changes how we ask questions. We can now ask “What if this object were rotated, softer, or directional?” and get the answer back from the lab in real time. That’s a different kind of conversation with nature—and one I suspect we’re only beginning to have.
+</p>
 
 
-<!-- Monday cutline, to be followed-->
 
-
-    <!-- Section 7: Acoustic cloning (two-step: MDD + holography) -->
-     <!-- MDD will be cited from another section of introducing my research -->
-    <section id="cloning">
-      <h3>6) Cloning: True digital twin copying physical imprints and paste back to life</h3>
-      <p>
-        Cloning is a simple two-step process:
-      </p>
-      <ol>
-        <li>
-          Acquire: illuminate a real scatterer placed inside a closed receiver aperture and use MDD to retrieve its scattering Green’s
-          functions under radiation conditions (free of boundary imprint).
-        </li>
-        <li>
-          Replay: remove the object; use immersive holography to extrapolate from the outer ring to the inner ring and drive the sources
-          so that the lab field scatters exactly as if the object were present — for any incident broadband wavefield, all orders included.
-        </li>
-      </ol>
-      <p>
-        Because the twin is digital, we can augment it: translate/rotate it, scale its response, or even add non-physical gain/transparency.
-      </p>
-
-
-For MDD details, please refer to another link with html link. here directly show MDD results, which is enough!   <a href="../mdd_work.html">← MDD work</a>
-
-
-      <div class="figure-grid" style="width: min(960px, 92vw);">
-        <figure>
-          <!-- Figure suggestion: Two-step cloning flow -->
-          <a href="1_immersive_exp/pra_cloning_flow.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="1_immersive_exp/pra_cloning_flow.jpg" alt="Two-step cloning: MDD retrieval then holographic reconstruction">
-          </a>
-          <figcaption>XXXX</figcaption>
-        </figure>
+  <p>
+    <p><strong>Examples adapted from </strong> Müller, J., Becker, T. S., Li, X., et al., <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Phys. Rev. Applied.</a> (2023)
+  </p>
+  
+  <p>
+   <p><strong> For further reading </strong> into the theory and implementation of MDD , please refer to the <a href="../mdd_work.html">MDD work page</a>.
+  </p>
+</section>
 
 
 
-
-
-        <figure>
-          <!-- Figure suggestion: Green’s functions subset -->
-          <a href="1_immersive_exp/pra_cloning_gfuncs.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="1_immersive_exp/pra_cloning_gfuncs.jpg" alt="Retrieved scattering Green’s functions subsets used for extrapolation">
-          </a>
-          <figcaption>xxxx</figcaption>
-        </figure>
-        <figure>
-
-
-          <!-- Figure suggestion: Clone vs real scatterers -->
-          <a href="1_immersive_exp//pra_cloning_results.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="1_immersive_exp/pra_cloning_results.jpg" alt="Comparisons of angular scattered intensities: real vs cloned (circle, square, cross)">
-          </a>
-          <figcaption>xxxx</figcaption>
-        </figure>
-
-
-        <figure>
-          <!-- Figure suggestion: Augmented clones -->
-          <a href="1_immersive_exp//pra_cloning_augmentation.jpg" target="_blank" rel="noopener noreferrer">
-            <img src="1_immersive_exp//pra_cloning_augmentation.jpg" alt="Augmented cloning results: directional gain and virtual rotations">
-          </a>
-          <figcaption>xxxx</figcaption>
-        </figure>
-      </div>
-
-      <p><strong>Related paper:</strong> Müller, J., Becker, T. S., Li, X., et al., <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Phys. Rev. Applied</a>, 2023.</p>
-    </section>
-
-
-
-
-
-
+<!-- Thursday cutline, to be followed-->
 
     <!-- Section 8: Applications and prospects -->
-    <section id="prospects">
-      <h3>8) Where this goes next</h3>
+    <section id="applications">
+      <h3>8) How could the immersive technology contribute to our life?</h3>
       <ul>
         <li>Mix real and virtual scattering to prototype metamaterials and digital twins rapidly.</li>
         <li>Car audio: local immersive zones per passenger, dynamically “reshaping” cabin acoustics.</li>
@@ -470,6 +584,8 @@ For MDD details, please refer to another link with html link. here directly show
         </figure>
       </div>
     </section>
+
+
 
 
   <!-- UPDATE REFERENCE! -->
