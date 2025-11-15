@@ -63,7 +63,7 @@ header img {
 
 nav ul {
       list-style: none;
-      background-color: #444;
+      background-color: #191919;
       text-align: center;
       padding: 20px;
       margin: 0;
@@ -94,7 +94,7 @@ main {
 h1, h2, h3, h4, h5, h6 {
     margin-top: 28px;
     margin-bottom: 16px;
-    color: #4a4a4a; /* Slightly darker shade for headings */
+    color: #010101; /* Slightly darker shade for headings */
 }
 
 section {
@@ -144,9 +144,16 @@ nav ul {
   /* padding-left: 0em;     Adds an indent equivalent to 2 times the current font size */
   /* Alternatively, you can use margin-left instead of padding-left */
   margin-left: 4em; 
+  color: #060606;
 }
 
+#references li {
+    color: #070707;
+    margin-bottom: 12px;
+    margin-left: 1em; 
+    /* font-size: 1.5rem;  */
 
+}
 
 
 @media only screen and (max-width: 768px) {
