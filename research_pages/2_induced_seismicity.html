@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Induced Seismicity at the UK Hot Dry Rock Site (Rosemanowes) — Jack Li</title>
+  <meta name="description" content="What 5,000+ microearthquakes at the Rosemanowes HDR site reveal about hydraulic diffusivity, anisotropy, and the seismic–aseismic partition during geothermal stimulation.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+  <main id="wrapper">
+    <section>
+      <p>
+        <a href="../index.html#research">← Back to Main Page</a>
+      </p>
+
+      <h2>Induced Seismicity at the UK “Hot Dry Rock” Test Site: Diffusivity, Anisotropy, and Aseismic Slip</h2>
+
+      <!-- write cutline on Wednesday-->
+
+
+
+      <p>
+        How much of a geothermal reservoir’s deformation is felt as earthquakes—and how much slips by silently?
+        We revisited a classic UK “hot dry rock” experiment at <em>Rosemanowes</em> (Cornwall) and analysed 5,184 induced
+        microearthquakes recorded during the main stimulation phase. Using simple but powerful metrics—like the
+        seismic strain partition factor and the seismogenic index—we found that only a tiny fraction of injected
+        strain was released seismically. Meanwhile, the growing cloud of event locations mapped out an
+        <em>anisotropic</em> hydraulic diffusivity tensor with exceptionally strong vertical permeability. Putting the pieces
+        together suggests a coherent mechanism: shear slip on optimally oriented pre-existing joints, coupled with widespread
+        aseismic opening and creep that channel fluid vertically.
+      </p>
+
+      <p>
+        <strong>Paper:</strong> Li, X., Main, I., &amp; Jupe, A. (2018). <em>Induced seismicity at the UK ‘hot dry rock’ test site for geothermal energy production</em>.
+        Geophysical Journal International, 214, 331–344.
+        <a href="https://doi.org/10.1093/gji/ggy135" target="_blank" rel="noopener noreferrer">https://doi.org/10.1093/gji/ggy135</a>
+      </p>
+    </section>
+
+
+
+    <!-- Site and background -->
+    <section id="site">
+      <h3>1) Site and Geological Background</h3>
+
+      <p>
+        The Rosemanowes Quarry lies on the Carnmenellis granite in southwest UK, part of the Cornubian batholith.
+        The HDR concept targeted hot, low-permeability crystalline rock at ~2 km depth. Stimulation used elevated-pressure
+        injection to increase connectivity and flow. Downhole accelerometers and calibration surveys delivered a high-quality
+        microseismic catalogue in the 1980s—later reprocessed to modern standards.
+      </p>
+
+      <div class="figure-grid" style="width: min(700px, 92vw);">
+        <figure>
+          <a href="2_induced_seismicity/site_location.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/site_location.png" alt="Location of the Rosemanowes HDR site on the Carnmenellis granite (Cornubian batholith)" style="aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Rosemanowes HDR site</strong><br>
+            Location on the Carnmenellis granite, a low-porosity, low-permeability pluton extending to >10 km depth. Graph adapted from Baria et al. (1984c).
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+
+    <!-- Injection, production, seismic response -->
+    <section id="injection-seismicity">
+      <h3>2) Injection, Production, and A Decelerating Seismic Response</h3>
+
+      <p>
+        Fluid injection (VI) and production (VP) define the <em>net</em> volume stored, VN = VI − VP. We compared the
+        rate of seismic moment release to the rate of net injection in 30 h windows to estimate an <em>apparent shear
+        modulus</em> μ<sub>ap</sub> and a <em>strain partition factor</em> η = μ<sub>ap</sub>/μ. Two key results emerged:
+      </p>
+      <ul>
+        <li>η ≈ 10<sup>−4</sup> (≈0.01%) → deformation was overwhelmingly <em>aseismic</em>.</li>
+        <li>A <em>step-like drop</em> in μ<sub>ap</sub> with ongoing injection (near net volume ≈ 70,600 m³) indicating
+            a <em>deceleration</em> of seismic response as storage increased.</li>
+      </ul>
+
+      <div class="figure-grid" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: min(1260px, 92vw);">
+        <figure style="flex: 1; min-width: 320px; max-width: 600px;">
+          <a href="2_induced_seismicity/cumulative injection.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/cumulative injection.png" alt="Cumulative injection, production, and net volume vs time with shut-ins and stimulations annotated" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Fluid operations and storage</strong><br>
+            Cumulative injection, production, shut-ins, and stimulations. Net storage grows; significant fluid is retained in the subsurface.
+          </figcaption>
+        </figure>
+
+        <figure style="flex: 1; min-width: 320px; max-width: 600px;">
+          <a href="2_induced_seismicity/TemporalEvolution.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/TemporalEvolution.png" alt="Apparent shear modulus versus net injected volume showing a step-like decrease" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Decelerating seismic response</strong><br>
+            μ<sub>ap</sub> shows a statistically preferred step-drop with VN, consistent with increasing aseismic deformation.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+
+
+
+    <!-- Statistical properties -->
+    <section id="statistics">
+      <h3>3) Statistical Properties: Gutenberg–Richter and Seismogenic Index</h3>
+
+      <p>
+        The frequency–magnitude distribution follows a Gutenberg–Richter law with a high <em>b-value</em>:
+        b ≈ 2.28 ± 0.21 (Mc ≈ −1.0), suggesting low effective stress concentration. Using Shapiro’s framework,
+        we estimated a <em>seismogenic index</em> Σ ≈ −4.2 (for Mc ≈ −0.8), on the low side for geothermal projects and
+        consistent with the very small seismic strain fraction.
+      </p>
+
+      <div class="figure-grid" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: min(1260px, 92vw);">
+        <figure style="flex: 1; min-width: 320px; max-width: 600px;">
+          <a href="induced_seismicity/gr_plot_placeholder.png" target="_blank" rel="noopener noreferrer">
+            <img src="induced_seismicity/gr_plot_placeholder.png" alt="Gutenberg–Richter cumulative frequency–magnitude plot with maximum-likelihood fit" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Gutenberg–Richter</strong><br>
+            High b-value indicates low stress intensity on the largest structures—consistent with broad, compliant storage.
+          </figcaption>
+        </figure>
+
+        <figure style="flex: 1; min-width: 320px; max-width: 600px;">
+          <a href="induced_seismicity/seismogenic_index_placeholder.png" target="_blank" rel="noopener noreferrer">
+            <img src="induced_seismicity/seismogenic_index_placeholder.png" alt="Seismogenic index versus time and versus log VN for several thresholds Mc" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Seismogenic index</strong><br>
+            Σ ≈ −4.2: low susceptibility to induced seismicity per unit injected volume.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Flow models -->
+    <section id="flow-models">
+      <h3>4) Flow Models: From Isotropic Diffusion to Anisotropic Channeling</h3>
+
+      <p>
+        If pore-pressure relaxes in a uniform isotropic medium, the triggering front radius scales as r ∝ t<sup>1/2</sup>.
+        Instead, the mean event distance here scales as r ∝ t<sup>0.382±0.017</sup>—a hallmark of <em>non-Fickian</em> diffusion.
+        Fitting an ellipsoidal triggering front yields principal apparent diffusivities:
+      </p>
+
+      <ul>
+        <li>D<sub>11</sub> ≈ 0.01 m²/s (minor axis, ~NE)</li>
+        <li>D<sub>22</sub> ≈ 0.03 m²/s (intermediate axis, ~NW)</li>
+        <li>D<sub>33</sub> ≈ 1.6 m²/s (major axis, vertical)</li>
+      </ul>
+
+      <p>
+        The vertical component dwarfs the horizontal—implying a strongly permeable vertical channel formed or activated during stimulation.
+      </p>
+
+      <div class="figure-grid" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: min(1260px, 92vw);">
+        <figure style="flex: 1; min-width: 320px; max-width: 600px;">
+          <a href="induced_seismicity/r_t_scaling_placeholder.png" target="_blank" rel="noopener noreferrer">
+            <img src="induced_seismicity/r_t_scaling_placeholder.png" alt="Mean triggering distance versus time on log–log axes with slope ~0.382" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Non-Fickian diffusion</strong><br>
+            r ∝ t<sup>0.382</sup> deviates from 1/2: consistent with anisotropic channeling and feedbacks.
+          </figcaption>
+        </figure>
+
+        <figure style="flex: 1; min-width: 320px; max-width: 600px;">
+          <a href="induced_seismicity/triggering_front_ellipsoid_placeholder.png" target="_blank" rel="noopener noreferrer">
+            <img src="induced_seismicity/triggering_front_ellipsoid_placeholder.png" alt="Ellipsoidal triggering front fit to the event cloud; major axis vertical" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Ellipsoidal front</strong><br>
+            Principal axes reveal strong vertical diffusivity (D<sub>33</sub>) relative to horizontal components.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Fractures, stress, focal mechanisms -->
+    <section id="fractures">
+      <h3>5) Fracture Networks, Stress, and Focal Mechanisms</h3>
+
+      <p>
+        Downhole imaging shows two subvertical joint sets: a NW–SE set (Set 1) and an orthogonal NE–SW set (Set 2).
+        Present-day maximum horizontal stress (σ<sub>H</sub>) aligns ~NW–SE—close to the major horizontal axis of the seismic cloud.
+        Composite focal mechanisms are dominantly double-couple strike-slip (some normal-faulting), consistent with shear reactivation.
+      </p>
+
+      <div class="figure-grid" style="width: min(1100px, 92vw);">
+        <figure>
+          <a href="induced_seismicity/epicentre_map_ellipse_placeholder.png" target="_blank" rel="noopener noreferrer">
+            <img src="induced_seismicity/epicentre_map_ellipse_placeholder.png" alt="Epicentral map with best-fit ellipse, principal axes, joint set roses, and stress azimuths" style="aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Event cloud and structure</strong><br>
+            The horizontal ellipse is aligned with σ<sub>H</sub>. Only a few outliers lie beyond the envelope (possible channels).
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="figure-grid" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: min(1260px, 92vw);">
+        <figure style="flex: 1; min-width: 340px; max-width: 600px;">
+          <a href="induced_seismicity/cross_sections_placeholder.png" target="_blank" rel="noopener noreferrer">
+            <img src="induced_seismicity/cross_sections_placeholder.png" alt="Depth cross-sections along intermediate and minor horizontal axes showing vertical elongation" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Vertical elongation</strong><br>
+            Cross-sections highlight the strong vertical extent of induced activity and permeability.
+          </figcaption>
+        </figure>
+
+        <figure style="flex: 1; min-width: 340px; max-width: 600px;">
+          <a href="induced_seismicity/focal_mechanisms_placeholder.png" target="_blank" rel="noopener noreferrer">
+            <img src="induced_seismicity/focal_mechanisms_placeholder.png" alt="Composite focal mechanisms: mostly strike-slip, some normal-faulting" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Composite mechanisms</strong><br>
+            Dominantly strike-slip DC solutions, consistent with shear on optimally oriented Set 1 joints.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Mechanism -->
+    <section id="mechanism">
+      <h3>6) A Consistent Triggering Mechanism</h3>
+
+      <p>
+        The observations are jointly explained by:
+      </p>
+      <ul>
+        <li><strong>Shear slip</strong> on optimally oriented pre-existing subvertical joints (Set 1, ~NW–SE) → recorded microseismicity.</li>
+        <li><strong>Aseismic opening and creep</strong> that dominate the strain budget (η ≈ 10<sup>−4</sup>), reducing μ<sub>ap</sub> with ongoing injection.</li>
+        <li><strong>Activated tensile conduits</strong> (e.g., Set 2 openings) that boost vertical permeability, producing strong anisotropic diffusivity.</li>
+      </ul>
+
+      <div class="figure-grid" style="width: min(1000px, 92vw);">
+        <figure>
+          <a href="induced_seismicity/fracture_cartoon_placeholder.png" target="_blank" rel="noopener noreferrer">
+            <img src="induced_seismicity/fracture_cartoon_placeholder.png" alt="Conceptual cartoon: shear on Set 1, pull-apart opening on Set 2, vertical fluid channels" style="aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Conceptual model</strong><br>
+            Shear reactivation on Set 1 promotes tensile opening on Set 2, creating vertically connected pathways.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- Implications -->
+    <section id="implications">
+      <h3>7) Implications for Geothermal Operations and Risk</h3>
+      <ul>
+        <li><strong>Most deformation can be silent.</strong> Low η and Σ imply that large volumetric strain accrues with little seismic release.</li>
+        <li><strong>Expect anisotropic flow.</strong> Strong vertical permeability suggests fracture networks can funnel fluid upward/downward efficiently.</li>
+        <li><strong>Seismic response can decelerate.</strong> The step-like drop in μ<sub>ap</sub> indicates evolving storage and connectivity during operations.</li>
+        <li><strong>Monitoring priorities.</strong> Joint-set orientation, in-situ stress, and vertical connectivity become key for forecasting and mitigation.</li>
+      </ul>
+    </section>
+
+
+<!-- References -->
+<section id="references">
+  <h3>References</h3>
+  <ul class="references">
+    <li>
+      Li, X., Main, I., &amp; Jupe, A. (2018). Induced seismicity at the UK ‘hot dry rock’ test site for geothermal energy production.
+      <em>Geophysical Journal International</em>, 214, 331–344.
+      <a href="https://doi.org/10.1093/gji/ggy135" target="_blank" rel="noopener noreferrer">https://doi.org/10.1093/gji/ggy135</a>
+    </li>
+
+    <li>
+      Baria, R., Hearn, K., Lanyon, G., &amp; Batchelor, A. (1984a).
+      <em>Camborne School of Mines geothermal energy project: Hydraulic results</em> (Technical report).
+      Camborne School of Mines.
+    </li>
+    <li>
+      Baria, R., Hearn, K., Lanyon, G., &amp; Batchelor, A. (1984b).
+      <em>Camborne School of Mines geothermal energy project: Jointing</em> (Technical report).
+      Camborne School of Mines.
+    </li>
+    <li>
+      Baria, R., Hearn, K., Lanyon, G., &amp; Batchelor, A. (1984c).
+      <em>Camborne School of Mines geothermal energy project: Microseismic results</em> (Technical report).
+      Camborne School of Mines.
+    </li>
+    <li>
+      Baria, R., Hearn, K., Lanyon, G., &amp; Batchelor, A. (1984d).
+      <em>Camborne School of Mines geothermal energy project: Seismic velocity structure</em> (Technical report).
+      Camborne School of Mines.
+    </li>
+
+    <li>
+      Shapiro, S. A. (2015). <em>Fluid-induced seismicity</em>. Cambridge University Press.
+    </li>
+    <li>
+      Parotidis, M., Shapiro, S. A., &amp; Rothert, E. (2004). Back front of seismicity induced after termination of borehole fluid injection.
+      <em>Geophysical Research Letters</em>, 31, L02612.
+    </li>
+    <li>
+      McGarr, A. (2014). Maximum magnitude earthquakes induced by fluid injection.
+      <em>Journal of Geophysical Research: Solid Earth</em>, 119, 1008–1019.
+    </li>
+  </ul>
+</section>
+
+
+
+
+  
+  <!-- footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Jack Li • Edinburgh, UK</small>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
+  </script>
+
+  <!-- Zoom and pan (same behavior as other research pages) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.getElementById('wrapper');
+      if (!wrapper) return;
+
+      let zoomInner = document.getElementById('zoom-inner');
+      if (!zoomInner) {
+        zoomInner = document.createElement('div');
+        zoomInner.id = 'zoom-inner';
+        while (wrapper.firstChild) zoomInner.appendChild(wrapper.firstChild);
+        wrapper.appendChild(zoomInner);
+      }
+
+      let scale = 1, tx = 0, ty = 0;
+      const ZOOM_STEP = 1.05, MIN_SCALE = 0.5, MAX_SCALE = 3;
+      zoomInner.style.transformOrigin = 'center center';
+      zoomInner.style.willChange = 'transform';
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
+      const applyTransform = () => zoomInner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      const zoomBy = (factor) => { const ns = clamp(scale * factor, MIN_SCALE, MAX_SCALE); if (ns !== scale) { scale = ns; applyTransform(); } };
+
+      window.addEventListener('wheel', (e) => {
+        if (!e.ctrlKey && !e.metaKey) return;
+        e.preventDefault();
+        zoomBy(e.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP);
+      }, { passive: false });
+
+      window.addEventListener('keydown', (e) => {
+        const el = e.target;
+        const isEditable = el && (el.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
+        if (isEditable) return;
+        const hasMod = e.ctrlKey || e.metaKey; if (!hasMod) return;
+        let handled = false;
+        if (e.code === 'Equal' || e.code === 'NumpadAdd' || e.key === '+') { zoomBy(ZOOM_STEP); handled = true; }
+        else if (e.code === 'Minus' || e.code === 'NumpadSubtract' || e.key === '-') { zoomBy(1 / ZOOM_STEP); handled = true; }
+        else if (e.code === 'Digit0' || e.code === 'Numpad0' || e.key === '0') { scale = 1; tx = 0; ty = 0; handled = true; }
+        if (handled) { e.preventDefault(); applyTransform(); }
+      });
+
+      let isPanning = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
+      const startPan = (x, y) => { isPanning = true; startX = x; startY = y; startTx = tx; startTy = ty; document.body.style.cursor = 'grabbing'; };
+      const movePan = (x, y) => { if (!isPanning) return; tx = startTx + (x - startX); ty = startTy + (y - startY); applyTransform(); };
+      const endPan = () => { isPanning = false; document.body.style.cursor = ''; };
+
+      window.addEventListener('mousedown', (e) => {
+        if (e.button === 0 && (e.getModifierState && e.getModifierState(' '))) {
+          e.preventDefault(); startPan(e.clientX, e.clientY);
+        }
+      });
+      window.addEventListener('mousemove', (e) => movePan(e.clientX, e.clientY));
+      window.addEventListener('mouseup', endPan);
+      window.addEventListener('mouseleave', endPan);
+
+      window.addEventListener('gesturestart', (e) => e.preventDefault());
+      window.addEventListener('gesturechange', (e) => { e.preventDefault(); const f = clamp(e.scale, 0.95, 1.05); zoomBy(f); }, { passive: false });
+
+      applyTransform();
+    });
+  </script>
+</body>
+</html>
