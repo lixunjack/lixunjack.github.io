@@ -16,9 +16,7 @@
 
       <h2>Induced Seismicity at the UK “Hot Dry Rock” Test Site: Diffusivity, Anisotropy, and Aseismic Slip</h2>
 
-      <!-- write cutline on Wednesday-->
-
-
+      <!-- To be done, polish all below and incorporate some movies by implementing new stuff from original python code, using GPT to expand a better visualization of results-->
 
       <p>
         How much of a geothermal reservoir’s deformation is felt as earthquakes—and how much slips by silently?
@@ -92,18 +90,31 @@
           </figcaption>
         </figure>
 
+
+
         <figure style="flex: 1; min-width: 320px; max-width: 600px;">
-          <a href="2_induced_seismicity/TemporalEvolution.png" target="_blank" rel="noopener noreferrer">
-            <img src="2_induced_seismicity/TemporalEvolution.png" alt="Apparent shear modulus versus net injected volume showing a step-like decrease" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          <a href="2_induced_seismicity/ShutIn.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/ShutIn.png" alt="Apparent shear modulus versus net injected volume showing a step-like decrease" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Temporal evolution of cumulative seismic moment</strong><br>
+            ‘Shut-in’ denotes a period during which production well is closed while ‘stimulation’ refers to a period of hydraulic fracture at high injection rates. The label ‘aseismic’ represents periods when there were no or few seismic events.
+          </figcaption>
+        </figure>
+
+
+        <figure style="flex: 1; min-width: 320px; max-width: 600px;">
+          <a href="2_induced_seismicity/temporal_evolution.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/temporal_evolution.png" alt="Apparent shear modulus versus net injected volume showing a step-like decrease" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
             <strong>Decelerating seismic response</strong><br>
             μ<sub>ap</sub> shows a statistically preferred step-drop with VN, consistent with increasing aseismic deformation.
           </figcaption>
         </figure>
+
       </div>
     </section>
-
 
 
 
@@ -120,8 +131,8 @@
 
       <div class="figure-grid" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: min(1260px, 92vw);">
         <figure style="flex: 1; min-width: 320px; max-width: 600px;">
-          <a href="induced_seismicity/gr_plot_placeholder.png" target="_blank" rel="noopener noreferrer">
-            <img src="induced_seismicity/gr_plot_placeholder.png" alt="Gutenberg–Richter cumulative frequency–magnitude plot with maximum-likelihood fit" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          <a href="2_induced_seismicity/gr_plot.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/gr_plot.png" alt="Gutenberg–Richter cumulative frequency–magnitude plot with maximum-likelihood fit" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
             <strong>Gutenberg–Richter</strong><br>
@@ -130,8 +141,8 @@
         </figure>
 
         <figure style="flex: 1; min-width: 320px; max-width: 600px;">
-          <a href="induced_seismicity/seismogenic_index_placeholder.png" target="_blank" rel="noopener noreferrer">
-            <img src="induced_seismicity/seismogenic_index_placeholder.png" alt="Seismogenic index versus time and versus log VN for several thresholds Mc" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          <a href="2_induced_seismicity/seismi_index.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/seismi_index.png" alt="Seismogenic index versus time and versus log VN for several thresholds Mc" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
             <strong>Seismogenic index</strong><br>
@@ -140,6 +151,7 @@
         </figure>
       </div>
     </section>
+
 
     <!-- Flow models -->
     <section id="flow-models">
@@ -161,10 +173,23 @@
         The vertical component dwarfs the horizontal—implying a strongly permeable vertical channel formed or activated during stimulation.
       </p>
 
+
       <div class="figure-grid" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: min(1260px, 92vw);">
+        
+          <figure style="flex: 1; min-width: 320px; max-width: 600px;">
+          <a href="2_induced_seismicity/flow_front.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/flow_front.png" alt="Ellipsoidal triggering front fit to the event cloud; major axis vertical" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          </a>
+          <figcaption>
+            <strong>Triggering front</strong><br>
+            Plot of the distances r_i between the location of the ith event hypocentre and the injection point (dots) and the flow rate as a function of time after the main injection phase (upper curve, right-hand scale). The red curve is the best estimate (by eye) for an envelope function of the flow front of the form r ∝ t1/2
+          </figcaption>
+        </figure>
+        
+        
         <figure style="flex: 1; min-width: 320px; max-width: 600px;">
-          <a href="induced_seismicity/r_t_scaling_placeholder.png" target="_blank" rel="noopener noreferrer">
-            <img src="induced_seismicity/r_t_scaling_placeholder.png" alt="Mean triggering distance versus time on log–log axes with slope ~0.382" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          <a href="2_induced_seismicity/nonficker_fit.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/nonficker_fit.png" alt="Mean triggering distance versus time on log–log axes with slope ~0.382" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
             <strong>Non-Fickian diffusion</strong><br>
@@ -172,15 +197,6 @@
           </figcaption>
         </figure>
 
-        <figure style="flex: 1; min-width: 320px; max-width: 600px;">
-          <a href="induced_seismicity/triggering_front_ellipsoid_placeholder.png" target="_blank" rel="noopener noreferrer">
-            <img src="induced_seismicity/triggering_front_ellipsoid_placeholder.png" alt="Ellipsoidal triggering front fit to the event cloud; major axis vertical" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
-          </a>
-          <figcaption>
-            <strong>Ellipsoidal front</strong><br>
-            Principal axes reveal strong vertical diffusivity (D<sub>33</sub>) relative to horizontal components.
-          </figcaption>
-        </figure>
       </div>
     </section>
 
@@ -194,10 +210,10 @@
         Composite focal mechanisms are dominantly double-couple strike-slip (some normal-faulting), consistent with shear reactivation.
       </p>
 
-      <div class="figure-grid" style="width: min(1100px, 92vw);">
+      <div class="figure-grid" style="width: min(600px, 92vw);">
         <figure>
-          <a href="induced_seismicity/epicentre_map_ellipse_placeholder.png" target="_blank" rel="noopener noreferrer">
-            <img src="induced_seismicity/epicentre_map_ellipse_placeholder.png" alt="Epicentral map with best-fit ellipse, principal axes, joint set roses, and stress azimuths" style="aspect-ratio: auto; object-fit: contain;">
+          <a href="2_induced_seismicity/xy_cloud.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/xy_cloud.png" alt="Epicentral map with best-fit ellipse, principal axes, joint set roses, and stress azimuths" style="aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
             <strong>Event cloud and structure</strong><br>
@@ -208,8 +224,8 @@
 
       <div class="figure-grid" style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; width: min(1260px, 92vw);">
         <figure style="flex: 1; min-width: 340px; max-width: 600px;">
-          <a href="induced_seismicity/cross_sections_placeholder.png" target="_blank" rel="noopener noreferrer">
-            <img src="induced_seismicity/cross_sections_placeholder.png" alt="Depth cross-sections along intermediate and minor horizontal axes showing vertical elongation" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          <a href="2_induced_seismicity/yz_cloud.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/yz_cloud.png" alt="Depth cross-sections along intermediate and minor horizontal axes showing vertical elongation" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
             <strong>Vertical elongation</strong><br>
@@ -218,8 +234,8 @@
         </figure>
 
         <figure style="flex: 1; min-width: 340px; max-width: 600px;">
-          <a href="induced_seismicity/focal_mechanisms_placeholder.png" target="_blank" rel="noopener noreferrer">
-            <img src="induced_seismicity/focal_mechanisms_placeholder.png" alt="Composite focal mechanisms: mostly strike-slip, some normal-faulting" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
+          <a href="2_induced_seismicity/beach_ball.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/beach_ball.png" alt="Composite focal mechanisms: mostly strike-slip, some normal-faulting" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
             <strong>Composite mechanisms</strong><br>
@@ -228,6 +244,8 @@
         </figure>
       </div>
     </section>
+
+
 
     <!-- Mechanism -->
     <section id="mechanism">
@@ -244,8 +262,8 @@
 
       <div class="figure-grid" style="width: min(1000px, 92vw);">
         <figure>
-          <a href="induced_seismicity/fracture_cartoon_placeholder.png" target="_blank" rel="noopener noreferrer">
-            <img src="induced_seismicity/fracture_cartoon_placeholder.png" alt="Conceptual cartoon: shear on Set 1, pull-apart opening on Set 2, vertical fluid channels" style="aspect-ratio: auto; object-fit: contain;">
+          <a href="2_induced_seismicity/fracture_cartoon.png" target="_blank" rel="noopener noreferrer">
+            <img src="2_induced_seismicity/fracture_cartoon.png" alt="Conceptual cartoon: shear on Set 1, pull-apart opening on Set 2, vertical fluid channels" style="aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
             <strong>Conceptual model</strong><br>
