@@ -6,12 +6,7 @@ What’s in this repo:
 - Jekyll configuration and content (pages, layouts, includes, assets)
 - GitHub Actions workflows for continuous integration and deployment
 - Documentation for local development, deployment and clean-up
-
-Guides included:
- - Clean up old Deployments via GitHub API
- - Delete GitHub Actions workflow runs
- - Windows cmd examples using GitHub CLI (gh)
-
+- Method to Clean up old Deployments via GitHub API ('Method_Clean_Deployed_WorkFlow')
 
 
 ### Key files at a glance
