@@ -39,7 +39,7 @@
           <figcaption>
             <strong>Thin section of Red Meule sandstone (France) under plane‑polarized light</strong> <br> 
             Each grain touches its neighbours at tiny, fragile contacts – the source of much of the rock’s nonlinear behaviour.
-            Field of view: 3.1&nbsp;mm. Adapted from Rivière et&nbsp;al. (2015).
+            Field of view: 3.1&nbsp;mm. Adapted from Rivière et&nbsp;al. (2015b).
           </figcaption>
         </figure>
       </div>
@@ -116,7 +116,7 @@
             while 1&nbsp;MHz pulses probe the instantaneous seismic velocity.
             (Middle)Example of projecting the high‑frequency velocity changes onto the low‑frequency strain cycle.
             (Right) The resulting nonlinear “loop” shows hysteresis and conditioning – the rock’s stiffness does not follow the same path on loading and unloading.
-            Adapted from Rivière et&nbsp;al. (2015).
+            Adapted from Rivière et&nbsp;al. (2015a).
           </figcaption>
         </figure> 
       </div>
@@ -199,143 +199,288 @@
       seismic waves as small perturbations travelling through a linear elastic Earth.
     </p>
 
-    <p>
-      Granular solids – like sandstones, concrete, fault gouge, porous chalk – are different. They are made of
-      stiff mineral grains glued together by weaker material, riddled with microcracks, grain contacts, and bonds.
-      These internal defects are small (from nanometres up to microns) but numerous, and they dominate the
-      material’s compliance and attenuation. Meanwhile, a pack of glass beads is also counted as a granular material, if the package is compressed enough to make solid‑like behaviour emerge.
-      Below we show an example of Xray micro‑CT images of two granular solids under triaxial loading:
-    </p>
+  <p>
+  Granular solids (e.g., sandstone, concrete, fault gouge, porous chalk) behave differently from
+    homogeneous solids. They comprise stiff mineral grains cemented by weaker phases and contain abundant internal
+    defects—microcracks, grain contacts, and intergranular bonds. Although these features are small (nanometres to
+    microns), they are numerous and typically control bulk compliance and wave attenuation. A compressed pack of
+    glass beads is also a granular material: under sufficient confinement it develops solid-like behaviour governed
+    primarily by contact mechanics. Below shows representative X-ray micro-CT slices of two granular solids
+    imaged in situ under triaxial loading.
+  </p>
 
-    <div class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
-      <figure style="flex:1; min-width:320px; max-width:560px;">
-        <a href="3_nonlinear_resonance/Clashach_sandstone.png" target="_blank" rel="noopener noreferrer">
-          <img src="3_nonlinear_resonance/Clashach_sandstone.png"
-              alt="X-ray micro-CT X–Y slice of Clashach sandstone showing grains and pore space, imaged in a triaxial loading cell under confining pressure."
-              style="width:100%; aspect-ratio:auto; object-fit:contain;">
-        </a>
-        <figcaption>
-          <strong>Figure 6a.</strong> X ray micro CT slice through Clashach sandstone acquired during a triaxial loading experiment
-          (Diamond Light Source, Jan&nbsp;2025). Bright regions are mineral grains; dark regions are pores. The pore network and
-          grain contacts provide compliant, damage prone “weak links” where nonlinear elasticity and attenuation are often controlled.
-        </figcaption>
-      </figure>
+  <div class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/Clashach_sandstone.png" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/Clashach_sandstone.png"
+            alt="X-ray micro-CT X–Y slice of Clashach sandstone showing mineral grains and pore space, imaged in a triaxial loading cell."
+            style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>X-ray micro-CT slice through Clashach sandstone acquired during a triaxial loading experiment
+        (Diamond Light Source; On The Edge Project, Jan&nbsp;2025)</strong><br> Bright regions correspond to mineral grains; dark regions are pores. Pore space and
+        grain contacts form compliant “weak links” that commonly localise damage and influence nonlinear elasticity and attenuation.
+      </figcaption>
+    </figure>
 
-      <figure style="flex:1; min-width:320px; max-width:560px;">
-        <a href="3_nonlinear_resonance/GlassBead.png" target="_blank" rel="noopener noreferrer">
-          <img src="3_nonlinear_resonance/GlassBead.png"
-              alt="X-ray micro-CT X–Y slice of a glass-bead pack in a triaxial experiment, showing near-spherical beads and the pore space between them."
-              style="width:100%; aspect-ratio:auto; object-fit:contain;">
-        </a>
-        <figcaption>
-          <strong>Figure 6b.</strong> X ray micro CT slice of a glass bead pack in a triaxial loading experiment (Diamond Light Source;
-          CATFAIL project, 2018). Compared with natural rock, this geometry is simpler—nearly spherical grains with well defined contacts—
-          which makes it a useful “clean” analogue for isolating contact mechanics and interpreting nonlinear and hysteretic behaviour.
-          Image courtesy of Dr.&nbsp;Alexis Cartwright Taylor and Michael Chander (University of Edinburgh).
-        </figcaption>
-      </figure>
-    </div>
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/GlassBead.png" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/GlassBead.png"
+            alt="X-ray micro-CT X–Y slice of a glass-bead pack in a triaxial experiment, showing near-spherical beads and inter-bead pore space."
+            style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>X-ray micro-CT slice of a glass-bead pack during triaxial loading (Diamond Light Source;
+        CATFAIL project, 2018)</strong><br> The near-spherical grains and well-defined contacts provide a controlled analogue for isolating
+        contact mechanics and interpreting nonlinear and hysteretic behaviour. Image courtesy of Dr.&nbsp;Alexis Cartwright Taylor
+        and Michael Chander (University of Edinburgh).
+      </figcaption>
+    </figure>
+  </div>
 
     <p>
       The key point is that “small strain” at the sample scale does <em>not</em> mean small deformation everywhere inside
       the microstructure. Even when the bulk strain is only microstrain, deformation can concentrate at a tiny fraction
-      of the volume: at compliant pores, crack tips, and fragile grain contacts. Those contacts can open/close or slip
-      in an asymmetric, history dependent way—so the effective stiffness depends on both the instantaneous strain and
+      of the volume: at compliant pores, crack tips, and fragile grain contacts (Guyer and Johnson, 2009). 
+      Those contacts can open/close or slip in an asymmetric, history dependent way—so the effective stiffness depends on both the instantaneous strain and
       how the sample got there.
     </p>
 
-    <p>
-      Experiments have shown that:
-    </p>
 
-    <ul>
-      <li>
-        <strong>Nonlinearity kicks in at extremely small strains</strong>, sometimes as low as $ 10^{-7} $–$ 10^{-6} $, far below the threshold where you would expect classical lattice
-        anharmonicity to matter.
-      </li>
-      
-      <li>
-        The response is <strong>strongly asymmetric</strong>: compression and extension do not behave the same.
-        Compression can close cracks and increase stiffness; tension can open contacts and cause dramatic softening.
-      </li>
+<p>
+  A large body of classic experiments has established a few robust features of granular and cracked solids:
+</p>
 
-      <li>
-        The stress–strain relation shows <strong>hysteresis</strong> and <strong>memory</strong>: the path taken
-        (loading vs unloading) matters, and the material “remembers” past excursions.
-      </li>
-    </ul>
+<ul>
+  <li>
+    <strong>Nonlinearity appears at surprisingly small strains</strong>—sometimes as low as $ 10^{-7} $–$ 10^{-6} $—well below the level where
+    conventional lattice anharmonicity would be expected to dominate.
+  </li>
 
+  <li>
+    The stress–strain relationship exhibits <strong>hysteresis</strong> and <strong>memory</strong> as shown above in the Introduction. 
+    The response is <strong>highly asymmetric</strong>: loading and unloading follow different paths,
+    and the current response depends on the material’s previous strain history. 
+    Compression tends to close cracks and stiffen the material, whereas tension can open contacts and trigger pronounced softening. 
+  </li>
+</ul>
   </section>
 
 
 
- <!-- Xmas cutline: make also blog style-->
+<!-- 2. Duffing oscillator -->
+<section id="oscillators">
+  <h3>2) A Mathematical Playground: The Duffing Oscillator</h3>
 
-    <!-- 2. Duffing oscillator -->
-    <section id="oscillators">
-      <h3>2) A Mathematical Playground: The Duffing Oscillator</h3>
+  <p>
+    Before getting lost in the messy microstructure of real rocks—thousands of contacts, partial slip, crack opening/closure,
+    and long-term “memory”—it helps to study a clean nonlinear system that already reproduces one of the most visible lab
+    signatures: <strong>a resonance peak that tilts and develops a “cliff”</strong>.
+  </p>
 
-      <p>
-        Before tackling real rocks, a simpler nonlinear system – the Duffing oscillator – shows how <em>asymmetry</em> and <em>cliffs</em> can arise from strong softening alone:
-      </p>
+  <p>
+    The simplest playground for this is the <strong>Duffing oscillator</strong>. You can picture it as a mass-on-a-spring system (for example, the movie below)
+    where the spring is no longer perfectly linear: as the motion grows, the restoring force becomes slightly stronger or weaker
+    than Hooke’s law would predict.
+  </p>
 
-      <p>
-        $ \ddot{x} + \phi \dot{x} + k x + \delta x^3 = A_r \sin(\omega t). $
-      </p>
+<div class="figure-grid"
+     style="display:flex; flex-wrap:nowrap; gap:1rem; justify-content:center; width:min(1260px, 92vw);">
+  <figure style="flex:1; margin:0;">
+    <img
+      src="3_nonlinear_resonance/duffing_phi_k_delta_Ar.gif"
+      alt="Animated schematic of a forced Duffing oscillator: a block attached to a nonlinear spring moves back and forth as the system is driven."
+      style="width:100%; height:auto; object-fit:contain;
+             margin-top:-15px; margin-right:0px; margin-bottom:-40px; margin-left:-20px;"
+    >
+    <figcaption>
+      <strong>Mass-on-a-(nonlinear)-spring schematic</strong><br>
+      The block position follows the numerical solution $ x(t) $ of the forced Duffing equation.
+      The spring drawing is only a visual guide (not a force-law plot): the key idea is that the restoring force
+      includes a cubic term, so the “effective stiffness” depends on amplitude—one of the simplest routes to tilted,
+      asymmetric resonance peaks and jump (“cliff”) behaviour in frequency sweeps.
+      <span style="white-space:nowrap;">(Example parameters in this animation: φ=0.1, k=0.2, δ=0.55, A_r=0.75, ω=1.0.)</span>
+    </figcaption>
+  </figure>
+</div>
 
-      <p>
-        As $ | \delta | $ or $ A_r $ grows, the resonance peak shifts, tilts, and ultimately folds over to create a vertical “cliff” where tiny frequency changes trigger large amplitude jumps (a bifurcation).
-      </p>
 
-      <div class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
-        <figure style="flex:1; min-width:320px; max-width:560px;">
-          <a href="nonlinear_elasticity/duffing_time_series.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/duffing_time_series.png"
-                 alt="Time series of Duffing oscillator approaching steady-state amplitude"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>Nonlinear oscillation near resonance: approach to a stable amplitude.</figcaption>
-        </figure>
 
-        <figure style="flex:1; min-width:320px; max-width:560px;">
-          <a href="nonlinear_elasticity/duffing_resonance_cliff.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/duffing_resonance_cliff.png"
-                 alt="Duffing resonance curve with asymmetric peak and vertical cliff"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>Duffing resonance curve with an asymmetric peak and a cliff.</figcaption>
-        </figure>
-      </div>
+  <p style="text-align:center;">
+    $ \ddot{x} + \phi \dot{x} + kx + \delta x^3 = A_r \sin(\omega t). $
+  </p>
 
-      <p>
-        <strong>Related:</strong> Xun Li,
-        <a href="https://mountainscholar.org/handle/11124/172339" target="_blank" rel="noopener noreferrer">
-          <em>A unified interpretation of nonlinear elasticity in granular solids</em>
-        </a>
-        – Master’s thesis, Colorado School of Mines.
-      </p>
+  <p>
+    In this equation, $ x $ is the displacement (or a strain-like variable), $ \phi $ controls damping (energy loss),
+    $ k $ is the familiar linear stiffness, and the cubic term $ \delta x^3 $ introduces nonlinearity. The system is driven at
+    frequency $ \omega $ with amplitude $ A_r $.
+  </p>
 
-    </section>
+  <p>
+    The sign of $ \delta $ sets the “personality” of the oscillator:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Softening</strong> ($ \delta < 0 $): the effective stiffness drops as amplitude increases, so the resonance shifts to
+      <em>lower</em> frequency.
+    </li>
+    <li>
+      <strong>Hardening</strong> ($ \delta > 0 $): the effective stiffness increases with amplitude, so the resonance shifts to
+      <em>higher</em> frequency.
+    </li>
+  </ul>
+
+  <div class="figure-grid" style="width:min(750px,92vw);">
+    <figure>
+      <a href="3_nonlinear_resonance/Duffing_equation.PNG" target="_blank" rel="noopener">
+        <img
+          src="3_nonlinear_resonance/Duffing_equation.PNG"
+          alt="Numerical time-series solution of the Duffing oscillator under sinusoidal forcing."
+          style="width:100%;object-fit:contain;"
+        >
+      </a>
+      <figcaption>
+        <strong>Numerical solution of the Duffing oscillator (time domain)</strong><br>
+        Even though the drive is sinusoidal, the response amplitude depends on frequency and on how large the oscillation becomes,
+        because stiffness is amplitude-dependent.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    The most revealing view is the <strong>frequency response</strong>: sweep $ \omega $ and track the steady oscillation amplitude.
+    In a linear oscillator the resonance peak is smooth and symmetric. In the Duffing oscillator, as $ | \delta | $ or $ A_r $
+    grows, the peak <strong>shifts</strong> and <strong>leans</strong>—already resembling what we see in many rock resonance experiments.
+  </p>
+
+  <p>
+    If the nonlinearity is strong enough (especially for softening), the curve can actually <strong>fold over</strong>.
+    That folding implies that, for the same driving frequency, there may be more than one possible steady response.
+    In a sweep experiment the system follows one stable branch until it reaches the fold, then it <strong>jumps</strong> abruptly to
+    another branch—creating the vertical-looking “cliff” where tiny frequency changes produce large amplitude changes.
+  </p>
+
+  <div class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/duffling_mild_curve.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/duffling_mild_curve.PNG"
+             alt="Duffing resonance response with mild softening, showing a tilted peak."
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Mild nonlinearity: tilted resonance peak</strong><br>
+        As the response grows, the peak becomes asymmetric and shifts (for softening, toward lower frequency).
+      </figcaption>
+    </figure>
+
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/duffling_strong_curve.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/duffling_strong_curve.PNG"
+             alt="Duffing resonance response with strong softening, showing foldover and jump (cliff) behaviour."
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Strong nonlinearity: foldover and “cliff” (jump phenomenon)</strong><br>
+        Once the curve folds, sweeps can jump between stable branches, producing sharp amplitude changes.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    <strong>The above mathematical oscillator actually connects back to rocks:</strong> the Duffing oscillator is a clean way to understand why nonlinear resonance curves
+    naturally become skewed and can develop cliffs—even without any microcracks, friction, or complex geometry.
+    But real granular rocks go further: they show pronounced <strong>hysteresis</strong>, <strong>conditioning</strong>, and
+    <strong>slow recovery</strong> that a basic Duffing model does not capture. The next step is to move from “one nonlinear spring”
+    to a physically motivated model for many evolving grain contacts.
+  </p>
+
+  <p>
+    <strong>Related:</strong> Xun Li,
+    <a href="https://mountainscholar.org/handle/11124/172339" target="_blank" rel="noopener noreferrer">
+      <em>A unified interpretation of nonlinear elasticity in granular solids</em>
+    </a>
+    – Master’s thesis, Colorado School of Mines.
+  </p>
+</section>
+
 
 <!-- 3. Thermodynamic contact model -->
 <section id="thermo-model">
   <h3>3) A Thermodynamic Picture: Fractures as Bistable Elements</h3>
 
   <p>
-    We follow the Physical Review B model (Li, Sens‑Schönfelder &amp; Snieder, 2018): each microcontact/fracture is <em>bistable</em> (open or closed) with an energy barrier $ E_b $ between states. Thermal activation drives switching with Arrhenius rates:
+    The Duffing oscillator is a great “shape of nonlinear resonance” toy model, but it is essentially
+    instantaneous and memoryless. The thermodynamic contact picture here adds what rocks seem to need most:
+    <strong>internal state variables</strong> (open/closed populations) with <strong>rate-dependent evolution</strong>.
   </p>
 
   <p>
-    $$
-    \tau_o = A \, e^{(E_b - E_o)/k_B T}, \quad \tau_c = A \, e^{(E_b - E_c)/k_B T}.
-    $$
+    The key idea is to stop thinking of a rock as
+    “one spring”, and instead treat it as <em>many tiny mechanical switches</em>.
+    Each grain contact (or microcrack) can sit in one of two metastable states:
+    a <strong>closed</strong> state (stiffer) or an <strong>open</strong> state (softer), as shown below.
+  </p>
+
+
+
+  <div class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/two_states.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/two_states.PNG"
+             alt="Bistable energy diagram for open and closed fractures separated by a barrier"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Bistable contact picture</strong><br>
+        Each contact has two states (open/closed) separated by an energy barrier; thermal activation enables switching.
+      </figcaption>
+    </figure>
+
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/energy_levels.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/energy_levels.PNG"
+             alt="Energy levels of open and closed fractures as a function of dynamic strain"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Strain tilts the energies</strong><br>
+        Sigmoid dependence on strain makes opening favoured in extension and closing favoured in compression,
+        while keeping the model smooth and stable for numerical simulation.
+      </figcaption>
+    </figure>
+  </div>
+
+
+  <p>
+    Between those states sits an energy barrier $ E_b $ (left panel above ). On its own, a contact would prefer to remain in
+    whichever state is currently lower in energy. But thermal fluctuations (“molecular jiggling”) occasionally kick the contact
+    over the barrier—so the contact can <em>switch</em> between open and closed. This is the same statistical-physics logic used for
+    many activated processes (chemical reactions, diffusion over barriers, etc.).
   </p>
 
   <p>
-    For contacts with the same barrier energy, the fraction of open fractures $ n_o $ evolves as:
+    In this model, switching times are Arrhenius:
+  </p>
+
+<p style="text-align:center;">
+$$
+\tau_o = A \\, e^{(E_b - E_o)/(k_B T)}, \quad
+\tau_c = A \\, e^{(E_b - E_c)/(k_B T)}.
+$$
+</p>
+
+  <p>
+    Here $ \tau_o $ is the characteristic time for a closed contact to open, and $ \tau_c $ for an open contact to close.
+    Because of the exponential, <strong>small changes in energy produce huge changes in switching rate</strong>—one reason why rocks
+    can become nonlinear at surprisingly tiny strains.
   </p>
 
   <p>
+    For contacts sharing the same barrier energy $ E_b $, the fraction of open contacts $ n_o(t) $ evolves as:
+  </p>
+
+  <p  style="text-align:center;">
     $$
     \frac{d n_o}{dt} = - \frac{n_o}{\tau_o} + \frac{1 - n_o}{\tau_c}, \quad
     n_{\mathrm{eq}} = \frac{1}{1 + \exp\big[(E_o - E_c)/k_B T\big]}.
@@ -343,10 +488,19 @@
   </p>
 
   <p>
-    The state energies depend <em>smoothly</em> on dynamic strain $ \\varepsilon $ via sigmoids (extension favors opening; compression favors closing):
+    The equilibrium fraction $ n_{\mathrm{eq}} $ is a smooth, thermodynamic “target” set by the energy difference $ E_o - E_c $.
+    Dynamics come from the fact that the system does <em>not</em> instantly reach equilibrium—it relaxes toward it with a rate
+    controlled by $ \tau_o $ and $ \tau_c $.
   </p>
 
+  <h4>3.1) How strain tilts the landscape</h4>
+
   <p>
+    Shaking the rock changes stresses at contacts. In the model, that effect enters by letting the state energies depend
+    <em>smoothly</em> on the dynamic strain $ \varepsilon $ using sigmoid functions:
+  </p>
+
+  <p style="text-align:center;">
     $$
     E_o(\varepsilon) = B_0 - \frac{A_1}{1 + \exp[-(\varepsilon - \mu)/\sigma]}, \quad
     E_c(\varepsilon) = A_0 + \frac{A_1}{1 + \exp[-(\varepsilon - \mu)/\sigma]}.
@@ -354,398 +508,748 @@
   </p>
 
   <p>
-    We assume a uniform spectrum of barrier energies $ E_b \\in [E_{b,\\min}, E_{b,\\max}] $ to represent many time scales; the sample‑averaged open fraction is $ N_o(t) $ (average of $ n_o $ over $ E_b $). Stiffness then follows a linearized damage law:
+    You can read these curves in plain language:
+  </p>
+  <ul>
+    <li>
+      When the strain becomes more <strong>extensional</strong>, the open state becomes energetically favourable:
+      more contacts <em>want</em> to open.
+    </li>
+    <li>
+      When strain becomes more <strong>compressional</strong>, the closed state becomes favourable:
+      more contacts <em>want</em> to close.
+    </li>
+    <li>
+      The transition is not a sharp “on/off”. The sigmoid makes it gradual, reflecting the fact that contacts are diverse
+      and local geometries vary.
+    </li>
+  </ul>
+
+  <h4>3.2) From one timescale to many: why recovery can look logarithmic</h4>
+
+  <p>
+    A single barrier $ E_b $ would produce one characteristic relaxation time (roughly exponential recovery).
+    Real rocks, however, contain an enormous variety of contact geometries and microcrack sizes—so we assume a
+    <strong>spectrum</strong> of barrier energies, here taken as uniform on $ E_b \in [E_{b,\min}, E_{b,\max}] $.
+    Averaging over this population gives a sample-scale open fraction $ N_o(t) $.
   </p>
 
   <p>
+    This broad collection of relaxation times is one of the cleanest routes to “slow dynamics”.
+    Intuitively: after strong shaking, the fast contacts snap back quickly, but the slow contacts keep relaxing for a long time.
+    When you add up lots of exponentials with many timescales, the net recovery can resemble a logarithm over a broad time window.
+    In simplified form:
+  </p>
+
+  <p style="text-align:center;">
+    $$
+    \Delta Y(t) \propto - \int_{\tau_{\min}}^{\tau_{\max}} \frac{d\tau}{\tau}\, e^{-t/\tau}
+    \;\approx\; - \log t \quad (\tau_{\min} \ll t \ll \tau_{\max}).
+    $$
+  </p>
+
+  <p>
+    That’s the “physics shortcut” behind the famous lab observation: quick recovery at first, then slower and slower, without a single
+    clean time constant.
+  </p>
+
+  <h4>3.3) Turning contact state into a measurable stiffness</h4>
+
+  <p>
+    We connect contact statistics to bulk stiffness with a simple linearized damage law:
+  </p>
+
+  <p style="text-align:center;">
     $$
     Y(t) = Y_0 - C_0 \big( N_o(t) - N_{\mathrm{ori}} \big).
     $$
   </p>
 
   <p>
-    This closes a feedback loop: strain → energies → switching → $ N_o(t) $ → $ Y(t) $ → strain.
+    In words: if more contacts are open (larger $ N_o $), the sample is softer (smaller $ Y $). Since resonance frequency scales
+    roughly like the square root of stiffness, even modest changes in $ Y $ can produce measurable resonance shifts:
   </p>
 
-  <div class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
-    <figure style="flex:1; min-width:320px; max-width:560px;">
-      <a href="nonlinear_elasticity/bistable_energy.png" target="_blank" rel="noopener noreferrer">
-        <img src="nonlinear_elasticity/bistable_energy.png"
-             alt="Bistable energy diagram for open and closed fractures separated by a barrier"
-             style="width:100%; aspect-ratio:auto; object-fit:contain;">
-      </a>
-      <figcaption>Each contact is bistable with Arrhenius switching over a barrier.</figcaption>
-    </figure>
+  <p>
+    $$
+    f(t) \approx f_0 \sqrt{\frac{Y(t)}{Y_0}}.
+    $$
+  </p>
 
-    <figure style="flex:1; min-width:320px; max-width:560px;">
-      <a href="nonlinear_elasticity/energy_vs_strain.png" target="_blank" rel="noopener noreferrer">
-        <img src="nonlinear_elasticity/energy_vs_strain.png"
-             alt="Energy levels of open and closed fractures as a function of dynamic strain"
-             style="width:100%; aspect-ratio:auto; object-fit:contain;">
-      </a>
-      <figcaption>Strain‑dependent energies (sigmoids) capture asymmetric softening/hardening.</figcaption>
-    </figure>
-  </div>
+  <p>
+    This closes the feedback loop:
+    strain $ \rightarrow $ energies $ \rightarrow $ switching $ \rightarrow $ $ N_o(t) $ $ \rightarrow $ stiffness $ Y(t) $
+    $ \rightarrow $ strain, as summarized in the feedback cycle as below!
+    And because switching is rate-dependent, the stiffness depends on <em>history</em>—not just the instantaneous strain.
+  </p>
 
-  <!-- NEW suggested figure -->
   <div class="figure-grid" style="width:min(750px,92vw);">
     <figure>
-      <a href="nonlinear_elasticity/feedback_cycle.png" target="_blank" rel="noopener">
-        <img src="nonlinear_elasticity/feedback_cycle.png" alt="Three-link feedback cycle among deformation, fracture state, and stiffness" style="width:100%;object-fit:contain;">
+      <a href="3_nonlinear_resonance/feedback_cycle.PNG" target="_blank" rel="noopener">
+        <img src="3_nonlinear_resonance/feedback_cycle.PNG"
+             alt="Three-link feedback cycle among deformation, fracture state, and stiffness"
+             style="width:100%;object-fit:contain;">
       </a>
       <figcaption>
-        Suggested: feedback cycle (deformation → fracture state → stiffness → deformation), akin to Fig. 1 in PRB.
+        <strong>Feedback cycle behind nonlinear elasticity with memory</strong><br>
+        Dynamic strain biases contact energies, contacts switch over barriers, the open fraction changes stiffness, and stiffness
+        feeds back into the deformation—naturally producing amplitude dependence, hysteresis, and slow recovery.
       </figcaption>
     </figure>
   </div>
+
+
+
+  <p>
+    <strong>Reference:</strong> Li, X., Sens‑Schönfelder, C. &amp; Snieder, R. (2018), <em>Physical Review B</em>.
+  </p>
 </section>
 
 
 
-    <!-- 4. Simulating resonance -->
-    <section id="resonance-sim">
-      <h3>4) Simulating Real Resonance Experiments</h3>
+<!-- 4. Simulating resonance -->
+<section id="resonance-sim">
+  <h3>4) Simulating Real Resonance Experiments</h3>
 
-      <p>
-        The PRB study reproduces the laboratory protocol step‑by‑step. A driven linear oscillator is coupled to the evolving modulus:
-      </p>
+  <p>
+    Lab resonance experiments are not just “measure a curve once and you’re done”.
+    They are more like <strong>slowly tuning a radio dial</strong>: you pick a driving frequency, hold it for a short time,
+    record how strongly the sample responds, then step to the next frequency and repeat.
+    If the rock’s internal contacts are evolving while you do this, the curve you measure is partly shaped by
+    <em>the measurement process itself</em>.
+  </p>
 
-      <p>
-        $$ \\ddot{R}_A + 2 \\gamma \\dot{R}_A + \\Omega^2(t) R_A = A_r e^{-i \\omega t}, \\quad
-        \\Omega(t) = \\frac{\\pi}{L_0} \\sqrt{\\frac{Y(t)}{\\rho}}. $$
-      </p>
+  <h4>4.1) One resonant mode + a stiffness that can change with time</h4>
 
-      <p>
-        The measurable response is the acceleration amplitude $ \\omega^2 R_A L_0 $, after holding each frequency for a finite sweep interval $ \\Delta t $ to let $ N_o(t) $ and $ Y(t) $ evolve. The frequency is then stepped by $ \\Delta f $ up or down; the final state at one step is the initial state for the next.
-      </p>
+  <p>
+    To mimic a resonance-bar experiment without simulating every grain, the thermodynamics‑based model keeps only a single resonant mode
+    (think: “the main way the bar likes to vibrate”) and tracks its modal amplitude $ R_A(t) $.
+    The key twist is that the natural frequency is not constant: it depends on the evolving Young’s modulus $ Y(t) $ from the
+    contact model in Section 3.
+  </p>
 
-      <p>
-        A key timescale is the maximum relaxation time $ \\tau_{\\max} $ (set by the slowest contacts):
-      </p>
+  <p style="text-align:center;">
+  $$
+  \ddot{R}_A + 2\gamma \dot{R}_A + \Omega^2(t)\,R_A = A_r \, e^{-i\omega t},
+  \quad
+  \Omega(t) = \frac{\pi}{L_0}\sqrt{\frac{Y(t)}{\rho}}.
+  $$
+  </p>
 
-      <p>
-        $$ \\tau_{\\max}^{-1} = \\left( \\tau_o^{-1} + \\tau_c^{-1} \\right)\\big|_{E_b = E_{b,\\max}}. $$
-      </p>
+  <p>
+    Here $ \gamma $ is damping, $ \omega $ is the driving frequency, $ L_0 $ is the sample length, and $ \rho $ is density.
+    If $ Y(t) $ drops (more contacts opening), then $ \Omega(t) $ drops too—so the “centre” of the resonance peak can drift
+    <em>while you are measuring it</em>.
+  </p>
 
-      <p>
-        Sweep‑rate regimes: “fast” means $ \\Delta t \\ll \\tau_{\\max} $ (strong memory); “slow” means $ \\Delta t \\gg \\tau_{\\max} $ (near‑equilibrium at each step).
-      </p>
+  <h4>4.2) Experimental protocol: “hold, measure, step”</h4>
 
-      <div class="figure-grid" style="width: min(750px, 92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/protocol_timeline.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/protocol_timeline.png"
-                 alt="Timeline of the numerical resonance protocol with stepped driving frequency"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>
-            Measurement protocol: hold frequency for $ \\Delta t $, measure, step by $ \\Delta f $, repeat.
-          </figcaption>
-        </figure>
-      </div>
+  <p>
+    The simulation follows the same protocol used in NRUS/DAET-style frequency sweeps:
+  </p>
 
-      <!-- NEW suggested figure -->
-      <div class="figure-grid" style="width:min(750px,92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/parameter_values_table.png" target="_blank" rel="noopener">
-            <img src="nonlinear_elasticity/parameter_values_table.png" alt="Representative parameter values used in simulations" style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            Suggested: small table of representative parameters (e.g., $ E_{b,\\min}\\!\\approx\\!0.223\\,\\mathrm{eV} $, $ E_{b,\\max}\\!\\approx\\!0.401\\,\\mathrm{eV} $, $ \\mu\\!\\approx\\!3.5\\times10^{-6} $, etc.) as in PRB Table I.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- 5. Results -->
-    <section id="results">
-      <h3>5) What the Model Reproduces: Slow Dynamics, Asymmetry, Hysteresis, and Cliffs</h3>
-
-      <h4>5.1 Slow Dynamics: Log‑Time Recovery</h4>
-
-      <p>
-        After strong conditioning, the resonant frequency recovers approximately linearly with $ \\log t $ over decades in time, matching classic NRUS/DAET observations. This emerges from superposing many Arrhenius processes across $ E_b $; a single‑barrier case recovers roughly exponentially (no log‑time).
-      </p>
-
-      <div class="figure-grid" style="width: min(750px, 92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/slow_dynamics_logtime.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/slow_dynamics_logtime.png"
-                 alt="Log-time recovery of resonant frequency after conditioning for several strain amplitudes"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>
-            Slow dynamics: resonant frequency versus $ \\log t $ after different conditioning amplitudes.
-          </figcaption>
-        </figure>
-      </div>
-
-      <h4>5.2 Asymmetric Resonance Curves</h4>
-
-      <p>
-        Increasing drive opens more contacts near resonance, softens the sample, and shifts $ \\Omega $ downward while you are measuring it. This feedback steepens the left flank and flattens the right flank of the resonance peak—an asymmetry reproduced even without multi‑scale relaxation.
-      </p>
-
-      <div class="figure-grid" style="width: min(900px, 92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/asymmetric_resonance.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/asymmetric_resonance.png"
-                 alt="Simulated resonance curves showing asymmetric peaks and up–down differences"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>Asymmetric resonance peaks with increasing drive (softening).</figcaption>
-        </figure>
-      </div>
-
-      <h4>5.3 Up–Down Differences and Sweep‑Rate Dependence</h4>
-
-      <p>
-        With <em>weak to moderate</em> nonlinearity, the up–down difference is a memory effect from slow dynamics: it vanishes when $ \\Delta t \\gtrsim \\tau_{\\max} $ (slow sweeps).
-      </p>
-
-      <div class="figure-grid" style="width: min(900px, 92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/up_down_sweeprate.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/up_down_sweeprate.png"
-                 alt="Upward and downward resonance curves for different sweep rates"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>
-            Sweep‑rate dependence: up–down curves converge for $ \\Delta t \\gg \\tau_{\\max} $ if nonlinearity is weak.
-          </figcaption>
-        </figure>
-      </div>
-
-      <h4>5.4 Cliffs and Bifurcations in Strongly Nonlinear Regimes</h4>
-
-      <p>
-        Increase the damage sensitivity $ C_0 $ or the drive and the resonance curve folds, creating a vertical “cliff”. In this regime, two <em>stable</em> equilibrium states can coexist at the same frequency; the system follows one branch until it reaches a turning point and then jumps—hence the persistent up–down difference right at the cliff, even for slow sweeps.
-      </p>
-
-      <div class="figure-grid" style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
-        <figure style="flex:1; min-width:320px; max-width:560px;">
-          <a href="nonlinear_elasticity/steady_state_bifurcation.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/steady_state_bifurcation.png"
-                 alt="Bifurcation diagram showing two stable equilibrium branches for damage versus frequency"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>Steady‑state bifurcation: two stable branches in a frequency band.</figcaption>
-        </figure>
-
-        <figure style="flex:1; min-width:320px; max-width:560px;">
-          <a href="nonlinear_elasticity/cliff_resonance_strong.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/cliff_resonance_strong.png"
-                 alt="Resonance curves with pronounced vertical cliff segments at strong nonlinearity"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>Cliffs at strong nonlinearity; up–down difference persists at the cliff.</figcaption>
-        </figure>
-      </div>
-
-      <h4>5.5 Hysteresis and Oscillating Modulus</h4>
-
-      <p>
-        Under cyclic loading, rate‑dependent switching produces hysteretic modulus–strain loops (“butterflies”), consistent with DAET.
-      </p>
-
-      <div class="figure-grid" style="width: min(900px, 92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/hysteresis_loops.png" target="_blank" rel="noopener noreferrer">
-            <img src="nonlinear_elasticity/hysteresis_loops.png"
-                 alt="Elastic modulus versus strain showing hysteretic loops for cyclic loading"
-                 style="width:100%; aspect-ratio:auto; object-fit:contain;">
-          </a>
-          <figcaption>
-            Nonlinear hysteresis loops reflect finite switching times of contacts.
-          </figcaption>
-        </figure>
-      </div>
-
-      <!-- NEW suggested figure -->
-      <div class="figure-grid" style="width:min(750px,92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/sweep_vs_tau_max.png" target="_blank" rel="noopener">
-            <img src="nonlinear_elasticity/sweep_vs_tau_max.png" alt="Schematic comparing sweep intervals to tau_max" style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            Suggested: schematic of sweep interval $ \\Delta t $ relative to $ \\tau_{\\max} $ and how it affects up–down differences.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+  <ol style="padding-left: 1.5rem; margin-left: 4.5rem;">
+    <li>
+      <strong>Choose a frequency</strong> $ \omega $ and drive the sample there.
+    </li>
+    <li>
+      <strong>Hold</strong> that frequency for a finite dwell time $ \Delta t $.
+      During this hold, the oscillator responds <em>and</em> the internal state $ N_o(t) $ evolves, changing $ Y(t) $.
+    </li>
+    <li>
+      <strong>Measure</strong> the response amplitude (often reported as an acceleration-like quantity proportional to
+      $ \omega^2 R_A L_0 $).
+    </li>
+    <li>
+      <strong>Step</strong> the frequency by $ \Delta f $ and repeat, sweeping upward or downward.
+    </li>
+  </ol>
 
 
+  <div class="figure-grid" style="width:min(750px,92vw);">
+    <figure>
+      <a href="3_nonlinear_resonance/measurement_protocol.PNG" target="_blank" rel="noopener noreferrer">
+        <img
+          src="3_nonlinear_resonance/measurement_protocol.PNG"
+          alt="Timeline of the numerical resonance protocol with stepped driving frequency"
+          style="width:100%;object-fit:contain;"
+        >
+      </a>
+      <figcaption>
+        <strong>Numerical “hold–measure–step” protocol</strong><br>
+        At each frequency the system is driven for a dwell time $ \Delta t $ before stepping by $ \Delta f $.
+        Because the internal state evolves during every hold, the resonance curve is an outcome of both
+        mechanics <em>and</em> kinetics (how fast contacts can switch).
+      </figcaption>
+    </figure>
+  </div>
 
 
-      <!-- <p>
-        I tied many of these observations together into a single, thermodynamics‑based picture of what is happening inside granular solids when they are driven 
-        nonlinearly. The goal was:
-      </p>
-      <p>
-        <strong>Can we explain, with one simple physical framework, the strange “nonclassical” elasticity of rocks – 
-        including slow recovery, hysteresis, and even catastrophic jumps – that shows up in resonance experiments?</strong>
-      </p>
-      <p>
-        To get there, I combined two ingredients:
-      </p>
-      <ul>
-        <li>
-          A <strong>mathematical nonlinear oscillator</strong> (the Duffing equation) that tells us how a driven,
-          damped system with a nonlinear spring should respond.
-        </li>
-        <li>
-          A <strong>thermodynamics‑based contact model</strong> that treats the rock’s internal defects – microcracks,
-          grain contacts, chemical bonds, capillary bridges – as tiny bistable elements that can be open or closed 
-          and can switch state through thermal activation.
-        </li>
-      </ul>
-      <p>
-        By coupling these two, and by explicitly mimicking the way laboratory resonance experiments are actually 
-        run, we were able to reproduce a wide range of puzzling experimental features in a single framework. 
-      </p> -->
-
-    <!-- <div class="callout" style="border-left:4px solid #555;padding:.75rem 1rem;background:#f9f9fb;margin:1.25rem 0;">
-        <strong>At a glance — what the unified model explains</strong>
-        <ul>
-          <li>Log‑time recovery of resonant frequency after shaking stops (slow dynamics).</li>
-          <li>Asymmetric resonance curves that steepen to the left and flatten to the right as drive increases.</li>
-          <li>Up–down differences that vanish for slow sweeps when nonlinearity is weak.</li>
-          <li>“Cliffs” (vertical segments) and persistent up–down differences from a <em>bifurcation</em> when nonlinearity is strong.</li>
-        </ul>
-
-        By treating each grain contact as a tiny nonlinear oscillator with its own 
-        internal “state” (representing things like contact stiffness or damage), and then coupling many of these 
-        oscillators together, we can explain a wide range of observations:
-      </p>
-
-      <ul>
-        <li>resonance peaks that shift and skew as we turn up the drive,</li>
-        <li>instantaneous softening when we change the applied stress,</li>
-        <li>slow, logarithmic recovery of seismic velocities after strong shaking, and</li>
-        <li>hysteresis and memory effects in both lab samples and the shallow crust.</li>
-      </ul>
-
-      <p>
-        In future posts, I’ll walk through how this contact‑based picture connects to the experiments above and 
-        how it can be used to interpret field observations like those from Parkfield.
-      </p>
-      </div> -->
+  <p>
+    A subtle but crucial point: the final internal state at one step becomes the initial state for the next.
+    That is how the model naturally builds in <strong>memory</strong> and explains why up-sweeps and down-sweeps can differ.
+  </p>
 
 
-    <!-- 6. Insights -->
-    <section id="insights">
-      <h3>6) What This Tells Us About Rocks, Faults, and Reservoirs</h3>
+  <h4>4.3) The “clock” inside the rock: the slowest contacts set $ \tau_{\max} $</h4>
 
-      <p>
-        Key takeaways:
-      </p>
+  <p>
+    The thermodynamic contact model contains many relaxation times (because we include many barrier energies $ E_b $).
+    The slowest ones dominate long-term memory. A convenient definition is the maximum relaxation time
+    $ \tau_{\max} $, set by the largest barrier $ E_{b,\max} $:
+  </p>
 
-      <ul>
-        <li><strong>Mesoscopic contacts and fractures dominate nonlinearity</strong> at microstrain levels.</li>
-        <li><strong>Log‑time recovery</strong> reflects a broad spectrum of activation energies and time scales.</li>
-        <li><strong>Cliffs</strong> are the observable signature of a <em>bifurcation</em> in the coupled contact–oscillator system.</li>
-        <li><strong>Field‑scale transients</strong> (post‑seismic or injection‑induced) are consistent with the same physics.</li>
-      </ul>
+  <p style="text-align:center;">
+  $$
+  \tau_{\max}^{-1}
+  =
+  \left(\tau_o^{-1}+\tau_c^{-1}\right)\big|_{E_b = E_{b,\max}}
+  $$
+  </p>
 
-      <!-- NEW suggested figure -->
-      <div class="figure-grid" style="width:min(900px,92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/field_velocity_transients.png" target="_blank" rel="noopener">
-            <img src="nonlinear_elasticity/field_velocity_transients.png" alt="Field observations of velocity drops and slow recovery" style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            Suggested: field examples of velocity drops and slow recovery after strong shaking or stress changes.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+  <p>
+    This gives an intuitive way to think about sweep speed:
+  </p>
 
-    <!-- 7. Outlook -->
-    <section id="outlook">
-      <h3>7) Where Next? Extending the Model and Taking It to the Field</h3>
+  <ul>
+    <li>
+      <strong>Fast sweep:</strong> $ \Delta t \ll \tau_{\max} $. The rock cannot fully “catch up” at each step, so the measured curve
+      depends strongly on history (strong memory, larger up–down differences).
+    </li>
+    <li>
+      <strong>Slow sweep:</strong> $ \Delta t \gg \tau_{\max} $. The contact population nearly equilibrates at each frequency,
+      so the curve is closer to a quasi-steady response (weaker memory, smaller up–down differences—unless bifurcations appear).
+    </li>
+  </ul>
 
-      <ul>
-        <li><strong>Include fluids and pressure</strong> (capillarity, effective stress), and temperature.</li>
-        <li><strong>Couple to rate‑and‑state friction</strong> to bridge lab resonance and fault‑zone transients.</li>
-        <li><strong>Embed in monitoring</strong> (e.g., crosswell or DAS time‑lapse) to invert for evolving $ N_o(t) $ or $ Y(t) $.</li>
-        <li><strong>Targeted tests</strong>: at a fixed frequency within the bifurcation band, prepare different initial damage states to show two distinct stable equilibria.</li>
-      </ul>
 
-      <!-- NEW suggested figure -->
-      <div class="figure-grid" style="width:min(900px,92vw);">
-        <figure>
-          <a href="nonlinear_elasticity/experiment_design_bifurcation.png" target="_blank" rel="noopener">
-            <img src="nonlinear_elasticity/experiment_design_bifurcation.png" alt="Protocol to reveal two equilibria at a fixed frequency" style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            Suggested: proposed constant‑frequency experiment revealing two stable equilibria depending on initial state.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+  <p>
+    With this setup, we can now do something very close to what experimentalists do:
+    run the same sweep twice (up and down), change the drive amplitude, change the sweep rate, and ask:
+    <strong>what features come from “instantaneous nonlinearity” and what features come from slow, history-dependent contact evolution?</strong>
+  </p>
+</section>
 
-<!-- NEW: References -->
+
+<!-- 5. Results -->
+<section id="results">
+  <h3>5) What the Model Reproduces: Slow Dynamics, Asymmetry, Hysteresis, and Cliffs</h3>
+
+  <p>
+    Now comes the fun part: once we connect “many switchable contacts” to a resonance experiment protocol (Section 4),
+    we can run the <em>same</em> measurements people do in the lab—just inside a computer.
+    Below, we show <strong>model output (left)</strong> with a matching <strong>lab observation (right) if found from literature</strong>.
+  </p>
+
+  <h4>5.1 Slow Dynamics: why recovery looks like a straight line on a log-time plot</h4>
+
+  <p>
+    First, the signature that surprised many people when it was discovered: after strong shaking (“conditioning”),
+    the rock does not bounce back immediately. Its stiffness (and therefore resonance frequency) recovers slowly—
+    often close to a straight line when plotted against $ \log t $.
+  </p>
+
+  <p>
+    In the model, this happens naturally because we have <strong>many contacts with many barrier energies</strong>.
+    Some contacts switch back quickly; others are “stuck” behind larger barriers and relax much more slowly.
+    Add up that whole population and you get a long-tailed recovery that can look logarithmic over a wide time window.
+  </p>
+
+  <div class="figure-grid"
+       style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/PRB_log_time.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/PRB_log_time.PNG"
+             alt="Model: resonant frequency recovery versus log time after conditioning at different drive levels"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Model Result</strong><br>
+        After conditioning, the resonance frequency recovers roughly linearly with $ \log t $ over decades in time.
+      </figcaption>
+    </figure>
+
+    <!-- Replace the src below with your chosen lab figure file -->
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/PRB_log_timeLAB.png" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/PRB_log_timeLAB.png"
+             alt="Lab: seismic velocity recovery showing near log-time trend after conditioning"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Lab observation</strong><br>
+        Strong shaking reduces wave speed; recovery is slow and often close to logarithmic in time. Figure adapted from TenCate et al., (2000).
+      </figcaption>
+    </figure>
+  </div>
+
+
+
+  <h4>5.2 Asymmetric resonance curves: why the peak “leans”</h4>
+
+  <p>
+    Next, the resonance peak itself. In a perfectly linear material, the resonance curve is symmetric.
+    In granular rocks it often becomes skewed—one side of the peak steepens and the other side spreads out.
+  </p>
+
+  <p>
+    The model explanation is simple in words: <strong>the sample softens most strongly near resonance</strong>
+    (because that is where the strain amplitude becomes largest).
+    So while you are measuring the peak, the modulus $ Y(t) $ is drifting downward and the natural frequency $ \Omega(t) $
+    is moving too. That “moving target” makes the measured curve asymmetric.
+  </p>
+
+  <div class="figure-grid"
+       style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/PRB_resonanceCurve_differentRates.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/PRB_resonanceCurve_differentRates.PNG"
+             alt="Model: asymmetric resonance curves emerging from coupling between resonance and evolving modulus"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Model</strong><br>
+        As drive increases, the peak shifts and becomes asymmetric because the stiffness is evolving during the sweep.
+      </figcaption>
+    </figure>
+
+    <!-- Replace with your preferred lab resonance-curve figure -->
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/PRB_resonanceCurve_differentRatesLAB.png" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/PRB_resonanceCurve_differentRatesLAB.png"
+             alt="Lab: resonance curves in sandstone becoming asymmetric and shifting with drive"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Lab observation</strong><br>
+        Real rocks show the same “leaning peak”: higher drive produces a shifted, skewed resonance curve. Figure adapted from Ten Cate &amp; Shankland (1996).
+      </figcaption>
+    </figure>
+  </div>
+
+
+  <h4>5.3 Up–down differences: the curve depends on which way you sweep</h4>
+
+  <p>
+    A classic experimental trick is to sweep frequency upward, then sweep it downward, and compare the two curves.
+    In many rocks, they do <em>not</em> match.
+  </p>
+
+  <p>
+    In the model, this is a visible “fingerprint” of memory: because contacts have finite switching times,
+    the internal state does not reset instantly. If the dwell time $ \Delta t $ is short compared with the slowest contacts
+    (set by $ \tau_{\\max} $), then the system carries history from one frequency step to the next.
+  </p>
+
+  <p>
+    An important (and testable) point: for <em>weak to moderate</em> nonlinearity, the model predicts that
+    these up–down differences should shrink when you sweep slowly, i.e. when $ \Delta t \gtrsim \tau_{\max} $.
+  </p>
+
+  <div class="figure-grid"
+       style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/PRB_differentSweepRate.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/PRB_differentSweepRate.PNG"
+             alt="Model: up-sweep and down-sweep resonance curves converging as sweep becomes slower"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Model</strong><br>
+        Up–down differences are strong for fast sweeps, but can fade for slow sweeps when memory has time to relax.
+      </figcaption>
+    </figure>
+  </div>
+   The above modeled results also match lab observations but now shown here (I need to find where they are in the vast range of literature!)
+
+
+
+
+<h4>5.4 Hysteresis loops: the rock “lags” behind the loading cycle</h4>
+
+<p>
+  Resonance sweeps are one way to reveal nonlinearity. Another is to keep the frequency fixed and simply
+  <strong>cycle the strain up and down</strong>, the way DAET does: a low-frequency “pump” gently stretches and compresses the sample,
+  while a high-frequency ultrasonic probe tracks how stiffness (or wave speed) changes <em>within each cycle</em>.
+</p>
+
+<p>
+  In a perfectly elastic, memoryless material, stiffness would be a single-valued function of strain:
+  at the same strain you would measure the same stiffness, whether you are loading or unloading.
+  But in granular rocks—and in the model—contacts switch state with finite rates. That means the internal damage-like variable
+  $ N_o(t) $ cannot keep up instantly. The result is a loop:
+  <strong>on the way back, the rock follows a different path</strong>.
+</p>
+
+
+
+<p>
+  The important point is that we do not have to <em>add</em> hysteresis by hand. It appears naturally once the stiffness depends on an
+  evolving internal population of open/closed contacts with rate-dependent switching.
+</p>
+
+<div class="figure-grid"
+     style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+  <figure style="flex:1; min-width:320px; max-width:560px;">
+    <a href="3_nonlinear_resonance/hysteresis_model.PNG" target="_blank" rel="noopener noreferrer">
+      <img src="3_nonlinear_resonance/hysteresis_model.PNG"
+           alt="Model: modulus–strain hysteresis loops under cyclic loading"
+           style="width:100%; object-fit:contain;">
+    </a>
+    <figcaption>
+      <strong>Model</strong><br>
+      Predicted modulus–strain “butterfly” loops under cyclic strain:
+      stiffness during unloading differs from stiffness during loading because $ N_o(t) $ lags behind the strain cycle.
+    </figcaption>
+  </figure>
+
+  <figure style="flex:1; min-width:320px; max-width:560px;">
+    <a href="3_nonlinear_resonance/hystereis_lab.PNG" target="_blank" rel="noopener noreferrer">
+      <img src="3_nonlinear_resonance/hystereis_lab.PNG"
+           alt="Lab: DAET-style hysteresis loop in wave speed or modulus during cyclic strain"
+           style="width:100%; object-fit:contain;">
+    </a>
+    <figcaption>
+      <strong>Lab observation</strong><br>
+      DAET measurements show the same signature: wave speed (and inferred stiffness) traces a loop rather than a single curve,
+      indicating fast nonlinear hysteresis. Adapted from Rivière et&nbsp;al. (2015b).
+    </figcaption>
+  </figure>
+</div>
+
+<div class="callout"
+     style="border-left:4px solid #555; padding:.75rem 1rem; background:#f9f9fb; margin:1rem 0;">
+  <strong>How to read the loop</strong>
+  <ul style="margin:.5rem 0 0 1.1rem;">
+    <li>
+      The loop’s <strong>width</strong> reflects delay (lag) between strain and contact-state evolution.
+    </li>
+    <li>
+      The loop’s <strong>area</strong> is a compact measure of hysteresis: bigger area means stronger history dependence
+      during the cycle (often interpreted as nonlinear dissipation / irreversible micro-slips at contacts).
+    </li>
+    <li>
+      The “butterfly” shape comes from <strong>asymmetry</strong>: closing under compression is not a mirror image of opening under extension.
+    </li>
+  </ul>
+</div>
+
+  <h4>5.5 Cliffs: when resonance “snaps” between two stable states</h4>
+
+  <p>
+    Sometimes the resonance curve does something more dramatic than a gentle skew.
+    It develops a near-vertical segment—the famous <strong>“cliff”</strong>—where a tiny frequency change produces a large jump in response.
+  </p>
+
+  <p>
+    In the model, this happens in a strongly nonlinear regime when the feedback loop becomes powerful:
+    large response $ \rightarrow $ more contact opening $ \rightarrow $ lower stiffness $ \rightarrow $ resonance shifts
+    in a way that reinforces the large response.
+    Mathematically, this corresponds to a <strong>bifurcation</strong>: in a certain frequency band there can be
+    <em>two different stable steady states</em> for the same drive frequency. The system follows one branch until it becomes unstable,
+    then it jumps to the other—hence the cliff.
+  </p>
+
+  <div class="figure-grid"
+       style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/PRB_Res_stiff_cliff.PNG" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/PRB_Res_stiff_cliff.PNG"
+             alt="Model: resonance curves with a pronounced cliff and persistent up-down difference"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Model</strong><br>
+        Strong nonlinearity can generate cliffs (jump behaviour) and persistent up–down differences near the jump.
+      </figcaption>
+    </figure>
+
+    <!-- Replace with a lab “cliff” example if available -->
+    <figure style="flex:1; min-width:320px; max-width:560px;">
+      <a href="3_nonlinear_resonance/PRB_Res_stiff_cliffLAB.png" target="_blank" rel="noopener noreferrer">
+        <img src="3_nonlinear_resonance/PRB_Res_stiff_cliffLAB.png"
+             alt="Lab: resonance curves showing sharp jump-like behaviour at high drive"
+             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Lab observation</strong><br>
+        At high drive, rocks can show jump-like features in frequency sweeps—an experimental “cliff”.
+      </figcaption>
+    </figure>
+  </div>
+
+
+<p>
+  Earlier we said that up–down differences can come from <em>slow dynamics</em>: if the contacts relax slowly, the rock “remembers”
+  where it just was, so an upward sweep and a downward sweep don’t match.
+  But our model shows something even more striking:
+  <strong>the largest up–down difference can survive even for slow sweeps</strong>, especially right at the “cliff”.
+</p>
+
+<p>
+  The reason is a <strong>bifurcation</strong>—a standard nonlinear-systems idea that also appears in the classic Duffing oscillator.
+  In plain language, a bifurcation means:
+  <em>for the same driving frequency, the system can settle into two different stable steady states</em>.
+</p>
+
+<p>
+  In our contact picture, the “state” is the fraction of open defects, $ N_o $ (you can think of it as a damage-like variable:
+  larger $ N_o $ means more contacts are open and the sample is softer).
+  We make this idea very clear by doing a simplified calculation:
+  they temporarily <strong>turn off the time evolution</strong> and ask a steady question:
+</p>
+
+<div class="callout" style="border-left:4px solid #555; padding:.75rem 1rem; background:#f9f9fb; margin:1rem 0;">
+  <strong>Steady-state question</strong>
+  <p style="margin:.5rem 0 0 0;">
+    “If we drive at one fixed frequency and just wait long enough, what equilibrium value of
+    $ N_o $ do we end up with?”
+    And crucially: “Does that equilibrium depend on where we started (the initial damage $ N_{oi} $)?”
+  </p>
+</div>
+
+<p>
+  For <strong>moderate</strong> nonlinearity, the answer is boring (in a good way): the system has one stable equilibrium at each frequency.
+  No matter what initial condition you start from, you converge to the same $ N_o $.
+  In that regime, slow sweeps tend to erase up–down differences.
+</p>
+
+<p>
+  For <strong>strong</strong> nonlinearity, the answer changes: there is a frequency band where two stable equilibria exist.
+  That is the bifurcation band. Inside it, the final state depends on your starting point, $ N_{oi} $—which is exactly what a
+  frequency sweep changes. In other words, the rock can “lock into” one of two stable stiffness (damage) states.
+</p>
+
+<div class="figure-grid"
+     style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
+
+  <!-- Left: bifurcation diagram -->
+  <figure style="flex:1; min-width:420px; max-width:560px;">
+    <a href="3_nonlinear_resonance/birfurcation_theorem.PNG" target="_blank" rel="noopener noreferrer">
+      <img src="3_nonlinear_resonance/birfurcation_theorem.PNG"
+           alt="Model: bifurcation diagram illustrating two stable branches"
+           style="width:100%; aspect-ratio:auto; object-fit:contain;">
+    </a>
+    <figcaption>
+      <strong>Model (steady-state / bifurcation picture)</strong><br>
+      Over a certain frequency range, there are <em>two stable</em> equilibrium branches for $ N_o $ (two possible steady states),
+      separated by an <em>unstable</em> branch. Which stable state you end up on depends on the initial condition $ N_{oi} $.
+      This is the key mechanism behind persistent up–down differences at the cliff.
+    </figcaption>
+  </figure>
+
+
+</div>
+
+<p>
+  This also explains <strong>why slow sweeps don’t always fix the problem</strong>.
+  If the system has only one stable equilibrium at each frequency, then sweeping slowly gives the internal state time to settle,
+  and up-sweep and down-sweep curves can converge.
+  But if there are <em>two</em> stable equilibria, then “waiting longer” does not force the system onto a single unique answer.
+  It merely gives it time to settle onto <em>one of the two</em>—and which one depends on the direction you came from.
+</p>
+
+<p>
+  Technically, this is the same qualitative mechanism behind Duffing “jump” phenomena:
+  strong nonlinearity can make the response curve fold over; increasing nonlinearity further produces multiple steady solutions,
+  where the middle branch is unstable. In the thermodynamic model, the feedback loop
+  (large vibration $ \rightarrow $ more contact opening $ \rightarrow $ softer modulus $ \rightarrow $ shifted resonance)
+  provides the nonlinearity needed to create that fold and bifurcation.
+</p>
+
+<p>
+  Hence, <strong>practical takeaways</strong> are that up–down differences can have two origins:
+</p>
+
+<ul>
+  <li>
+    <strong>Memory / slow dynamics</strong> (rate effect): tends to shrink for slow sweeps, when $ \Delta t \gtrsim \tau_{\max} $.
+  </li>
+  <li>
+    <strong>Bifurcation / multiple stable steady states</strong> (true nonlinearity): can persist even for slow sweeps, especially at the cliff.
+  </li>
+</ul>
+
+  
+
+</section>
+
+
+
+<!-- 6. Conclusion (merged Insights + Outlook) -->
+<section id="conclusion">
+  <h3>6) Conclusion: A Unified, Contact-Based Explanation of Nonlinear Rocks</h3>
+
+  <p>
+    This project set out to answer a deceptively simple question:
+    <em>how can microstrain-level vibrations produce such large, history-dependent changes in the elastic response of granular rocks?</em>
+    My main result is a compact, thermodynamics-based contact model that treats grain contacts / microcracks as
+    bistable elements (open vs. closed) with rate-dependent switching. When this internal state is coupled to a
+    realistic resonance-measurement protocol (“hold–measure–step”), it reproduces the core experimental signatures
+    of nonlinear elasticity in granular solids within one consistent framework.
+  </p>
+
+  <h4>What I built (in one sentence)</h4>
+  <p>
+    A minimal model in which dynamic strain biases defect energies, defects switch states over activation barriers,
+    the evolving open fraction $ N_o(t) $ changes stiffness $ Y(t) $, and that stiffness feeds back into the driven resonance.
+  </p>
+
+  <h4>What the model explains in a unified way</h4>
+  <ul>
+    <li>
+      <strong>Amplitude-dependent resonance shifts and asymmetric peaks</strong>:
+      the resonance “leans” because stiffness evolves most strongly near resonance, so the natural frequency drifts
+      during the sweep.
+    </li>
+    <li>
+      <strong>Fast hysteresis (DAET/NRUS loops)</strong>:
+      loading and unloading differ because $ N_o(t) $ lags behind the strain cycle when switching is rate-limited.
+    </li>
+    <li>
+      <strong>Slow dynamics and near log-time recovery</strong>:
+      a broad distribution of barrier energies produces a wide spectrum of relaxation times, so recovery is not controlled
+      by a single time constant and can appear logarithmic over long windows.
+    </li>
+    <li>
+      <strong>“Cliffs” (jump behaviour) and persistent up–down differences</strong>:
+      in strong nonlinearity, the coupled contact–oscillator system admits <em>multiple stable steady states</em> (a bifurcation band),
+      so sweep direction can matter even when the sweep is slow.
+    </li>
+  </ul>
+
+  <h4>Why this matters beyond the lab</h4>
+  <p>
+    The same ingredients that control bench-top resonance experiments—contact-level metastability, rate effects,
+    and broad relaxation spectra—also provide a natural physical language for field observations:
+    post-seismic velocity drops and recovery, time-lapse changes during injection/production, and other crustal
+    transients where “damage-like” compliance evolves with forcing and then heals gradually.
+  </p>
+
+  <div class="callout"
+       style="border-left:4px solid #555; padding:.75rem 1rem; background:#f9f9fb; margin:1rem 0;">
+    <strong>Core takeaway</strong>
+    <p style="margin:.5rem 0 0 0;">
+      Many “mysterious” nonlinear rock phenomena can be interpreted as the macroscopic footprint of a large population of
+      micro-contacts exploring a biased energy landscape—some responding quickly, others retaining memory for a long time.
+    </p>
+  </div>
+
+  <h4>What this work enables next (clear, testable extensions)</h4>
+  <ul>
+    <li>
+      <strong>Fluids, pressure, and temperature</strong>:
+      extend the energy landscape so switching rates depend on effective stress and pore pressure, enabling direct links to
+      saturation changes and reservoir operations.
+    </li>
+    <li>
+      <strong>Bridge to frictional fault physics</strong>:
+      couple contact-state evolution to rate-and-state friction to connect resonance/DAET observations to fault-zone transients
+      and triggered slip.
+    </li>
+    <li>
+      <strong>Embed in monitoring/inversion</strong>:
+      use the model as an interpretable forward operator to infer $ N_o(t) $ or $ Y(t) $ from time-lapse wave-speed data
+      (e.g., crosswell, ambient noise, or DAS).
+    </li>
+    <li>
+      <strong>A targeted “two-equilibria” experiment</strong>:
+      drive at a fixed frequency inside the predicted bifurcation band, prepare different initial conditioning states, and test
+      whether two distinct stable outcomes emerge—an unambiguous signature of genuine multistability rather than rate effects alone.
+    </li>
+  </ul>
+
+  <p>
+    <strong>Related:</strong> Xun Li,
+    <a href="https://mountainscholar.org/handle/11124/172339" target="_blank" rel="noopener noreferrer">
+      <em>A unified interpretation of nonlinear elasticity in granular solids</em>
+    </a>
+    – Master’s thesis, Colorado School of Mines.
+  </p>
+</section>
+
+<!-- NEW: References (alphabetical order by first author surname) -->
 <section id="references">
   <h3>References</h3>
-  <ol>
+  <ul>
     <li>
-      Li, X.; Sens‑Schönfelder, C.; Snieder, R. (2018). Nonlinear elasticity in resonance experiments. Physical Review B, 97, 144301. DOI:
-      <a href="https://doi.org/10.1103/PhysRevB.97.144301" target="_blank" rel="noopener">10.1103/PhysRevB.97.144301</a>.
+      Gassenmeier, M. (2016). Observation of dynamic processes with seismic interferometry. PhD Thesis, Universität Leipzig, Leipzig.
     </li>
-    <li id="ref-tencate-1996-grl">
-      TenCate, J.A.; Shankland, T.J. (1996). Nonlinear resonance and hysteresis in rock. Geophysical Research Letters, 23, 3019–3022. DOI:
-      <a href="https://doi.org/10.1029/96GL02884" target="_blank" rel="noopener">10.1029/96GL02884</a>.
-    </li>
-    <li>
-      TenCate, J.A.; Smith, E.; Guyer, R.A. (2000). Universal slow dynamics in granular solids. Physical Review Letters, 85, 1020–1023. DOI:
-      <a href="https://doi.org/10.1103/PhysRevLett.85.1020" target="_blank" rel="noopener">10.1103/PhysRevLett.85.1020</a>.
-    </li>
-    <li>
-      TenCate, J.A. (2011). Slow dynamics of consolidated granular media. Pure and Applied Geophysics, 168, 2211–2219. DOI:
-      <a href="https://doi.org/10.1007/s00024-011-0280-6" target="_blank" rel="noopener">10.1007/s00024-011-0280-6</a>.
-    </li>
-    <li>
-      Johnson, P.A.; Zinszner, B.; Rasolofosaon, P.N.J. (1996). Resonance and elastic nonlinear phenomena in rock. Journal of Geophysical Research, 101(B5), 11553–11564. DOI:
-      <a href="https://doi.org/10.1029/96JB00323" target="_blank" rel="noopener">10.1029/96JB00323</a>.
-    </li>
-    <li>
-      Rivière, J.; Shokouhi, P.; Guyer, R.A.; Johnson, P.A. (2015). Simple measurements of dynamic acousto‑elasticity: Protocols and modeling. Journal of Geophysical Research: Solid Earth, 120, 1587–1600. DOI:
-      <a href="https://doi.org/10.1002/2014JB011491" target="_blank" rel="noopener">10.1002/2014JB011491</a>.
-    </li>
+
     <li>
       Guyer, R.; Johnson, P. (2009). Nonlinear Mesoscopic Elasticity: The Complex Behaviour of Rocks, Soil, Concrete. Wiley‑VCH.
     </li>
+
     <li>
       Guyer, R.A.; McCall, K.R.; Van Den Abeele, K. (1998). Slow dynamics, memory and nonlinear elasticity. Geophysical Research Letters, 25(9), 1585–1588. DOI:
       <a href="https://doi.org/10.1029/98GL00818" target="_blank" rel="noopener">10.1029/98GL00818</a>.
     </li>
+
     <li>
-      Vakhnenko, O.O.; Vakhnenko, V.O.; Shankland, T.J. (2005). Nonlinear behavior of rocks under compression and tension. Physical Review B, 71, 174103. DOI:
-      <a href="https://doi.org/10.1103/PhysRevB.71.174103" target="_blank" rel="noopener">10.1103/PhysRevB.71.174103</a>.
+      Johnson, P.A.; Zinszner, B.; Rasolofosaon, P.N.J. (1996). Resonance and elastic nonlinear phenomena in rock. Journal of Geophysical Research, 101(B5), 11553–11564. DOI:
+      <a href="https://doi.org/10.1029/96JB00323" target="_blank" rel="noopener">10.1029/96JB00323</a>.
     </li>
+
+    <li>
+      Landau, L.D.; Lifshitz, E.M.; Kosevich, A.M.; Pitaevskii, L.P. (1986). Theory of Elasticity. Elsevier.
+    </li>
+
+    <li>
+      Li, X.; Sens‑Schönfelder, C.; Snieder, R. (2018). Nonlinear elasticity in resonance experiments. Physical Review B, 97, 144301. DOI:
+      <a href="https://doi.org/10.1103/PhysRevB.97.144301" target="_blank" rel="noopener">10.1103/PhysRevB.97.144301</a>.
+    </li>
+
+    <li>
+      Li, X. (2018). A unified interpretation of nonlinear elasticity in granular solids. Master’s thesis, Colorado School of Mines.
+    </li>
+
     <li>
       Lyakhovsky, V.; Hamiel, Y.; Ampuero, J.-P.; Ben‑Zion, Y. (2009). Nonlinear damage rheology and wave resonance in rocks. Geophysical Journal International, 178, 910–920. DOI:
       <a href="https://doi.org/10.1111/j.1365-246X.2009.04207.x" target="_blank" rel="noopener">10.1111/j.1365-246X.2009.04207.x</a>.
     </li>
+
+    <li id="ref-okubo-2024-parkfield">
+      Okubo, K.; Delbridge, B. G.; Denolle, M. A. (2024). Monitoring velocity change over 20 years at Parkfield. Journal of Geophysical Research: Solid Earth, 129, e2023JB028084. DOI:
+      <a href="https://doi.org/10.1029/2023JB028084" target="_blank" rel="noopener">10.1029/2023JB028084</a>.
+    </li>
+
+    <li>
+      Rivière, J.; Shokouhi, P.; Guyer, R.A.; Johnson, P.A. (2015a). Simple measurements of dynamic acousto‑elasticity: Protocols and modeling. Journal of Geophysical Research: Solid Earth, 120, 1587–1600. DOI:
+      <a href="https://doi.org/10.1002/2014JB011491" target="_blank" rel="noopener">10.1002/2014JB011491</a>.
+    </li>
+
+    <li id="ref-riviere-2015-jgr-measures">
+      Rivière, J.; Shokouhi, P.; Guyer, R.A.; Johnson, P.A. (2015b). A set of measures for the systematic classification of the nonlinear elastic behavior of disparate rocks. Journal of Geophysical Research: Solid Earth, 120, 1587–1604. DOI:
+      <a href="https://doi.org/10.1002/2014JB011718" target="_blank" rel="noopener">10.1002/2014JB011718</a>.
+    </li>
+
     <li>
       Snieder, R.; Sens‑Schönfelder, C.; Wu, R. (2017). The time dependence of rock velocities explained by a non‑recoverable nonlinearity. Geophysical Journal International, 208, 1–7. DOI:
       <a href="https://doi.org/10.1093/gji/ggw389" target="_blank" rel="noopener">10.1093/gji/ggw389</a>.
     </li>
+
+    <li id="ref-tencate-1996-grl">
+      TenCate, J.A.; Shankland, T.J. (1996). Nonlinear resonance and hysteresis in rock. Geophysical Research Letters, 23, 3019–3022. DOI:
+      <a href="https://doi.org/10.1029/96GL02884" target="_blank" rel="noopener">10.1029/96GL02884</a>.
+    </li>
+
     <li>
-      Landau, L.D.; Lifshitz, E.M.; Kosevich, A.M.; Pitaevskii, L.P. (1986). Theory of Elasticity. Elsevier.
-    </li>
-    <li id="ref-riviere-2015-jgr-measures">
-      Rivière, J.; Shokouhi, P.; Guyer, R.A.; Johnson, P.A. (2015). A set of measures for the systematic classification of the nonlinear elastic behavior of disparate rocks. Journal of Geophysical Research: Solid Earth, 120, 1587–1604. DOI:
-      <a href="https://doi.org/10.1002/2014JB011718" target="_blank" rel="noopener">10.1002/2014JB011718</a>.
+      TenCate, J.A.; Smith, E.; Guyer, R.A. (2000). Universal slow dynamics in granular solids. Physical Review Letters, 85, 1020–1023. DOI:
+      <a href="https://doi.org/10.1103/PhysRevLett.85.1020" target="_blank" rel="noopener">10.1103/PhysRevLett.85.1020</a>.
     </li>
 
-    <li id="ref-okubo-2024-parkfield">
-    Okubo, K.; Delbridge, B. G.; Denolle, M. A. (2024). Monitoring velocity change over 20 years at Parkfield. Journal of Geophysical Research: Solid Earth, 129, e2023JB028084. DOI:
-    <a href="https://doi.org/10.1029/2023JB028084" target="_blank" rel="noopener">10.1029/2023JB028084</a>.
+    <li>
+      TenCate, J.A. (2011). Slow dynamics of consolidated granular media. Pure and Applied Geophysics, 168, 2211–2219. DOI:
+      <a href="https://doi.org/10.1007/s00024-011-0280-6" target="_blank" rel="noopener">10.1007/s00024-011-0280-6</a>.
     </li>
 
-  </ol>
+    <li>
+      Vakhnenko, O.O.; Vakhnenko, V.O.; Shankland, T.J. (2005). Nonlinear behavior of rocks under compression and tension. Physical Review B, 71, 174103. DOI:
+      <a href="https://doi.org/10.1103/PhysRevB.71.174103" target="_blank" rel="noopener">10.1103/PhysRevB.71.174103</a>.
+    </li>
+  </ul>
 </section>
+
 
 
 
