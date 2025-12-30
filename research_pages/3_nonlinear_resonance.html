@@ -270,18 +270,12 @@
 
 <!-- 2. Duffing oscillator -->
 <section id="oscillators">
-  <h3>2) A Mathematical Playground: The Duffing Oscillator</h3>
+  <h3>2) Mathematical Playground: The Duffing Oscillator</h3>
 
   <p>
     Before getting lost in the messy microstructure of real rocks—thousands of contacts, partial slip, crack opening/closure,
     and long-term “memory”—it helps to study a clean nonlinear system that already reproduces one of the most visible lab
     signatures: <strong>a resonance peak that tilts and develops a “cliff”</strong>.
-  </p>
-
-  <p>
-    The simplest playground for this is the <strong>Duffing oscillator</strong>. You can picture it as a mass-on-a-spring system (for example, the movie below)
-    where the spring is no longer perfectly linear: as the motion grows, the restoring force becomes slightly stronger or weaker
-    than Hooke’s law would predict.
   </p>
 
 <div class="figure-grid"
@@ -299,10 +293,16 @@
       The spring drawing is only a visual guide (not a force-law plot): the key idea is that the restoring force
       includes a cubic term, so the “effective stiffness” depends on amplitude—one of the simplest routes to tilted,
       asymmetric resonance peaks and jump (“cliff”) behaviour in frequency sweeps.
-      <span style="white-space:nowrap;">(Example parameters in this animation: φ=0.1, k=0.2, δ=0.55, A_r=0.75, ω=1.0.)</span>
+      <span style="white-space:nowrap;">(Example parameters in this animation: φ=0.1, k=0.2, δ=0.55, $ A_r $=0.75, ω=1.0)</span>
     </figcaption>
   </figure>
 </div>
+
+  <p>
+    The simplest playground for this is the <strong>Duffing oscillator</strong>. You can picture it as a mass-on-a-spring system as shown above,
+    where the spring is no longer perfectly linear: as the motion grows, the restoring force becomes slightly stronger or weaker
+    than Hooke’s law would predict.
+  </p>
 
 
 
@@ -407,7 +407,7 @@
 
 <!-- 3. Thermodynamic contact model -->
 <section id="thermo-model">
-  <h3>3) A Thermodynamic Picture: Fractures as Bistable Elements</h3>
+  <h3>3) Thermodynamic Picture: Fractures as Bistable Elements</h3>
 
   <p>
     The Duffing oscillator is a great “shape of nonlinear resonance” toy model, but it is essentially
@@ -691,7 +691,7 @@ $$
   </p>
 
 
-  <h4>4.3) The “clock” inside the rock: the slowest contacts set $ \tau_{\max} $</h4>
+  <h4>4.3) “Clock” inside the rock: the slowest contacts set $ \tau_{\max} $</h4>
 
   <p>
     The thermodynamic contact model contains many relaxation times (because we include many barrier energies $ E_b $).
@@ -757,14 +757,14 @@ $$
 
   <div class="figure-grid"
        style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
-    <figure style="flex:1; min-width:320px; max-width:560px;">
+    <figure style="flex:1; min-width:320px; max-width:560px;  margin: 0 auto; padding-top: 20px;">
       <a href="3_nonlinear_resonance/PRB_log_time.PNG" target="_blank" rel="noopener noreferrer">
         <img src="3_nonlinear_resonance/PRB_log_time.PNG"
              alt="Model: resonant frequency recovery versus log time after conditioning at different drive levels"
-             style="width:100%; aspect-ratio:auto; object-fit:contain;">
+             style="width:100%; aspect-ratio:auto; object-fit:contain; ">
       </a>
       <figcaption>
-        <strong>Model Result</strong><br>
+        <strong>Model results of slow dynamics</strong><br>
         After conditioning, the resonance frequency recovers roughly linearly with $ \log t $ over decades in time.
       </figcaption>
     </figure>
@@ -777,7 +777,7 @@ $$
              style="width:100%; aspect-ratio:auto; object-fit:contain;">
       </a>
       <figcaption>
-        <strong>Lab observation</strong><br>
+        <strong>Lab observations of slow dynamics</strong><br>
         Strong shaking reduces wave speed; recovery is slow and often close to logarithmic in time. Figure adapted from TenCate et al., (2000).
       </figcaption>
     </figure>
@@ -801,14 +801,14 @@ $$
 
   <div class="figure-grid"
        style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
-    <figure style="flex:1; min-width:320px; max-width:560px;">
+    <figure style="flex:1; min-width:320px; max-width:560px;padding-top: 20px;">
       <a href="3_nonlinear_resonance/PRB_resonanceCurve_differentRates.PNG" target="_blank" rel="noopener noreferrer">
         <img src="3_nonlinear_resonance/PRB_resonanceCurve_differentRates.PNG"
              alt="Model: asymmetric resonance curves emerging from coupling between resonance and evolving modulus"
              style="width:100%; aspect-ratio:auto; object-fit:contain;">
       </a>
       <figcaption>
-        <strong>Model</strong><br>
+        <strong>Model results of resonance curves with different driving amplitudes</strong><br>
         As drive increases, the peak shifts and becomes asymmetric because the stiffness is evolving during the sweep.
       </figcaption>
     </figure>
@@ -821,7 +821,7 @@ $$
              style="width:100%; aspect-ratio:auto; object-fit:contain;">
       </a>
       <figcaption>
-        <strong>Lab observation</strong><br>
+        <strong>Lab observation of resonance curves with different driving amplitudes</strong><br>
         Real rocks show the same “leaning peak”: higher drive produces a shifted, skewed resonance curve. Figure adapted from Ten Cate &amp; Shankland (1996).
       </figcaption>
     </figure>
@@ -855,12 +855,12 @@ $$
              style="width:100%; aspect-ratio:auto; object-fit:contain;">
       </a>
       <figcaption>
-        <strong>Model</strong><br>
+        <strong>Model results of up–down differences in resonance curves</strong><br>
         Up–down differences are strong for fast sweeps, but can fade for slow sweeps when memory has time to relax.
       </figcaption>
     </figure>
   </div>
-   The above modeled results also match lab observations but now shown here (I need to find where they are in the vast range of literature!)
+   The above modeled results also match lab observations, which are not shown here; I need to find where they are in the vast range of literature!
 
 
 
@@ -897,7 +897,7 @@ $$
            style="width:100%; object-fit:contain;">
     </a>
     <figcaption>
-      <strong>Model</strong><br>
+      <strong>Model result of hysteresis loops</strong><br>
       Predicted modulus–strain “butterfly” loops under cyclic strain:
       stiffness during unloading differs from stiffness during loading because $ N_o(t) $ lags behind the strain cycle.
     </figcaption>
@@ -910,7 +910,7 @@ $$
            style="width:100%; object-fit:contain;">
     </a>
     <figcaption>
-      <strong>Lab observation</strong><br>
+      <strong>Lab observation of hysteresis loops</strong><br>
       DAET measurements show the same signature: wave speed (and inferred stiffness) traces a loop rather than a single curve,
       indicating fast nonlinear hysteresis. Adapted from Rivière et&nbsp;al. (2015b).
     </figcaption>
@@ -952,27 +952,27 @@ $$
 
   <div class="figure-grid"
        style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
-    <figure style="flex:1; min-width:320px; max-width:560px;">
+    <figure style="flex:1; min-width:320px; max-width:560px">
       <a href="3_nonlinear_resonance/PRB_Res_stiff_cliff.PNG" target="_blank" rel="noopener noreferrer">
         <img src="3_nonlinear_resonance/PRB_Res_stiff_cliff.PNG"
              alt="Model: resonance curves with a pronounced cliff and persistent up-down difference"
              style="width:100%; aspect-ratio:auto; object-fit:contain;">
       </a>
       <figcaption>
-        <strong>Model</strong><br>
+        <strong>Model results of resonance curves in experiments with high nonlinearity</strong><br>
         Strong nonlinearity can generate cliffs (jump behaviour) and persistent up–down differences near the jump.
       </figcaption>
     </figure>
 
     <!-- Replace with a lab “cliff” example if available -->
-    <figure style="flex:1; min-width:320px; max-width:560px;">
+    <figure style="flex:1; min-width:320px; max-width:560px; padding-top: 20px;">
       <a href="3_nonlinear_resonance/PRB_Res_stiff_cliffLAB.png" target="_blank" rel="noopener noreferrer">
         <img src="3_nonlinear_resonance/PRB_Res_stiff_cliffLAB.png"
              alt="Lab: resonance curves showing sharp jump-like behaviour at high drive"
              style="width:100%; aspect-ratio:auto; object-fit:contain;">
       </a>
       <figcaption>
-        <strong>Lab observation</strong><br>
+        <strong>Lab observations of resonance curves with high nonlinearity</strong><br>
         At high drive, rocks can show jump-like features in frequency sweeps—an experimental “cliff”.
       </figcaption>
     </figure>
@@ -1083,19 +1083,18 @@ $$
   <p>
     This project set out to answer a deceptively simple question:
     <em>how can microstrain-level vibrations produce such large, history-dependent changes in the elastic response of granular rocks?</em>
-    My main result is a compact, thermodynamics-based contact model that treats grain contacts / microcracks as
+    Our main result is a compact, thermodynamics-based contact model that treats grain contacts / microcracks as
     bistable elements (open vs. closed) with rate-dependent switching. When this internal state is coupled to a
     realistic resonance-measurement protocol (“hold–measure–step”), it reproduces the core experimental signatures
-    of nonlinear elasticity in granular solids within one consistent framework.
-  </p>
-
-  <h4>What I built (in one sentence)</h4>
-  <p>
-    A minimal model in which dynamic strain biases defect energies, defects switch states over activation barriers,
+    of nonlinear elasticity in granular solids within one consistent framework. 
+    What we built is a minimal model in which dynamic strain biases defect energies, defects switch states over activation barriers,
     the evolving open fraction $ N_o(t) $ changes stiffness $ Y(t) $, and that stiffness feeds back into the driven resonance.
   </p>
 
-  <h4>What the model explains in a unified way</h4>
+
+
+  
+  <h4>The model explains the following laboratory obervations of nonlinear elasticity in a unified way: </h4>
   <ul>
     <li>
       <strong>Amplitude-dependent resonance shifts and asymmetric peaks</strong>:
@@ -1116,29 +1115,22 @@ $$
       in strong nonlinearity, the coupled contact–oscillator system admits <em>multiple stable steady states</em> (a bifurcation band),
       so sweep direction can matter even when the sweep is slow.
     </li>
+
+
   </ul>
 
-  <h4>Why this matters beyond the lab</h4>
   <p>
+    <strong>These observations and underlying mechanisms matter beyond the lab:</strong> 
     The same ingredients that control bench-top resonance experiments—contact-level metastability, rate effects,
     and broad relaxation spectra—also provide a natural physical language for field observations:
     post-seismic velocity drops and recovery, time-lapse changes during injection/production, and other crustal
     transients where “damage-like” compliance evolves with forcing and then heals gradually.
   </p>
 
-  <div class="callout"
-       style="border-left:4px solid #555; padding:.75rem 1rem; background:#f9f9fb; margin:1rem 0;">
-    <strong>Core takeaway</strong>
-    <p style="margin:.5rem 0 0 0;">
-      Many “mysterious” nonlinear rock phenomena can be interpreted as the macroscopic footprint of a large population of
-      micro-contacts exploring a biased energy landscape—some responding quickly, others retaining memory for a long time.
-    </p>
-  </div>
-
-  <h4>What this work enables next (clear, testable extensions)</h4>
+  <h4>This work should also enable other research possibilities: </h4>
   <ul>
     <li>
-      <strong>Fluids, pressure, and temperature</strong>:
+      <strong>Account for fluids, pressure, and temperature</strong>:
       extend the energy landscape so switching rates depend on effective stress and pore pressure, enabling direct links to
       saturation changes and reservoir operations.
     </li>
@@ -1158,6 +1150,16 @@ $$
       whether two distinct stable outcomes emerge—an unambiguous signature of genuine multistability rather than rate effects alone.
     </li>
   </ul>
+
+  <div class="callout"
+       style="border-left:4px solid #555; padding:.75rem 1rem; background:#f9f9fb; margin:1rem 0;">
+    <strong>Core takeaway</strong>
+    <p style="margin:.5rem 0 0 0;">
+      Many “mysterious” nonlinear rock phenomena can be interpreted as the macroscopic footprint of a large population of
+      micro-contacts exploring a biased energy landscape—some responding quickly, others retaining memory for a long time.
+    </p>
+  </div>
+
 
   <p>
     <strong>Related:</strong> Xun Li,
