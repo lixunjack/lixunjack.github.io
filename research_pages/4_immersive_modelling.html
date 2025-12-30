@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Elastic Immersive Wave Experimentation — Jack Li</title>
+  <meta name="description" content="Details on elastic immersive wave experimentation by Jack (Xun) Li.">
+  <link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+
+  <main>
+    <section>
+      <p><a href="../index.html">← Back to Main Page</a></p>
+      <h2>Elastic Immersive Wave Experimentation</h2>
+      <p>Overcoming boundary reflections in size‑limited 3D elastic experiments.</p>
+
+      <div class="figure-grid" style="width: min(900px, 92vw);">
+        <figure>
+          <a href="../asset/wavelab.png" target="_blank" rel="noopener noreferrer">
+            <img src="../asset/wavelab.png" alt="ETH Wave Lab setup">
+          </a>
+          <figcaption>Wave Lab at ETH Zurich with scanning laser vibrometry.</figcaption>
+        </figure>
+      </div>
+
+      <h3>Key ideas</h3>
+      <ul>
+        <li>Immersive boundary conditions extended to elastic media.</li>
+        <li>Internal absorbing boundaries for closed‑aperture decomposition.</li>
+        <li>Experiment–model integration and reproducibility.</li>
+      </ul>
+
+      <p>Related paper: <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener">Elastic immersive wave experimentation</a>, GJI (2023).</p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© <span id="year"></span> Xun Li • Edinburgh, UK</small>
+    </div>
+  </footer>
+
+  <script>
+  (function () {
+    const y = document.getElementById('year');
+    if (y) y.textContent = new Date().getFullYear();
+  })();
+  </script>
+</body>
+</html>
