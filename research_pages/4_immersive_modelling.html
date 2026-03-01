@@ -3,49 +3,468 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Elastic Immersive Wave Experimentation — Jack Li</title>
-  <meta name="description" content="Details on elastic immersive wave experimentation by Jack (Xun) Li.">
+  <title>Simulating Only What Changes: Elastic Immersive Wavefield Modelling — Jack Li</title>
+  <meta name="description" content="How immersive boundary conditions let you recompute elastic wavefields by simulating only a local region—while still capturing interactions with the full domain.">
   <link rel="stylesheet" href="../styles.css">
 </head>
+
+
+
+<!-- cutline 1, March, 2026 -->
+
+
+
 <body>
+  <main id="wrapper">
 
-  <main>
     <section>
-      <p><a href="../index.html">← Back to Main Page</a></p>
-      <h2>Elastic Immersive Wave Experimentation</h2>
-      <p>Overcoming boundary reflections in size‑limited 3D elastic experiments.</p>
+      <p>
+        <a href="../index.html#research">← Back to Main Page</a>
+      </p>
 
-      <div class="figure-grid" style="width: min(900px, 92vw);">
+      <h2>Simulating Only What Changes: How to Recompute Elastic Wavefields Without Recomputing the Whole World</h2>
+
+      <p>
+        Wave simulations show up everywhere: earthquake science, seismic imaging, non-destructive testing, and medical ultrasound.
+        The goal is simple: you specify a source (an earthquake, a pulse, a transducer) and a model of the material, and you compute
+        how waves travel, scatter, and arrive at sensors.
+      </p>
+
+      <p>
+        The hard part is that realistic models are big, and realistic wave physics is expensive. Even worse, many workflows need not one
+        simulation, but hundreds or thousands of very similar simulations. In imaging and inversion, for example, you keep updating the model—often
+        changing only a small target zone each time. Running a full-domain simulation every time is like re-rendering an entire movie scene
+        because you moved one prop.
+      </p>
+
+      <p>
+        This blog explains the idea behind <strong>immersive wavefield modelling</strong>: a way to recompute wavefields after a
+        <em>local</em> model change by simulating only a <em>local</em> region, while still reproducing the same answer you would get from a
+        full-domain simulation (including long-range interactions).
+      </p>
+
+      <p>
+        Two key references:
+      </p>
+      <ul>
+        <li>
+          <strong>Acoustic (pressure-wave) immersion, numerically exact via finite-difference injection</strong>:
+          van Manen, Li, Vasmel, Broggini &amp; Robertsson (GJI, 2020),
+          <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">DOI: 10.1093/gji/ggaa317</a>.
+        </li>
+        <li>
+          <strong>Elastic (P–S wave) immersive modelling with efficient injection</strong>:
+          Li, Koene, van Manen, Robertsson &amp; Curtis (JCP, 2022),
+          <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">DOI: 10.1016/j.jcp.2021.110826</a>.
+        </li>
+      </ul>
+
+      <p>
+        The promise is:
+      </p>
+      <ul>
+        <li><strong>Speed</strong> for repeated simulations when only a small target zone changes.</li>
+        <li><strong>Accuracy</strong> that still includes wave interactions with the full exterior model (including waves that leave and later return).</li>
+      </ul>
+
+      <div class="figure-grid" style="width:min(900px,92vw);">
         <figure>
-          <a href="../asset/wavelab.png" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/wavelab.png" alt="ETH Wave Lab setup">
+          <a href="4_immersive_modeling/twodomain_schematic.png" target="_blank" rel="noopener">
+            <img
+              src="4_immersive_modeling/twodomain_schematic.png"
+              alt="Schematic of immersive boundary conditions showing a local simulation box, a recording surface, and the surrounding full model."
+              style="width:100%;object-fit:contain;">
           </a>
-          <figcaption>Wave Lab at ETH Zurich with scanning laser vibrometry.</figcaption>
+          <figcaption>
+            <strong>Figure 1 — The “small box inside a big world” idea</strong><br>
+            We only simulate waves inside the <em>local box</em> (red dashed line). A second surface (blue dashed line) is where we
+            record what the outside world would do. Using precomputed responses (think: “how waves travel from blue to red”), the boundary
+            can inject the correct incoming waves and absorb outgoing ones—so the small simulation behaves like it is still embedded in the full model.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="why-expensive">
+      <h3>1) Why repeated wave simulations become painful</h3>
+
+      <p>
+        Many wave-modelling tasks are iterative by nature. Full waveform inversion (FWI), survey design, uncertainty studies,
+        and time-lapse analysis all demand <em>many</em> wave simulations. Even if each update is small, rerunning a global simulation
+        recomputes propagation everywhere—again and again.
+      </p>
+
+      <ul>
+        <li><strong>Imaging and inversion</strong>: update the model slightly, simulate again, compare with data, and repeat.</li>
+        <li><strong>Monitoring</strong>: test many scenarios where only a small region changes (fluid movement, damage growth, stiffness changes).</li>
+        <li><strong>Design and sensitivity studies</strong>: try many “what if” versions of a target zone.</li>
+      </ul>
+
+      <p>
+        If most of the model stays unchanged, it is natural to ask: can we simulate only the part that changes—without losing the influence
+        of the unchanged surroundings?
+      </p>
+    </section>
+
+    <section id="standard-local">
+      <h3>2) Conventional local replay: what it gets right—and what it can miss</h3>
+
+      <p>
+        A standard local strategy is:
+      </p>
+      <ol>
+        <li>Run a global simulation once.</li>
+        <li>Record wavefields on a closed surface around a target zone.</li>
+        <li>Change the model inside that surface.</li>
+        <li>Re-inject the recorded wavefield to reproduce the “incoming” energy inside the target zone.</li>
+      </ol>
+
+      <p>
+        This is useful, but it can miss an important effect: waves scattered by the modified target can travel into the exterior,
+        reflect/scatter from distant structures, and then <strong>come back</strong>—sometimes multiple times. One-shot replay does not fully
+        reproduce these higher-order, long-range interactions.
+      </p>
+    </section>
+
+    <section id="ibc-idea">
+      <h3>3) The core idea: Immersive Boundary Conditions (IBCs)</h3>
+
+      <p>
+        Immersive Boundary Conditions make a small local simulation behave as if it were still sitting inside the full model.
+        The boundary is <em>active</em>: it absorbs waves leaving the local box (to avoid artificial reflections) and it emits the correct
+        waves coming in from the unchanged exterior. Because this happens continuously in time, the local region remains two-way coupled
+        to the outside world.
+      </p>
+
+      <p>
+        In practice, the boundary updates rely on a library of precomputed wave responses in the unchanged background model
+        (often described using Green’s functions). You compute that library once, then reuse it across many local reruns.
+      </p>
+    </section>
+
+    <section id="two-papers">
+      <h3>4) Two implementation routes: FD injection (exact) vs MPS (efficient)</h3>
+
+      <p>
+        Once you accept the IBC concept, the practical question becomes: how do we record and inject wavefields on a finite-difference
+        grid without adding numerical artefacts?
+      </p>
+
+      <h4>4.1 Finite-difference injection (FD injection): “exact by construction”</h4>
+
+      <p>
+        FD injection makes the boundary consistent with the <em>discrete</em> finite-difference solver itself. That is why, for acoustic
+        waves, it can match a full-domain finite-difference run down to machine precision.
+      </p>
+
+      <p>
+        <strong>Strength:</strong> extremely accurate (often machine-precision agreement).<br>
+        <strong>Trade-off:</strong> more bookkeeping and overhead, especially for higher-order finite-difference stencils.
+      </p>
+
+      <p>
+        <strong>Reference:</strong> van Manen et al. (2020), GJI,
+        <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">DOI: 10.1093/gji/ggaa317</a>.
+      </p>
+
+      <div class="figure-grid" style="width:min(1080px,92vw);">
+        <figure>
+          <a href="4_immersive_modeling/acousticFD_local_model.png" target="_blank" rel="noopener">
+            <img
+              src="4_immersive_modeling/acousticFD_local_model.png"
+              alt="Acoustic finite-difference models used in boundary and immersion examples."
+              style="width:100%;object-fit:contain;">
+          </a>
+          <figcaption>
+            <strong>Figure 2 — Example acoustic models (what the computer ‘thinks’ the world looks like)</strong><br>
+            These are simple test worlds used to check the boundary method. The patterns (dots/objects/lines) act like strong scatterers,
+            so waves bounce and scatter in many directions. This is a tough test: a good immersive boundary must still handle all that scattering
+            without creating fake reflections at the edge of the local box.
+          </figcaption>
         </figure>
       </div>
 
-      <h3>Key ideas</h3>
+      <div class="figure-grid" style="width:min(1080px,92vw);">
+        <figure>
+          <a href="4_immersive_modeling/snapshot_fdinj.png" target="_blank" rel="noopener">
+            <img
+              src="4_immersive_modeling/snapshot_fdinj.png"
+              alt="Acoustic wavefield snapshots comparing immersive modelling to a full-domain reference, including difference panels."
+              style="width:100%;object-fit:contain;">
+          </a>
+          <figcaption>
+            <strong>Figure 3 — Immersive vs full simulation (and the tiny difference)</strong><br>
+            The snapshots compare an immersive simulation (local box + IBCs) against a full-domain reference run. The “difference” panels are
+            scaled up heavily; without that exaggeration, the mismatch is essentially invisible. This is the key point: the local simulation can
+            reproduce what the full simulation would have done, while only computing a small region.
+          </figcaption>
+        </figure>
+      </div>
+
+      <h4>4.2 Method of Multiple Point Sources (MPS): “physics-like and cheaper” (elastic case)</h4>
+
+      <p>
+        For <strong>elastic</strong> waves (P-waves and S-waves), simulations track several coupled wave components. Many elastic solvers use
+        a <strong>staggered grid</strong> (different components live at slightly different grid locations), which makes clean recording/injection
+        harder—especially near corners.
+      </p>
+
+      <p>
+        MPS represents the boundary effect using many point sources distributed around the boundary. In practice it can be much lighter
+        than FD injection, especially as finite-difference stencils become higher order.
+      </p>
+
+      <p>
+        <strong>Reference:</strong> Li et al. (2022), JCP,
+        <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">DOI: 10.1016/j.jcp.2021.110826</a>.
+      </p>
+
+      <div class="figure-grid" style="width:min(1080px,92vw);">
+        <figure>
+          <a href="4_immersive_modeling/elastic_model.png" target="_blank" rel="noopener">
+            <img
+              src="4_immersive_modeling/elastic_model.png"
+              alt="Elastic full model and local subdomain for immersive boundary condition tests, showing recording and emitting surfaces."
+              style="width:100%;object-fit:contain;">
+          </a>
+          <figcaption>
+            <strong>Figure 4 — Elastic test setup: full model vs local model</strong><br>
+            The full model contains scatterers (green) that reflect and redirect waves. The immersive simulation only runs inside the local box,
+            but it is connected to the outside world via two surfaces: a <em>recording surface</em> (where we measure what the exterior would do)
+            and an <em>emitting boundary</em> (where we inject boundary sources so the local run stays fully coupled to the exterior).
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="figure-grid" style="width:min(1080px,92vw);">
+        <figure>
+          <a href="4_immersive_modeling/elastic_2D_o22results.png" target="_blank" rel="noopener">
+            <img
+              src="4_immersive_modeling/elastic_2D_o22results.png"
+              alt="Elastic wavefield snapshots comparing reference simulation with immersive simulations using FD injection and MPS, including differences."
+              style="width:100%;object-fit:contain;">
+          </a>
+          <figcaption>
+            <strong>Figure 5 — Elastic results: two boundary implementations, one target answer</strong><br>
+            The first column is the full-domain reference wavefield. The next columns show immersive simulations using FD injection and MPS.
+            The difference panels are scaled up strongly to make any mismatch visible. The main takeaway is that both approaches can reproduce
+            the full-domain behaviour inside the local box—while MPS can be cheaper to run and store.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <h3>5) What the workflow looks like in practice</h3>
+
+      <p>
+        Immersive modelling is most valuable when you need many reruns where only a small region changes. A typical workflow is:
+      </p>
+
+      <ol>
+        <li><strong>Pick a target zone</strong>: draw a box around the part you expect to modify.</li>
+        <li><strong>Precompute exterior responses (once)</strong>: in the unchanged background model, compute the information needed to update the boundary through time.</li>
+        <li><strong>Run many local simulations</strong>: for each update, simulate only the local box while the boundary supplies the “outside world.”</li>
+        <li><strong>Extract outputs</strong>: inside the local region (and at receivers), you obtain the same result as a full-domain run.</li>
+      </ol>
+    </section>
+
+    <section id="when-worth-it">
+      <h3>6) When is immersive modelling worth it?</h3>
+
+      <p>
+        Immersive modelling tends to pay off when:
+      </p>
       <ul>
-        <li>Immersive boundary conditions extended to elastic media.</li>
-        <li>Internal absorbing boundaries for closed‑aperture decomposition.</li>
-        <li>Experiment–model integration and reproducibility.</li>
+        <li><strong>Local changes:</strong> only a small subdomain changes between runs.</li>
+        <li><strong>Many repeats:</strong> you need many recomputations (e.g., inversion iterations or many scenarios).</li>
+        <li><strong>Exterior matters:</strong> reflections/scattering outside the target zone feed energy back into it.</li>
       </ul>
 
-      <p>Related paper: <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener">Elastic immersive wave experimentation</a>, GJI (2023).</p>
+      <p>
+        It is less attractive when:
+      </p>
+      <ul>
+        <li>changes are widespread (not local anymore),</li>
+        <li>you only need one or two runs (setup cost may not pay back),</li>
+        <li>memory for stored responses is severely limited (though compression/reduced-order ideas can help).</li>
+      </ul>
     </section>
+
+    <section id="applications">
+      <h3>7) Why this matters (beyond one method)</h3>
+
+      <p>
+        The broader point is not just a new boundary condition. It’s a way of thinking about wave simulation that matches how many problems are structured:
+        a large environment with a small region of interest that changes.
+      </p>
+
+      <ul>
+        <li><strong>Seismic imaging and inversion</strong>: efficient updates as local properties evolve.</li>
+        <li><strong>Time-lapse monitoring</strong>: local changes such as fluid movement or damage growth.</li>
+        <li><strong>Non-destructive testing</strong>: compute near a suspected defect while respecting the whole structure.</li>
+        <li><strong>Medical acoustics</strong>: local organs/lesions inside a larger body context.</li>
+        <li><strong>Laboratory wave experiments</strong>: link a physical experiment to a virtual exterior (“immersive experimentation”).</li>
+      </ul>
+    </section>
+
+    <section id="references">
+      <h3>References</h3>
+
+      <ul>
+        <li>
+          van Manen, D.-J., Li, X., Vasmel, M., Broggini, F., &amp; Robertsson, J. (2020).
+          <em>Exact extrapolation and immersive modelling with finite-difference injection</em>,
+          Geophysical Journal International.
+          <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">https://doi.org/10.1093/gji/ggaa317</a>
+        </li>
+
+        <li>
+          Li, X., Koene, E., van Manen, D.-J., Robertsson, J., &amp; Curtis, A. (2022).
+          <em>Elastic immersive wavefield modelling</em>,
+          Journal of Computational Physics, 451, 110826.
+          <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.jcp.2021.110826</a>
+        </li>
+      </ul>
+    </section>
+
   </main>
 
+  <!-- footer -->
   <footer class="site-footer">
     <div class="container">
-      <small>© <span id="year"></span> Xun Li • Edinburgh, UK</small>
+      <small>© <span id="year"></span> Jack Li • Edinburgh, UK</small>
     </div>
   </footer>
 
   <script>
-  (function () {
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-  })();
+    (function () {
+      const y = document.getElementById('year');
+      if (y) y.textContent = new Date().getFullYear();
+    })();
   </script>
+
+  <!-- Zoom and pan script (same style as your other pages) -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.getElementById('wrapper');
+      if (!wrapper) return;
+
+      let zoomInner = document.getElementById('zoom-inner');
+      if (!zoomInner) {
+        zoomInner = document.createElement('div');
+        zoomInner.id = 'zoom-inner';
+        while (wrapper.firstChild) zoomInner.appendChild(wrapper.firstChild);
+        wrapper.appendChild(zoomInner);
+      }
+
+      let scale = 1;
+      let tx = 0;
+      let ty = 0;
+      const ZOOM_STEP = 1.05;
+      const MIN_SCALE = 0.5;
+      const MAX_SCALE = 3;
+
+      zoomInner.style.transformOrigin = 'center center';
+      zoomInner.style.willChange = 'transform';
+
+      const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
+      const applyTransform = () => {
+        zoomInner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
+      };
+
+      const zoomBy = (factor) => {
+        const newScale = clamp(scale * factor, MIN_SCALE, MAX_SCALE);
+        if (newScale === scale) return;
+        scale = newScale;
+        applyTransform();
+      };
+
+      window.addEventListener('wheel', (event) => {
+        if (!event.ctrlKey && !event.metaKey) return;
+        event.preventDefault();
+        const factor = event.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP;
+        zoomBy(factor);
+      }, { passive: false });
+
+      window.addEventListener('keydown', (event) => {
+        const el = event.target;
+        const isEditable = el && (el.isContentEditable ||
+          ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
+        if (isEditable) return;
+
+        const hasModifier = event.ctrlKey || event.metaKey;
+        if (!hasModifier) return;
+
+        let handled = false;
+
+        if (event.code === 'Equal' || event.code === 'NumpadAdd' || event.key === '+') {
+          zoomBy(ZOOM_STEP);
+          handled = true;
+        } else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
+          zoomBy(1 / ZOOM_STEP);
+          handled = true;
+        } else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
+          scale = 1;
+          tx = 0;
+          ty = 0;
+          handled = true;
+        }
+
+        if (handled) {
+          event.preventDefault();
+          applyTransform();
+        }
+      });
+
+      let isPanning = false;
+      let startX = 0, startY = 0, startTx = 0, startTy = 0;
+
+      const startPan = (clientX, clientY) => {
+        isPanning = true;
+        startX = clientX;
+        startY = clientY;
+        startTx = tx;
+        startTy = ty;
+        document.body.style.cursor = 'grabbing';
+      };
+
+      const movePan = (clientX, clientY) => {
+        if (!isPanning) return;
+        const dx = clientX - startX;
+        const dy = clientY - startY;
+        tx = startTx + dx;
+        ty = startTy + dy;
+        applyTransform();
+      };
+
+      const endPan = () => {
+        isPanning = false;
+        document.body.style.cursor = '';
+      };
+
+      window.addEventListener('mousedown', (e) => {
+        if (!e.target || !e.isTrusted) return;
+        if (e.button === 0 && (e.getModifierState && e.getModifierState(' '))) {
+          e.preventDefault();
+          startPan(e.clientX, e.clientY);
+        }
+      });
+
+      window.addEventListener('mousemove', (e) => movePan(e.clientX, e.clientY));
+      window.addEventListener('mouseup', endPan);
+      window.addEventListener('mouseleave', endPan);
+
+      window.addEventListener('gesturestart', (e) => e.preventDefault());
+      window.addEventListener('gesturechange', (e) => {
+        e.preventDefault();
+        const factor = clamp(e.scale, 0.95, 1.05);
+        zoomBy(factor);
+      }, { passive: false });
+
+      applyTransform();
+    });
+  </script>
+
 </body>
 </html>
