@@ -8,321 +8,710 @@
   <link rel="stylesheet" href="../styles.css">
 </head>
 
-<!-- cutline ready to start again on 18, March, 2026 -->
 
 <body>
   <main id="wrapper">
 
-    <section>
-      <p>
-        <a href="../index.html#research">← Back to Main Page</a>
-      </p>
+<section>
+  <p>
+    <a href="../index.html#research">← Back to Main Page</a>
+  </p>
 
-      <h2>Simulating Only What Changes: How to Recompute Elastic Wavefields Without Recomputing the Whole World</h2>
+  <h2>Simulating Only What Changes: How to Recompute Elastic Wavefields Without Recomputing the Whole Model</h2>
 
-      <p>
-        Wave simulations show up everywhere: earthquake science, seismic imaging, non-destructive testing, and medical ultrasound.
-        The goal is simple: you specify a source (an earthquake, a pulse, a transducer) and a model of the material, and you compute
-        how waves travel, scatter, and arrive at sensors.
-      </p>
+  <p>
+    Wave simulations appear in many fields, including earthquake science, seismic imaging, non-destructive testing, and medical ultrasound.
+    The basic idea is straightforward: you specify a source—an earthquake, a pulse, or a transducer—and a model of the material, then compute
+    how waves propagate, scatter, and eventually arrive at sensors in a 2D or 3D medium, producing synthetic data.
+  </p>
 
-      <p>
-        The hard part is that realistic models are big, and realistic wave physics is expensive. Even worse, many workflows need not one
-        simulation, but hundreds or thousands of very similar simulations. In imaging and inversion, for example, you keep updating the model—often
-        changing only a small target zone each time. Running a full-domain simulation every time is like re-rendering an entire movie scene
-        because you moved one prop.
-      </p>
+  <p>
+    The challenge is that realistic models are large, and realistic wave physics is expensive to simulate. Even worse, many applications and
+    processing workflows require not just one simulation, but hundreds or thousands of very similar ones. In imaging and inversion, for example,
+    the model is updated repeatedly, often only within a small target zone each time. Running a full-domain simulation for every update is like
+    re-rendering an entire movie scene because you moved one prop.
+  </p>
 
-      <p>
-        This blog explains the idea behind <strong>immersive wavefield modelling</strong>: a way to recompute wavefields after a
-        <em>local</em> model change by simulating only a <em>local</em> region, while still reproducing the same answer you would get from a
-        full-domain simulation (including long-range interactions).
-      </p>
+  <p>
+    This blog introduces the idea behind <strong>immersive wavefield modelling</strong>: a way to recompute wavefields after a
+    <em>local</em> model change by simulating only a <em>local</em> region, while still reproducing the same result you would obtain from a
+    full-domain simulation, including long-range interactions.
+  </p>
 
-      <p>
-        Two key references:
-      </p>
-      <ul>
-        <li>
-          <strong>Acoustic (pressure-wave) immersion, numerically exact via finite-difference injection</strong>:
-          van Manen, Li, Vasmel, Broggini &amp; Robertsson (GJI, 2020),
-          <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">DOI: 10.1093/gji/ggaa317</a>.
-        </li>
-        <li>
-          <strong>Elastic (P–S wave) immersive modelling with efficient injection</strong>:
-          Li, Koene, van Manen, Robertsson &amp; Curtis (JCP, 2022),
-          <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">DOI: 10.1016/j.jcp.2021.110826</a>.
-        </li>
-      </ul>
 
-      <p>
-        The promise is:
-      </p>
-      <ul>
-        <li><strong>Speed</strong> for repeated simulations when only a small target zone changes.</li>
-        <li><strong>Accuracy</strong> that still includes wave interactions with the full exterior model (including waves that leave and later return).</li>
-      </ul>
+  <p>
+    In practice, local wavefield modelling tries to balance two key goals:
+  </p>
+  <ul>
+    <li><strong>Speed</strong>: making repeated simulations much cheaper when only a small target zone changes.</li>
+    <li><strong>Accuracy</strong>: capturing wave interactions with the full exterior model, including waves that leave the local region and later return.</li>
+  </ul>
 
-      <div class="figure-grid" style="width:min(900px,92vw);">
-        <figure>
-          <a href="4_immersive_modeling/twodomain_schematic.png" target="_blank" rel="noopener">
-            <img
-              src="4_immersive_modeling/twodomain_schematic.png"
-              alt="Schematic of immersive boundary conditions showing a local simulation box, a recording surface, and the surrounding full model."
-              style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            <strong>Figure 1 — The “small box inside a big world” idea</strong><br>
-            We only simulate waves inside the <em>local box</em> (red dashed line). A second surface (blue dashed line) is where we
-            record what the outside world would do. Using precomputed responses (think: “how waves travel from blue to red”), the boundary
-            can inject the correct incoming waves and absorb outgoing ones—so the small simulation behaves like it is still embedded in the full model.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+  <div class="figure-grid" style="width:min(900px,92vw);">
+    <figure>
+      <a href="4_immersive_modeling/twodomain_schematic.png" target="_blank" rel="noopener">
+        <img
+          src="4_immersive_modeling/twodomain_schematic.png"
+          alt="Schematic of immersive boundary conditions showing a local simulation box, a recording surface, and the surrounding full model."
+          style="width:100%;object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>The idea of “small box inside a big world”</strong><br>
+        We simulate waves only inside the <em>local box</em> (red dashed line). A second surface (blue dashed line) is used to
+        record what the outside world would do. Using precomputed responses—think of them as describing how waves travel from the blue
+        surface to the red one—the boundary can inject the correct incoming waves and absorb outgoing ones, so the small simulation behaves
+        as though it were still embedded in the full model.
+      </figcaption>
+    </figure>
+  </div>
 
-    <section id="why-expensive">
-      <h3>1) Why repeated wave simulations become painful</h3>
+<p>
+  <strong>Related:</strong> van Manen, Li, Vasmel, Broggini &amp; Robertsson,
+  <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">
+    Exact extrapolation and immersive modelling with finite-difference injection
+  </a> (2020).
+</p>
 
-      <p>
-        Many wave-modelling tasks are iterative by nature. Full waveform inversion (FWI), survey design, uncertainty studies,
-        and time-lapse analysis all demand <em>many</em> wave simulations. Even if each update is small, rerunning a global simulation
-        recomputes propagation everywhere—again and again.
-      </p>
+<p>
+  <strong>Related:</strong> Li, Koene, van Manen, Robertsson &amp; Curtis,
+  <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">
+    Elastic immersive wavefield modelling
+  </a> (2022).
+</p>
 
-      <ul>
-        <li><strong>Imaging and inversion</strong>: update the model slightly, simulate again, compare with data, and repeat.</li>
-        <li><strong>Monitoring</strong>: test many scenarios where only a small region changes (fluid movement, damage growth, stiffness changes).</li>
-        <li><strong>Design and sensitivity studies</strong>: try many “what if” versions of a target zone.</li>
-      </ul>
+</section>
 
-      <p>
-        If most of the model stays unchanged, it is natural to ask: can we simulate only the part that changes—without losing the influence
-        of the unchanged surroundings?
-      </p>
-    </section>
 
-    <section id="standard-local">
-      <h3>2) Conventional local replay: what it gets right—and what it can miss</h3>
 
-      <p>
-        A standard local strategy is:
-      </p>
-      <ol>
-        <li>Run a global simulation once.</li>
-        <li>Record wavefields on a closed surface around a target zone.</li>
-        <li>Change the model inside that surface.</li>
-        <li>Re-inject the recorded wavefield to reproduce the “incoming” energy inside the target zone.</li>
-      </ol>
 
-      <p>
-        This is useful, but it can miss an important effect: waves scattered by the modified target can travel into the exterior,
-        reflect/scatter from distant structures, and then <strong>come back</strong>—sometimes multiple times. One-shot replay does not fully
-        reproduce these higher-order, long-range interactions.
-      </p>
-    </section>
+<section id="why-expensive">
+  <h3>1) Why repeated wave simulations become painful</h3>
 
-    <section id="ibc-idea">
-      <h3>3) The core idea: Immersive Boundary Conditions (IBCs)</h3>
+  <p>
+    Many wave-modelling problems are not “one simulation” problems. Instead, they require solving the same wave equation
+    over and over again for a family of models that are almost identical. This happens in
+    <strong>full waveform inversion (FWI)</strong>, in the design of <strong>wave-based imaging and monitoring surveys</strong>,
+    and in sensitivity or uncertainty studies where many candidate models must be tested.
+  </p>
 
-      <p>
-        Immersive Boundary Conditions make a small local simulation behave as if it were still sitting inside the full model.
-        The boundary is <em>active</em>: it absorbs waves leaving the local box (to avoid artificial reflections) and it emits the correct
-        waves coming in from the unchanged exterior. Because this happens continuously in time, the local region remains two-way coupled
-        to the outside world.
-      </p>
+  <p>
+    The expensive part is that each new run normally recomputes wave propagation through the
+    <em>entire</em> computational domain, even when the actual model change is confined to a very small region.
+    For example, an inversion update may alter properties only in a local target zone; a monitoring study may change only
+    a damaged patch, a fluid-filled pocket, or a fracture corridor; and a design study may compare several versions of a
+    small inclusion embedded in a much larger background medium. In all of these cases, most of the model stays the same,
+    but a conventional simulation still pays the full global cost every time.
+  </p>
 
-      <p>
-        In practice, the boundary updates rely on a library of precomputed wave responses in the unchanged background model
-        (often described using Green’s functions). You compute that library once, then reuse it across many local reruns.
-      </p>
-    </section>
+  <p>
+    This is one reason local-domain modelling has become attractive in geophysics and beyond.
+    The same basic computational pattern appears in several application areas:
+  </p>
 
-    <section id="two-papers">
-      <h3>4) Two implementation routes: FD injection (exact) vs MPS (efficient)</h3>
+  <ul>
+    <li><strong>Seismic imaging and inversion</strong>: repeated updates inside a reservoir or target structure.</li>
+    <li><strong>Time-lapse monitoring</strong>: local changes caused by fluid movement, stress changes, or damage growth.</li>
+    <li><strong>Non-destructive testing</strong>: highly local defects such as cracks, voids, or fracture corridors inside a larger solid.</li>
+    <li><strong>Medical acoustics</strong>: wave interaction with a local organ or lesion inside the surrounding body.</li>
+    <li><strong>Electromagnetic/GPR modelling</strong>: local buried targets inside a much larger subsurface volume.</li>
+  </ul>
 
-      <p>
-        Once you accept the IBC concept, the practical question becomes: how do we record and inject wavefields on a finite-difference
-        grid without adding numerical artefacts?
-      </p>
+  <p>
+    The obvious idea is therefore simple: if only a small subdomain changes, why not simulate only that subdomain?
+    The difficulty is that waves do not respect our computational shortcuts. Energy can leave the local region, interact with
+    the unchanged exterior, and later return. Those returned waves may themselves scatter again, producing
+    <strong>higher-order long-range interactions</strong> between the target zone and the rest of the model.
+    If a local method ignores those interactions, it may be fast, but it will not reproduce the true full-domain physics.
+  </p>
 
-      <h4>4.1 Finite-difference injection (FD injection): “exact by construction”</h4>
+  <p>
+    So the real challenge is not merely to make simulations smaller. It is to make a
+    <em>local</em> simulation behave as though it were still embedded in the <em>global</em> model.
+    That is exactly the problem immersive boundary conditions are designed to solve.
+  </p>
+</section>
 
-      <p>
-        FD injection makes the boundary consistent with the <em>discrete</em> finite-difference solver itself. That is why, for acoustic
-        waves, it can match a full-domain finite-difference run down to machine precision.
-      </p>
 
-      <p>
-        <strong>Strength:</strong> extremely accurate (often machine-precision agreement).<br>
-        <strong>Trade-off:</strong> more bookkeeping and overhead, especially for higher-order finite-difference stencils.
-      </p>
 
-      <p>
-        <strong>Reference:</strong> van Manen et al. (2020), GJI,
-        <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">DOI: 10.1093/gji/ggaa317</a>.
-      </p>
+<section id="standard-local">
+  <h3>2) Conventional local replay: what it gets right—and what it can miss</h3>
 
-      <div class="figure-grid" style="width:min(1080px,92vw);">
-        <figure>
-          <a href="4_immersive_modeling/acousticFD_local_model.png" target="_blank" rel="noopener">
-            <img
-              src="4_immersive_modeling/acousticFD_local_model.png"
-              alt="Acoustic finite-difference models used in boundary and immersion examples."
-              style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            <strong>Figure 2 — Example acoustic models (what the computer ‘thinks’ the world looks like)</strong><br>
-            These are simple test worlds used to check the boundary method. The patterns (dots/objects/lines) act like strong scatterers,
-            so waves bounce and scatter in many directions. This is a tough test: a good immersive boundary must still handle all that scattering
-            without creating fake reflections at the edge of the local box.
-          </figcaption>
-        </figure>
-      </div>
+  <p>
+    Before immersive boundary conditions, a common way to speed up local recomputation was to use a
+    <strong>record-and-reinject</strong> strategy. The idea is intuitive: if you already know how waves enter a target zone
+    from the outside world, then perhaps you can replay that effect later without simulating the full model again.
+  </p>
 
-      <div class="figure-grid" style="width:min(1080px,92vw);">
-        <figure>
-          <a href="4_immersive_modeling/snapshot_fdinj.png" target="_blank" rel="noopener">
-            <img
-              src="4_immersive_modeling/snapshot_fdinj.png"
-              alt="Acoustic wavefield snapshots comparing immersive modelling to a full-domain reference, including difference panels."
-              style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            <strong>Figure 3 — Immersive vs full simulation (and the tiny difference)</strong><br>
-            The snapshots compare an immersive simulation (local box + IBCs) against a full-domain reference run. The “difference” panels are
-            scaled up heavily; without that exaggeration, the mismatch is essentially invisible. This is the key point: the local simulation can
-            reproduce what the full simulation would have done, while only computing a small region.
-          </figcaption>
-        </figure>
-      </div>
+  <p>
+    In its simplest form, the workflow looks like this:
+  </p>
 
-      <h4>4.2 Method of Multiple Point Sources (MPS): “physics-like and cheaper” (elastic case)</h4>
+  <ol style="padding-left: 4rem;">
+    <li><strong>Run a global simulation once</strong> in the original model.</li>
+    <li><strong>Record wavefields on a closed surface</strong> surrounding the target region.</li>
+    <li><strong>Modify the model inside that surface</strong> while keeping the exterior unchanged.</li>
+    <li><strong>Re-inject the recorded boundary wavefield</strong> so the local box receives the same incoming illumination as before.</li>
+  </ol>
 
-      <p>
-        For <strong>elastic</strong> waves (P-waves and S-waves), simulations track several coupled wave components. Many elastic solvers use
-        a <strong>staggered grid</strong> (different components live at slightly different grid locations), which makes clean recording/injection
-        harder—especially near corners.
-      </p>
+  <p>
+    This already gives a major practical benefit: instead of rerunning the whole domain, you only simulate the smaller
+    region of interest. In many cases, that can save a great deal of time and memory.
+  </p>
 
-      <p>
-        MPS represents the boundary effect using many point sources distributed around the boundary. In practice it can be much lighter
-        than FD injection, especially as finite-difference stencils become higher order.
-      </p>
+  <div class="figure-grid" style="width:min(900px,92vw);">
+    <figure>
+      <a href="4_immersive_modeling/SuperImposeDomain.png" target="_blank" rel="noopener">
+        <img
+          src="4_immersive_modeling/SuperImposeDomain.png"
+          alt="Conventional local wavefield replay using finite-difference injection: a first global run records boundary wavefields, then a second local run injects them after the interior model is changed."
+          style="width:100%;object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>The usual local replay idea: record once, replay later</strong><br>
+        In the first simulation (left), the full model is used and the wavefield is recorded around a chosen boundary.
+        In the second simulation (right), the model is changed only inside that boundary, and the previously recorded
+        wavefield is injected back in. You can think of the final result as a combination of two parts:
+        the original background response and the extra scattered response caused by the local change (the green object).
+        This is a powerful and elegant use of superposition—but it is not yet a fully interactive connection to the outside world.
+      </figcaption>
+    </figure>
+  </div>
 
-      <p>
-        <strong>Reference:</strong> Li et al. (2022), JCP,
-        <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">DOI: 10.1016/j.jcp.2021.110826</a>.
-      </p>
+  <p>
+    So what does this method get right? It correctly restores the
+    <strong>incoming wavefield from the unchanged exterior</strong> and lets you study how a modified local target responds to it.
+    That is why it has been very useful in wavefield separation, local modelling, and related finite-difference methods.
+  </p>
 
-      <div class="figure-grid" style="width:min(1080px,92vw);">
-        <figure>
-          <a href="4_immersive_modeling/elastic_model.png" target="_blank" rel="noopener">
-            <img
-              src="4_immersive_modeling/elastic_model.png"
-              alt="Elastic full model and local subdomain for immersive boundary condition tests, showing recording and emitting surfaces."
-              style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            <strong>Figure 4 — Elastic test setup: full model vs local model</strong><br>
-            The full model contains scatterers (green) that reflect and redirect waves. The immersive simulation only runs inside the local box,
-            but it is connected to the outside world via two surfaces: a <em>recording surface</em> (where we measure what the exterior would do)
-            and an <em>emitting boundary</em> (where we inject boundary sources so the local run stays fully coupled to the exterior).
-          </figcaption>
-        </figure>
-      </div>
+  <p>
+    The limitation is more subtle. Once the target is changed, the new scattered waves do not simply stay inside the box.
+    They can travel outward into the surrounding medium, interact with distant structures, and then
+    <strong>return to the local region</strong>. Those returned waves may scatter again, and this process can repeat multiple times.
+  </p>
 
-      <div class="figure-grid" style="width:min(1080px,92vw);">
-        <figure>
-          <a href="4_immersive_modeling/elastic_2D_o22results.png" target="_blank" rel="noopener">
-            <img
-              src="4_immersive_modeling/elastic_2D_o22results.png"
-              alt="Elastic wavefield snapshots comparing reference simulation with immersive simulations using FD injection and MPS, including differences."
-              style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            <strong>Figure 5 — Elastic results: two boundary implementations, one target answer</strong><br>
-            The first column is the full-domain reference wavefield. The next columns show immersive simulations using FD injection and MPS.
-            The difference panels are scaled up strongly to make any mismatch visible. The main takeaway is that both approaches can reproduce
-            the full-domain behaviour inside the local box—while MPS can be cheaper to run and store.
-          </figcaption>
-        </figure>
-      </div>
-    </section>
+  <p>
+    A conventional one-shot replay does not fully capture that two-way conversation between the local region and the rest
+    of the model. In other words, it reproduces the original illumination well, but it does not naturally update the boundary
+    to account for the <em>new</em> waves generated by the modified target and their later return from the exterior.
+    That missing feedback is exactly what becomes important when higher-order, long-range interactions matter.
+  </p>
 
-    <section id="workflow">
-      <h3>5) What the workflow looks like in practice</h3>
+  <p>
+    This is the gap that immersive boundary conditions are designed to fill: instead of replaying the boundary only once,
+    they update it dynamically so that the local box remains coupled to the outside world throughout the simulation.
+  </p>
 
-      <p>
-        Immersive modelling is most valuable when you need many reruns where only a small region changes. A typical workflow is:
-      </p>
+  <p>
+    <strong>Related:</strong> Robertsson, van Manen, Schmelzbach, Van Renterghem &amp; Amundsen,
+    <a href="https://doi.org/10.1093/gji/ggv379" target="_blank" rel="noopener noreferrer">
+      Finite-difference modelling of wavefield constituents
+    </a> (2015).
+  </p>
 
-      <ol>
-        <li><strong>Pick a target zone</strong>: draw a box around the part you expect to modify.</li>
-        <li><strong>Precompute exterior responses (once)</strong>: in the unchanged background model, compute the information needed to update the boundary through time.</li>
-        <li><strong>Run many local simulations</strong>: for each update, simulate only the local box while the boundary supplies the “outside world.”</li>
-        <li><strong>Extract outputs</strong>: inside the local region (and at receivers), you obtain the same result as a full-domain run.</li>
-      </ol>
-    </section>
+  <p>
+    <strong>Related:</strong> van Manen, Li, Vasmel, Broggini &amp; Robertsson,
+    <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">
+      Exact extrapolation and immersive modelling with finite-difference injection
+    </a> (2020).
+  </p>
+</section>
 
-    <section id="when-worth-it">
-      <h3>6) When is immersive modelling worth it?</h3>
 
-      <p>
-        Immersive modelling tends to pay off when:
-      </p>
-      <ul>
-        <li><strong>Local changes:</strong> only a small subdomain changes between runs.</li>
-        <li><strong>Many repeats:</strong> you need many recomputations (e.g., inversion iterations or many scenarios).</li>
-        <li><strong>Exterior matters:</strong> reflections/scattering outside the target zone feed energy back into it.</li>
-      </ul>
 
-      <p>
-        It is less attractive when:
-      </p>
-      <ul>
-        <li>changes are widespread (not local anymore),</li>
-        <li>you only need one or two runs (setup cost may not pay back),</li>
-        <li>memory for stored responses is severely limited (though compression/reduced-order ideas can help).</li>
-      </ul>
-    </section>
 
-    <section id="applications">
-      <h3>7) Why this matters (beyond one method)</h3>
+<section id="ibc-idea">
+  <h3>3) The core idea: Immersive Boundary Conditions (IBCs)</h3>
 
-      <p>
-        The broader point is not just a new boundary condition. It’s a way of thinking about wave simulation that matches how many problems are structured:
-        a large environment with a small region of interest that changes.
-      </p>
+  <p>
+    The main idea of <strong>Immersive Boundary Conditions (IBCs)</strong> is simple to state but powerful in practice:
+    instead of simulating the whole model again, we simulate only a small <em>local box</em> around the region that changed,
+    while making that box behave as though it were still embedded in the full medium.
+  </p>
 
-      <ul>
-        <li><strong>Seismic imaging and inversion</strong>: efficient updates as local properties evolve.</li>
-        <li><strong>Time-lapse monitoring</strong>: local changes such as fluid movement or damage growth.</li>
-        <li><strong>Non-destructive testing</strong>: compute near a suspected defect while respecting the whole structure.</li>
-        <li><strong>Medical acoustics</strong>: local organs/lesions inside a larger body context.</li>
-        <li><strong>Laboratory wave experiments</strong>: link a physical experiment to a virtual exterior (“immersive experimentation”).</li>
-      </ul>
-    </section>
+  <p>
+    You can think of it like filming a scene on a small studio set, but surrounding that set with screens and speakers that
+    perfectly recreate the rest of the world. Inside the studio, everything still reacts as if the full environment were present.
+    In wave modelling, the “screens and speakers” are the boundary conditions placed around the local domain.
+  </p>
 
-    <section id="references">
-      <h3>References</h3>
+  <p>
+    What makes IBCs different from a simple one-time replay is that the boundary is not passive. It is an
+    <strong>active boundary</strong>. At every time step, it does two jobs:
+  </p>
 
-      <ul>
-        <li>
-          van Manen, D.-J., Li, X., Vasmel, M., Broggini, F., &amp; Robertsson, J. (2020).
-          <em>Exact extrapolation and immersive modelling with finite-difference injection</em>,
-          Geophysical Journal International.
-          <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">https://doi.org/10.1093/gji/ggaa317</a>
-        </li>
+  <ul>
+    <li><strong>It absorbs outgoing waves</strong> leaving the local box, so they do not reflect artificially from the numerical edge.</li>
+    <li><strong>It emits the correct incoming waves</strong> that the unchanged exterior model would send back into the box.</li>
+  </ul>
 
-        <li>
-          Li, X., Koene, E., van Manen, D.-J., Robertsson, J., &amp; Curtis, A. (2022).
-          <em>Elastic immersive wavefield modelling</em>,
-          Journal of Computational Physics, 451, 110826.
-          <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">https://doi.org/10.1016/j.jcp.2021.110826</a>
-        </li>
-      </ul>
-    </section>
+  <p>
+    This matters because the local target and the exterior are constantly influencing each other. A wave may scatter from the
+    modified region, travel out of the local box, interact with distant parts of the model, and then return later.
+    In IBCs, those returning waves are not ignored. Instead, they are rebuilt at the boundary as the simulation runs,
+    so the local model remains <strong>two-way coupled</strong> to the outside world.
+  </p>
+
+  <p>
+    In the elastic formulation developed in the paper, this is done using <strong>two nested surfaces</strong>:
+  </p>
+
+  <ul>
+    <li><strong>A recording surface</strong> inside the local domain, where the current wavefield is measured during the simulation.</li>
+    <li><strong>An emitting surface</strong> outside that recording surface, where boundary sources are applied.</li>
+  </ul>
+
+  <p>
+    The recorded wavefield on the inner surface is used to predict what should happen on the outer surface.
+    In other words, the method takes what the waves are doing <em>now</em> on the recording surface and uses that information
+    to update the boundary sources that represent the rest of the world.
+  </p>
+
+  <p>
+    That update is based on a set of <strong>precomputed wave responses</strong> in the unchanged background model.
+    These responses are often described using <strong>Green’s functions</strong>, but in less mathematical language,
+    you can think of them as a library of transfer rules:
+    if the wavefield looks like this on one surface, what effect would the exterior model produce on the other surface?
+  </p>
+
+  <p>
+    The important practical feature is that this library is computed <strong>once</strong> in advance, before the local reruns begin.
+    After that, it can be reused many times. So if you want to test many different local changes inside the target zone,
+    you do not need to rebuild the full simulation each time. You keep the same surrounding world, reuse the same precomputed
+    responses, and only change the local interior model.
+  </p>
+
+  <p>
+    This is why IBCs are so useful for repeated modelling. They let you keep the accuracy of a global simulation,
+    but move most of the computation into a much smaller domain. In the ideal case, the wavefield inside the local box
+    matches what a full-domain simulation would have produced, including complicated long-range scattering effects.
+  </p>
+
+  <p>
+    So the key message is:
+    <strong>IBCs do not simply replay the boundary once—they continuously rebuild the influence of the outside world while the local simulation is running.</strong>
+    That is what makes immersive modelling “immersive.”
+  </p>
+</section>
+
+
+
+<section id="two-papers">
+  <h3>4) Two practical ways to build the boundary: FD injection and MPS</h3>
+
+  <p>
+    Once the idea of immersive boundary conditions is clear, the next question is practical:
+    <strong>how do we actually make this work inside a real wave simulator?</strong>
+    In theory, the boundary around the local box should do two things at once. It should let waves leave the box without
+    creating fake reflections, and it should also send back the waves that the surrounding medium would naturally return.
+  </p>
+
+  <p>
+    That sounds simple when described in words, but it is harder inside a numerical code. A wave simulator only knows about
+    values on grid points, and in elastic modelling not all physical quantities are stored in the same place on that grid.
+    So the boundary has to be not only physically correct, but also numerically consistent.
+  </p>
+
+  <p>
+    There are two main ways to do this:
+  </p>
+
+  <ul>
+    <li><strong>FD injection</strong>: the most precise approach, because it works directly with the finite-difference update rules.</li>
+    <li><strong>MPS (Method of Multiple Point Sources)</strong>: a more compact and efficient approach, especially useful for elastic simulations.</li>
+  </ul>
+
+  <h4>4.1 FD injection: the exact route</h4>
+
+  <p>
+    FD injection starts from the way a finite-difference solver updates the wavefield.
+    To update one grid point, the solver uses information from nearby points. This local pattern of neighbouring points is
+    called a <strong>stencil</strong>. Now imagine that this stencil reaches across the boundary of the local box.
+    If the outside world is no longer being simulated directly, then part of the information needed by the stencil is missing.
+  </p>
+
+  <p>
+    FD injection fixes exactly that problem.
+    Rather than adding a general correction after the fact, it applies corrections precisely where the solver would otherwise
+    notice that the exterior model is missing. In that sense, the method is built directly into the numerical scheme itself.
+  </p>
+
+  <p>
+    The figure below shows this idea visually. The local box is outlined, and the highlighted grid points are the ones that
+    need special treatment because their update stencils cross the boundary.
+  </p>
+
+  <div class="figure-grid" style="width:min(1200px,92vw); margin:1.5rem auto; overflow:visible;">
+    <figure style="margin:0;">
+      <a href="4_immersive_modeling/HowToFDinjection.png" target="_blank" rel="noopener" style="display:block;">
+        <img
+          src="4_immersive_modeling/HowToFDinjection.png"
+          alt="Diagram showing which finite-difference grid points must be stored and corrected when using FD injection."
+          style="width:140%; max-width:none; display:block; position:relative; left:50%; transform:translateX(-50%); object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>How FD injection works on the grid</strong><br>
+        Only the grid points whose update stencils cross the boundary need special handling.
+        That is why the method can be so accurate: it corrects the solver exactly where the missing exterior would matter.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    Another way to think about FD injection is this:
+    it tells the local simulation exactly what the missing outside world would have contributed at those boundary-adjacent points.
+    If everything is done consistently, the local simulation can reproduce the same wavefield that a full-domain run would
+    produce inside the box.
+  </p>
+
+  <p>
+    This makes FD injection a very useful reference method.
+    When the setup is fully consistent with the numerical solver, it can match the full simulation to machine precision.
+    In other words, any difference becomes so small that it is essentially just numerical roundoff.
+  </p>
+
+  <p>
+    The acoustic examples below show a demanding test case with strong reflections and scattering.
+    This is important, because a boundary method is only convincing if it still works when the wavefield becomes complicated.
+  </p>
+
+  <div class="figure-grid" style="width:min(1080px,92vw); margin:1.5rem auto;">
+    <figure>
+      <a href="4_immersive_modeling/acousticFD_local_model.png" target="_blank" rel="noopener">
+        <img
+          src="4_immersive_modeling/acousticFD_local_model.png"
+          alt="Acoustic test models used to demonstrate immersive modelling with finite-difference injection."
+          style="width:100%; display:block; margin:0 auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>A challenging acoustic test model</strong><br>
+        The model includes strong scatterers and multiple wave interactions, making it a good stress test for local immersive modelling.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    The cleanest test is simply to compare the local result with a full-domain simulation.
+    If the two wavefields are the same, then the local box is successfully behaving as if it were still embedded in the large model.
+  </p>
+
+  <div class="figure-grid" style="width:min(1080px,92vw); margin:1.5rem auto;">
+    <figure>
+      <a href="4_immersive_modeling/snapshot_fdinj.png" target="_blank" rel="noopener">
+        <img
+          src="4_immersive_modeling/snapshot_fdinj.png"
+          alt="Acoustic wavefield snapshots comparing a full-domain reference with an immersive simulation using finite-difference injection, together with difference plots."
+          style="width:100%; display:block; margin:0 auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>FD injection can reproduce the full simulation almost exactly</strong><br>
+        The difference images are enlarged dramatically to make tiny residuals visible.
+        In practice, the local and full-domain results are nearly indistinguishable.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    The trade-off is that FD injection can become expensive.
+    To keep the simulation exact, the method has to track many boundary-related values, evaluate correction terms,
+    and store a large amount of precomputed response information.
+  </p>
+
+  <p>
+    This becomes more costly when the finite-difference stencil gets wider.
+    A wider stencil reaches farther across the boundary, so more grid points need correction.
+    That means more memory, more bookkeeping, and more computation.
+  </p>
+
+  <p>
+    <strong>In short:</strong> FD injection is the most exact option, but it can become heavy for large or higher-order simulations.
+  </p>
+
+
+<p>
+  <strong>Related:</strong> van Manen, Li, Vasmel, Broggini &amp; Robertsson,
+  <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">
+    Exact extrapolation and immersive modelling with finite-difference injection
+  </a> (2020).
+</p>
+
+
+
+  <h4>4.2 MPS: a lighter and more flexible route</h4>
+
+  <p>
+    FD injection is very powerful, but elastic waves make everything more complicated.
+    In elastic modelling, we do not track just one quantity. We usually track particle velocities and stresses,
+    and these may be stored at different locations on a <strong>staggered grid</strong>.
+    That makes boundary recording and injection more delicate than in the simpler acoustic case.
+  </p>
+
+  <p>
+    This is where <strong>MPS</strong>, short for <strong>Method of Multiple Point Sources</strong>, becomes attractive.
+    Instead of correcting many individual stencil-crossing grid points, MPS represents the boundary effect using many small
+    point sources arranged around the local box.
+  </p>
+
+  <p>
+    A helpful mental picture is to imagine a ring of tiny speakers around the boundary.
+    Each source on its own is simple, but together they recreate what the surrounding medium would send back into the box.
+    That gives a much more compact boundary treatment.
+  </p>
+
+  <p>
+    The figure below shows why this needs some care in elastic modelling:
+    the wavefield components do not all live at the same grid locations, so recording and reinjecting them consistently
+    is not just a matter of reading and writing one value per point.
+  </p>
+
+  <div class="figure-grid" style="width:min(1200px,92vw); margin:1.5rem auto; overflow:visible;">
+    <figure style="margin:0;">
+      <a href="4_immersive_modeling/HowToMPS.png" target="_blank" rel="noopener" style="display:block;">
+        <img
+          src="4_immersive_modeling/HowToMPS.png"
+          alt="Diagram illustrating MPS wavefield recording on a staggered elastic finite-difference grid."
+          style="width:160%; max-width:none; display:block; position:relative; left:50%; transform:translateX(-50%); object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>MPS on a staggered elastic grid</strong><br>
+        The idea is simple, but the implementation is subtle because different elastic variables are stored at different grid positions.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    One especially tricky part is the <strong>corners</strong> of the boundary.
+    Corners are where simple boundary treatments often struggle, because waves can approach them from multiple directions and
+    different wavefield components meet there in awkward ways.
+  </p>
+
+  <p>
+    The setup below shows the basic immersive modelling geometry for the elastic case.
+    Only the local box is simulated directly, while the recording and emitting surfaces keep that box connected to the rest of the model.
+  </p>
+
+  <div class="figure-grid" style="width:min(1080px,92vw); margin:1.5rem auto;">
+    <figure>
+      <a href="4_immersive_modeling/elastic_model.png" target="_blank" rel="noopener">
+        <img
+          src="4_immersive_modeling/elastic_model.png"
+          alt="Elastic full model and local subdomain used for immersive boundary condition tests, showing recording and emitting surfaces."
+          style="width:100%; display:block; margin:0 auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>Elastic immersive modelling setup</strong><br>
+        The simulation runs only inside the local box, while the surrounding boundary machinery makes that box behave as if the exterior model were still present.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    In a basic second-order elastic scheme, both FD injection and MPS can recover the same result as the full simulation
+    to machine precision. That is important because it shows MPS is not just a rough shortcut in this setting:
+    it can be just as accurate while using a simpler boundary representation.
+  </p>
+
+  <div class="figure-grid" style="width:min(1080px,92vw); margin:1.5rem auto;">
+    <figure>
+      <a href="4_immersive_modeling/elastic_2D_o22results.png" target="_blank" rel="noopener">
+        <img
+          src="4_immersive_modeling/elastic_2D_o22results.png"
+          alt="Elastic wavefield snapshots comparing a full-domain reference with immersive simulations using FD injection and MPS in the second-order scheme, including difference plots."
+          style="width:100%; display:block; margin:0 auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>In a basic elastic scheme, both methods can match the full-domain result extremely well</strong><br>
+        The difference images are scaled up to reveal tiny residuals. In practice, both local simulations closely reproduce the full solution.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    So why use MPS at all if FD injection is also exact?
+    The answer is simple: <strong>efficiency</strong>.
+    In repeated local simulations, much of the cost comes from the boundary treatment itself.
+    With FD injection, the number of boundary-related points grows as the stencil gets wider.
+    That growth quickly increases storage and runtime.
+  </p>
+
+  <p>
+    MPS avoids much of that expansion.
+    Its boundary description stays more compact, which makes it much more attractive when you need to run many simulations
+    or when the elastic solver becomes more sophisticated.
+  </p>
+
+  <p>
+    In higher-order schemes, MPS is no longer perfectly exact, but it often remains very accurate.
+    The remaining mismatch is usually small and tends to be concentrated near the boundary, especially around corners.
+  </p>
+
+  <div class="figure-grid" style="width:min(1080px,92vw); margin:1.5rem auto;">
+    <figure>
+      <a href="4_immersive_modeling/elastic_2D_o42results.png" target="_blank" rel="noopener">
+        <img
+          src="4_immersive_modeling/elastic_2D_o42results.png"
+          alt="Elastic wavefield snapshots comparing a full-domain reference with an immersive simulation using MPS in a higher-order finite-difference scheme."
+          style="width:100%; display:block; margin:0 auto; object-fit:contain;">
+      </a>
+      <figcaption>
+        <strong>In a higher-order scheme, MPS is not perfectly exact, but it is still very accurate</strong><br>
+        The visible differences are small and mainly concentrated near the boundary, while the overall wavefield remains very close to the full-domain result.
+      </figcaption>
+    </figure>
+  </div>
+
+  <p>
+    So the practical takeaway is:
+  </p>
+
+  <ul>
+    <li><strong>FD injection</strong> is the most exact and reliable option when you want the boundary treatment to match the solver as closely as possible.</li>
+    <li><strong>MPS</strong> is the more efficient option, and it can still be extremely accurate while using a much lighter boundary representation.</li>
+  </ul>
+
+  <p>
+    If I had to summarize the difference in one sentence:
+    <strong>FD injection is the precision-first method, while MPS is the efficiency-first method for repeated local wave simulations.</strong>
+  </p>
+
+<p>
+  <strong>Related:</strong> Li, Koene, van Manen, Robertsson &amp; Curtis,
+  <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">
+    Elastic immersive wavefield modelling
+  </a> (2022).
+</p>
+
+</section>
+
+
+<section id="workflow">
+  <h3>5) So what does the workflow actually look like?</h3>
+
+  <p>
+    Immersive modelling is especially useful when you need to test many local changes without rerunning the whole model every time.
+    The basic strategy is to do the expensive global preparation once, and then reuse that information for much cheaper local simulations.
+  </p>
+
+  <p>
+    A typical workflow looks like this:
+  </p>
+
+  <ol style="padding-left: 4rem;">
+    <li><strong>Choose a target zone</strong>: draw a box around the part of the model you expect to change.</li>
+    <li><strong>Precompute the exterior response once</strong>: use the unchanged background model to work out how the surrounding medium should affect the box boundary.</li>
+    <li><strong>Run local simulations</strong>: each time the target region is updated, simulate only that small box while the boundary reproduces the effect of the rest of the model.</li>
+    <li><strong>Use the results</strong>: inside the box, and at your receivers, the simulation behaves as if the full domain had been recomputed.</li>
+  </ol>
+
+  <p>
+    In short, the workflow is all about reusing what does <em>not</em> change, so that you only spend time recomputing what <em>does</em> change.
+  </p>
+</section>
+
+
+
+<section id="when-worth-it">
+  <h3>6) When does immersive modelling really make sense?</h3>
+
+  <p>
+    Immersive modelling is powerful, but it is not always the right tool.
+    It works best when your problem has a very particular shape:
+    a large background model that stays the same, and a small target region that changes many times.
+  </p>
+
+  <p>
+    That usually means it is most worth using when:
+  </p>
+
+  <ul>
+    <li><strong>The update is local</strong>: only a small part of the model changes between runs.</li>
+    <li><strong>You need lots of reruns</strong>: for example, in inversion loops, monitoring studies, or testing many candidate scenarios.</li>
+    <li><strong>The outside world still matters</strong>: waves interact with the surrounding medium and those interactions need to be preserved.</li>
+  </ul>
+
+  <p>
+    In contrast, the method becomes less appealing when the problem is global rather than local.
+    If large parts of the model are changing, or if you only need a single simulation, then the extra setup may not be worth the effort.
+    Memory can also become a practical limitation, because the exterior responses must be stored somewhere.
+  </p>
+
+  <p>
+    So the short version is:
+    <strong>immersive modelling pays off when you want to recompute a small changing region many times without losing the influence of the larger unchanged model.</strong>
+  </p>
+</section>
+
+
+<section id="applications">
+  <h3>7) Why this idea matters beyond one method</h3>
+
+  <p>
+    What makes immersive modelling interesting is that it is not just a clever boundary trick.
+    It reflects a much broader pattern that appears in many wave problems:
+    <strong>a large background stays mostly the same, while only a small region changes.</strong>
+  </p>
+
+  <p>
+    Once you look at problems that way, the value of the method becomes much clearer.
+    Instead of recomputing the whole world every time, you focus the expensive work only where something has actually changed,
+    while still keeping the influence of everything outside.
+  </p>
+
+  <p>
+    That basic idea shows up in many different settings:
+  </p>
+
+  <ul>
+    <li><strong>Seismic imaging and inversion</strong>: update a reservoir or target area many times without rerunning the full subsurface model from scratch.</li>
+    <li><strong>Time-lapse monitoring</strong>: track local changes caused by fluid movement, stress redistribution, or damage over time.</li>
+    <li><strong>Non-destructive testing</strong>: model waves around a suspected crack or defect while still accounting for the rest of the structure.</li>
+    <li><strong>Medical acoustics</strong>: study how waves interact with a local organ, tumour, or lesion without losing the surrounding body context.</li>
+    <li><strong>Laboratory wave experiments</strong>: connect a real physical sample to a simulated exterior so the experiment behaves as if it were part of a larger world.</li>
+  </ul>
+
+  <p>
+    So the bigger message is simple:
+    <strong>when only a small part of a system changes, we should not have to recompute everything from the beginning.</strong>
+    Immersive modelling offers one way to make that idea practical for wave simulations.
+  </p>
+</section>
+
+
+<!-- cutline ready to start again on 18, March, 2026 -->
+
+<section id="references">
+  <h3>References</h3>
+
+  <ul>
+    <li>
+      Robertsson, J., van Manen, D.-J., Schmelzbach, C., Van Renterghem, C., &amp; Amundsen, L. (2015).
+      <em>Finite-difference modelling of wavefield constituents</em>,
+      Geophysical Journal International.
+      <a href="https://doi.org/10.1093/gji/ggv379" target="_blank" rel="noopener noreferrer">
+        https://doi.org/10.1093/gji/ggv379
+      </a>
+    </li>
+
+    <li>
+      van Manen, D.-J., Li, X., Vasmel, M., Broggini, F., &amp; Robertsson, J. (2020).
+      <em>Exact extrapolation and immersive modelling with finite-difference injection</em>,
+      Geophysical Journal International.
+      <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">
+        https://doi.org/10.1093/gji/ggaa317
+      </a>
+    </li>
+
+    <li>
+      Li, X., Koene, E., van Manen, D.-J., Robertsson, J., &amp; Curtis, A. (2022).
+      <em>Elastic immersive wavefield modelling</em>,
+      Journal of Computational Physics, 451, 110826.
+      <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">
+        https://doi.org/10.1016/j.jcp.2021.110826
+      </a>
+    </li>
+  </ul>
+</section>
+
+
 
   </main>
 
