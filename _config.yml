@@ -26,7 +26,6 @@ exclude:
   - Gemfile.lock
 
 
-FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true
 
 # Optional theme (uncomment if you use one and include it in your Gemfile)
 # theme: minima
