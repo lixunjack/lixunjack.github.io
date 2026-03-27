@@ -18,8 +18,8 @@ _Inspired from [GitHub Housekeeping: Remove Unwanted Deployments in Minutes](htt
      ```batch
      exit
      ```
-
----
+3. **Run below command to authenticate with your GitHub account:**
+    gh auth login 
 
 #### Windows Command Prompt (cmd.exe) Examples Using `gh`
 
