@@ -3,49 +3,334 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Elastic Immersive Wave Experimentation — Jack Li</title>
-  <meta name="description" content="Details on elastic immersive wave experimentation by Jack (Xun) Li.">
+  <title>Blue Canyon Dome: Watching a Hydraulic Fracture Open and Heal - Jack Li</title>
+  <meta name="description" content="A blog-style research story about the Blue Canyon Dome hydraulic fracturing test, continuous active-source seismic monitoring, coda wave interferometry, and fracture recovery.">
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-
-  <main>
+  <main id="wrapper">
     <section>
-      <p><a href="../index.html">← Back to Main Page</a></p>
-      <h2>Elastic Immersive Wave Experimentation</h2>
-      <p>Overcoming boundary reflections in size‑limited 3D elastic experiments.</p>
+      <p>
+        <a href="../index.html#research">&larr; Back to Main Page</a>
+      </p>
 
-      <div class="figure-grid" style="width: min(900px, 92vw);">
+      <h2>Watching a Hydraulic Fracture Open and Heal at Blue Canyon Dome</h2>
+
+      <p>
+        Most people imagine hydraulic fracturing as something dramatic: water is pumped underground, rock breaks, and tiny
+        earthquakes may happen. That picture is partly true, but it misses the quieter and, to me, more interesting part of
+        the story. A fracture is not just born in one instant. It opens, grows, changes the stress around it, sometimes
+        closes again, and may slowly heal as rough rock surfaces come back into contact.
+      </p>
+
+      <p>
+        The Blue Canyon Dome experiment gave us a rare chance to watch that process with active seismic waves. Instead of
+        waiting passively for microearthquakes, we repeatedly sent controlled seismic signals through the rock and listened
+        for tiny changes in the returning waveforms. In everyday language, we were asking the rock the same question over
+        and over again: <strong>has your stiffness changed since the last minute?</strong>
+      </p>
+
+      <p>
+        The answer was subtle. Some paths through the rock appeared to speed up, while others slowed down. That is the
+        fingerprint of two processes acting together: pressure can stiffen parts of the rock, while an opening fracture can
+        weaken other parts. After injection stops, the rock does not simply reset. It recovers in stages, first quickly as
+        cracks close, then more slowly as contacts heal.
+      </p>
+    </section>
+
+    <section id="field-lab">
+      <h3>1) A small field laboratory for a big question</h3>
+
+      <p>
+        Blue Canyon Dome is a shallow field test site south of Albuquerque, New Mexico. The experiment used a compact
+        five-spot geometry: one stimulation well near the center and four monitoring wells around it. Because the wells were
+        close together, the site behaved almost like a natural laboratory. It was still real rock, with real fractures and
+        real field noise, but the geometry was simple enough that we could reason carefully about which parts of the rock
+        each seismic path sampled.
+      </p>
+
+      <p>
+        The target was near-surface rhyolite below a weathered layer. The injection occurred near the end of casing, around
+        15 m depth. For the seismic analysis, the most useful paths were not the steep ones that ran through the weaker
+        weathered layer, but the more horizontal paths that crossed the stimulated zone. Those paths gave us a clearer view
+        of how the rock changed around the fracture.
+      </p>
+
+      <div class="figure-grid" style="width:min(760px,92vw);">
         <figure>
-          <a href="../asset/wavelab.png" target="_blank" rel="noopener noreferrer">
-            <img src="../asset/wavelab.png" alt="ETH Wave Lab setup">
+          <a href="5_bluecanyondome/overview_maincrack.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/overview_maincrack.png"
+                 alt="Blue Canyon Dome five-spot geometry with four monitoring wells around a central stimulation point."
+                 style="width:100%;object-fit:contain;">
           </a>
-          <figcaption>Wave Lab at ETH Zurich with scanning laser vibrometry.</figcaption>
+          <figcaption>
+            <strong>Blue Canyon Dome five-spot geometry</strong><br>
+            A central stimulation point is surrounded by four monitoring wells. The different source-receiver paths act
+            like different lines of sight through the stimulated rock volume.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="listening">
+      <h3>2) Instead of waiting for earthquakes, we made our own repeatable signals</h3>
+
+      <p>
+        Many hydraulic-fracturing studies focus on microseismicity: the tiny earthquakes generated when parts of the rock
+        slip. Microseismic monitoring is powerful, but it only sees the noisy part of deformation. A fracture can also open,
+        creep, or change contact stiffness without producing a clear earthquake.
+      </p>
+
+      <p>
+        That is why continuous active-source seismic monitoring is so useful. A controlled source is fired again and again,
+        and receivers record the response. If the source and receiver stay fixed, then a change in the waveform is not just
+        a new measurement; it is a clue that the medium between them has changed.
+      </p>
+
+      <div class="figure-grid" style="width:min(880px,92vw);">
+        <figure>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0.65rem;align-items:stretch;padding:1rem;background:#fbfcfa;">
+            <div style="border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+              <strong>Send</strong><br>
+              <span style="font-size:0.9rem;">repeatable pulse</span>
+            </div>
+            <div style="border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+              <strong>Record</strong><br>
+              <span style="font-size:0.9rem;">direct wave + coda</span>
+            </div>
+            <div style="border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+              <strong>Compare</strong><br>
+              <span style="font-size:0.9rem;">today vs baseline</span>
+            </div>
+            <div style="border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+              <strong>Infer</strong><br>
+              <span style="font-size:0.9rem;">stiffness change</span>
+            </div>
+          </div>
+          <figcaption>
+            <strong>The active-monitoring idea</strong><br>
+            We do not need every change to radiate an earthquake. By sending repeatable signals, we can detect quiet
+            changes in the medium through small waveform shifts.
+          </figcaption>
         </figure>
       </div>
 
-      <h3>Key ideas</h3>
-      <ul>
-        <li>Immersive boundary conditions extended to elastic media.</li>
-        <li>Internal absorbing boundaries for closed‑aperture decomposition.</li>
-        <li>Experiment–model integration and reproducibility.</li>
-      </ul>
+      <p>
+        The part of the waveform I care about most is the <em>coda</em>, the later ringing after the first arrival. A direct
+        arrival is like one clean beam of light. The coda is more like echoes in a room: it has bounced, scattered, and
+        sampled the medium many times. That makes it messy, but also extremely sensitive.
+      </p>
+    </section>
 
-      <p>Related paper: <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener">Elastic immersive wave experimentation</a>, GJI (2023).</p>
+    <section id="coda">
+      <h3>3) Coda wave interferometry: using tiny time shifts as a stiffness meter</h3>
+
+      <p>
+        Coda wave interferometry compares two waveforms from the same source-receiver pair. If the later waveform looks
+        like a slightly stretched version of the earlier one, the waves are arriving later and the apparent velocity has
+        decreased. If it looks slightly compressed, the waves are arriving earlier and the apparent velocity has increased.
+      </p>
+
+      <p>
+        A useful way to think about this is a piano string. Tighten the string and the pitch goes up; loosen it and the
+        pitch goes down. In rock, the "pitch" is not musical, but the principle is similar: seismic velocity is linked to
+        stiffness. When cracks open or contacts weaken, waves slow down. When stress closes cracks or increases contact
+        stiffness, waves can speed up.
+      </p>
+
+      <div class="figure-grid" style="width:min(780px,92vw);">
+        <figure>
+          <div style="padding:1.1rem;background:#fff;">
+            <div style="height:86px;position:relative;border-bottom:1px solid #d8d8d8;">
+              <div style="position:absolute;left:4%;right:4%;top:28px;height:3px;background:#326f9d;"></div>
+              <div style="position:absolute;left:12%;top:19px;width:10px;height:20px;background:#326f9d;border-radius:50%;"></div>
+              <div style="position:absolute;left:28%;top:13px;width:12px;height:32px;background:#326f9d;border-radius:50%;"></div>
+              <div style="position:absolute;left:48%;top:17px;width:10px;height:24px;background:#326f9d;border-radius:50%;"></div>
+              <div style="position:absolute;left:68%;top:22px;width:8px;height:14px;background:#326f9d;border-radius:50%;"></div>
+              <span style="position:absolute;left:4%;bottom:8px;color:#326f9d;">reference</span>
+            </div>
+            <div style="height:96px;position:relative;">
+              <div style="position:absolute;left:6%;right:2%;top:37px;height:3px;background:#a9452d;"></div>
+              <div style="position:absolute;left:15%;top:28px;width:10px;height:20px;background:#a9452d;border-radius:50%;"></div>
+              <div style="position:absolute;left:32%;top:22px;width:12px;height:32px;background:#a9452d;border-radius:50%;"></div>
+              <div style="position:absolute;left:53%;top:26px;width:10px;height:24px;background:#a9452d;border-radius:50%;"></div>
+              <div style="position:absolute;left:74%;top:31px;width:8px;height:14px;background:#a9452d;border-radius:50%;"></div>
+              <span style="position:absolute;left:4%;bottom:8px;color:#a9452d;">later record: slightly delayed</span>
+            </div>
+          </div>
+          <figcaption>
+            <strong>The basic measurement</strong><br>
+            If the later coda has to be stretched to match the baseline, the path has slowed down. If it has to be
+            compressed, the path has sped up.
+          </figcaption>
+        </figure>
+      </div>
+
+      <p>
+        This is not a photograph of the fracture. It is a sensitive measurement of how the rock's elastic properties changed
+        along a path. The scientific challenge is to connect those path-wise velocity changes to physical processes:
+        pressure diffusion, stress redistribution, fracture opening, closure, and healing.
+      </p>
+    </section>
+
+    <section id="injection">
+      <h3>4) During injection, two opposite effects compete</h3>
+
+      <p>
+        When fluid pressure rises, one might expect the rock to simply weaken and seismic velocity to go down. But field
+        data are rarely that simple. Pressure can also change the stress state in a way that closes some compliant cracks or
+        increases contact forces along some paths. That can make waves travel faster.
+      </p>
+
+      <p>
+        So the key observation is not just "velocity changed." The key observation is that different paths can tell
+        different stories. Some paths may record stiffening, while others record fracture opening. This mixture is exactly
+        what makes the Blue Canyon Dome data interesting: it lets us think about a fracture as a spatially evolving object,
+        not just as a single event.
+      </p>
+
+      <div class="figure-grid" style="width:min(900px,92vw);">
+        <figure>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.8rem;padding:1rem;background:#fbfcfa;">
+            <div style="border-top:4px solid #326f9d;background:#fff;padding:0.9rem;">
+              <strong>Velocity up</strong>
+              <p style="margin-bottom:0;">Stress loading and crack closure can make contacts stiffer, so waves arrive a
+              little earlier.</p>
+            </div>
+            <div style="border-top:4px solid #a9452d;background:#fff;padding:0.9rem;">
+              <strong>Velocity down</strong>
+              <p style="margin-bottom:0;">Fracture opening and fluid-filled separation can weaken the path, so waves arrive
+              a little later.</p>
+            </div>
+          </div>
+          <figcaption>
+            <strong>Two signals can coexist</strong><br>
+            Hydraulic stimulation does not produce one universal velocity response. The sign of the change depends on what
+            part of the fracture-stress system a path is sampling.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="figure-grid" style="width:min(760px,92vw);">
+        <figure>
+          <object data="5_bluecanyondome/flow_pressure.pdf"
+                  type="application/pdf"
+                  aria-label="Blue Canyon Dome injection flow and pressure history"
+                  style="width:100%;height:430px;background:#fff;">
+            <p><a href="5_bluecanyondome/flow_pressure.pdf">Open the injection flow and pressure history PDF</a></p>
+          </object>
+          <figcaption>
+            <strong>The operation history is the experiment's clock</strong><br>
+            The pump schedule and pressure record provide the time reference for interpreting the seismic velocity changes.
+            I keep this local project panel here because it is directly part of the Blue Canyon Dome materials.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="recovery">
+      <h3>5) After pumping stops, the fracture does not recover all at once</h3>
+
+      <p>
+        One of the most human ways to understand this experiment is to imagine two rough surfaces pressed together. When
+        fluid opens a fracture, those surfaces separate. When pressure drops, they may touch again quickly, but touching is
+        not the same as fully healing. The tiny contact points between grains and asperities continue to adjust.
+      </p>
+
+      <p>
+        This gives a natural two-stage recovery. First comes a fast mechanical response: pressure drops, the fracture closes,
+        and part of the velocity loss recovers. Then comes a slower response, related to contact healing and nonlinear rock
+        physics. That slower behavior connects Blue Canyon Dome to a broader theme in my research: rocks remember how they
+        have been disturbed, and their elastic properties can recover over minutes, hours, or even longer.
+      </p>
+
+      <div class="figure-grid" style="width:min(900px,92vw);">
+        <figure>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0.75rem;padding:1rem;background:#fbfcfa;">
+            <div style="background:#fff;border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+              <strong>Open</strong>
+              <div style="height:58px;margin:0.7rem 0;position:relative;">
+                <span style="position:absolute;left:15%;right:15%;top:12px;height:8px;background:#6f6f6f;transform:rotate(-3deg);"></span>
+                <span style="position:absolute;left:15%;right:15%;bottom:12px;height:8px;background:#6f6f6f;transform:rotate(3deg);"></span>
+                <span style="position:absolute;left:42%;right:42%;top:22px;bottom:22px;background:#2f83c5;border-radius:6px;"></span>
+              </div>
+              <span style="font-size:0.9rem;">fluid separates surfaces</span>
+            </div>
+            <div style="background:#fff;border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+              <strong>Close</strong>
+              <div style="height:58px;margin:0.7rem 0;position:relative;">
+                <span style="position:absolute;left:15%;right:15%;top:20px;height:8px;background:#6f6f6f;transform:rotate(-2deg);"></span>
+                <span style="position:absolute;left:15%;right:15%;bottom:20px;height:8px;background:#6f6f6f;transform:rotate(2deg);"></span>
+              </div>
+              <span style="font-size:0.9rem;">pressure falls, contacts return</span>
+            </div>
+            <div style="background:#fff;border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+              <strong>Heal</strong>
+              <div style="height:58px;margin:0.7rem 0;position:relative;">
+                <span style="position:absolute;left:15%;right:15%;top:24px;height:8px;background:#6f6f6f;"></span>
+                <span style="position:absolute;left:25%;top:21px;width:10px;height:14px;background:#0a766d;border-radius:50%;"></span>
+                <span style="position:absolute;left:49%;top:21px;width:10px;height:14px;background:#0a766d;border-radius:50%;"></span>
+                <span style="position:absolute;left:70%;top:21px;width:10px;height:14px;background:#0a766d;border-radius:50%;"></span>
+              </div>
+              <span style="font-size:0.9rem;">contact network strengthens slowly</span>
+            </div>
+          </div>
+          <figcaption>
+            <strong>A physical picture for recovery</strong><br>
+            The fast part is mostly closure. The slow part is contact healing: the gradual rebuilding of stiffness at rough
+            surfaces after they have been disturbed.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="why-it-matters">
+      <h3>6) Why this matters beyond one field test</h3>
+
+      <p>
+        The practical value is monitoring. In geothermal reservoirs, carbon storage, hydraulic stimulation, and other
+        subsurface operations, we often care about deformation that is partly silent. Microearthquakes show us where some
+        slip occurs, but they do not show the full mechanical story. Active seismic monitoring can help fill that gap by
+        tracking changes in stiffness even when the rock is quiet.
+      </p>
+
+      <p>
+        The scientific value is interpretation. A velocity increase is not automatically "good" and a velocity decrease is
+        not automatically "bad." They are clues. To read them properly, we need to combine wave physics, fracture mechanics,
+        and nonlinear elasticity. That is the larger research thread I see here: using small changes in seismic waves to
+        understand how real rocks damage, recover, and remember.
+      </p>
+    </section>
+
+    <section id="limits">
+      <h3>7) What I would do next</h3>
+
+      <p>
+        Blue Canyon Dome was shallow and compact, which made it beautifully controlled but also limited. The waveforms are
+        short, P and S energy can overlap, and the choice of coda window matters. A larger geothermal-scale deployment, with
+        cleaner source signatures and longer borehole offsets, could make the interpretation sharper.
+      </p>
+
+      <p>
+        The natural next step is to move from path-by-path observations toward an image: not just "this path sped up" or
+        "that path slowed down," but a spatial map of where the rock stiffened, where it weakened, and how those zones
+        recovered after injection. That would turn coda wave interferometry from a sensitive measuring tool into a true
+        fracture-monitoring method.
+      </p>
+
+      <p>
+        <strong>Related:</strong>
+        Snieder, Gret, Douma &amp; Scales,
+        <a href="https://doi.org/10.1126/science.1070015" target="_blank" rel="noopener noreferrer">
+          Coda Wave Interferometry for Estimating Nonlinear Behavior in Seismic Velocity
+        </a> (2002).
+      </p>
+
+      <p>
+        <strong>Project material:</strong>
+        <a href="5_bluecanyondome/BlueCayonDome_CWP_Presentation_JackLi.zip" target="_blank" rel="noopener noreferrer">Presentation to CWP 2018 Consortium meeting (Golden, US)</a>.
+      </p>
     </section>
   </main>
-
-  <footer class="site-footer">
-    <div class="container">
-      <small>© <span id="year"></span> Xun Li • Edinburgh, UK</small>
-    </div>
-  </footer>
-
-  <script>
-  (function () {
-    const y = document.getElementById('year');
-    if (y) y.textContent = new Date().getFullYear();
-  })();
-  </script>
 </body>
 </html>
