@@ -294,6 +294,370 @@ html {
 .card .button:hover { background: #0056b3; }
 
 
+/* Research story layout and reusable visual components */
+.research-story section {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 24px auto;
+  padding: clamp(18px, 3vw, 34px);
+}
+
+.research-story .story-hero {
+  padding-top: clamp(22px, 4vw, 44px);
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 1rem;
+  text-decoration: none;
+  color: #315f7d;
+  margin-bottom: 0.75rem;
+}
+
+.back-link:hover {
+  color: #17435f;
+}
+
+.story-kicker {
+  margin-bottom: 0.25rem;
+  color: #596a70;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.story-hero h2 {
+  max-width: 980px;
+  font-size: clamp(2rem, 3vw, 3.1rem);
+  line-height: 1.15;
+}
+
+.story-lede {
+  max-width: 980px;
+  color: #23313d;
+  font-size: clamp(1.2rem, 2vw, 1.45rem);
+  line-height: 1.55;
+}
+
+.story-highlights {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin: 1.4rem 0 0;
+  list-style: none;
+}
+
+.story-highlights li {
+  background: #f7faf9;
+  border-left: 4px solid #2f83c5;
+  border-radius: 6px;
+  padding: 0.85rem 1rem;
+  color: #334044;
+  font-size: 0.95rem;
+}
+
+.figure-grid.story-wide {
+  width: min(980px, 92vw);
+}
+
+.figure-grid.story-medium {
+  width: min(780px, 92vw);
+}
+
+.research-story .figure-grid figure {
+  border-color: #d9e2e3;
+  border-radius: 8px;
+}
+
+.research-story .figure-grid img {
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.research-story figcaption {
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+.process-strip,
+.concept-panel,
+.fracture-cycle {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem;
+  background: #fbfcfa;
+}
+
+.process-strip {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.process-step,
+.concept-card,
+.fracture-state {
+  background: #fff;
+  border: 1px solid #d7dfdf;
+  border-radius: 6px;
+  padding: 0.85rem;
+}
+
+.process-step {
+  text-align: center;
+}
+
+.process-step span,
+.fracture-state > span {
+  display: block;
+  margin-top: 0.25rem;
+  color: #596a70;
+  font-size: 0.9rem;
+}
+
+.concept-panel.two-column {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.concept-card {
+  border-top-width: 4px;
+}
+
+.concept-card p {
+  margin-bottom: 0;
+  font-size: 0.95rem;
+}
+
+.concept-card.velocity-up {
+  border-top-color: #326f9d;
+}
+
+.concept-card.velocity-down {
+  border-top-color: #a9452d;
+}
+
+.embedded-pdf {
+  display: block;
+  width: 100%;
+  height: min(430px, 70vh);
+  background: #fff;
+  border: 0;
+}
+
+.wave-sketch {
+  padding: 1rem 1.1rem;
+  background: #fff;
+}
+
+.wave-row {
+  position: relative;
+  height: 92px;
+}
+
+.wave-row.reference {
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.wave-line {
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 34px;
+  height: 3px;
+  background: currentColor;
+}
+
+.wave-row.reference {
+  color: #326f9d;
+}
+
+.wave-row.delayed {
+  color: #a9452d;
+}
+
+.wave-row.delayed .wave-line {
+  left: 6%;
+  right: 2%;
+  top: 39px;
+}
+
+.wave-pulse {
+  position: absolute;
+  width: 12px;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+.wave-pulse.p1 {
+  left: 12%;
+  top: 24px;
+  height: 22px;
+}
+
+.wave-pulse.p2 {
+  left: 28%;
+  top: 18px;
+  height: 34px;
+}
+
+.wave-pulse.p3 {
+  left: 48%;
+  top: 22px;
+  height: 26px;
+}
+
+.wave-pulse.p4 {
+  left: 68%;
+  top: 27px;
+  width: 10px;
+  height: 16px;
+}
+
+.wave-row.delayed .wave-pulse.p1 {
+  left: 15%;
+  top: 30px;
+}
+
+.wave-row.delayed .wave-pulse.p2 {
+  left: 32%;
+  top: 24px;
+}
+
+.wave-row.delayed .wave-pulse.p3 {
+  left: 53%;
+  top: 28px;
+}
+
+.wave-row.delayed .wave-pulse.p4 {
+  left: 74%;
+  top: 33px;
+}
+
+.wave-label {
+  position: absolute;
+  left: 4%;
+  bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.fracture-cycle {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.fracture-state {
+  text-align: center;
+}
+
+.fracture-drawing {
+  position: relative;
+  height: 64px;
+  margin: 0.65rem 0;
+}
+
+.fracture-drawing .slab,
+.fracture-drawing .fluid,
+.fracture-drawing .contact {
+  position: absolute;
+  display: block;
+}
+
+.fracture-drawing .slab {
+  left: 15%;
+  right: 15%;
+  height: 8px;
+  background: #6f6f6f;
+}
+
+.fracture-drawing.open .upper {
+  top: 12px;
+  transform: rotate(-3deg);
+}
+
+.fracture-drawing.open .lower {
+  bottom: 12px;
+  transform: rotate(3deg);
+}
+
+.fracture-drawing.close .upper {
+  top: 21px;
+  transform: rotate(-2deg);
+}
+
+.fracture-drawing.close .lower {
+  bottom: 21px;
+  transform: rotate(2deg);
+}
+
+.fracture-drawing.heal .center {
+  top: 28px;
+}
+
+.fracture-drawing .fluid {
+  left: 42%;
+  right: 42%;
+  top: 23px;
+  bottom: 23px;
+  background: #2f83c5;
+  border-radius: 6px;
+}
+
+.fracture-drawing .contact {
+  top: 24px;
+  width: 10px;
+  height: 16px;
+  background: #0a766d;
+  border-radius: 50%;
+}
+
+.fracture-drawing .c1 {
+  left: 25%;
+}
+
+.fracture-drawing .c2 {
+  left: 49%;
+}
+
+.fracture-drawing .c3 {
+  left: 70%;
+}
+
+.site-footer {
+  padding: 18px 20px 28px;
+  text-align: center;
+  color: #555;
+}
+
+.site-footer .container {
+  width: min(1180px, calc(100vw - 32px));
+  margin: 0 auto;
+}
+
+@media (max-width: 760px) {
+  .story-highlights,
+  .process-strip,
+  .concept-panel.two-column,
+  .fracture-cycle {
+    grid-template-columns: 1fr;
+  }
+
+  .research-story section {
+    width: auto;
+    max-width: 100%;
+    margin: 16px 0;
+    padding: 16px;
+  }
+
+  .figure-grid.story-wide,
+  .figure-grid.story-medium {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .site-footer .container {
+    width: auto;
+    max-width: 100%;
+  }
+}
+
+
 
     /* The container holds all page content */
     #wrapper {

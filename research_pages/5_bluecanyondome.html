@@ -8,34 +8,47 @@
   <link rel="stylesheet" href="../styles.css">
 </head>
 <body>
-  <main id="wrapper">
-    <section>
+  <main id="wrapper" class="research-story">
+    <section class="story-hero">
       <p>
-        <a href="../index.html#research">&larr; Back to Main Page</a>
+        <a class="back-link" href="../index.html#research">&larr; Back to Main Page</a>
       </p>
 
-      <h2>Watching a Hydraulic Fracture Open and Heal at Blue Canyon Dome</h2>
+      <p class="story-kicker">Hydraulic fracturing monitoring / Blue Canyon Dome</p>
+      <h2>Watching a Hydraulic Fracture Open, Breathe, and Heal at Blue Canyon Dome</h2>
 
-      <p>
-        Most people imagine hydraulic fracturing as something dramatic: water is pumped underground, rock breaks, and tiny
-        earthquakes may happen. That picture is partly true, but it misses the quieter and, to me, more interesting part of
-        the story. A fracture is not just born in one instant. It opens, grows, changes the stress around it, sometimes
-        closes again, and may slowly heal as rough rock surfaces come back into contact.
-      </p>
-
-      <p>
-        The Blue Canyon Dome experiment gave us a rare chance to watch that process with active seismic waves. Instead of
-        waiting passively for microearthquakes, we repeatedly sent controlled seismic signals through the rock and listened
-        for tiny changes in the returning waveforms. In everyday language, we were asking the rock the same question over
-        and over again: <strong>has your stiffness changed since the last minute?</strong>
+      <p class="story-lede">
+        Hydraulic fracturing is often described as a sudden event: water goes in, rock breaks, and small earthquakes may
+        follow. The quieter story is more interesting. A fracture opens, changes the stress around it, closes after pumping
+        stops, and may continue to heal as rough rock surfaces come back into contact.
       </p>
 
       <p>
-        The answer was subtle. Some paths through the rock appeared to speed up, while others slowed down. That is the
-        fingerprint of two processes acting together: pressure can stiffen parts of the rock, while an opening fracture can
-        weaken other parts. After injection stops, the rock does not simply reset. It recovers in stages, first quickly as
-        cracks close, then more slowly as contacts heal.
+        The Blue Canyon Dome experiment gave us a compact field laboratory for watching that process with active seismic
+        waves. Instead of waiting passively for microearthquakes, we repeatedly sent controlled seismic signals through the
+        rock and listened for tiny changes in the returning waveforms. In everyday language, we were asking the rock the
+        same question again and again: <strong>has your stiffness changed since the last minute?</strong>
       </p>
+
+      <div class="figure-grid story-wide">
+        <figure>
+          <a href="5_bluecanyondome/overview_maincrack.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/overview_maincrack.png"
+                 alt="Blue Canyon Dome five-spot geometry with four monitoring wells around a central stimulation point.">
+          </a>
+          <figcaption>
+            <strong>Blue Canyon Dome five-spot geometry</strong><br>
+            A central stimulation point is surrounded by four monitoring wells. The different source-receiver paths act
+            like lines of sight through the stimulated rock volume.
+          </figcaption>
+        </figure>
+      </div>
+
+      <ul class="story-highlights">
+        <li><strong>Measure quietly:</strong> repeat active shots reveal stiffness changes even when deformation is not seismic.</li>
+        <li><strong>Read path by path:</strong> some ray paths can speed up while others slow down during stimulation.</li>
+        <li><strong>Watch recovery:</strong> closure can be fast, but contact healing continues more gradually after shut-in.</li>
+      </ul>
     </section>
 
     <section id="field-lab">
@@ -55,21 +68,6 @@
         weathered layer, but the more horizontal paths that crossed the stimulated zone. Those paths gave us a clearer view
         of how the rock changed around the fracture.
       </p>
-
-      <div class="figure-grid" style="width:min(760px,92vw);">
-        <figure>
-          <a href="5_bluecanyondome/overview_maincrack.png" target="_blank" rel="noopener noreferrer">
-            <img src="5_bluecanyondome/overview_maincrack.png"
-                 alt="Blue Canyon Dome five-spot geometry with four monitoring wells around a central stimulation point."
-                 style="width:100%;object-fit:contain;">
-          </a>
-          <figcaption>
-            <strong>Blue Canyon Dome five-spot geometry</strong><br>
-            A central stimulation point is surrounded by four monitoring wells. The different source-receiver paths act
-            like different lines of sight through the stimulated rock volume.
-          </figcaption>
-        </figure>
-      </div>
     </section>
 
     <section id="listening">
@@ -82,29 +80,29 @@
       </p>
 
       <p>
-        That is why continuous active-source seismic monitoring is so useful. A controlled source is fired again and again,
-        and receivers record the response. If the source and receiver stay fixed, then a change in the waveform is not just
-        a new measurement; it is a clue that the medium between them has changed.
+        Continuous active-source monitoring fills that gap. A controlled source is fired again and again, and receivers
+        record the response. If the source and receiver stay fixed, then a change in the waveform is not just a new
+        measurement; it is a clue that the medium between them has changed.
       </p>
 
-      <div class="figure-grid" style="width:min(880px,92vw);">
+      <div class="figure-grid story-wide">
         <figure>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:0.65rem;align-items:stretch;padding:1rem;background:#fbfcfa;">
-            <div style="border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
-              <strong>Send</strong><br>
-              <span style="font-size:0.9rem;">repeatable pulse</span>
+          <div class="process-strip" aria-label="Active monitoring workflow">
+            <div class="process-step">
+              <strong>Send</strong>
+              <span>repeatable pulse</span>
             </div>
-            <div style="border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
-              <strong>Record</strong><br>
-              <span style="font-size:0.9rem;">direct wave + coda</span>
+            <div class="process-step">
+              <strong>Record</strong>
+              <span>direct wave + coda</span>
             </div>
-            <div style="border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
-              <strong>Compare</strong><br>
-              <span style="font-size:0.9rem;">today vs baseline</span>
+            <div class="process-step">
+              <strong>Compare</strong>
+              <span>current shot vs baseline</span>
             </div>
-            <div style="border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
-              <strong>Infer</strong><br>
-              <span style="font-size:0.9rem;">stiffness change</span>
+            <div class="process-step">
+              <strong>Infer</strong>
+              <span>stiffness change</span>
             </div>
           </div>
           <figcaption>
@@ -138,24 +136,24 @@
         stiffness, waves can speed up.
       </p>
 
-      <div class="figure-grid" style="width:min(780px,92vw);">
+      <div class="figure-grid story-medium">
         <figure>
-          <div style="padding:1.1rem;background:#fff;">
-            <div style="height:86px;position:relative;border-bottom:1px solid #d8d8d8;">
-              <div style="position:absolute;left:4%;right:4%;top:28px;height:3px;background:#326f9d;"></div>
-              <div style="position:absolute;left:12%;top:19px;width:10px;height:20px;background:#326f9d;border-radius:50%;"></div>
-              <div style="position:absolute;left:28%;top:13px;width:12px;height:32px;background:#326f9d;border-radius:50%;"></div>
-              <div style="position:absolute;left:48%;top:17px;width:10px;height:24px;background:#326f9d;border-radius:50%;"></div>
-              <div style="position:absolute;left:68%;top:22px;width:8px;height:14px;background:#326f9d;border-radius:50%;"></div>
-              <span style="position:absolute;left:4%;bottom:8px;color:#326f9d;">reference</span>
+          <div class="wave-sketch" aria-label="Coda wave time-shift sketch">
+            <div class="wave-row reference">
+              <span class="wave-line"></span>
+              <span class="wave-pulse p1"></span>
+              <span class="wave-pulse p2"></span>
+              <span class="wave-pulse p3"></span>
+              <span class="wave-pulse p4"></span>
+              <span class="wave-label">reference</span>
             </div>
-            <div style="height:96px;position:relative;">
-              <div style="position:absolute;left:6%;right:2%;top:37px;height:3px;background:#a9452d;"></div>
-              <div style="position:absolute;left:15%;top:28px;width:10px;height:20px;background:#a9452d;border-radius:50%;"></div>
-              <div style="position:absolute;left:32%;top:22px;width:12px;height:32px;background:#a9452d;border-radius:50%;"></div>
-              <div style="position:absolute;left:53%;top:26px;width:10px;height:24px;background:#a9452d;border-radius:50%;"></div>
-              <div style="position:absolute;left:74%;top:31px;width:8px;height:14px;background:#a9452d;border-radius:50%;"></div>
-              <span style="position:absolute;left:4%;bottom:8px;color:#a9452d;">later record: slightly delayed</span>
+            <div class="wave-row delayed">
+              <span class="wave-line"></span>
+              <span class="wave-pulse p1"></span>
+              <span class="wave-pulse p2"></span>
+              <span class="wave-pulse p3"></span>
+              <span class="wave-pulse p4"></span>
+              <span class="wave-label">later record: slightly delayed</span>
             </div>
           </div>
           <figcaption>
@@ -189,18 +187,16 @@
         not just as a single event.
       </p>
 
-      <div class="figure-grid" style="width:min(900px,92vw);">
+      <div class="figure-grid story-wide">
         <figure>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:0.8rem;padding:1rem;background:#fbfcfa;">
-            <div style="border-top:4px solid #326f9d;background:#fff;padding:0.9rem;">
+          <div class="concept-panel two-column">
+            <div class="concept-card velocity-up">
               <strong>Velocity up</strong>
-              <p style="margin-bottom:0;">Stress loading and crack closure can make contacts stiffer, so waves arrive a
-              little earlier.</p>
+              <p>Stress loading and crack closure can make contacts stiffer, so waves arrive a little earlier.</p>
             </div>
-            <div style="border-top:4px solid #a9452d;background:#fff;padding:0.9rem;">
+            <div class="concept-card velocity-down">
               <strong>Velocity down</strong>
-              <p style="margin-bottom:0;">Fracture opening and fluid-filled separation can weaken the path, so waves arrive
-              a little later.</p>
+              <p>Fracture opening and fluid-filled separation can weaken the path, so waves arrive a little later.</p>
             </div>
           </div>
           <figcaption>
@@ -211,18 +207,17 @@
         </figure>
       </div>
 
-      <div class="figure-grid" style="width:min(760px,92vw);">
+      <div class="figure-grid story-medium">
         <figure>
-          <object data="5_bluecanyondome/flow_pressure.pdf"
+          <object class="embedded-pdf"
+                  data="5_bluecanyondome/flow_pressure.pdf"
                   type="application/pdf"
-                  aria-label="Blue Canyon Dome injection flow and pressure history"
-                  style="width:100%;height:430px;background:#fff;">
+                  aria-label="Blue Canyon Dome injection flow and pressure history">
             <p><a href="5_bluecanyondome/flow_pressure.pdf">Open the injection flow and pressure history PDF</a></p>
           </object>
           <figcaption>
             <strong>The operation history is the experiment's clock</strong><br>
             The pump schedule and pressure record provide the time reference for interpreting the seismic velocity changes.
-            I keep this local project panel here because it is directly part of the Blue Canyon Dome materials.
           </figcaption>
         </figure>
       </div>
@@ -244,35 +239,35 @@
         have been disturbed, and their elastic properties can recover over minutes, hours, or even longer.
       </p>
 
-      <div class="figure-grid" style="width:min(900px,92vw);">
+      <div class="figure-grid story-wide">
         <figure>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0.75rem;padding:1rem;background:#fbfcfa;">
-            <div style="background:#fff;border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+          <div class="fracture-cycle">
+            <div class="fracture-state">
               <strong>Open</strong>
-              <div style="height:58px;margin:0.7rem 0;position:relative;">
-                <span style="position:absolute;left:15%;right:15%;top:12px;height:8px;background:#6f6f6f;transform:rotate(-3deg);"></span>
-                <span style="position:absolute;left:15%;right:15%;bottom:12px;height:8px;background:#6f6f6f;transform:rotate(3deg);"></span>
-                <span style="position:absolute;left:42%;right:42%;top:22px;bottom:22px;background:#2f83c5;border-radius:6px;"></span>
+              <div class="fracture-drawing open" aria-hidden="true">
+                <span class="slab upper"></span>
+                <span class="slab lower"></span>
+                <span class="fluid"></span>
               </div>
-              <span style="font-size:0.9rem;">fluid separates surfaces</span>
+              <span>fluid separates surfaces</span>
             </div>
-            <div style="background:#fff;border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+            <div class="fracture-state">
               <strong>Close</strong>
-              <div style="height:58px;margin:0.7rem 0;position:relative;">
-                <span style="position:absolute;left:15%;right:15%;top:20px;height:8px;background:#6f6f6f;transform:rotate(-2deg);"></span>
-                <span style="position:absolute;left:15%;right:15%;bottom:20px;height:8px;background:#6f6f6f;transform:rotate(2deg);"></span>
+              <div class="fracture-drawing close" aria-hidden="true">
+                <span class="slab upper"></span>
+                <span class="slab lower"></span>
               </div>
-              <span style="font-size:0.9rem;">pressure falls, contacts return</span>
+              <span>pressure falls, contacts return</span>
             </div>
-            <div style="background:#fff;border:1px solid #d7dfdf;border-radius:6px;padding:0.8rem;text-align:center;">
+            <div class="fracture-state">
               <strong>Heal</strong>
-              <div style="height:58px;margin:0.7rem 0;position:relative;">
-                <span style="position:absolute;left:15%;right:15%;top:24px;height:8px;background:#6f6f6f;"></span>
-                <span style="position:absolute;left:25%;top:21px;width:10px;height:14px;background:#0a766d;border-radius:50%;"></span>
-                <span style="position:absolute;left:49%;top:21px;width:10px;height:14px;background:#0a766d;border-radius:50%;"></span>
-                <span style="position:absolute;left:70%;top:21px;width:10px;height:14px;background:#0a766d;border-radius:50%;"></span>
+              <div class="fracture-drawing heal" aria-hidden="true">
+                <span class="slab center"></span>
+                <span class="contact c1"></span>
+                <span class="contact c2"></span>
+                <span class="contact c3"></span>
               </div>
-              <span style="font-size:0.9rem;">contact network strengthens slowly</span>
+              <span>contact network strengthens slowly</span>
             </div>
           </div>
           <figcaption>
@@ -302,7 +297,7 @@
       </p>
     </section>
 
-    <section id="limits">
+    <section id="next">
       <h3>7) What I would do next</h3>
 
       <p>
@@ -328,9 +323,19 @@
 
       <p>
         <strong>Project material:</strong>
-        <a href="5_bluecanyondome/BlueCayonDome_CWP_Presentation_JackLi.zip" target="_blank" rel="noopener noreferrer">Presentation to CWP 2018 Consortium meeting (Golden, US)</a>.
+        <a href="5_bluecanyondome/BlueCayonDome_CWP_Presentation_JackLi.zip" target="_blank" rel="noopener noreferrer">
+          Presentation to CWP 2018 Consortium meeting (Golden, US)
+        </a>.
       </p>
     </section>
   </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; <span id="year"></span> Jack Li &bull; Edinburgh, UK</small>
+    </div>
+  </footer>
+
+  <script src="research-page.js"></script>
 </body>
 </html>
