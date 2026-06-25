@@ -3,9 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Active Seismic Monitoring of Hydraulic Fracturing: Blue Canyon Dome Case Study - Jack Li</title>
-  <meta name="description" content="A blog-style research story about active seismic monitoring of hydraulic fracturing through the Blue Canyon Dome case study, continuous active-source seismic monitoring, coda wave interferometry, and fracture recovery.">
+  <title>Watching a Hydraulic Fracture Open, Close, and Heal - Jack Li</title>
+  <meta name="description" content="A research blog about the Blue Canyon Dome hydraulic-fracturing field test, continuous active-source seismic monitoring, coda wave interferometry, and fracture relaxation.">
   <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    .bcd-note,
+    .bcd-download {
+      background: #f8faf9;
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--accent);
+      border-radius: 6px;
+      margin: 1rem 0;
+      padding: 0.95rem 1rem;
+    }
+
+    .bcd-note p:last-child,
+    .bcd-download p:last-child {
+      margin-bottom: 0;
+    }
+
+    .research-story .figure-grid.bcd-pair {
+      align-items: start;
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+
+    @media (max-width: 760px) {
+      .research-story .figure-grid.bcd-pair {
+        grid-template-columns: 1fr !important;
+      }
+    }
+  </style>
 </head>
 <body>
   <main id="wrapper" class="research-story">
@@ -14,319 +41,375 @@
         <a class="back-link" href="../index.html#research">&larr; Back to Main Page</a>
       </p>
 
-      <p class="story-kicker">Active seismic monitoring / Hydraulic fracturing case study</p>
-      <h2>Active Seismic Monitoring of Hydraulic Fracturing: A Case Study at Blue Canyon Dome</h2>
+      <h2>Watching a Hydraulic Fracture Open, Close, and Heal</h2>
 
       <p class="story-lede">
-        Hydraulic fracturing is often described as a sudden event: water goes in, rock breaks, and small earthquakes may
-        follow. The mechanical response is more gradual. A fracture opens, changes the stress around it, closes after pumping
-        stops, and may continue to heal as rough rock surfaces come back into contact.
+        Hydraulic fracturing is easy to describe as an engineering operation: pump fluid into rock until a fracture
+        opens. The interesting part is what happens mechanically. A fracture grows under pressure, changes the stiffness
+        of the surrounding rock, partly closes after pumping stops, and can keep recovering as rough contacts gradually
+        rebuild.
       </p>
 
       <p>
-        The Blue Canyon Dome experiment gave us a compact field laboratory for watching that process with active seismic
-        waves. Instead of waiting passively for microearthquakes, we repeatedly sent controlled seismic signals through the
-        rock and listened for tiny changes in the returning waveforms. The repeated measurement asks a simple question:
-        <strong>has the stiffness along this path changed since the last shot?</strong>
+        The Blue Canyon Dome field test was useful because it was small enough to reason about path by path. Instead of
+        relying only on microearthquakes, the experiment repeatedly sent active seismic signals through a shallow rhyolite
+        test volume. By comparing one repeated waveform with the next, we can ask a focused question:
+        <strong>did this source-receiver path become stiffer or softer during the operation?</strong>
       </p>
 
       <div class="figure-grid story-wide">
         <figure>
-          <a href="5_bluecanyondome/overview_maincrack.png" target="_blank" rel="noopener noreferrer">
-            <img src="5_bluecanyondome/overview_maincrack.png"
-                 alt="Blue Canyon Dome five-spot geometry with four monitoring wells around a central stimulation point.">
+          <a href="5_bluecanyondome/fieldGeometry.PNG" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/fieldGeometry.PNG" alt="Blue Canyon Dome field geometry with four wells around the stimulation well.">
           </a>
           <figcaption>
-            <strong>Blue Canyon Dome five-spot geometry</strong><br>
-            A central stimulation point is surrounded by four monitoring wells. The different source-receiver paths act
-            like lines of sight through the stimulated rock volume.
+            <strong>A compact field laboratory</strong><br>
+            Blue Canyon Dome used a small five-well geometry: one stimulation well and four nearby monitoring wells.
+            The scale made the experiment field-like, but still simple enough to interpret as a set of repeated
+            source-receiver paths through the stimulated rock.
           </figcaption>
         </figure>
       </div>
 
       <ul class="story-highlights">
-        <li><strong>Measure quietly:</strong> repeat active shots reveal stiffness changes even when deformation is not seismic.</li>
-        <li><strong>Read path by path:</strong> some ray paths can speed up while others slow down during stimulation.</li>
-        <li><strong>Watch recovery:</strong> closure can be fast, but contact healing continues more gradually after shut-in.</li>
+        <li><strong>Repeat the source:</strong> active shots make quiet stiffness changes visible.</li>
+        <li><strong>Read each path:</strong> different paths sample different parts of the fracture-stress system.</li>
+        <li><strong>Separate recovery:</strong> fast closure and slow contact healing leave different seismic signatures.</li>
       </ul>
     </section>
 
     <section id="field-lab">
-      <h3>1) A small field laboratory for a big question</h3>
+      <h3>1) A Small Field Test With a Clear Question</h3>
 
       <p>
-        Blue Canyon Dome is a shallow field test site south of Albuquerque, New Mexico. The experiment used a compact
-        five-spot geometry: one stimulation well near the center and four monitoring wells around it. Because the wells were
-        close together, the site behaved almost like a natural laboratory. It was still real rock, with real fractures and
-        real field noise, but the geometry was simple enough that we could reason carefully about which parts of the rock
-        each seismic path sampled.
+        Blue Canyon Dome was not designed as a large reservoir-scale monitoring survey. That is part of its value. The
+        wells were close together, the stimulation point was shallow, and the target rock was rhyolite below a weathered
+        near-surface layer. This makes the experiment a bridge between a laboratory fracture test and a full field
+        deployment.
       </p>
 
       <p>
-        The target was near-surface rhyolite below a weathered layer. The injection occurred near the end of casing, around
-        15 m depth. For the seismic analysis, the most useful paths were not the steep ones that ran through the weaker
-        weathered layer, but the more horizontal paths that crossed the stimulated zone. Those paths gave us a clearer view
-        of how the rock changed around the fracture.
+        The scientific question is deliberately modest: can repeated seismic waves tell us something about fracture
+        behavior during and after hydraulic stimulation? Not a full image of the fracture network, and not a complete
+        mechanical inversion. The goal is a fast interpretation from trace-to-trace comparison: where the waveforms change,
+        when they change, and whether the change looks like stiffening, weakening, or recovery.
       </p>
+
+      <div class="figure-grid story-medium">
+        <figure>
+          <a href="5_bluecanyondome/overview_maincrack.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/overview_maincrack.png" alt="Schematic plan-view geometry showing the inferred west-east fracture and monitoring paths.">
+          </a>
+          <figcaption>
+            <strong>The working fracture picture</strong><br>
+            The CWP presentation interprets the main feature as a W-E vertical fracture crossing the central stimulation
+            point. The dashed paths are not a tomographic image; they are the paths whose repeated waveforms can be
+            compared through time.
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
-    <section id="listening">
-      <h3>2) Instead of waiting for earthquakes, we made our own repeatable signals</h3>
+    <section id="operation">
+      <h3>2) The Pump Schedule Is the Experiment's Clock</h3>
 
       <p>
-        Many hydraulic-fracturing studies focus on microseismicity: the tiny earthquakes generated when parts of the rock
-        slip. Microseismic monitoring is powerful, but it only sees the noisy part of deformation. A fracture can also open,
-        creep, or change contact stiffness without producing a clear earthquake.
-      </p>
-
-      <p>
-        Continuous active-source monitoring fills that gap. A controlled source is fired again and again, and receivers
-        record the response. If the source and receiver stay fixed, then a change in the waveform is not just a new
-        measurement; it is a clue that the medium between them has changed.
+        A monitoring result is only meaningful if we can compare it with the operation timeline. The Blue Canyon Dome
+        sequence included a baseline, two stimulation stages, and pressure tests. The material for this page focuses on
+        <strong>pressure test #2</strong>, because that interval gives a clear clock for asking whether the seismic
+        response follows injection, pressure change, shut-in, and recovery.
       </p>
 
       <div class="figure-grid story-wide">
         <figure>
-          <div class="process-strip" aria-label="Active monitoring workflow">
-            <div class="process-step">
-              <strong>Send</strong>
-              <span>repeatable pulse</span>
-            </div>
-            <div class="process-step">
-              <strong>Record</strong>
-              <span>direct wave + coda</span>
-            </div>
-            <div class="process-step">
-              <strong>Compare</strong>
-              <span>current shot vs baseline</span>
-            </div>
-            <div class="process-step">
-              <strong>Infer</strong>
-              <span>stiffness change</span>
-            </div>
-          </div>
+          <a href="5_bluecanyondome/operation_of_injOp.PNG" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/operation_of_injOp.PNG" alt="Schematic operation timeline with baseline, stimulation stages, and pressure tests.">
+          </a>
           <figcaption>
-            <strong>The active-monitoring idea</strong><br>
-            We do not need every change to radiate an earthquake. By sending repeatable signals, we can detect quiet
-            changes in the medium through small waveform shifts.
+            <strong>Operation timeline</strong><br>
+            The seismic changes should be read against the hydraulic operation: baseline first, then stimulation and
+            pressure testing. Pressure test #2 is the key interval for connecting the seismic response to fracture
+            behavior and relaxation.
           </figcaption>
         </figure>
       </div>
 
+      <div class="figure-grid story-wide">
+        <figure>
+          <a href="5_bluecanyondome/flow_pressure.PNG" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/flow_pressure.PNG" alt="Pressure and flow-rate history during pressure test 2.">
+          </a>
+          <figcaption>
+            <strong>Pressure test #2</strong><br>
+            Pressure rises during injection and then drops sharply at shut-in. The velocity changes below are interpreted
+            against this hydraulic clock: loading during injection, rapid pressure release at shut-in, and recovery after
+            flow stops.
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="monitoring">
+      <h3>3) Repeating the Same Seismic Question Every Minute</h3>
+
       <p>
-        The part of the waveform I care about most is the <em>coda</em>, the later ringing after the first arrival. A direct
-        arrival is like one clean beam of light. The coda is more like echoes in a room: it has bounced, scattered, and
-        sampled the medium many times. That makes it messy, but also extremely sensitive.
+        Passive microseismic monitoring listens for failures that radiate seismic energy. That is useful, but it misses
+        deformation that is mechanically important and seismically quiet. Continuous active-source monitoring adds a
+        controlled measurement: send a repeatable signal, record the response, and compare it with a reference.
       </p>
+
+      <p>
+        The Blue Canyon Dome data were collected at about one-minute temporal resolution. That is fast enough to follow
+        the operation, but it also creates practical problems: individual traces are noisy, the useful windows are short,
+        and P- and S-wave energy can overlap. The interpretation therefore has to stay path-wise and cautious.
+      </p>
+
+      <div class="figure-grid story-wide">
+        <figure>
+          <a href="5_bluecanyondome/continuousMonitoringData.PNG" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/continuousMonitoringData.PNG" alt="Source-receiver geometry and repeated seismic records through hydraulic-fracturing epoch time.">
+          </a>
+          <figcaption>
+            <strong>Continuous active-source monitoring</strong><br>
+            The left panel shows source and receiver positions in the compact geometry. The right panel shows repeated
+            records through the hydraulic-fracturing epoch. Small shifts in these repeated waveforms are the raw evidence
+            for changes in apparent seismic velocity.
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
     <section id="coda">
-      <h3>3) Coda wave interferometry: using tiny time shifts as a stiffness meter</h3>
+      <h3>4) Coda Wave Interferometry Turns Tiny Shifts Into a Stiffness Proxy</h3>
 
       <p>
-        Coda wave interferometry compares two waveforms from the same source-receiver pair. If the later waveform looks
-        like a slightly stretched version of the earlier one, the waves are arriving later and the apparent velocity has
-        decreased. If it looks slightly compressed, the waves are arriving earlier and the apparent velocity has increased.
+        The measurement tool is coda wave interferometry. The idea is simple: compare a reference waveform with a later
+        waveform from the same source-receiver pair. If the later waveform must be stretched to match the reference, the
+        wavefield is arriving later and the apparent velocity decreased. If it must be compressed, the apparent velocity
+        increased. In shorthand, <strong>dv/v = -dt/t</strong>.
       </p>
 
       <p>
-        A useful way to think about this is a piano string. Tighten the string and the pitch goes up; loosen it and the
-        pitch goes down. In rock, the "pitch" is not musical, but the principle is similar: seismic velocity is linked to
-        stiffness. When cracks open or contacts weaken, waves slow down. When stress closes cracks or increases contact
-        stiffness, waves can speed up.
+        This does not directly photograph a fracture. It gives a sensitive path-wise proxy for elastic change. In rock,
+        seismic velocity is tied to stiffness: open cracks and weaker contacts tend to slow waves, while crack closure or
+        increased contact force can speed them up.
       </p>
 
       <div class="figure-grid story-medium">
         <figure>
-          <div class="wave-sketch" aria-label="Coda wave time-shift sketch">
-            <div class="wave-row reference">
-              <span class="wave-line"></span>
-              <span class="wave-pulse p1"></span>
-              <span class="wave-pulse p2"></span>
-              <span class="wave-pulse p3"></span>
-              <span class="wave-pulse p4"></span>
-              <span class="wave-label">reference</span>
-            </div>
-            <div class="wave-row delayed">
-              <span class="wave-line"></span>
-              <span class="wave-pulse p1"></span>
-              <span class="wave-pulse p2"></span>
-              <span class="wave-pulse p3"></span>
-              <span class="wave-pulse p4"></span>
-              <span class="wave-label">later record: slightly delayed</span>
-            </div>
-          </div>
+          <a href="5_bluecanyondome/CWI_Gret.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/CWI_Gret.png" alt="Coda wave interferometry example showing two similar traces and time shifts in the coda.">
+          </a>
           <figcaption>
-            <strong>The basic measurement</strong><br>
-            If the later coda has to be stretched to match the baseline, the path has slowed down. If it has to be
-            compressed, the path has sped up.
+            <strong>The CWI measurement idea</strong><br>
+            The early part of the waveform can look almost unchanged while the later coda is measurably shifted. That is
+            why the coda is valuable: it samples the medium through many scattered paths and can be very sensitive to
+            small stiffness changes.
           </figcaption>
         </figure>
       </div>
 
-      <p>
-        This is not a photograph of the fracture. It is a sensitive measurement of how the rock's elastic properties changed
-        along a path. The scientific challenge is to connect those path-wise velocity changes to physical processes:
-        pressure diffusion, stress redistribution, fracture opening, closure, and healing.
-      </p>
+      <div class="figure-grid story-wide bcd-pair">
+        <figure>
+          <a href="5_bluecanyondome/config_9_17.PNG" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/config_9_17.PNG" alt="Source-receiver path used for the first coda-wave interferometry example.">
+          </a>
+          <figcaption>
+            <strong>A path through the monitored volume</strong><br>
+            This source-receiver pair gives one path-wise view through the stimulated rock. The measurement is not an
+            image; it is a repeated comparison along this path.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <a href="5_bluecanyondome/ccc_9_17.PNG" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/ccc_9_17.PNG" alt="Relative velocity change and pressure history for the first CWI path.">
+          </a>
+          <figcaption>
+            <strong>Velocity change along that path</strong><br>
+            The black points show the apparent velocity change inferred from waveform stretching. The pressure curve gives
+            the timing needed to connect the seismic response to the hydraulic operation.
+          </figcaption>
+        </figure>
+      </div>
     </section>
 
-    <section id="injection">
-      <h3>4) During injection, two opposite effects compete</h3>
+    <section id="fracture-response">
+      <h3>5) The Main Observation: The Fracture Response Is Not One Simple Signal</h3>
 
       <p>
-        When fluid pressure rises, one might expect the rock to simply weaken and seismic velocity to go down. But field
-        data are rarely that simple. Pressure can also change the stress state in a way that closes some compliant cracks or
-        increases contact forces along some paths. That can make waves travel faster.
+        A tempting interpretation would be: pressure rises, the fracture opens, velocity drops, and then velocity returns
+        after shut-in. The Blue Canyon Dome material points to something more useful. Different source-receiver paths can
+        carry different signs and timing, because they sample different parts of the stress and fracture system.
       </p>
 
       <p>
-        So the key observation is not just "velocity changed." The key observation is that different paths can tell
-        different stories. Some paths may record stiffening, while others record fracture opening. This mixture is exactly
-        what makes the Blue Canyon Dome data interesting: it lets us think about a fracture as a spatially evolving object,
-        not just as a single event.
+        The clearest path is the one crossing the inferred W-E crack. During pressure test #2, that path shows a recovery
+        that is not instantaneous. The working interpretation separates two processes:
+        <strong>fast relaxation</strong>, associated with crack closure as pressure drops, and
+        <strong>slow relaxation</strong>, associated with contact healing after the fracture surfaces touch again.
       </p>
 
-      <div class="figure-grid story-wide">
+      <div class="figure-grid story-wide bcd-pair">
         <figure>
-          <div class="concept-panel two-column">
-            <div class="concept-card velocity-up">
-              <strong>Velocity up</strong>
-              <p>Stress loading and crack closure can make contacts stiffer, so waves arrive a little earlier.</p>
-            </div>
-            <div class="concept-card velocity-down">
-              <strong>Velocity down</strong>
-              <p>Fracture opening and fluid-filled separation can weaken the path, so waves arrive a little later.</p>
-            </div>
-          </div>
+          <a href="5_bluecanyondome/config_19_21.PNG" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/config_19_21.PNG" alt="Source-receiver path crossing the interpreted main west-east fracture.">
+          </a>
           <figcaption>
-            <strong>Two signals can coexist</strong><br>
-            Hydraulic stimulation does not produce one universal velocity response. The sign of the change depends on what
-            part of the fracture-stress system a path is sampling.
+            <strong>The path across the interpreted main crack</strong><br>
+            This source-receiver pair crosses the working W-E fracture picture, making it the clearest path for discussing
+            closure and recovery.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <a href="5_bluecanyondome/ccc2_19_21SlowFastRelaxation.PNG" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/ccc2_19_21SlowFastRelaxation.PNG" alt="Velocity-change curve with fast and slow relaxation intervals after shut-in.">
+          </a>
+          <figcaption>
+            <strong>Two relaxation stages</strong><br>
+            The immediate jump after shut-in is the fast part of the recovery. The later trend continues more gradually,
+            suggesting that the fracture-contact system keeps changing after the pressure drop.
           </figcaption>
         </figure>
       </div>
+
+      <div class="figure-grid story-wide bcd-pair">
+        <figure>
+          <a href="5_bluecanyondome/ccc1_19_21FastRelaxation.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/ccc1_19_21FastRelaxation.png" alt="Fast relaxation highlighted on the relative velocity-change curve.">
+          </a>
+          <figcaption>
+            <strong>Fast relaxation</strong><br>
+            The fast response occurs as pressure is released and the fracture rapidly regains part of its stiffness.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <a href="5_bluecanyondome/rrrall_19_21.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/rrrall_19_21.png" alt="Velocity recovery plotted against time after hydraulic fracturing.">
+          </a>
+          <figcaption>
+            <strong>Slow recovery after shut-in</strong><br>
+            Replotting the recovery against time after hydraulic fracturing makes the slow trend easier to see. The rock
+            does not return to its prior state all at once.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="bcd-note">
+        <p>
+          <strong>Why this matters:</strong> the result is more than "the velocity changed." The timing of the change gives
+          a physical interpretation. A rapid jump after shut-in is consistent with pressure release and crack closure. A
+          slower recovery suggests that the rock continues to regain stiffness after the fracture is mechanically closed.
+        </p>
+      </div>
+    </section>
+
+    <section id="healing">
+      <h3>6) Why Slow Recovery Makes Physical Sense</h3>
+
+      <p>
+        Rocks are not smooth elastic blocks. They are made of grains, pores, cement, and cracks. At the scale of a fracture
+        surface, the two sides touch at many small asperities rather than across a perfectly flat plane. When fluid pressure
+        opens a crack, those contacts are disturbed. When pressure drops, the fracture can close quickly, but the contact
+        network may keep evolving.
+      </p>
+
+      <div class="figure-grid story-wide bcd-pair">
+        <figure>
+          <a href="5_bluecanyondome/example_grain.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/example_grain.png" alt="Thin section image of a granular rock showing grains and contacts.">
+          </a>
+          <figcaption>
+            <strong>Granular contacts</strong><br>
+            The elastic response of rock is strongly controlled by grain contacts, pores, and small cracks. That is why
+            a small mechanical disturbance can produce a measurable velocity change.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <a href="5_bluecanyondome/fracture_RED.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/fracture_RED.png" alt="Schematic rough fracture surfaces with arrows indicating closure.">
+          </a>
+          <figcaption>
+            <strong>Rough fracture closure</strong><br>
+            Closing a rough fracture is a contact problem. Some contacts return quickly, while others strengthen more
+            gradually as the surfaces settle and heal.
+          </figcaption>
+        </figure>
+      </div>
+
+      <p>
+        This is where the Blue Canyon Dome observation connects to nonlinear rock physics. Laboratory experiments and
+        contact-based models show that rocks can recover slowly after being disturbed. In the field data, the slow part of
+        the relaxation is therefore not just a nuisance trend; it is a clue that the fracture has memory.
+      </p>
 
       <div class="figure-grid story-medium">
         <figure>
-          <object class="embedded-pdf"
-                  data="5_bluecanyondome/flow_pressure.pdf"
-                  type="application/pdf"
-                  aria-label="Blue Canyon Dome injection flow and pressure history">
-            <p><a href="5_bluecanyondome/flow_pressure.pdf">Open the injection flow and pressure history PDF</a></p>
-          </object>
+          <a href="5_bluecanyondome/multi-scale.png" target="_blank" rel="noopener noreferrer">
+            <img src="5_bluecanyondome/multi-scale.png" alt="Microscope-scale view of grains, pores, and a fracture front.">
+          </a>
           <figcaption>
-            <strong>The operation history is the experiment's clock</strong><br>
-            The pump schedule and pressure record provide the time reference for interpreting the seismic velocity changes.
+            <strong>A multi-scale problem</strong><br>
+            Hydraulic fracturing is driven at the field scale, but the recovery of stiffness is controlled by small-scale
+            contacts, pores, cracks, and fracture surfaces.
           </figcaption>
         </figure>
       </div>
     </section>
 
-    <section id="recovery">
-      <h3>5) After pumping stops, the fracture does not recover all at once</h3>
+    <section id="limits">
+      <h3>7) What the Data Can and Cannot Support</h3>
 
       <p>
-        One way to understand this experiment is to imagine two rough surfaces pressed together. When
-        fluid opens a fracture, those surfaces separate. When pressure drops, they may touch again quickly, but touching is
-        not the same as fully healing. The tiny contact points between grains and asperities continue to adjust.
+        This blog should not oversell Blue Canyon Dome as a finished fracture-imaging result. The acquisition geometry was
+        not optimized for this specific interpretation, the noise level was high, the coda windows were short, and the
+        stretching measurement assumes a simple effective velocity perturbation along each path. Hydraulic fracturing is
+        strongly heterogeneous and nonlinear, so that assumption is useful but incomplete.
       </p>
 
       <p>
-        This gives a natural two-stage recovery. First comes a fast mechanical response: pressure drops, the fracture closes,
-        and part of the velocity loss recovers. Then comes a slower response, related to contact healing and nonlinear rock
-        physics. That slower behavior connects Blue Canyon Dome to a broader theme in my research: rocks remember how they
-        have been disturbed, and their elastic properties can recover over minutes, hours, or even longer.
+        The value is that the method is cheap, fast, and physically interpretable. It can track quiet stiffness changes
+        even when the rock does not produce obvious seismic events. Used carefully, it gives a practical way to monitor
+        fracture behavior in near-real time and to design better experiments.
       </p>
 
-      <div class="figure-grid story-wide">
-        <figure>
-          <div class="fracture-cycle">
-            <div class="fracture-state">
-              <strong>Open</strong>
-              <div class="fracture-drawing open" aria-hidden="true">
-                <span class="slab upper"></span>
-                <span class="slab lower"></span>
-                <span class="fluid"></span>
-              </div>
-              <span>fluid separates surfaces</span>
-            </div>
-            <div class="fracture-state">
-              <strong>Close</strong>
-              <div class="fracture-drawing close" aria-hidden="true">
-                <span class="slab upper"></span>
-                <span class="slab lower"></span>
-              </div>
-              <span>pressure falls, contacts return</span>
-            </div>
-            <div class="fracture-state">
-              <strong>Heal</strong>
-              <div class="fracture-drawing heal" aria-hidden="true">
-                <span class="slab center"></span>
-                <span class="contact c1"></span>
-                <span class="contact c2"></span>
-                <span class="contact c3"></span>
-              </div>
-              <span>contact network strengthens slowly</span>
-            </div>
-          </div>
-          <figcaption>
-            <strong>A physical picture for recovery</strong><br>
-            The fast part is mostly closure. The slow part is contact healing: the gradual rebuilding of stiffness at rough
-            surfaces after they have been disturbed.
-          </figcaption>
-        </figure>
+      <div class="bcd-note">
+        <p>
+          <strong>The next experiment I would want:</strong> a controlled lab or field test designed around one dominant
+          fracture, with longer usable waveforms, cleaner repeatable sources, and source-receiver paths chosen specifically
+          to separate fracture opening, stress loading, closure, and healing.
+        </p>
       </div>
     </section>
 
-    <section id="why-it-matters">
-      <h3>6) Why this matters beyond one field test</h3>
+    <section id="sources">
+      <h3>Related Reading and Slides</h3>
 
       <p>
-        The practical value is monitoring. In geothermal reservoirs, carbon storage, hydraulic stimulation, and other
-        subsurface operations, we often care about deformation that is partly silent. Microearthquakes show us where some
-        slip occurs, but they do not show the full mechanical story. Active seismic monitoring can help fill that gap by
-        tracking changes in stiffness even when the rock is quiet.
-      </p>
-
-      <p>
-        The scientific value is interpretation. A velocity increase is not automatically "good" and a velocity decrease is
-        not automatically "bad." They are clues. To read them properly, we need to combine wave physics, fracture mechanics,
-        and nonlinear elasticity. That is the larger research thread I see here: using small changes in seismic waves to
-        understand how real rocks damage, recover, and remember.
-      </p>
-    </section>
-
-    <section id="next">
-      <h3>7) What I would do next</h3>
-
-      <p>
-        Blue Canyon Dome was shallow and compact, which made it beautifully controlled but also limited. The waveforms are
-        short, P and S energy can overlap, and the choice of coda window matters. A larger geothermal-scale deployment, with
-        cleaner source signatures and longer borehole offsets, could make the interpretation sharper.
-      </p>
-
-      <p>
-        The natural next step is to move from path-by-path observations toward an image: not just "this path sped up" or
-        "that path slowed down," but a spatial map of where the rock stiffened, where it weakened, and how those zones
-        recovered after injection. That would turn coda wave interferometry from a sensitive measuring tool into a true
-        fracture-monitoring method.
-      </p>
-
-      <p>
-        <strong>Related:</strong>
-        Snieder, Gret, Douma &amp; Scales,
+        <strong>Related:</strong> Snieder, Gret, Douma &amp; Scales,
         <a href="https://doi.org/10.1126/science.1070015" target="_blank" rel="noopener noreferrer">
           Coda Wave Interferometry for Estimating Nonlinear Behavior in Seismic Velocity
         </a> (2002).
       </p>
 
       <p>
-        <strong>Project material:</strong>
-        <a href="5_bluecanyondome/BlueCayonDome_CWP_Presentation_JackLi.zip" target="_blank" rel="noopener noreferrer">
-          Presentation to CWP 2018 Consortium meeting (Golden, US)
-        </a>.
+        <strong>Related:</strong> Li, Sens-Schonfelder &amp; Snieder,
+        <a href="https://doi.org/10.1103/PhysRevB.97.144301" target="_blank" rel="noopener noreferrer">
+          Nonlinear elasticity in resonance experiments
+        </a> (2018).
       </p>
+
+      <div class="bcd-download">
+        <p>
+          <strong>Slides:</strong>
+          <a href="5_bluecanyondome/BlueCayonDome_CWP_Presentation_JackLi.zip" target="_blank" rel="noopener noreferrer">
+            Download the Blue Canyon Dome CWP presentation package
+          </a>.
+        </p>
+      </div>
     </section>
   </main>
 
