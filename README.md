@@ -14,7 +14,8 @@ What’s in this repo:
 - `.github/workflows/jekyll-gh-pages.yml` — CI/CD workflow that builds and deploys to GitHub Pages
 - `.github/workflows/jekyll-docker.yml` — CI workflow that builds the site using Docker for a reproducible environment
 - `index.html` — Homepage
-- `styles.css` — Site styles
+- `assets/css/styles.css` — Site styles
+- `assets/js/research-page.js` — Shared research-page behavior
 
 
 ---
