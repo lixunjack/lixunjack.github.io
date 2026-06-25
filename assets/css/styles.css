@@ -114,12 +114,16 @@ section {
   background:
     linear-gradient(90deg, rgba(10, 28, 34, 0.86), rgba(10, 28, 34, 0.54)),
     url("../../main_gv/Auther_Seat.png") center/cover no-repeat;
+  border-radius: 8px 8px 0 0;
   color: #fff;
   display: grid;
   gap: clamp(20px, 4vw, 44px);
   grid-template-columns: minmax(0, 0.95fr) auto;
+  margin: 24px auto 0;
   min-height: clamp(500px, 72vh, 620px);
+  overflow: hidden;
   padding: clamp(34px, 6vw, 76px) clamp(28px, 7vw, 96px);
+  width: min(1120px, calc(100vw - 32px));
 }
 
 .site-hero h1,
@@ -128,7 +132,7 @@ section {
 }
 
 .site-hero h1 {
-  font-size: 4.7rem;
+  font-size: 4.25rem;
 }
 
 .hero-content {
@@ -163,8 +167,8 @@ section {
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.32);
   display: block;
   object-fit: cover;
-  transform: translateX(-42px);
-  width: clamp(220px, 24vw, 360px);
+  transform: translateX(-24px);
+  width: clamp(200px, 22vw, 330px);
 }
 
 .hero-actions {
@@ -213,8 +217,11 @@ section {
 
 .site-nav {
   background: #132025;
+  border-radius: 0 0 8px 8px;
+  margin: 0 auto;
   position: sticky;
   top: 0;
+  width: min(1120px, calc(100vw - 32px));
   z-index: 1000;
 }
 
@@ -897,7 +904,7 @@ mjx-container mjx-math {
   }
 
   .site-hero h1 {
-    font-size: 3.35rem;
+    font-size: 3.1rem;
   }
 
   .hero-content {
@@ -912,7 +919,7 @@ mjx-container mjx-math {
   .profile-photo {
     justify-self: start;
     transform: none;
-    width: 210px;
+    width: 190px;
   }
 }
 
@@ -928,7 +935,7 @@ mjx-container mjx-math {
   }
 
   .site-hero h1 {
-    font-size: 2.7rem;
+    font-size: 2.5rem;
   }
 
   .hero-lede {
@@ -938,7 +945,7 @@ mjx-container mjx-math {
   .profile-photo {
     justify-self: start;
     transform: none;
-    width: 170px;
+    width: 155px;
   }
 
   .two-column,
