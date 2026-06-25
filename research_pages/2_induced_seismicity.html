@@ -8,25 +8,26 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
-  <main id="wrapper">
+  <main id="wrapper" class="research-story">
     <section>
       <p>
-        <a href="../index.html#research">← Back to Main Page</a>
+        <a class="back-link" href="../index.html#research">&larr; Back to Main Page</a>
       </p>
 
-   <h2>What Thousands of Induced Earthquakes Taught Us about Hydraulic Diffusivity and Aseismic Slip at the UK Geothermal Test Site (Rosemanowes, Cornwall).</h2>
+      <h2>What Thousands of Induced Earthquakes Taught Us about Hydraulic Diffusivity and Aseismic Slip at Rosemanowes</h2>
 
-  In the early 1980s, engineers drilled into hot granite beneath a Cornish quarry and began pumping in water at high pressure. 
-  The idea was simple and bold: turn “hot dry rock” into a man‑made geothermal reservoir. As the water forced its way through the 
-  rock, the subsurface cracked, creaked, and slipped—sometimes loudly enough to register as tiny earthquakes, and sometimes in 
-  complete silence.
-</p>
+      <p>
+        In the early 1980s, engineers drilled into hot granite beneath a Cornish quarry and began pumping in water at high pressure.
+        The idea was simple and bold: turn "hot dry rock" into an engineered geothermal reservoir. As the water forced its way
+        through the rock, the subsurface cracked, creaked, and slipped, sometimes loudly enough to register as tiny earthquakes,
+        and sometimes in complete silence.
+      </p>
 
 <p>
-  Decades later, we went back to this classic experiment at <em>Rosemanowes</em> with fresh eyes and modern analysis tools. We studied 
-  5,184 microearthquakes triggered during the main stimulation phase, most of which are far too small to be felt by humans at the surface, but rich with 
-  information about how the rock responded to injection. By comparing how much the rock deformed overall with how much of that 
-  deformation showed up as seismic shaking, we could ask a simple but fundamental question:
+  Decades later, we returned to the classic <em>Rosemanowes</em> experiment with fresh eyes and modern analysis tools. We studied
+  5,184 microearthquakes triggered during the main stimulation phase. Most were far too small to be felt at the surface, but
+  they carried rich information about how the rock responded to injection. By comparing the total deformation with the portion
+  released as seismic shaking, we could ask a simple but fundamental question:
 </p>
 
 <p>
@@ -35,12 +36,12 @@
 </p>
 
 <p>
-  The answer at Rosemanowes was striking. Only a tiny fraction of the injected strain was released seismically; most of the 
-  deformation was effectively silent. At the same time, the expanding “cloud” of event locations revealed that the reservoir was 
-  far from uniform. Seismicity spread much more easily up and down than sideways, pointing to a strongly anisotropic 
-  (direction‑dependent) flow field with exceptionally high vertical permeability. Our research draws a solid picture that fluid exploits 
-  pre‑existing fractures: some slipping in shear and radiating seismic waves, many more opening and creeping aseismically to form 
-  efficient vertical pathways for flow.
+  The answer at Rosemanowes was striking. Only a tiny fraction of the injected strain was released seismically; most deformation
+  was effectively silent. At the same time, the expanding "cloud" of event locations showed that the reservoir was far from uniform.
+  Seismicity spread much more easily upward and downward than sideways, pointing to a strongly anisotropic flow field with unusually
+  high vertical permeability. The picture that emerges is a fractured reservoir in which fluid exploited pre-existing joints:
+  some slipped in shear and radiated seismic waves, while many more opened or crept aseismically to form efficient vertical pathways
+  for flow.
 </p>
 
 <p>
@@ -527,8 +528,6 @@
 
 
 
-<!-- optimize cutline  -->
-
 <section id="mechanism">
   <h3>6) A Consistent Triggering Mechanism</h3>
 
@@ -668,9 +667,6 @@
       begins to concentrate in unfavourable locations or on critically stressed structures.
     </li>
   </ul>
-  <p> </p>
-
-
   <p>
     In summary, the Rosemanowes experiment shows that induced seismicity in HDR and EGS projects is not simply a matter of
     “how much water” but of <em>where</em> that water goes and <em>how</em> it interacts with the existing fracture fabric and
@@ -681,7 +677,6 @@
 </section>
 
 
-<!-- References -->
 <section id="references">
   <h3>References</h3>
   <ul class="references">
@@ -776,79 +771,11 @@
 
 
   
-  <!-- footer -->
   <footer class="site-footer">
     <div class="container">
       <small>© <span id="year"></span> Jack Li • Edinburgh, UK</small>
     </div>
   </footer>
-
-  <script>
-    (function () {
-      const y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
-    })();
-  </script>
-
-  <!-- Zoom and pan (same behavior as other research pages) -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const wrapper = document.getElementById('wrapper');
-      if (!wrapper) return;
-
-      let zoomInner = document.getElementById('zoom-inner');
-      if (!zoomInner) {
-        zoomInner = document.createElement('div');
-        zoomInner.id = 'zoom-inner';
-        while (wrapper.firstChild) zoomInner.appendChild(wrapper.firstChild);
-        wrapper.appendChild(zoomInner);
-      }
-
-      let scale = 1, tx = 0, ty = 0;
-      const ZOOM_STEP = 1.05, MIN_SCALE = 0.5, MAX_SCALE = 3;
-      zoomInner.style.transformOrigin = 'center center';
-      zoomInner.style.willChange = 'transform';
-      const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
-      const applyTransform = () => zoomInner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-      const zoomBy = (factor) => { const ns = clamp(scale * factor, MIN_SCALE, MAX_SCALE); if (ns !== scale) { scale = ns; applyTransform(); } };
-
-      window.addEventListener('wheel', (e) => {
-        if (!e.ctrlKey && !e.metaKey) return;
-        e.preventDefault();
-        zoomBy(e.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP);
-      }, { passive: false });
-
-      window.addEventListener('keydown', (e) => {
-        const el = e.target;
-        const isEditable = el && (el.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
-        if (isEditable) return;
-        const hasMod = e.ctrlKey || e.metaKey; if (!hasMod) return;
-        let handled = false;
-        if (e.code === 'Equal' || e.code === 'NumpadAdd' || e.key === '+') { zoomBy(ZOOM_STEP); handled = true; }
-        else if (e.code === 'Minus' || e.code === 'NumpadSubtract' || e.key === '-') { zoomBy(1 / ZOOM_STEP); handled = true; }
-        else if (e.code === 'Digit0' || e.code === 'Numpad0' || e.key === '0') { scale = 1; tx = 0; ty = 0; handled = true; }
-        if (handled) { e.preventDefault(); applyTransform(); }
-      });
-
-      let isPanning = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
-      const startPan = (x, y) => { isPanning = true; startX = x; startY = y; startTx = tx; startTy = ty; document.body.style.cursor = 'grabbing'; };
-      const movePan = (x, y) => { if (!isPanning) return; tx = startTx + (x - startX); ty = startTy + (y - startY); applyTransform(); };
-      const endPan = () => { isPanning = false; document.body.style.cursor = ''; };
-
-      window.addEventListener('mousedown', (e) => {
-        if (e.button === 0 && (e.getModifierState && e.getModifierState(' '))) {
-          e.preventDefault(); startPan(e.clientX, e.clientY);
-        }
-      });
-      window.addEventListener('mousemove', (e) => movePan(e.clientX, e.clientY));
-      window.addEventListener('mouseup', endPan);
-      window.addEventListener('mouseleave', endPan);
-
-      window.addEventListener('gesturestart', (e) => e.preventDefault());
-      window.addEventListener('gesturechange', (e) => { e.preventDefault(); const f = clamp(e.scale, 0.95, 1.05); zoomBy(f); }, { passive: false });
-
-      applyTransform();
-    });
-  </script>
+  <script src="../assets/js/research-page.js"></script>
 </body>
 </html>

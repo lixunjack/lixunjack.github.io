@@ -3,20 +3,18 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Listening to Rocks' Breathe: Nonlinear Elasticity in Granular Solids — Jack Li</title>
-  <meta name="description" content="How shaking rocks in the lab and a simple contact model help us understand weird nonlinear behaviour in the Earth’s crust.">
+  <title>Listening to Rocks Breathe: Nonlinear Elasticity in Granular Solids — Jack Li</title>
+  <meta name="description" content="How laboratory resonance experiments and a contact-based model help explain nonlinear elasticity, slow dynamics, and memory in granular rocks.">
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
-  <main id="wrapper">
-
-    <!-- Introduction -->
-    <section>
+  <main id="wrapper" class="research-story">
+<section>
       <p>
-        <a href="../index.html#research">← Back to Main Page</a>
+        <a class="back-link" href="../index.html#research">&larr; Back to Main Page</a>
       </p>
 
-      <h2>Listening to Rocks' Breathe: A View of Nonlinear Elasticity in Granular Solids</h2>
+      <h2>Listening to Rocks Breathe: A View of Nonlinear Elasticity in Granular Solids</h2>
 
       <p>
         When we’re first taught elasticity, we usually meet Hooke’s law: double the stress, double the strain. 
@@ -24,10 +22,10 @@
       </p>
 
       <p>
-        Real rocks don’t play by those rules.
-        Sandstones, chalk, concrete, and crushed fault rocks are made of tiny grains and cracks (see picture below). 
+        Real rocks do not quite play by those rules.
+        Sandstones, chalk, concrete, and crushed fault rocks are made of tiny grains and cracks. 
         At their contacts, grains are constantly opening, closing, and slipping past each other as the rock is shaken or stressed. 
-        At small vibrations they act almost linearly, but once we shake them a bit harder – at levels similar to strong seismic waves – 
+        At small vibration levels they can look almost linear, but once we shake them harder, at levels comparable to strong seismic waves,
         they start to show a very different, “nonlinear” personality.
       </p>
 
@@ -56,7 +54,7 @@
         One of the simplest ways to see this is to put a rock sample in a resonance experiment, 
         turn up the shaking, and watch how its favourite vibration frequency moves.
         In a linear world, the resonance peak would simply get taller as we shake harder, but its frequency would stay put.
-        In the lab, we see something else entirely as below.
+        In the lab, we see something else entirely.
       </p>
 
       <div class="figure-grid" style="width:min(750px,92vw);">
@@ -89,15 +87,17 @@
       </ul>
 
       <p>
-        This is what Dynamic Acousto‑Elastic Testing (DAET) and Nonlinear Resonant Ultrasound Spectroscopy (NRUS) do:
-             <ul>
+        This is what Dynamic Acousto-Elastic Testing (DAET) and Nonlinear Resonant Ultrasound Spectroscopy (NRUS) do:
+      </p>
+      <ul>
         <li><strong>NRUS</strong>: track the resonance peak as drive increases.</li>
-        <li><strong>DAET</strong>: monitor high‑frequency wave speed during low‑frequency pumping and recovery.</li>
-           </ul>
-        A low‑frequency source makes the sample ring in one of its resonant modes, while a high‑frequency ultrasonic 
-        probe continuously measures how the wave speed – and therefore the stiffness – changes as the rock is stretched 
-        and squeezed. The result is a kind of “stress–strain loop” for the wave speed, revealing conditioning, 
-        hysteresis, and other fast nonlinear effects:.
+        <li><strong>DAET</strong>: monitor high-frequency wave speed during low-frequency pumping and recovery.</li>
+      </ul>
+      <p>
+        A low-frequency source makes the sample ring in one of its resonant modes, while a high-frequency ultrasonic
+        probe continuously measures how the wave speed, and therefore the stiffness, changes as the rock is stretched
+        and squeezed. The result is a kind of stress-strain loop for wave speed, revealing conditioning, hysteresis,
+        and other fast nonlinear effects.
       </p>
 
 
@@ -114,7 +114,7 @@
             <strong>Fast‑dynamics experiments in rocks</strong><br>
             (Left) DAET setup: a low‑frequency (kHz) drive excites the first compressional resonance at strains of about $ 10^{-7} $–$ 10^{-5} $, 
             while 1&nbsp;MHz pulses probe the instantaneous seismic velocity.
-            (Middle)Example of projecting the high‑frequency velocity changes onto the low‑frequency strain cycle.
+            (Middle) Example of projecting the high-frequency velocity changes onto the low-frequency strain cycle.
             (Right) The resulting nonlinear “loop” shows hysteresis and conditioning – the rock’s stiffness does not follow the same path on loading and unloading.
             Adapted from Rivière et&nbsp;al. (2015a).
           </figcaption>
@@ -141,7 +141,7 @@
             <strong>Log-Time recovery of seismic velocity in rocks </strong><br>  
             (Left) Experimental setup to monitor seismic velocity during and after a resonance experiment.
             (Right) After strong shaking (“conditioning”), the seismic velocity in gypsum recovers slowly, 
-            following an seemingly logarithmic trend with time rather than a simple exponential.
+            following a seemingly logarithmic trend with time rather than a simple exponential.
             Adapted from Gassenmeier (2015).
           </figcaption>
         </figure>
@@ -152,7 +152,7 @@
         very similar behaviour after strong earthquakes. Immediately after a big event, seismic velocities in 
         the upper crust drop measurably; in the weeks to years that follow, they gradually climb back toward 
         their pre‑event values. Noise‑based monitoring of the Parkfield segment of the San Andreas Fault is 
-        a good example as below.
+        a good example.
       </p>
 
       <div class="figure-grid" style="width:min(750px,92vw);">
@@ -175,8 +175,9 @@
       </div>
 
       <p>
-        My research is about building a simple, thermodynamics‑based contact model that can reproduce all of above 
-        behaviours in a unified way. 
+        My research builds a simple, thermodynamics-based contact model that can reproduce these behaviours in a
+        unified way.
+      </p>
 
       <p>
         <strong>Related:</strong> Xun Li,
@@ -187,10 +188,7 @@
       </p>
 
     </section>
-
-
-  <!-- 1. Background -->
-  <section id="background">
+<section id="background">
     <h3>1) Why Rocks (Sometimes) Don’t Obey Hooke’s Law</h3>
 
     <p>
@@ -265,10 +263,6 @@
   </li>
 </ul>
   </section>
-
-
-
-<!-- 2. Duffing oscillator -->
 <section id="oscillators">
   <h3>2) Mathematical Playground: The Duffing Oscillator</h3>
 
@@ -299,7 +293,7 @@
 </div>
 
   <p>
-    The simplest playground for this is the <strong>Duffing oscillator</strong>. You can picture it as a mass-on-a-spring system as shown above,
+    A simple reference system for this is the <strong>Duffing oscillator</strong>. You can picture it as a mass-on-a-spring system as shown above,
     where the spring is no longer perfectly linear: as the motion grows, the restoring force becomes slightly stronger or weaker
     than Hooke’s law would predict.
   </p>
@@ -403,9 +397,6 @@
     – Master’s thesis, Colorado School of Mines.
   </p>
 </section>
-
-
-<!-- 3. Thermodynamic contact model -->
 <section id="thermo-model">
   <h3>3) Thermodynamic Picture: Fractures as Bistable Elements</h3>
 
@@ -604,10 +595,6 @@ $$
     <strong>Reference:</strong> Li, X., Sens‑Schönfelder, C. &amp; Snieder, R. (2018), <em>Physical Review B</em>.
   </p>
 </section>
-
-
-
-<!-- 4. Simulating resonance -->
 <section id="resonance-sim">
   <h3>4) Simulating Real Resonance Experiments</h3>
 
@@ -729,9 +716,6 @@ $$
     <strong>what features come from “instantaneous nonlinearity” and what features come from slow, history-dependent contact evolution?</strong>
   </p>
 </section>
-
-
-<!-- 5. Results -->
 <section id="results">
   <h3>5) What the Model Reproduces: Slow Dynamics, Asymmetry, Hysteresis, and Cliffs</h3>
 
@@ -768,9 +752,7 @@ $$
         After conditioning, the resonance frequency recovers roughly linearly with $ \log t $ over decades in time.
       </figcaption>
     </figure>
-
-    <!-- Replace the src below with your chosen lab figure file -->
-    <figure style="flex:1; min-width:320px; max-width:560px;">
+<figure style="flex:1; min-width:320px; max-width:560px;">
       <a href="3_nonlinear_resonance/PRB_log_timeLAB.png" target="_blank" rel="noopener noreferrer">
         <img src="3_nonlinear_resonance/PRB_log_timeLAB.png"
              alt="Lab: seismic velocity recovery showing near log-time trend after conditioning"
@@ -812,9 +794,7 @@ $$
         As drive increases, the peak shifts and becomes asymmetric because the stiffness is evolving during the sweep.
       </figcaption>
     </figure>
-
-    <!-- Replace with your preferred lab resonance-curve figure -->
-    <figure style="flex:1; min-width:320px; max-width:560px;">
+<figure style="flex:1; min-width:320px; max-width:560px;">
       <a href="3_nonlinear_resonance/PRB_resonanceCurve_differentRatesLAB.png" target="_blank" rel="noopener noreferrer">
         <img src="3_nonlinear_resonance/PRB_resonanceCurve_differentRatesLAB.png"
              alt="Lab: resonance curves in sandstone becoming asymmetric and shifting with drive"
@@ -963,9 +943,7 @@ $$
         Strong nonlinearity can generate cliffs (jump behaviour) and persistent up–down differences near the jump.
       </figcaption>
     </figure>
-
-    <!-- Replace with a lab “cliff” example if available -->
-    <figure style="flex:1; min-width:320px; max-width:560px; padding-top: 20px;">
+<figure style="flex:1; min-width:320px; max-width:560px; padding-top: 20px;">
       <a href="3_nonlinear_resonance/PRB_Res_stiff_cliffLAB.png" target="_blank" rel="noopener noreferrer">
         <img src="3_nonlinear_resonance/PRB_Res_stiff_cliffLAB.png"
              alt="Lab: resonance curves showing sharp jump-like behaviour at high drive"
@@ -1022,9 +1000,7 @@ $$
 
 <div class="figure-grid"
      style="display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; width:min(1200px, 92vw);">
-
-  <!-- Left: bifurcation diagram -->
-  <figure style="flex:1; min-width:420px; max-width:560px;">
+<figure style="flex:1; min-width:420px; max-width:560px;">
     <a href="3_nonlinear_resonance/birfurcation_theorem.PNG" target="_blank" rel="noopener noreferrer">
       <img src="3_nonlinear_resonance/birfurcation_theorem.PNG"
            alt="Model: bifurcation diagram illustrating two stable branches"
@@ -1073,10 +1049,6 @@ $$
   
 
 </section>
-
-
-
-<!-- 6. Conclusion (merged Insights + Outlook) -->
 <section id="conclusion">
   <h3>6) Conclusion: A Unified, Contact-Based Explanation of Nonlinear Rocks</h3>
 
@@ -1094,7 +1066,7 @@ $$
 
 
   
-  <h4>The model explains the following laboratory obervations of nonlinear elasticity in a unified way: </h4>
+  <h4>The model explains the following laboratory observations of nonlinear elasticity in a unified way:</h4>
   <ul>
     <li>
       <strong>Amplitude-dependent resonance shifts and asymmetric peaks</strong>:
@@ -1169,8 +1141,6 @@ $$
     – Master’s thesis, Colorado School of Mines.
   </p>
 </section>
-
-<!-- NEW: References (alphabetical order by first author surname) -->
 <section id="references">
   <h3>References</h3>
   <ul>
@@ -1251,105 +1221,18 @@ $$
     </li>
   </ul>
 </section>
-
-
-
-
-    <!-- footer -->
-    <footer class="site-footer">
+<footer class="site-footer">
       <div class="container">
         <small>© <span id="year"></span> Jack Li • Edinburgh, UK</small>
       </div>
     </footer>
-
-    <!-- make the MathJax working --> 
-  <script>
+<script>
     MathJax = {
       tex: { inlineMath: [['$ ',' $'], ['\\(','\\)']] }
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" async></script>
-
-
-    <script>
-      (function () {
-        const y = document.getElementById('year');
-        if (y) y.textContent = new Date().getFullYear();
-      })();
-    </script>
-
-    <!-- Optional: same zoom/pan script as other research pages -->
-    <script>
-      document.addEventListener('DOMContentLoaded', () => {
-        const wrapper = document.getElementById('wrapper');
-        if (!wrapper) return;
-
-        let zoomInner = document.getElementById('zoom-inner');
-        if (!zoomInner) {
-          zoomInner = document.createElement('div');
-          zoomInner.id = 'zoom-inner';
-          while (wrapper.firstChild) zoomInner.appendChild(wrapper.firstChild);
-          wrapper.appendChild(zoomInner);
-        }
-
-        let scale = 1, tx = 0, ty = 0;
-        const ZOOM_STEP = 1.05, MIN_SCALE = 0.5, MAX_SCALE = 3;
-        zoomInner.style.transformOrigin = 'center center';
-        zoomInner.style.willChange = 'transform';
-        const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
-        const applyTransform = () => zoomInner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-        const zoomBy = (factor) => {
-          const ns = clamp(scale * factor, MIN_SCALE, MAX_SCALE);
-          if (ns !== scale) { scale = ns; applyTransform(); }
-        };
-
-        window.addEventListener('wheel', (e) => {
-          if (!e.ctrlKey && !e.metaKey) return;
-          e.preventDefault();
-          zoomBy(e.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP);
-        }, { passive: false });
-
-        window.addEventListener('keydown', (e) => {
-          const el = e.target;
-          const isEditable = el && (el.isContentEditable || ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
-          if (isEditable) return;
-          const hasMod = e.ctrlKey || e.metaKey; if (!hasMod) return;
-          let handled = false;
-          if (e.code === 'Equal' || e.code === 'NumpadAdd' || e.key === '+') { zoomBy(ZOOM_STEP); handled = true; }
-          else if (e.code === 'Minus' || e.code === 'NumpadSubtract' || e.key === '-') { zoomBy(1 / ZOOM_STEP); handled = true; }
-          else if (e.code === 'Digit0' || e.code === 'Numpad0' || e.key === '0') { scale = 1; tx = 0; ty = 0; handled = true; }
-          if (handled) { e.preventDefault(); applyTransform(); }
-        });
-
-        let isPanning = false, startX = 0, startY = 0, startTx = 0, startTy = 0;
-        const startPan = (x, y) => {
-          isPanning = true; startX = x; startY = y; startTx = tx; startTy = ty; document.body.style.cursor = 'grabbing';
-        };
-        const movePan = (x, y) => {
-          if (!isPanning) return;
-          tx = startTx + (x - startX); ty = startTy + (y - startY); applyTransform();
-        };
-        const endPan = () => { isPanning = false; document.body.style.cursor = ''; };
-
-        window.addEventListener('mousedown', (e) => {
-          if (e.button === 0 && (e.getModifierState && e.getModifierState(' '))) {
-            e.preventDefault(); startPan(e.clientX, e.clientY);
-          }
-        });
-        window.addEventListener('mousemove', (e) => movePan(e.clientX, e.clientY));
-        window.addEventListener('mouseup', endPan);
-        window.addEventListener('mouseleave', endPan);
-
-        window.addEventListener('gesturestart', (e) => e.preventDefault());
-        window.addEventListener('gesturechange', (e) => {
-          e.preventDefault();
-          const f = clamp(e.scale, 0.95, 1.05);
-          zoomBy(f);
-        }, { passive: false });
-
-        applyTransform();
-      });
-    </script>
-  </main>
+</main>
+  <script src="../assets/js/research-page.js"></script>
 </body>
 </html>

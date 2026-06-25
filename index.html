@@ -1,414 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal website of Jack (Xun) Li at the University of Edinburgh">
-    <title>Jack Li - Geophysicist</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal website of Jack (Xun) Li, a geophysicist working on laboratory rock physics, seismic wave experiments, induced seismicity, and wavefield modelling.">
+  <title>Jack (Xun) Li | Geophysicist</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body id="wrapper">
-    <header>
-        <h1>Jack (Xun) Li</h1>
-        <img src="main_gv/photo_with_panda.png" alt="Jack Li" style="width:300px; height:auto;">   
-    </header>
-
-<!-- polish the whole website lastly for at least three times,currently initial build stage -->
-
-
-
-    <nav>
-        <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#education">Education</a></li>
-            <li><a href="#research">Research</a></li>
-	        <li><a href="#repository">Code Library</a></li>
-            <li><a href="#publications">Publications</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
-    </nav>
-
-
-
-<section id="about">
-    <h2>About Me</h2>
-
-    <p>
-        I am a geophysicist specializing in laboratory seismic and acoustic wave experimentation
-        for understanding rock deformation, fracture, and failure in geothermal and other subsurface
-        energy systems.
-    </p>
-
-    <p>
-        I am currently a postdoctoral researcher at the University of Edinburgh, where I work on
-        laboratory-based rock physics experiments, with a particular focus on the software,
-        data-processing, and numerical-modelling components that support experimental interpretation.
-    </p>
-
-    <p>My current research focuses on:</p>
-
-    <ul>
-        <li>
-            Laboratory studies of rock deformation and fracture relevant to geothermal reservoirs
-            and induced seismicity.
-        </li>
-        <li>
-            Triaxial rock deformation experiments combining active ultrasonic monitoring,
-            passive acoustic emission/microseismic monitoring, and synchrotron X-ray imaging.
-        </li>
-        <li>
-            Software development for real-time velocity monitoring, acoustic event detection,
-            fracture-process analysis, and experimental data management.
-        </li>
-        <li>
-            Processing and interpretation of large laboratory seismic, acoustic emission,
-            and X-ray tomography datasets.
-        </li>
-        <li>
-            Numerical modelling and digital-twin simulations of seismic/acoustic wave propagation
-            in laboratory-scale experimental systems.
-        </li>
-        <li>
-            Multi-scale physical and numerical modelling to connect laboratory observations with
-            geothermal reservoir processes.
-        </li>
-    </ul>
-</section>
-
-    
-
-    <section id="education">
-        <h2>Education</h2>
-	<ul>
-            <li>PhD in Geophysics, ETH Zurich, Switzerland - Thesis:  <a href="https://doi.org/10.3929/ethz-b-000573091" target="_blank">Elastic immersive wave experimentation</a> (2018–2022) </li>
-            <li>MSc in Geophysics, Colorado School of Mines, United States - Thesis:  <a href="https://hdl.handle.net/11124/172339" target="_blank"> A unified interpretation of nonlinear elasticity in granular solids </a> (2016–2018) </li>
-            <li>BSc (Hons) in Geophysics, University of Edinburgh, United Kingdom (2014–2016) </li>
-            <li>BSc in Geology, Nanjing University, China (2012–2014) </li>
-    </ul>
-    </section>
-
-
-
-<section id="research">
-  <h2>Research Stories</h2>
-  <div class="card-grid">
-
-    <!-- Topic 1 -->
-    <article class="card">
-      <img src="main_gv/immersive_lab_face.png" alt="Immersive wave experimentation setup" style="aspect-ratio: auto; object-fit: contain;">
-      <div class="card-body">
-        <h3>Immersive Wave Experimentation (IWE): Cloaking, Holography, and Cloning</h3>
-        <p>Mixed‑reality acoustics setup that removes wall echoes, hides objects, creates sound illusions, and makes one object sound like another.</p>
-        <a class="button" href="./research_pages/1_immersive_exp.html">Read more →</a>
-      </div>
-    </article>
-
-
-    <!-- Topic 2 -->
-<article class="card">
-    <img src="main_gv/3DSeismicity.png" alt="Rosemanowes HDR: induced seismicity, fractures, and stress field" style="aspect-ratio: auto; object-fit: contain;">
-    <div class="card-body">
-      <h3>Induced Seismicity (Rosemanowes HDR)</h3>
-      <p>What 5,000+ microearthquakes taught us about a UK geothermal experiment: for their timing and locations showing 
-        how pressure diffuses through the fracture network</p>
-      <a class="button" href="./research_pages/2_induced_seismicity.html">Read more →</a>
-    </div>
-  </article>
-
-
-  <!-- Topic 3 -->
-    <article class="card">
-      <img src="main_gv/nonlinear_elasticity.png" alt="Nonlinear elasticity" style="aspect-ratio: auto; object-fit: contain;">
-      <div class="card-body">
-        <h3>Nonlinear Elasticity in Resonance Experiments</h3>
-        <p>How tiny cracks opening and closing during vibration make the resonance curve differ for up vs down sweeps, recover slowly after shaking, and sometimes jump suddenly (“cliff”).</p>
-        <a class="button" href="./research_pages/3_nonlinear_resonance.html">Read more →</a>
-      </div>
-    </article>
-
-
-
-  <!-- Topic 4 -->
-  <article class="card">
-    <img
-      src="main_gv/immersiveModelingSchematic.PNG"
-      alt="Schematic of immersive wavefield modelling: local domain with recording and emitting boundaries (MPS / FD injection)"
-      style="aspect-ratio: auto; object-fit: contain;">
-    <div class="card-body">
-      <h3>Immersive Wavefield Modelling</h3>
-      <p>
-        Recompute seismic wavefields after <em>local</em> model changes by simulating only a target zone, while an immersive boundary
-        restores the missing exterior response—including long-range interactions.
+<body class="home-page">
+  <header class="site-hero">
+    <div class="hero-content">
+      <p class="hero-kicker">Geophysics | Rock physics | Wave experiments</p>
+      <h1>Jack (Xun) Li</h1>
+      <p class="hero-lede">
+        I study how waves, fractures, and fluids interact in rocks, from controlled laboratory experiments to
+        geothermal reservoirs and numerical wavefield simulations.
       </p>
-      <a class="button" href="./research_pages/4_immersive_modelling.html">Read more →</a>
-    </div>
-  </article>
-
-
-    <!-- Topic 5 -->
-    <article class="card">
-      <img src="main_gv/config_HF.PNG" alt="Seismic Monitoring of Fracture Networks During Hydraulic Fracturing" style="aspect-ratio: auto; object-fit: contain;">
-      <div class="card-body">
-        <h3>Active Seismic Monitoring of Hydraulic Fracturing: A Case Study at Blue Canyon Dome</h3>
-        <p>How repeatable seismic shots and coda wave interferometry reveal a shallow fracture opening, competing stiffness changes, and staged recovery after injection.</p>
-        <a class="button" href="./research_pages/5_bluecanyondome.html">Read more →</a>
+      <div class="hero-actions" aria-label="Primary links">
+        <a class="button button-primary" href="#research">Research</a>
+        <a class="button button-secondary" href="main_gv/CV_Xun_Li_28_Jan2026.pdf" target="_blank" rel="noopener noreferrer">CV</a>
+        <a class="button button-secondary" href="#contact">Contact</a>
       </div>
-    </article>
+    </div>
+    <img class="profile-photo" src="main_gv/photo_with_panda.png" alt="Jack Li">
+  </header>
 
-
-
-
-    
-  </div>
-</section>
-
-
-
-  <section id="repository">
-    <h2>Code Library</h2>
+  <nav class="site-nav" aria-label="Main navigation">
     <ul>
-        <li>
-        <a href="https://github.com/lixunjack/CodaWaveSolver/tree/master" target="_blank" rel="noopener noreferrer">CodaWaveSolver</a> :
-        A Python-C++ solver for calculating phase shift using the
-        <a href="https://doi.org/10.1093/gji/ggv529" target="_blank" rel="noopener noreferrer">stretching technique</a>
-        among seismic signals acquired from repeated active seismic experiments or background noise
-        </li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#repository">Code</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#contact">Contact</a></li>
     </ul>
-    </section>
+  </nav>
 
+  <main id="wrapper" class="home-main">
+    <section id="about" class="home-section intro-section">
+      <div class="section-heading">
+        <h2>About</h2>
+      </div>
 
+      <div class="two-column">
+        <div>
+          <p>
+            I am a geophysicist and postdoctoral researcher at the University of Edinburgh. My work focuses on
+            laboratory seismic and acoustic experiments that reveal how rocks deform, fracture, fail, and recover
+            in geothermal and other subsurface-energy systems.
+          </p>
+          <p>
+            I am especially interested in the tools that make experiments interpretable: real-time monitoring,
+            acoustic-emission detection, coda-wave analysis, numerical modelling, and data systems that can keep up
+            with large laboratory and field-style data sets.
+          </p>
+        </div>
 
-    <section id="publications">
-        <h2>Publications</h2>
-        <ul>
-            <li>
-                Li, X., Robertsson, J., and van Manen, D-J. <a href="https://doi.org/10.1093/gji/ggac479" target="_blank">Elastic immersive wave experimentation</a>, Geophysical Journal International, 2023.
-                <!-- <p><strong>This </strong> pioneering study outlines a method to overcome boundary-reflection challenges in 3D elastic wave propagation experiments carried out in size-limited experimental volumes.</p> -->
-                
-            </li>
-            
-            <li>
-                Li, X., Robertsson, J., Curtis, A., and van Manen, D-J. <a href="https://doi.org/10.1121/10.0012578" target="_blank">Internal absorbing boundary conditions for closed-aperture wavefield decomposition in solid media with unknown interiors</a>, The Journal of the Acoustical Society of America, 2022.
-                <!-- <p><strong>This </strong> innovative study introduces an internal numerical absorbing boundary, for wave simulations involving elastic solid media.</p> -->
-                
-            </li>
-            
-            <li>
-                Li, X., Koene, E., van Manen, D-J., Robertsson, J., and Curtis, A. <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank">Elastic immersive wavefield modelling</a>, Journal of Computational Physics, 2022.
-                <!-- <p><strong>This </strong> publication pioneers immersive boundary conditions (IBCs) in the context of elastic wave propagation, fundamentally pushing the boundary of wave scattering modelling studies.</p> -->
-            </li> 
-            
-            <li>
-                Li, X., Becker, T., Ravasi, M., Robertsson, J., and van Manen, D-J.<a href="https://doi.org/10.1121/10.0003706" target="_blank">Closed-aperture unbounded acoustics experimentation using multidimensional deconvolution</a>, The Journal of the Acoustical Society of America, 2021.
-                <!-- <p><strong>This </strong> research demonstrates a method of removing the imprints of boundary reflections due to size-limited experimental volumes from the data recorded along a closed-aperture geometry.</p> -->
-            </li>            
-
-            <li>
-                Li, X., Robertsson, J., Curtis, A., and van Manen, D-J. <a href="https://doi.org/10.1121/1.5131029" target="_blank">Compensating for source directivity in immersive wave experimentation</a>, The Journal of the Acoustical Society of America, 2019.
-                <!-- <p><strong>This </strong> publication proposes a method to compensate for physical source directivity in the laboratory implementation of acoustic immersive wave experimentation.</p> -->
-            </li>
-            
-            <li>
-                Li, X., Sens-Schönfelder, C., and Snieder, R. <a href="https://doi.org/10.1103/PhysRevB.97.144301" target="_blank">Nonlinear elasticity in resonance experiments</a>, Physical Review B, 2018.
-                <!-- <p><strong>This </strong> work proposes a thermodynamics-based model to explain the nonlinear features observed in laboratory resonance experiments of rocks and concrete.</p> -->
-                
-            </li>
-            
-
-            <li>
-                Li, X., Main, I., and Jupe, A. <a href="https://doi.org/10.1093/gji/ggy135" target="_blank">Induced seismicity at the UK ‘hot dry rock’ test site for geothermal energy production</a>, Geophysical Journal International, 2018.
-                <!-- <p><strong>This </strong>research focuses on analyzing induced seismicity data at a geothermal site, offering valuable insights into hydraulic diffusivity models and the interaction between seismic and aseismic processes.</p> -->
-            </li>            
-            
-            <li>
-                Smith, J-A., Mangriotis, M-D., Curtis, A., Li, X., Cartwright-Taylor, A., Main, I. G., and Butler, I. B. <a href="https://doi.org/10.1093/gji/ggag145" target="_blank">P- and S-wave speed evolution during rock deformation from coda wave interferometry and energy partitioning inversion</a>, Geophysical Journal International, 245(3), ggag145, 2026.
-            </li>
-            
-	            <li>
-	    	      Müller, J., Becker, T. S., Li, X., Aichele, J., Serra-Garcia, M., Robertsson, J. O. A., van Manen, D-J., <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank">Acoustic cloning</a>, Physical Review Applied, 2023.
-	   	 <!-- <p><strong>This </strong> publication presents a novel method to achieve so-called "acoustic cloning", storing the acoustic imprints of a scatterer and transfering the imprints to general-purpose acoustic lab experiments. </p> -->
-	            </li>
-
-
-            <li>
-                Becker, T. S., van Manen, D-J., Haag, T., Bärlocher, C., Li, X., Bösing, N., Curtis, A., Serra-Garcia, M., and Robertsson, J. <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank">Broadband acoustic invisibility and illusions</a>, Science Advances, 2021.
-                <!-- <p><strong>This</strong> publication realized the novel concept of acoustic cloaking and holography in reduced-sized laboratory acoustic wave propagation experiments.</p> -->
-            </li>
-            <li>
-                van Manen, D-J., Li, X. (Corresponding author) , Vasmel, R., Broggini, F., and Robertsson, J. <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank">Exact extrapolation and immersive modelling with finite-difference injection</a>, Geophysical Journal International, 2020.
-                <!-- <p><strong>This</strong> paper represents a significant contribution to the implementation of wavefield extrapolation in numerical finite-difference modeling, achieving perfect machine-precision accuracy.</p> -->
-            </li>
-            <li>
-                Sens-Schönfelder, C., Snieder, R., and Li, X. <a href="https://doi.org/10.1093/gji/ggy414" target="_blank">A model for nonlinear elasticity in rocks based on internal friction and contact aging</a>, Geophysical Journal International, 2019.
-                <!-- <p><strong>This</strong> article presents a theoretical model for understanding the nonlinear elasticity of rocks, which could have far-reaching implications in several fields.</p> -->
-            </li>
+        <ul class="highlight-list">
+          <li>Laboratory rock deformation and fracture experiments for geothermal reservoirs and induced seismicity.</li>
+          <li>Triaxial experiments combining ultrasonic monitoring, acoustic emissions, microseismicity, and synchrotron X-ray imaging.</li>
+          <li>Software for real-time velocity monitoring, event detection, fracture-process analysis, and experimental data management.</li>
+          <li>Numerical modelling and digital-twin simulations of seismic and acoustic wave propagation in laboratory-scale systems.</li>
         </ul>
-        <a href="https://scholar.google.com/citations?user=562xGRQAAAAJ&hl=en" target="_blank">View My Google Scholar Profile</a> and 
-        <a href="https://orcid.org/0000-0001-9203-4205" target="_blank">ORCID Profile</a>
+      </div>
     </section>
 
+    <section id="research" class="home-section">
+      <div class="section-heading">
+        <h2>Research</h2>
+      </div>
 
-    <section id="cv-link">
-        <h2>My CV</h2>
-        <p><a href="main_gv/CV_Xun_Li_28_Jan2026.pdf" target="_blank">Download My CV</a></p>
+      <div class="card-grid">
+        <article class="card">
+          <img src="main_gv/immersive_lab_face.png" alt="Immersive wave experimentation setup">
+          <div class="card-body">
+            <h3>Immersive Wave Experimentation</h3>
+            <p>
+              Mixed-reality acoustics that makes a small laboratory behave as if it were open, with applications in cloaking,
+              holography, and acoustic cloning in controlled experiments.
+            </p>
+            <a class="button" href="./research_pages/1_immersive_exp.html">Read more</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="main_gv/3DSeismicity.png" alt="Three-dimensional induced seismicity cloud at the Rosemanowes geothermal site">
+          <div class="card-body">
+            <h3>Induced Seismicity at Rosemanowes</h3>
+            <p>
+              Analysis of more than 5,000 microearthquakes at the Rosemanowes geothermal test site, with a focus on
+              pressure diffusion, fracture networks, and aseismic deformation.
+            </p>
+            <a class="button" href="./research_pages/2_induced_seismicity.html">Read more</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="main_gv/nonlinear_elasticity.png" alt="Nonlinear elasticity and resonance curves in rocks">
+          <div class="card-body">
+            <h3>Nonlinear Elasticity in Resonance Experiments</h3>
+            <p>
+              Laboratory resonance experiments and contact-based modelling of nonlinear elasticity, slow dynamics,
+              hysteresis, and recovery in granular rocks.
+            </p>
+            <a class="button" href="./research_pages/3_nonlinear_resonance.html">Read more</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="main_gv/immersiveModelingSchematic.PNG" alt="Immersive wavefield modelling schematic with local and exterior domains">
+          <div class="card-body">
+            <h3>Immersive Wavefield Modelling</h3>
+            <p>
+              Local-domain wave simulation methods that preserve the influence of the surrounding model without
+              recomputing the full wavefield every time.
+            </p>
+            <a class="button" href="./research_pages/4_immersive_modelling.html">Read more</a>
+          </div>
+        </article>
+
+        <article class="card">
+          <img src="main_gv/config_HF.PNG" alt="Active seismic monitoring geometry for hydraulic fracturing">
+          <div class="card-body">
+            <h3>Active Seismic Monitoring of Hydraulic Fracturing</h3>
+            <p>
+              Active-source seismic monitoring and coda-wave interferometry for tracking fracture opening, stiffness
+              change, and recovery after injection.
+            </p>
+            <a class="button" href="./research_pages/5_bluecanyondome.html">Read more</a>
+          </div>
+        </article>
+      </div>
     </section>
-    
 
-        
-    <section id="contact">
+    <section id="education" class="home-section">
+      <div class="section-heading">
+        <h2>Education</h2>
+      </div>
+      <ul class="timeline-list">
+        <li>
+          <strong>PhD in Geophysics</strong>, ETH Zurich, Switzerland.
+          Thesis: <a href="https://doi.org/10.3929/ethz-b-000573091" target="_blank" rel="noopener noreferrer">Elastic immersive wave experimentation</a>
+          (2018-2022).
+        </li>
+        <li>
+          <strong>MSc in Geophysics</strong>, Colorado School of Mines, United States.
+          Thesis: <a href="https://hdl.handle.net/11124/172339" target="_blank" rel="noopener noreferrer">A unified interpretation of nonlinear elasticity in granular solids</a>
+          (2016-2018).
+        </li>
+        <li><strong>BSc (Hons) in Geophysics</strong>, University of Edinburgh, United Kingdom (2014-2016).</li>
+        <li><strong>BSc in Geology</strong>, Nanjing University, China (2012-2014).</li>
+      </ul>
+    </section>
+
+    <section id="repository" class="home-section">
+      <div class="section-heading">
+        <h2>Code</h2>
+      </div>
+      <p>
+        <a href="https://github.com/lixunjack/CodaWaveSolver/tree/master" target="_blank" rel="noopener noreferrer">CodaWaveSolver</a>
+        is a Python-C++ solver for estimating phase shifts with the
+        <a href="https://doi.org/10.1093/gji/ggv529" target="_blank" rel="noopener noreferrer">stretching technique</a>
+        in repeated active-source experiments and ambient-noise studies.
+      </p>
+    </section>
+
+    <section id="publications" class="home-section">
+      <div class="section-heading">
+        <h2>Publications</h2>
+      </div>
+
+      <ul class="publication-list">
+        <li>Smith, J.-A., Mangriotis, M.-D., Curtis, A., Li, X., Cartwright-Taylor, A., Main, I. G., and Butler, I. B. <a href="https://doi.org/10.1093/gji/ggag145" target="_blank" rel="noopener noreferrer">P- and S-wave speed evolution during rock deformation from coda wave interferometry and energy partitioning inversion</a>, <em>Geophysical Journal International</em>, 245(3), ggag145, 2026.</li>
+        <li>Li, X., Robertsson, J., and van Manen, D.-J. <a href="https://doi.org/10.1093/gji/ggac479" target="_blank" rel="noopener noreferrer">Elastic immersive wave experimentation</a>, <em>Geophysical Journal International</em>, 2023.</li>
+        <li>Muller, J., Becker, T. S., Li, X., Aichele, J., Serra-Garcia, M., Robertsson, J. O. A., and van Manen, D.-J. <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Acoustic cloning</a>, <em>Physical Review Applied</em>, 2023.</li>
+        <li>Li, X., Robertsson, J., Curtis, A., and van Manen, D.-J. <a href="https://doi.org/10.1121/10.0012578" target="_blank" rel="noopener noreferrer">Internal absorbing boundary conditions for closed-aperture wavefield decomposition in solid media with unknown interiors</a>, <em>The Journal of the Acoustical Society of America</em>, 2022.</li>
+        <li>Li, X., Koene, E., van Manen, D.-J., Robertsson, J., and Curtis, A. <a href="https://doi.org/10.1016/j.jcp.2021.110826" target="_blank" rel="noopener noreferrer">Elastic immersive wavefield modelling</a>, <em>Journal of Computational Physics</em>, 2022.</li>
+        <li>Li, X., Becker, T., Ravasi, M., Robertsson, J., and van Manen, D.-J. <a href="https://doi.org/10.1121/10.0003706" target="_blank" rel="noopener noreferrer">Closed-aperture unbounded acoustics experimentation using multidimensional deconvolution</a>, <em>The Journal of the Acoustical Society of America</em>, 2021.</li>
+        <li>Becker, T. S., van Manen, D.-J., Haag, T., Barlocher, C., Li, X., Borsing, N., Curtis, A., Serra-Garcia, M., and Robertsson, J. <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Broadband acoustic invisibility and illusions</a>, <em>Science Advances</em>, 2021.</li>
+        <li>van Manen, D.-J., Li, X. (corresponding author), Vasmel, R., Broggini, F., and Robertsson, J. <a href="https://doi.org/10.1093/gji/ggaa317" target="_blank" rel="noopener noreferrer">Exact extrapolation and immersive modelling with finite-difference injection</a>, <em>Geophysical Journal International</em>, 2020.</li>
+        <li>Li, X., Robertsson, J., Curtis, A., and van Manen, D.-J. <a href="https://doi.org/10.1121/1.5131029" target="_blank" rel="noopener noreferrer">Compensating for source directivity in immersive wave experimentation</a>, <em>The Journal of the Acoustical Society of America</em>, 2019.</li>
+        <li>Sens-Schonfelder, C., Snieder, R., and Li, X. <a href="https://doi.org/10.1093/gji/ggy414" target="_blank" rel="noopener noreferrer">A model for nonlinear elasticity in rocks based on internal friction and contact aging</a>, <em>Geophysical Journal International</em>, 2019.</li>
+        <li>Li, X., Sens-Schonfelder, C., and Snieder, R. <a href="https://doi.org/10.1103/PhysRevB.97.144301" target="_blank" rel="noopener noreferrer">Nonlinear elasticity in resonance experiments</a>, <em>Physical Review B</em>, 2018.</li>
+        <li>Li, X., Main, I., and Jupe, A. <a href="https://doi.org/10.1093/gji/ggy135" target="_blank" rel="noopener noreferrer">Induced seismicity at the UK hot dry rock test site for geothermal energy production</a>, <em>Geophysical Journal International</em>, 2018.</li>
+      </ul>
+
+      <p class="profile-links">
+        <a href="https://scholar.google.com/citations?user=562xGRQAAAAJ&hl=en" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+        <span aria-hidden="true">|</span>
+        <a href="https://orcid.org/0000-0001-9203-4205" target="_blank" rel="noopener noreferrer">ORCID</a>
+      </p>
+    </section>
+
+    <section id="contact" class="home-section">
+      <div class="section-heading">
         <h2>Contact</h2>
-        <p>Connect with me for collaborations at <a href="mailto:lixunjack@gmail.com" class="highlighted-email">lixunjack@gmail.com</a> or through my <a href="https://www.linkedin.com/in/xun-jack-li-b6144813b/" target="_blank">LinkedIn</a> </p>
-    
-    </section> 
-    
-<footer class="site-footer">
-  <div class="container">
-    <small>
-      © <span id="year"></span> Jack Li • Last updated <span id="last-updated"></span> • Edinburgh, UK
-    </small>
-  </div>
-</footer>
+      </div>
+      <p>
+        For collaborations in laboratory rock physics, seismic monitoring, wavefield modelling, induced seismicity,
+        or experimental software, please get in touch.
+      </p>
+      <p>
+        Email <a href="mailto:lixunjack@gmail.com" class="highlighted-email">lixunjack@gmail.com</a> or connect through
+        <a href="https://www.linkedin.com/in/xun-jack-li-b6144813b/" target="_blank" rel="noopener noreferrer">LinkedIn</a>.
+      </p>
+    </section>
+  </main>
 
+  <footer class="site-footer">
+    <div class="container">
+      <small>&copy; <span id="year"></span> Jack Li | Last updated <span id="last-updated"></span> | Edinburgh, UK</small>
+    </div>
+  </footer>
 
-
-
-
-  <!-- Zoom and pan script -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const wrapper = document.getElementById('wrapper');
-    if (!wrapper) return;
-
-    // Create an inner zoom target so we can translate + scale cleanly
-    let zoomInner = document.getElementById('zoom-inner');
-    if (!zoomInner) {
-      zoomInner = document.createElement('div');
-      zoomInner.id = 'zoom-inner';
-      // Move all children into zoomInner
-      while (wrapper.firstChild) zoomInner.appendChild(wrapper.firstChild);
-      wrapper.appendChild(zoomInner);
-    }
-
-    // Base state
-    let scale = 1;
-    let tx = 0; // translation x (px)
-    let ty = 0; // translation y (px)
-    const ZOOM_STEP = 1.05;
-    const MIN_SCALE = 0.5;
-    const MAX_SCALE = 3;
-
-    // Always use a fixed origin so every section scales the same
-    zoomInner.style.transformOrigin = 'center center';
-    zoomInner.style.willChange = 'transform';
-
-    const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
-    const applyTransform = () => {
-      zoomInner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-    };
-
-    // Zoom helpers
-    const zoomBy = (factor) => {
-      const newScale = clamp(scale * factor, MIN_SCALE, MAX_SCALE);
-      if (newScale === scale) return;
-      scale = newScale;
-      applyTransform();
-    };
-
-    // Ctrl/Cmd + mouse wheel zoom (uniform origin)
-    window.addEventListener('wheel', (event) => {
-      if (!event.ctrlKey && !event.metaKey) return;
-      event.preventDefault(); // prevent browser zoom
-      const factor = event.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP;
-      zoomBy(factor);
-    }, { passive: false });
-
-    // Ctrl/Cmd + '+' or '-' (and numpad) for keyboard zoom
-    window.addEventListener('keydown', (event) => {
-      // Don't hijack typing in form fields/contenteditable
-      const el = event.target;
-      const isEditable = el && (el.isContentEditable ||
-        ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
-      if (isEditable) return;
-
-      const hasModifier = event.ctrlKey || event.metaKey;
-      if (!hasModifier) return;
-
-      let handled = false;
-
-      if (event.code === 'Equal' || event.code === 'NumpadAdd' || event.key === '+') {
-        zoomBy(ZOOM_STEP);
-        handled = true;
-      } else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
-        zoomBy(1 / ZOOM_STEP);
-        handled = true;
-      } else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
-        scale = 1;
-        tx = 0;
-        ty = 0;
-        handled = true;
-      }
-
-      if (handled) {
-        event.preventDefault(); // prevent browser’s own page zoom
-        applyTransform();
-      }
-    });
-
-    // Optional: Space + drag to pan when zoomed
-    let isPanning = false;
-    let startX = 0, startY = 0, startTx = 0, startTy = 0;
-
-    const startPan = (clientX, clientY) => {
-      isPanning = true;
-      startX = clientX;
-      startY = clientY;
-      startTx = tx;
-      startTy = ty;
-      document.body.style.cursor = 'grabbing';
-    };
-
-    const movePan = (clientX, clientY) => {
-      if (!isPanning) return;
-      const dx = clientX - startX;
-      const dy = clientY - startY;
-      tx = startTx + dx;
-      ty = startTy + dy;
-      applyTransform();
-    };
-
-    const endPan = () => {
-      isPanning = false;
-      document.body.style.cursor = '';
-    };
-
-    window.addEventListener('mousedown', (e) => {
-      // Only pan when Space is held
-      if (!e.target || !e.isTrusted) return;
-      if (e.button === 0 && (e.getModifierState && e.getModifierState(' '))) {
-        e.preventDefault();
-        startPan(e.clientX, e.clientY);
-      }
-    });
-
-    window.addEventListener('mousemove', (e) => movePan(e.clientX, e.clientY));
-    window.addEventListener('mouseup', endPan);
-    window.addEventListener('mouseleave', endPan);
-
-    // For touchpads that send 'gesturestart/gesturechange' (Safari), keep uniform scaling
-    window.addEventListener('gesturestart', (e) => e.preventDefault());
-    window.addEventListener('gesturechange', (e) => {
-      e.preventDefault();
-      // e.scale is relative to the start of the gesture; convert to incremental factor
-      // Keep it gentle to avoid jumps
-      const factor = clamp(e.scale, 0.95, 1.05);
-      zoomBy(factor);
-    }, { passive: false });
-
-    // Initial apply
-    applyTransform();
-  });
-</script>
-
-
+  <script src="assets/js/research-page.js"></script>
 </body>
 </html>

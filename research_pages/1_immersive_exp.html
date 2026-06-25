@@ -8,23 +8,26 @@
   <link rel="stylesheet" href="../assets/css/styles.css">
 </head>
 <body>
-  <main id="wrapper">
+  <main id="wrapper" class="research-story">
     <section>
       <p>
-        <a href="../index.html#research">← Back to Main Page</a>
+        <a class="back-link" href="../index.html#research">&larr; Back to Main Page</a>
       </p>
       
       <h2>Making a Small Lab Act Infinite: Acoustic Cloaking, Holography, and Cloning</h2>
-      
-<!-- finished on 15, Nov, 2025, to be polished with my own words and deep understanding later on to motivate myself a bit on this research direction. -->
-
       <p>
-        If you have ever clapped in a small room or dropped a pebble in a bucket, you know the problem: waves bounce off the boundaries. In a real ocean, a quiet field, or outer space, waves can radiate away seemingly “to infinity.” In a lab, they hit walls and come right back. Those echoes contaminate measurements, shrink the space where we can trust the results, and make it hard to study how waves actually behave in the wild.
+        If you have ever clapped in a small room or dropped a pebble in a bucket, you know the problem: waves bounce off boundaries.
+        In an open ocean, a quiet field, or outer space, waves can radiate away as if the world extends forever. In a laboratory,
+        they hit walls and come right back. Those echoes contaminate measurements, shrink the region where results can be trusted,
+        and make it harder to study how waves behave in the wild.
       </p>
 
       <p>
-        We decided not to fight that limitation with bigger rooms or thicker foam. Instead, we taught the walls to help. Our approach blends a physical experiment with a virtual world in real time. We call this Immersive Boundary Conditions (IBCs). Think of it as a portal: the lab stays small, but the waves inside it “believe” they are in an unbounded environment because the boundaries actively behave as if the outside extends forever. 
-        IBC let us switch off a lab’s walls, make objects acoustically invisible, project virtual objects into reality, and even clone the scattering fingerprint of anything we like—on demand and across a broad range of frequencies.
+        We decided not to fight that limitation with bigger rooms or thicker foam. Instead, we taught the walls to help. The approach
+        blends a physical experiment with a virtual world in real time through <strong>Immersive Boundary Conditions</strong> (IBCs).
+        The lab stays small, but the waves inside it behave as though the outside continues beyond the walls. With IBCs we can
+        suppress wall reflections, make objects acoustically invisible, project virtual scatterers into a real experiment, and even
+        clone the scattering fingerprint of an object on demand across a broad range of frequencies.
         For more details, see 
         <a href="https://mge.ethz.ch/research/centre-immersive.html" target="_blank" rel="noopener noreferrer">
           Centre for Immersive Wave Experimentation
@@ -33,10 +36,8 @@
       </p>
       
 
-    <!-- <figure class="zoomable">  zoomable figure here " id="wrapper" -->
       <div class="figure-grid" style="width: min(1260px, 92vw);">
         <figure>
-          <!-- Figure suggestion: “WaveLab” or similar lab photo -->
           <a href="1_immersive_exp/ETH_WaveLab.png" target="_blank" rel="noopener noreferrer">
             <img src="1_immersive_exp/ETH_WaveLab.png" alt="Acoustic wave lab with arrays, scanning LDV, and waveguide rig" style="aspect-ratio: auto; object-fit: contain;">
           </a>
@@ -54,32 +55,27 @@
         </figure>
       </div>
 
-<strong>Related:</strong>  Landrø &amp; Favretto‐Cristini, <a href="https://physics.aps.org/articles/v11/71" target="_blank" rel="noopener noreferrer">Acoustic Physics</a> (2018).
+      <p>
+        <strong>Related:</strong> Landrø &amp; Favretto-Cristini,
+        <a href="https://physics.aps.org/articles/v11/71" target="_blank" rel="noopener noreferrer">Acoustic Physics</a> (2018).
+      </p>
 
     </section>
-
-  
-    <!-- Section 1: The challenge and the promise -->
-    <section id="challenge">
+<section id="challenge">
       <h3>1) The challenge: small labs, bouncing waves</h3>
 
       <p>
-       In the wild—open water, the sky, or space—waves radiate away and their energy leaves the scene, but in tanks, rooms, and waveguides they ricochet off walls,
-        polluting measurements and burying subtle effects like weak scattering or fine phase shifts. Anechoic chambers try to tame those echoes with foam wedges, 
-        yet their effectiveness collapses at low frequency because the wedge depth must scale with wavelength, 
-        making low‑kHz setups impractically large; in solid 3D volumes for full elastic P–S studies, operating around 1–20 kHz means wavelengths approach
-         the sample size, so boundary energy can dominate the interior wavefield. Reduced‑size labs (kHz acoustics, plates, rooms, waveguides)
-          thus suffer reflections that mask the very scattering we want to observe; passive absorbers are bulky and narrowband, 
-          while classic active cancellation degrades off‑axis and at higher frequencies. This is compounded by a scale gap: seismology and many field scenarios live
-           below ~100 Hz, whereas conventional lab acoustics often push to hundreds of kHz or MHz to keep echoes at bay, making it hard to transfer 
-           insights—especially for frequency‑dependent phenomena like attenuation, dispersion, anisotropy, and nonlinearity that do not upscale reliably. 
+        In the wild, waves in open water, air, or the ground can radiate away and leave the scene. In tanks, rooms, and
+        waveguides, they ricochet off walls, polluting measurements and burying subtle effects such as weak scattering and
+        fine phase shifts. Anechoic chambers help, but their absorbers must scale with wavelength, so low-frequency experiments
+        quickly become impractically large. In solid 3D volumes for elastic P- and S-wave studies, wavelengths around 1-20 kHz
+        can approach the sample size, allowing boundary energy to dominate the interior wavefield. That scale gap makes it
+        difficult to transfer laboratory insight to field problems, especially for frequency-dependent phenomena such as
+        attenuation, dispersion, anisotropy, and nonlinearity.
 
       </p>
-
-      <!-- Flex container for side-by-side media -->
-      <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
-        <!-- Left figure: PNG image -->
-        <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 25px;">
+<div style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw); margin: 1.25rem auto;">
+<figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 25px; border: 1px solid #d9e0dd; border-radius: 8px; overflow: hidden; background: #fff;">
           <a href="1_immersive_exp/schematic_rigid_wall.png" target="_blank" rel="noopener noreferrer">
             <img src="1_immersive_exp/schematic_rigid_wall.png" alt="Schematic: Small lab boundaries affecting wave propagation" style="width: 100%; aspect-ratio: auto; object-fit: contain;">
           </a>
@@ -88,17 +84,9 @@
                      Size limitation causes wall-boundary reflections and restricts the natural propagation of waves.<br>
       </figcaption>
         </figure>
-
- 
-        <!-- Right figure: MOV movie (Autoplay version) -->
-        <figure style="flex: 1; min-width: 530px; max-width: 680px; ">
-          <video autoplay muted loop playsinline style="width: 220.5%; height: auto; object-fit: cover; 
-          margin-top: -233px; 
-          margin-right: -80px; 
-          margin-bottom: -10px; 
-          margin-left: -780px;">
-            <source src="1_immersive_exp/schematic_rigid_wall_reflection_movie_2.mp4" type="video/quicktime">
-            Your browser does not support the video tag.
+<figure style="flex: 1; min-width: 530px; max-width: 680px; margin: 0 auto; border: 1px solid #d9e0dd; border-radius: 8px; overflow: hidden; background: #fff;">
+          <video autoplay muted loop playsinline style="display: block; width: 220.5%; max-width: none; height: auto; object-fit: cover; margin-top: -233px; margin-right: -80px; margin-bottom: -10px; margin-left: -780px;">
+            <source src="1_immersive_exp/schematic_rigid_wall_reflection_movie_2.mp4" type="video/mp4">
           </video>
           <figcaption>
             <strong>Boundary reflections in low-frequency experiments</strong><br>
@@ -111,15 +99,8 @@
       <p>
         <strong>Related:</strong> Xun Li, <a href="https://doi.org/10.3929/ethz-b-000573091" target="_blank" rel="noopener noreferrer"><em>Elastic immersive wave experimentation</em></a> – Doctoral Thesis, ETH Zurich, 2022.
       </p>
-
-   <!-- Right figure: MOV movie with Button to Play <button onclick="document.getElementById('myVideo').play()" style="margin-top: 10px; padding: 8px 16px; font-size: 16px;">Play Video</button> -->
-    
-
-    </section>
-  
-
-  <!-- Section: Immersive Boundary Conditions (IBCs) Concept -->
-  <section id="ibc-concept">
+</section>
+<section id="ibc-concept">
     <h3>2) Immersive Boundary Conditions: Active wave energy cancellation</h3>
 
     <p>
@@ -132,17 +113,10 @@
        In effect, the physical wave propagation mirrors the behavior of waves in an idealized, boundary-free environment.
       </p>
 
-
-     <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1260px, 92vw);">
-        <!-- single line figure: MOV movie (Autoplay version) -->
-        <figure style="flex: 1;">
-          <video autoplay muted loop playsinline style="width: 120%; height: auto; object-fit: cover; 
-          margin-top: -220px; 
-          margin-right: -80px; 
-          margin-bottom: -10px; 
-          margin-left: -260px;">
-            <source src="1_immersive_exp/boundary_cancel_waves.mp4" type="video/quicktime">
-            Your browser does not support the video tag.
+     <div style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1100px, 92vw); margin: 1.25rem auto;">
+<figure style="flex: 1; margin: 0 auto; border: 1px solid #d9e0dd; border-radius: 8px; overflow: hidden; background: #fff;">
+          <video autoplay muted loop playsinline style="display: block; width: 120%; max-width: none; height: auto; object-fit: cover; margin-top: -220px; margin-right: -80px; margin-bottom: -10px; margin-left: -260px;">
+            <source src="1_immersive_exp/boundary_cancel_waves.mp4" type="video/mp4">
           </video>
           <figcaption>
             <strong>Active wave cancellation</strong><br>
@@ -161,8 +135,7 @@
 
       <div class="figure-grid" style="width: min(860px, 72vw);">
         <figure>
-          <!-- Figure suggestion: “WaveLab” or similar lab photo -->
-          <a href="1_immersive_exp/schematic_immersive_wave_exp.PNG" target="_blank" rel="noopener noreferrer">
+<a href="1_immersive_exp/schematic_immersive_wave_exp.PNG" target="_blank" rel="noopener noreferrer">
             <img src="1_immersive_exp/schematic_immersive_wave_exp.PNG" alt="Schematic of immersive wave experiment" style="aspect-ratio: auto; object-fit: contain;">
           </a>
           <figcaption>
@@ -181,15 +154,13 @@
 </p>
 
 <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1560px, 112vw);">
-  <!-- single line figure: MOV movie (Autoplay version) -->
-  <figure style="flex: 1;">
+<figure style="flex: 1;">
     <video autoplay muted loop playsinline style="width: 100%; height: auto; object-fit: cover; 
     margin-top: 0px; 
     margin-right: 0px; 
     margin-bottom: 0px; 
     margin-left: 0px;">
-      <source src="1_immersive_exp/whole_immersive_movie.mp4" type="video/quicktime">
-      Your browser does not support the video tag.
+      <source src="1_immersive_exp/whole_immersive_movie.mp4" type="video/mp4">
     </video>
     <figcaption>
       <strong>Immersive Wave Experimentation</strong><br>
@@ -228,9 +199,6 @@
     <strong>Related:</strong> Becker et al., <a href="https://doi.org/10.1103/PhysRevX.8.031011" target="_blank" rel="noopener noreferrer">PRX</a>, 2018.
   </p>
 </section>
-
-
-<!-- Section 4: Broadband cloaking (real-time, unknown sources) -->
 <section id="cloaking">
   <h3>4) Cloaking: Perfect invisibility at all angles without prior source knowledge</h3>
 
@@ -247,12 +215,8 @@
   Those speakers emit a secondary field that cancels the object’s scattering—including multipath from the lab boundaries—without any
   prior model of the incident sound. Even moving or unknown sources can be cloaked. 
 </p>
-
-
-  <!-- Flex container for side-by-side media -->
-  <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
-    <!-- Left figure: Conceptual/simulation schematic (cloaking only) -->
-    <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 0px;">
+<div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
+<figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 0px;">
       <a href="1_immersive_exp/Cloaking_Schematic.PNG" target="_blank" rel="noopener noreferrer">
         <img src="1_immersive_exp/Cloaking_Schematic.PNG"
              alt="Active acoustic cloaking concept: microphones predict and speakers cancel the object’s scattering"
@@ -265,9 +229,7 @@
         real time by forward wavefield extrapolation from microphone measurements.
       </figcaption>
     </figure>
-
-    <!-- Right figure: Experimental setup -->
-    <figure style="flex: 1; min-width: 515px; max-width: 680px;">
+<figure style="flex: 1; min-width: 515px; max-width: 680px;">
       <a href="1_immersive_exp/Cloaking_Exp_setup.png" target="_blank" rel="noopener noreferrer">
         <img src="1_immersive_exp/Cloaking_Exp_setup.png"
              alt="Experimental setup: dual microphone rings feed a low-latency FPGA controller driving an inner loudspeaker ring"
@@ -307,10 +269,6 @@
 
   <p><strong>Examples adapted from </strong> Becker et&nbsp;al., <a href="https://doi.org/10.1126/sciadv.abi9627" target="_blank" rel="noopener noreferrer">Science Advances</a>, 2021.</p>
 </section>
-
-
-
-<!-- Section 5: Holography (virtual imprints) -->
 <section id="holography">
   <h3>5) Holography: Cheat an observer with virtual imprints</h3>
 
@@ -323,11 +281,8 @@
      the illusion is indistinguishable from the real scatterer. Note that we use the same real-time extrapolation as for cloaking, but now to 
      recreate the object’s scattered field rather than cancel it.
   </p>
-
-  <!-- Flex container for side-by-side media -->
-  <div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
-    <!-- Left figure: Conceptual/simulation schematic (holography only) -->
-    <figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 0px;">
+<div class="figure-grid" style="display: flex; flex-wrap: nowrap; gap: 1rem; justify-content: center; width: min(1080px, 92vw);">
+<figure style="flex: 1; min-width: 300px; max-width: 480px; margin: 0 auto; padding-top: 0px;">
       <a href="1_immersive_exp/holography_Schematic.PNG" target="_blank" rel="noopener noreferrer">
         <img
           src="1_immersive_exp/holography_Schematic.PNG"
@@ -342,8 +297,7 @@
        measurements.
       </figcaption>
     </figure>
-    <!-- Right figure: Experimental holography results -->
-    <figure style="flex: 1; min-width: 710px; max-width: 680px;">
+<figure style="flex: 1; min-width: 710px; max-width: 680px;">
       <a href="1_immersive_exp/holography_Results.PNG" target="_blank" rel="noopener noreferrer">
         <img
           src="1_immersive_exp/holography_Results.PNG"
@@ -367,34 +321,31 @@
 
 
 <section id="cloning">
-  <h3>6) Acoustic Cloning: A Digital Twin Enabling Scatters Like the Real Object</h3>
+  <h3>6) Acoustic Cloning: A Digital Twin That Scatters Like the Real Object</h3>
 
   <p>
-    Acoustic cloning is a powerful, two‑step strategy that ultimately creates a “digital twin” of a real scatterer—that is, a non‑physical replica that 
-    reproduces the same acoustic scattering characteristics as the original object. In our system,
-     the fundamental idea is to record the true scattering response of an object embedded in a well‑defined experimental environment and 
-     then use that retrieved information to “play back” the object’s influence on any arbitrary incident wavefield. 
-     This entire process unfolds in two primary steps:
+    Acoustic cloning creates a digital twin of a real scatterer: not a copy of its material, but a replayable copy of how it
+    scatters sound. The idea is to record the object's true scattering response in a controlled experiment, retrieve a clean
+    version of that response, and then use it to "play back" the object's influence on any incident wavefield.
   </p>
-  
-    <!-- PAD THE BELOW WITH INCIDENT -->
+
+  <ul>
     <li>
       <strong>Retrieval of the real scatterer’s properties through Multidimensional Deconvolution (MDD).</strong>
     </li>
     <li>
       <strong>Holographic reconstruction of the scatterer’s imprint via immersive holographic techniques.</strong>
     </li>
-  <!-- <hr> -->
+  </ul>
 
-  <h4>Step 1: Acquiring the Scatterer’s Green’s Functions Using MDD</h3>
+  <h4>Step 1: Acquiring the Scatterer’s Green’s Functions Using MDD</h4>
 
   <p>
-    The first stage of acoustic cloning involves illuminating the real scatterer with controlled broadband signals. 
-    During this illumination, wavefields are recorded on a closed, sound‑transparent receiver aperture surrounding the scatterer.
-     By applying the method of <a href="../mdd_work.html">multidimensional deconvolution (MDD)</a>, the experimental data are post‑processed
-      to extract the scatterer’s full set of Green’s functions. These functions characterize how the acoustic wavefield propagates from the 
-      sources through the medium and scatters off the object. Crucially, the MDD approach removes any extraneous contributions—such as multiple
-       reflections and boundary effects—that would otherwise “pollute” the clean scattering signature of the object.
+    The first stage illuminates the real scatterer with controlled broadband signals. During this illumination, wavefields are
+    recorded on a closed, sound-transparent receiver aperture surrounding the scatterer. Multidimensional deconvolution (MDD)
+    is then used to extract the scatterer's Green's functions: the transfer responses that describe how sound propagates from
+    the sources, interacts with the object, and scatters back through the medium. Crucially, MDD removes unwanted contributions
+    such as multiple reflections and boundary effects that would otherwise pollute the object's clean scattering signature.
   </p>
 
   <p>
@@ -440,12 +391,10 @@
       Scattering Green’s functions retrieved by MDD (subset: G(φO, t | φI = 0°)). Boundary‑related multiples are removed to leave only the pure scattering contribution from the object—ready for holographic replay.
     </figcaption>
   </figure>
-
-  <!-- <hr> -->
-
-  <h4>Step 2: Reconstructing the Scatterer with Real‑Time Holography</h4>
+<h4>Step 2: Reconstructing the Scatterer with Real‑Time Holography</h4>
   <p>
-    With the scatterer’s Green’s functions in hand, the next step is to recreate the object’s acoustic imprint within the lab—even after the physical object has been removed. This is achieved using a holographic reconstruction process:
+    With the scatterer's Green's functions in hand, the next step is to recreate the object's acoustic imprint in the lab,
+    even after the physical object has been removed. This is achieved using a holographic reconstruction process:
   </p>
 
   <ol>
@@ -462,10 +411,10 @@
   </p>
 
   <p>
-    <strong>A Few Notable Features of the Holographic Clone:</strong><br>
-    • <em>Broadband Robustness:</em> The hologram responds correctly for any incident broadband wavefield.<br>
-    • <em>Versatility:</em> Whether the original scatterer is circular, square, or a complex cross, the holographic reconstruction faithfully reproduces its scattering features.<br>
-    • <em>Real‑Time Reproduction:</em> The reconstruction occurs with low latency; the echo and interference patterns build up in real time.
+    <strong>A few notable features of the holographic clone:</strong><br>
+    <em>Broadband robustness:</em> the hologram responds correctly for incident broadband wavefields.<br>
+    <em>Versatility:</em> whether the original scatterer is circular, square, or cross-shaped, the holographic reconstruction reproduces its scattering features.<br>
+    <em>Real-time reproduction:</em> the reconstruction occurs with low latency, so echoes and interference patterns build up in real time.
   </p>
 
   <figure style="width:min(960px,92vw);margin:1rem auto;">
@@ -476,10 +425,7 @@
       Validation: Comparison of the wavefield with holography off (empty waveguide) and with it on (holographic reconstruction active). Subtracting the homogeneous field shows that the scattered field matches the responses of the original scatterer across various shapes.
     </figcaption>
   </figure>
-
-  <!-- <hr> -->
-
-  <h4>Augmenting the Digital Twin: Beyond Cloning</h4>
+<h4>Augmenting the Digital Twin: Beyond Cloning</h4>
 
   <p>
     An especially exciting aspect of this approach is that the twin is defined digitally. Once the scatterer’s Green’s functions have been retrieved, they can be manipulated arbitrarily. For instance, you can:
@@ -512,25 +458,26 @@
       Augmented cloning: The left image shows a circular clone programmed to exhibit directional gain—amplifying reflections and yielding more transparent transmissions. The right image shows a square clone digitally rotated to replicate a physically rotated object. These examples highlight the potential to recreate and enhance scattering behavior beyond what is physically possible.
     </figcaption>
   </figure>
-
-  <!-- <hr> -->
-
 <h4>Wandering Thoughts</h4>
 
 <p>
-  Acoustic cloning feels a bit like moving from making models of the world to making models that <em>act back</em> on the world. We’re not copying atoms or materials; we’re copying how an object <em>behaves</em> when sound meets it—its scattering fingerprint—and then letting that behavior live on without the object. In that sense, the “clone” is less a replica and more a portable skill: a learned interaction you can carry to new places, switch on and off, or even bend to your will.
+  Acoustic cloning is not a copy of atoms or materials. It is a copy of the way an object behaves when sound meets it:
+  its scattering fingerprint. Once that fingerprint has been measured and reconstructed, the object can be removed while
+  its acoustic response remains available for controlled experiments.
 </p>
 
 <p>
-  Why does this matter? Because interaction is often what we care about most. Acoustic cloning captures the full give-and-take between a wavefield and an object, across angles, frequencies, and multiple reflections. That changes how we prototype and experiment. Instead of machining many variants of a metamaterial, you clone the unit cell once and iterate digitally. Instead of hunting for anechoic spaces, you bring your own “infinite” lab with you. Instead of waiting for large simulations, you measure, learn, and replay—on demand.
+  This matters because scattering is often the quantity we want to test. Acoustic cloning captures the interaction between
+  a wavefield and an object across angles, frequencies, and multiple reflections. That makes it possible to prototype changes
+  digitally after one carefully controlled measurement.
 </p>
 
 <p>
-  The ripple effects extend beyond research. Imagine:
+  Possible applications include:
 </p>
 
 <ul>
-  <li><strong>Design at the speed of thought:</strong> Try, measure, clone, tweak—repeat. Turn days of fabrication into minutes of iteration.</li>
+  <li><strong>Rapid design loops:</strong> Measure a unit cell once, clone it, modify it digitally, and test variants without repeated fabrication.</li>
   <li><strong>Acoustic heritage and education:</strong> Preserve the “sound” of instruments, halls, or artifacts and let students interact with them anywhere.</li>
   <li><strong>Personalized spaces:</strong> Car cabins, classrooms, and headsets that remix their acoustic behavior in real time for comfort, clarity, or immersion.</li>
   <li><strong>Metamaterials, demystified:</strong> Clone a unit cell, tile it virtually, and explore nonphysical variants (gain, custom directivity) before ever building.</li>
@@ -541,24 +488,23 @@
 </p>
 
 <p>
-  Personally, what excites me most is how <em>tangible</em> this feels. It’s not just a simulation on a screen; it’s physics you can stand inside. The jump from measuring a thing to <em>becoming</em> it—acoustically—changes how we ask questions. We can now ask “What if this object were rotated, softer, or directional?” and get the answer back from the lab in real time. That’s a different kind of conversation with nature—and one I suspect we’re only beginning to have.
+  What I find useful about this idea is that it stays experimental. The result is not only a simulation on a screen; it is a
+  reconstructed wave interaction inside a physical lab. We can ask how the response changes if the object is rotated, softened,
+  or made directional, and test those changes with real wavefields.
 </p>
 
   <p>
-    <p><strong>Examples adapted from </strong> Müller, J., Becker, T. S., Li, X., et al., <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Phys. Rev. Applied.</a> (2023)
-  </p>
-  
-  <p>
-   <p><strong> For further reading </strong> into the theory and implementation of MDD , please refer to the <a href="../mdd_work.html">MDD work</a>.
+    <strong>Examples adapted from</strong> Müller, J., Becker, T. S., Li, X., et al.,
+    <a href="https://doi.org/10.1103/PhysRevApplied.20.064014" target="_blank" rel="noopener noreferrer">Physical Review Applied</a> (2023).
   </p>
 </section>
-
-    <!-- Section 7: Applications and prospects -->
 <section id="applications">
   <h3>7) Applications: Where Immersive Wave Experiments Make a Difference</h3>
 
   <p>
-    What excites me about immersive wave experimentation is how it transforms a cluttered, small lab into an imaginative playground—a place where ideas usually confined to simulations take on life. Imagine switching off walls, dropping virtual media into the mix, and crafting physical/virtual hybrids that behave like materials we haven’t even built yet. In our lab, we talk about these experiments with energy and enthusiasm, and here are just a few examples of where this technology makes waves—literally and figuratively:
+    Immersive wave experimentation turns a small, reflective laboratory into a controlled environment where physical and
+    virtual wavefields can be combined. This is useful when the desired experiment is too large, too low-frequency, or too
+    difficult to build directly. A few examples are:
   </p>
 
   <ul>
@@ -610,8 +556,7 @@
 
   <div class="figure-grid" style="width: min(760px, 92vw);">
     <figure>
-      <!-- Replace the src below with your attached metamaterials figure -->
-      <a href="1_immersive_exp/meta_materials.PNG" target="_blank" rel="noopener noreferrer">
+<a href="1_immersive_exp/meta_materials.PNG" target="_blank" rel="noopener noreferrer">
         <img src="1_immersive_exp/meta_materials.PNG" alt="Metamaterial: one physical unit cell in the lab, virtually tiled to build a phononic crystal/metamaterial lattice" style="aspect-ratio: auto; object-fit: contain;">
       </a>
       <figcaption>
@@ -625,20 +570,13 @@
   </p>
 
   <p>
-    In short, by merging the tangible with the virtual, we are not just capturing wave phenomena—we are reinventing them. Every experiment becomes a leap into uncharted territory, where physics, engineering, and creativity converge to redefine what’s possible.
+    Overall, immersive experiments provide a practical way to connect measured wavefields with virtual environments and to
+    test wave-control ideas under laboratory conditions.
   </p>
 </section>
-
-
-
-
-<!-- Section 8: Key references -->
-    <section id="references">
+<section id="references">
       <h3>References</h3>
-
-
-        <!-- 2022: Doctoral Thesis by Xun Li -->
-        <li>
+<li>
           <p>
             Li, X. (2022). <em>Elastic immersive wave experimentation</em> [Doctoral thesis, ETH Zurich]. 
             <a href="https://doi.org/10.3929/ethz-b-000573091" target="_blank" rel="noopener noreferrer">
@@ -646,9 +584,7 @@
             </a>
           </p>
         </li>
-
-      <!-- 2021: Closed-aperture unbounded acoustics experimentation (JASA) -->
-        <li>
+<li>
           <p>
             Li, X., Becker, T., Ravasi, M., Robertsson, J., &amp; van Manen, D.-J. (2021). 
             <em>Closed-aperture unbounded acoustics experimentation using multidimensional deconvolution</em>. 
@@ -658,9 +594,7 @@
             </a>
           </p>
         </li>
-
-        <!-- 2021: Broadband acoustic invisibility in Science Advances -->
-        <li>
+<li>
           <p>
             Becker, T. S., van Manen, D.-J., Haag, T., Bärlocher, C., Li, X., Börsing, N., Curtis, A., Serra‑Garcia, M., &amp; Robertsson, J. O. A. (2021). 
             <em>Broadband acoustic invisibility and illusions</em>. 
@@ -670,9 +604,7 @@
             </a>
           </p>
         </li>
-
-        <!-- 2018: Immersive wave propagation experimentation (Phys. Rev. X) -->
-        <li>
+<li>
           <p>
             Becker, T. S., van Manen, D.-J., Donahue, C. M., Bärlocher, C., Börsing, N., Broggini, F., Haag, T., Robertsson, J. O. A., Schmidt, D. R., Greenhalgh, S. A., &amp; Blum, T. E. (2018). 
             <em>Immersive wave propagation experimentation: Physical implementation and one‑dimensional acoustic results</em>. 
@@ -682,9 +614,7 @@
             </a>
           </p>
         </li>
-
-        <!-- 2023: Acoustic cloning (Phys. Rev. Applied) -->
-        <li>
+<li>
           <p>
             Müller, J., Becker, T. S., Li, X., Aichele, J., Serra‑Garcia, M., Robertsson, J. O. A., &amp; van Manen, D.-J. (2023). 
             <em>Acoustic cloning: Creating digital twins of acoustic scatterers in immersive wave experiments</em>. 
@@ -704,165 +634,13 @@
 
 
 </main>
-
-
-
-<!-- foot notes -->
-  <footer class="site-footer">
+<footer class="site-footer">
     <div class="container">
       <small>© <span id="year"></span> Jack Li • Edinburgh, UK</small>
     </div>
   </footer>
 
-  <script>
-    (function () {
-      const y = document.getElementById('year');
-      if (y) y.textContent = new Date().getFullYear();
-    })();
-  </script>
-
-
-
-<!-- Control the basic of zoom and pan -->
-
-  <!-- Zoom and pan script -->
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const wrapper = document.getElementById('wrapper');
-    if (!wrapper) return;
-
-    // Create an inner zoom target so we can translate + scale cleanly
-    let zoomInner = document.getElementById('zoom-inner');
-    if (!zoomInner) {
-      zoomInner = document.createElement('div');
-      zoomInner.id = 'zoom-inner';
-      // Move all children into zoomInner
-      while (wrapper.firstChild) zoomInner.appendChild(wrapper.firstChild);
-      wrapper.appendChild(zoomInner);
-    }
-
-    // Base state
-    let scale = 1;
-    let tx = 0; // translation x (px)
-    let ty = 0; // translation y (px)
-    const ZOOM_STEP = 1.05;
-    const MIN_SCALE = 0.5;
-    const MAX_SCALE = 3;
-
-    // Always use a fixed origin so every section scales the same
-    zoomInner.style.transformOrigin = 'center center';
-    zoomInner.style.willChange = 'transform';
-
-    const clamp = (v, lo, hi) => Math.max(lo, Math.min(v, hi));
-    const applyTransform = () => {
-      zoomInner.style.transform = `translate(${tx}px, ${ty}px) scale(${scale})`;
-    };
-
-    // Zoom helpers
-    const zoomBy = (factor) => {
-      const newScale = clamp(scale * factor, MIN_SCALE, MAX_SCALE);
-      if (newScale === scale) return;
-      scale = newScale;
-      applyTransform();
-    };
-
-    // Ctrl/Cmd + mouse wheel zoom (uniform origin)
-    window.addEventListener('wheel', (event) => {
-      if (!event.ctrlKey && !event.metaKey) return;
-      event.preventDefault(); // prevent browser zoom
-      const factor = event.deltaY < 0 ? ZOOM_STEP : 1 / ZOOM_STEP;
-      zoomBy(factor);
-    }, { passive: false });
-
-    // Ctrl/Cmd + '+' or '-' (and numpad) for keyboard zoom
-    window.addEventListener('keydown', (event) => {
-      // Don't hijack typing in form fields/contenteditable
-      const el = event.target;
-      const isEditable = el && (el.isContentEditable ||
-        ['INPUT', 'TEXTAREA', 'SELECT'].includes(el.tagName));
-      if (isEditable) return;
-
-      const hasModifier = event.ctrlKey || event.metaKey;
-      if (!hasModifier) return;
-
-      let handled = false;
-
-      if (event.code === 'Equal' || event.code === 'NumpadAdd' || event.key === '+') {
-        zoomBy(ZOOM_STEP);
-        handled = true;
-      } else if (event.code === 'Minus' || event.code === 'NumpadSubtract' || event.key === '-') {
-        zoomBy(1 / ZOOM_STEP);
-        handled = true;
-      } else if (event.code === 'Digit0' || event.code === 'Numpad0' || event.key === '0') {
-        scale = 1;
-        tx = 0;
-        ty = 0;
-        handled = true;
-      }
-
-      if (handled) {
-        event.preventDefault(); // prevent browser’s own page zoom
-        applyTransform();
-      }
-    });
-
-    // Optional: Space + drag to pan when zoomed
-    let isPanning = false;
-    let startX = 0, startY = 0, startTx = 0, startTy = 0;
-
-    const startPan = (clientX, clientY) => {
-      isPanning = true;
-      startX = clientX;
-      startY = clientY;
-      startTx = tx;
-      startTy = ty;
-      document.body.style.cursor = 'grabbing';
-    };
-
-    const movePan = (clientX, clientY) => {
-      if (!isPanning) return;
-      const dx = clientX - startX;
-      const dy = clientY - startY;
-      tx = startTx + dx;
-      ty = startTy + dy;
-      applyTransform();
-    };
-
-    const endPan = () => {
-      isPanning = false;
-      document.body.style.cursor = '';
-    };
-
-    window.addEventListener('mousedown', (e) => {
-      // Only pan when Space is held
-      if (!e.target || !e.isTrusted) return;
-      if (e.button === 0 && (e.getModifierState && e.getModifierState(' '))) {
-        e.preventDefault();
-        startPan(e.clientX, e.clientY);
-      }
-    });
-
-    window.addEventListener('mousemove', (e) => movePan(e.clientX, e.clientY));
-    window.addEventListener('mouseup', endPan);
-    window.addEventListener('mouseleave', endPan);
-
-    // For touchpads that send 'gesturestart/gesturechange' (Safari), keep uniform scaling
-    window.addEventListener('gesturestart', (e) => e.preventDefault());
-    window.addEventListener('gesturechange', (e) => {
-      e.preventDefault();
-      // e.scale is relative to the start of the gesture; convert to incremental factor
-      // Keep it gentle to avoid jumps
-      const factor = clamp(e.scale, 0.95, 1.05);
-      zoomBy(factor);
-    }, { passive: false });
-
-    // Initial apply
-    applyTransform();
-  });
-</script>
-
-
-
+<script src="../assets/js/research-page.js"></script>
 </body>
 </html>
 
