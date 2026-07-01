@@ -22,6 +22,17 @@
       margin-bottom: 0;
     }
 
+    .bcd-opening {
+      max-width: 980px;
+    }
+
+    .bcd-opening p {
+      color: #23313d;
+      font-size: clamp(1.08rem, 1.35vw, 1.18rem);
+      line-height: 1.7;
+      margin-bottom: 1rem;
+    }
+
     .research-story .figure-grid.bcd-pair {
       align-items: start;
       grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
@@ -43,19 +54,28 @@
 
       <h2>Watching a Hydraulic Fracture Open, Close, and Heal</h2>
 
-      <p class="story-lede">
-        Hydraulic fracturing is easy to describe as an engineering operation: pump fluid into rock until a fracture
-        opens. The interesting part is what happens mechanically. A fracture grows under pressure, changes the stiffness
-        of the surrounding rock, partly closes after pumping stops, and can keep recovering as rough contacts gradually
-        rebuild.
-      </p>
+      <div class="bcd-opening">
+        <p>
+          Hydraulic fracturing is often introduced as a simple operation: inject fluid, raise pressure, and open a crack.
+          For geophysics, the more interesting question starts after that sentence. How does the rock stiffness change
+          while the fracture is loaded, how quickly does it recover after shut-in, and what part of the recovery is not
+          a pressure effect but a slow rebuilding of rough contacts?
+        </p>
 
-      <p>
-        The Blue Canyon Dome field test was useful because it was small enough to reason about path by path. Instead of
-        relying only on microearthquakes, the experiment repeatedly sent active seismic signals through a shallow rhyolite
-        test volume. By comparing one repeated waveform with the next, we can ask a focused question:
-        <strong>did this source-receiver path become stiffer or softer during the operation?</strong>
-      </p>
+        <p>
+          Blue Canyon Dome is a useful place to ask that question because it sits between a laboratory experiment and a
+          reservoir-scale field test. The Sandia/Lawrence Berkeley field material used a compact five-well geometry in
+          shallow rhyolite, with one injection well and nearby monitoring wells, so individual source-receiver paths can
+          still be interpreted without pretending that the whole fracture network has been imaged.
+        </p>
+
+        <p>
+          Instead of relying only on microearthquakes, the experiment repeatedly sent active seismic signals through the
+          test volume during hydraulic operations. By comparing each repeated waveform with a reference, we can ask a
+          focused and physically interpretable question:
+          <strong>did this path become stiffer or softer as the fracture opened, closed, and healed?</strong>
+        </p>
+      </div>
 
       <div class="figure-grid story-wide">
         <figure>
@@ -65,8 +85,8 @@
           <figcaption>
             <strong>A compact field laboratory</strong><br>
             Blue Canyon Dome used a small five-well geometry: one stimulation well and four nearby monitoring wells.
-            The scale made the experiment field-like, but still simple enough to interpret as a set of repeated
-            source-receiver paths through the stimulated rock.
+            The scale made the experiment field-like, but still small enough to read as a set of repeated seismic paths
+            through a stimulated volume rather than as a full reservoir survey.
           </figcaption>
         </figure>
       </div>
@@ -82,17 +102,18 @@
       <h3>1) A Small Field Test With a Clear Question</h3>
 
       <p>
-        Blue Canyon Dome was not designed as a large reservoir-scale monitoring survey. That is part of its value. The
-        wells were close together, the stimulation point was shallow, and the target rock was rhyolite below a weathered
-        near-surface layer. This makes the experiment a bridge between a laboratory fracture test and a full field
-        deployment.
+        A full hydraulic-fracturing reservoir is usually too complicated for a first-principles story. Many fractures may
+        open, slip, close, and interact at the same time, while the monitoring array sees only an incomplete projection of
+        that behavior. Blue Canyon Dome is smaller and cleaner. The wells were close together, the injection point was
+        shallow, and the target rock was rhyolite below a weathered near-surface layer. That makes the experiment a bridge:
+        more realistic than a bench-top fracture test, but still constrained enough for path-by-path reasoning.
       </p>
 
       <p>
         The scientific question is deliberately modest: can repeated seismic waves tell us something about fracture
-        behavior during and after hydraulic stimulation? Not a full image of the fracture network, and not a complete
-        mechanical inversion. The goal is a fast interpretation from trace-to-trace comparison: where the waveforms change,
-        when they change, and whether the change looks like stiffening, weakening, or recovery.
+        behavior during and after hydraulic stimulation? This is not a full image of the fracture network and not a
+        complete mechanical inversion. The goal is a fast interpretation from trace-to-trace comparison: where the
+        waveforms change, when they change, and whether the change looks like stiffening, weakening, or recovery.
       </p>
 
       <div class="figure-grid story-medium">
@@ -115,9 +136,10 @@
 
       <p>
         A monitoring result is only meaningful if we can compare it with the operation timeline. The Blue Canyon Dome
-        sequence included a baseline, two stimulation stages, and pressure tests. The material for this page focuses on
-        <strong>pressure test #2</strong>, because that interval gives a clear clock for asking whether the seismic
-        response follows injection, pressure change, shut-in, and recovery.
+        sequence included a baseline, two stimulation stages, and pressure tests. That operational history gives the
+        seismic data a clock: before injection, during pressure increase, at shut-in, and during the post-injection
+        recovery. The material for this page focuses on <strong>pressure test #2</strong>, because that interval is clean
+        enough to compare the seismic response with pressure change, flow rate, shut-in, and relaxation.
       </p>
 
       <div class="figure-grid story-wide">
@@ -154,14 +176,17 @@
 
       <p>
         Passive microseismic monitoring listens for failures that radiate seismic energy. That is useful, but it misses
-        deformation that is mechanically important and seismically quiet. Continuous active-source monitoring adds a
-        controlled measurement: send a repeatable signal, record the response, and compare it with a reference.
+        deformation that is mechanically important and seismically quiet. A fracture can open, close, or regain stiffness
+        without producing a neat earthquake catalogue. Continuous active-source monitoring adds a controlled measurement:
+        send a repeatable signal, record the response, and compare it with a reference.
       </p>
 
       <p>
         The Blue Canyon Dome data were collected at about one-minute temporal resolution. That is fast enough to follow
-        the operation, but it also creates practical problems: individual traces are noisy, the useful windows are short,
-        and P- and S-wave energy can overlap. The interpretation therefore has to stay path-wise and cautious.
+        the operation almost as it happens, but it also creates practical problems: individual traces are noisy, the useful
+        windows are short, and P- and S-wave energy can overlap. The interpretation therefore has to stay path-wise and
+        cautious. The strength of the experiment is not that every detail is resolved; it is that the same question is
+        asked repeatedly at a time scale close to the hydraulic operation.
       </p>
 
       <div class="figure-grid story-wide">
@@ -192,7 +217,9 @@
       <p>
         This does not directly photograph a fracture. It gives a sensitive path-wise proxy for elastic change. In rock,
         seismic velocity is tied to stiffness: open cracks and weaker contacts tend to slow waves, while crack closure or
-        increased contact force can speed them up.
+        increased contact force can speed them up. That is why the method is useful here. The sign and timing of
+        <strong>dv/v</strong> can be read as a compact mechanical clue, provided we remember that each path averages over
+        a finite volume of rock.
       </p>
 
       <div class="figure-grid story-medium">
@@ -239,8 +266,10 @@
 
       <p>
         A tempting interpretation would be: pressure rises, the fracture opens, velocity drops, and then velocity returns
-        after shut-in. The Blue Canyon Dome material points to something more useful. Different source-receiver paths can
-        carry different signs and timing, because they sample different parts of the stress and fracture system.
+        after shut-in. The Blue Canyon Dome material points to something more useful and more realistic. Different
+        source-receiver paths can carry different signs and timing, because they sample different parts of the stress and
+        fracture system. A path near the main opening fracture does not have to behave like a path dominated by surrounding
+        stress redistribution.
       </p>
 
       <p>
@@ -343,7 +372,9 @@
       <p>
         This is where the Blue Canyon Dome observation connects to nonlinear rock physics. Laboratory experiments and
         contact-based models show that rocks can recover slowly after being disturbed. In the field data, the slow part of
-        the relaxation is therefore not just a nuisance trend; it is a clue that the fracture has memory.
+        the relaxation is therefore not just a nuisance trend; it is a clue that the fracture has memory. The field
+        measurement and the laboratory analogy point in the same direction: hydraulic stimulation changes the contact
+        network, and the contact network does not necessarily rebuild on the same time scale as the pressure drop.
       </p>
 
       <div class="figure-grid story-medium">
@@ -373,7 +404,9 @@
       <p>
         The value is that the method is cheap, fast, and physically interpretable. It can track quiet stiffness changes
         even when the rock does not produce obvious seismic events. Used carefully, it gives a practical way to monitor
-        fracture behavior in near-real time and to design better experiments.
+        fracture behavior in near-real time and to design better experiments. For geothermal stimulation, carbon storage,
+        and other subsurface engineering problems, that kind of measurement is valuable because risk is controlled not
+        only by where fractures are, but also by how they evolve after operations change.
       </p>
 
       <div class="bcd-note">
@@ -400,6 +433,13 @@
         <a href="https://doi.org/10.1103/PhysRevB.97.144301" target="_blank" rel="noopener noreferrer">
           Nonlinear elasticity in resonance experiments
         </a> (2018).
+      </p>
+
+      <p>
+        <strong>Field-test report:</strong> Knox, H., Ajo-Franklin, J., Johnson, T., Morris, J., Grubelich, M.,
+        James, S., Rinehart, A., Preston, L., Vermeul, V., Strickland, C., Knox, J., King, D., and Ulrich, C.
+        <em>Imaging fracture networks using joint seismic and electrical change detection techniques</em>.
+        Technical report, Sandia National Laboratories, 2017.
       </p>
 
       <div class="bcd-download">
